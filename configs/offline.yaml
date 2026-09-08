@@ -1,0 +1,11 @@
+name: offline-integrity-check
+backend: fake
+data_dir: artifacts/data/fixtures
+split: smoke
+model:
+  device: cpu
+  dtype: float32
+limits:
+  max_tokens: 30000
+  max_elapsed_seconds: 60
+  job_seconds: 10

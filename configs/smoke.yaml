@@ -1,0 +1,15 @@
+name: qwen3-1.7b-smoke
+backend: transformers
+data_dir: artifacts/data/fixtures
+split: smoke
+samples: 1
+model:
+  name: Qwen/Qwen3-1.7B
+  revision: 70d244cc86ccca08cf5af4e1e306ecf908b1ad5e
+  tokenizer_revision: 70d244cc86ccca08cf5af4e1e306ecf908b1ad5e
+  device: mps
+  dtype: float16
+limits:
+  max_tokens: 30000
+  max_elapsed_seconds: 3600
+  job_seconds: 600

@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "reasoning-budget"
+version = "0.1.0"
+description = "Reproducible direct-versus-thinking inference experiments"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "torch>=2.6,<3", "transformers>=4.51,<5", "datasets>=3.6,<5",
+  "numpy>=1.26,<3", "scipy>=1.13,<2", "scikit-learn>=1.5,<2",
+  "pandas>=2.2,<3", "matplotlib>=3.9,<4", "PyYAML>=6,<7",
+]
+
+[project.scripts]
+rb = "reasoning_budget.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8,<9", "ruff>=0.11,<1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/reasoning_budget"]
