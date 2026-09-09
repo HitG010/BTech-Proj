@@ -1,5 +1,6 @@
 """Exercise actual generate hooks and stage orchestration without weights/network."""
 
+import math
 import time
 from types import SimpleNamespace
 
@@ -7,7 +8,7 @@ import pytest
 import torch
 from transformers import GenerationConfig
 
-from reasoning_budget.backend import TransformersBackend
+from reasoning_budget.backend import RawLogprobRecorder, TransformersBackend
 from reasoning_budget.config import from_dict
 from reasoning_budget.records import Question
 from reasoning_budget.runner import build_jobs
@@ -66,6 +67,7 @@ def backend(scripts, mode="thinking", reasoning_tokens=4, answer_tokens=3):
     b = object.__new__(TransformersBackend)
     b.config, b.torch, b.tokenizer = config, torch, Tokenizer()
     b.model, b.close_id, b.closure = ScriptModel(scripts), 4, [4, 6]
+    b.eos_ids = [9]
     b.generation_configs = {m: GenerationConfig() for m in config.modes}
     question = Question("q", "test", "smoke", "Question?")
     job = next(j for j in build_jobs(config, [question], {"closure_tokens": 2}) if j.mode == mode)
@@ -125,6 +127,30 @@ def test_expired_deadline_does_not_start_a_stage():
 
 def test_time_hook_stops_running_stage():
     b, _, _ = backend([[3, 3, 3, 3]])
-    tokens, reason, _, _ = b._stage([1], 4, "thinking", time.monotonic() - 1)
+    tokens, reason, _, _, _ = b._stage([1], 4, "thinking", time.monotonic() - 1)
     assert len(tokens) == 1
     assert reason == "timeout"
+
+
+def test_direct_confidence_is_post_warper_and_raw_is_absent_without_processor_calls():
+    # The scripted model never invokes logits processors, so the raw estimate must
+    # stay None rather than being fabricated from partial data.
+    b, q, j = backend([[5, 9]], "direct")
+    result = b.generate(q, j, time.monotonic() + 10)
+    assert result.mean_generated_logprob == pytest.approx(-math.log(10))
+    assert result.mean_generated_logprob_raw is None
+
+
+def test_raw_logprob_recorder_scores_each_sampled_token_once():
+    recorder = RawLogprobRecorder(torch)
+    logits = torch.log(torch.tensor([[0.5, 0.25, 0.25]]))
+    recorder(torch.tensor([[1]]), logits)  # step 1: nothing sampled yet
+    recorder(torch.tensor([[1, 0]]), logits)  # token 0 was sampled under step-1 logits
+    recorder.finish(2)  # final token 2 under step-2 logits
+    assert recorder.values == pytest.approx([math.log(0.5), math.log(0.25)])
+    assert recorder.previous is None
+
+
+def test_closure_text_must_contain_the_think_marker():
+    with pytest.raises(ValueError, match="closure_text"):
+        from_dict({"closure_text": "stop"})

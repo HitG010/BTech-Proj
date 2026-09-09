@@ -46,6 +46,7 @@ class GenerationResult:
     answer_truncated: bool
     termination: str
     mean_generated_logprob: float | None = None
+    mean_generated_logprob_raw: float | None = None
     metadata: dict | None = None
 
     def to_dict(self):

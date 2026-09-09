@@ -32,6 +32,13 @@ def main(argv=None):
     audit = sub.add_parser("audit", help="Create a deterministic manual-review artifact")
     audit.add_argument("run_dir")
     audit.add_argument("--count", type=int, default=50)
+    analyze = sub.add_parser(
+        "analyze", help="Headroom, gates, confidence, power and programme projection"
+    )
+    analyze.add_argument("run_dir")
+    analyze.add_argument("--cloud-tokens-per-second", type=float)
+    analyze.add_argument("--large-model-slowdown", type=float, default=2.5)
+    analyze.add_argument("--hourly-rate", type=float)
     args = parser.parse_args(argv)
     try:
         if args.command == "doctor":
@@ -85,6 +92,17 @@ def main(argv=None):
             if args.count < 1:
                 raise ValueError("audit count must be positive")
             print(create_audit(args.run_dir, args.count))
+        elif args.command == "analyze":
+            from .analysis import analyze
+
+            print(
+                analyze(
+                    args.run_dir,
+                    args.cloud_tokens_per_second,
+                    args.large_model_slowdown,
+                    args.hourly_rate,
+                )
+            )
     except (ValueError, OSError, KeyError, TypeError) as exc:
         print(f"rb: {exc}", file=sys.stderr)
         return 2

@@ -4,13 +4,14 @@ import math
 import time
 from pathlib import Path
 
-from .backend import environment, make_backend
+from .backend import GENERATION_PROTOCOL, environment, make_backend
 from .data import load_questions
 from .records import GenerationJob, GenerationResult
 from .storage import atomic_json, digest, envelope, read_json, run_lock, verified
 
 
 def implementation_digest():
+    """Provenance only: recorded in the manifest, not part of the run identity."""
     root = Path(__file__).parent
     return digest(
         {
@@ -89,6 +90,7 @@ def valid_record(path, job):
 
 
 def _usage(run_dir):
+    """Authoritative ledger scan: every attempt and setup session on disk."""
     tokens, elapsed = 0, 0.0
     for path in (run_dir / "attempts").glob("*.json"):
         # A corrupt budget ledger is a hard error, never permission to spend again.
@@ -112,7 +114,7 @@ def run(config, backend=None, progress=print):
         "backend": backend.metadata,
         "questions": [q.to_dict() for q in questions],
         "environment": env,
-        "implementation_sha256": implementation_digest(),
+        "protocol_version": GENERATION_PROTOCOL,
     }
     run_id = digest(identity)
     run_dir = Path(config.output_dir) / run_id[:20]
@@ -125,9 +127,10 @@ def run(config, backend=None, progress=print):
         else:
             dataset_manifest = read_json(Path(config.data_dir) / "manifest.json")
             manifest = {
-                "schema_version": 1,
+                "schema_version": 2,
                 "run_id": run_id,
                 "identity": identity,
+                "implementation_sha256": implementation_digest(),
                 "scoring_gold_sha256": dataset_manifest["gold_sha256"],
                 "jobs": [j.to_dict() for j in jobs],
                 "created_at": time.time(),
@@ -149,6 +152,8 @@ def run(config, backend=None, progress=print):
         )
         if not pending:
             return run_dir
+        # One ledger scan per invocation; afterwards the tally is maintained in
+        # memory exactly as _usage() would count each finalized attempt.
         charged, elapsed = _usage(run_dir)
         if (
             charged + pending[0].max_tokens > config.limits.max_tokens
@@ -172,10 +177,11 @@ def run(config, backend=None, progress=print):
             raise
         session = {"setup_seconds": time.monotonic() - setup_started, "started_at": time.time()}
         atomic_json(run_dir / "sessions" / f"{time.time_ns()}.json", envelope(session))
+        elapsed += session["setup_seconds"]
         by_id = {q.id: q for q in questions}
         stop_reason = "complete"
+        consecutive_failures = 0
         for job in pending:
-            charged, elapsed = _usage(run_dir)
             remaining_seconds = config.limits.max_elapsed_seconds - elapsed
             if charged + job.max_tokens > config.limits.max_tokens:
                 stop_reason = "token_budget"
@@ -227,6 +233,10 @@ def run(config, backend=None, progress=print):
                 # Write the result before releasing the conservative reservation.
                 atomic_json(run_dir / "results" / f"{job.id}.json", envelope(record))
                 atomic_json(attempt_path, envelope(attempt | {"record": record}))
+                # A finalized attempt is charged its actual time and, when known, its
+                # generated tokens; otherwise the whole reservation stays charged.
+                charged += attempt.get("charged_tokens", job.max_tokens)
+                elapsed += attempt["elapsed_seconds"]
             result = record["result"]
             progress(
                 f"{job.question_id} {job.mode} sample={job.sample} {record['status']} "
@@ -241,10 +251,14 @@ def run(config, backend=None, progress=print):
                 stop_reason = "interrupted"
                 break
             if record["status"] == "failed":
-                # Avoid burning an entire run on a broken device; explicit resume retries.
-                stop_reason = "failed_job"
-                break
-        charged, elapsed = _usage(run_dir)
+                # Isolated failures are retried on resume; a streak stops the run so a
+                # broken device cannot burn the whole budget.
+                consecutive_failures += 1
+                if consecutive_failures >= config.limits.max_consecutive_failures:
+                    stop_reason = "consecutive_failures"
+                    break
+            else:
+                consecutive_failures = 0
         completed = sum(
             bool(
                 (r := valid_record(run_dir / "results" / f"{j.id}.json", j))
@@ -252,6 +266,8 @@ def run(config, backend=None, progress=print):
             )
             for j in jobs
         )
+        if stop_reason == "complete" and completed != len(jobs):
+            stop_reason = "finished_with_failures"
         atomic_json(
             run_dir / "status.json",
             {

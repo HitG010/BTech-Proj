@@ -1,14 +1,22 @@
+import math
 from pathlib import Path
 
 import numpy as np
 import pytest
 
-from reasoning_budget.backend import FakeBackend
+from reasoning_budget.backend import GENERATION_PROTOCOL, FakeBackend
 from reasoning_budget.config import from_dict
 from reasoning_budget.data import prepare_fixtures
 from reasoning_budget.reporting import bootstrap, paired_statistics, score_run
 from reasoning_budget.runner import _usage, build_jobs, load_run, run
-from reasoning_budget.storage import atomic_json, digest, envelope, read_json, run_lock
+from reasoning_budget.storage import (
+    atomic_json,
+    digest,
+    envelope,
+    read_json,
+    run_lock,
+    verified,
+)
 
 
 @pytest.fixture
@@ -164,10 +172,48 @@ def test_timeout_is_explicit_failure_and_can_resume(config):
             return result
 
     directory = run(config, TimeoutBackend(config), progress=lambda _: None)
-    assert load_run(directory)[1][0]["status"] == "failed"
+    statuses = [r["status"] for r in load_run(directory)[1]]
+    assert statuses[:3] == ["failed"] * 3 and set(statuses[3:]) == {"pending"}
+    assert read_json(directory / "status.json")["stop_reason"] == "consecutive_failures"
     b = CountingBackend(config)
     run(config, b, progress=lambda _: None)
     assert b.calls == 20
+
+
+def test_isolated_failure_does_not_stop_the_run(config):
+    class FlakyBackend(CountingBackend):
+        def generate(self, question, job, deadline):
+            result = super().generate(question, job, deadline)
+            if self.calls == 2:
+                result.termination = "timeout"
+            return result
+
+    directory = run(config, FlakyBackend(config), progress=lambda _: None)
+    statuses = [r["status"] for r in load_run(directory)[1]]
+    assert statuses.count("completed") == 19 and statuses.count("failed") == 1
+    assert read_json(directory / "status.json")["stop_reason"] == "finished_with_failures"
+    b = CountingBackend(config)
+    run(config, b, progress=lambda _: None)
+    assert b.calls == 1
+
+
+def test_status_tally_matches_budget_ledger(config):
+    directory = run(config, CountingBackend(config, interrupt_after=5), progress=lambda _: None)
+    for backend in [None, CountingBackend(config)]:
+        if backend is not None:
+            run(config, backend, progress=lambda _: None)
+        status = read_json(directory / "status.json")
+        tokens, elapsed = _usage(directory)
+        assert status["charged_tokens"] == tokens
+        assert math.isclose(status["elapsed_seconds"], elapsed, rel_tol=1e-9)
+
+
+def test_identity_uses_protocol_version_and_records_code_hash_separately(config):
+    directory = run(config, CountingBackend(config), progress=lambda _: None)
+    manifest = verified(directory / "manifest.json")
+    assert manifest["identity"]["protocol_version"] == GENERATION_PROTOCOL
+    assert "implementation_sha256" not in manifest["identity"]
+    assert len(manifest["implementation_sha256"]) == 64
 
 
 def test_audit_rejects_duplicate_and_stale_reviews(config):

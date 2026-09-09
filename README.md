@@ -43,7 +43,19 @@ uv run --locked rb prepare gsm8k
 uv run --locked rb generate --config configs/pilot.yaml
 uv run --locked rb report artifacts/runs/PILOT_RUN_ID --hourly-rate 1
 uv run --locked rb audit artifacts/runs/PILOT_RUN_ID --count 50
+
+# Protocol v2 (see plan.md): larger allowances, Qwen's math prompt, budget phrase.
+uv run --locked rb smoke --config configs/smoke_v2.yaml
+uv run --locked rb generate --config configs/pilot_v2.yaml
+uv run --locked rb analyze artifacts/runs/PILOT_RUN_ID --cloud-tokens-per-second 2000
 ```
+
+`analyze` writes `report/analysis.{json,md}`: per-question outcome matrix, oracle
+best-mode accuracy, decision-relevant fraction, forced-closure rate against the 5%
+gate, direct-confidence AUROC, a power estimate for 500 test questions, a programme
+projection at observed and scenario throughput, and a scorer pre-screen listing
+parser failures and LaTeX-decorated boxes to seed the human audit. The large-model
+slowdown and cloud throughput are explicit assumptions, not measurements.
 
 `--hourly-rate 1` means a **hypothetical $1/hour scenario**, not a provider quote or
 a cloud launch. Reports project 1,100 questions × two samples × both modes by
@@ -73,19 +85,27 @@ it cannot certify that a person actually read each response.
 
 Repeat the exact generation command to resume. Valid completed jobs are skipped;
 only failed, missing, or corrupt results are regenerated. Ctrl-C writes an explicit
-failed attempt and exits at the current job. An advisory OS lock prevents concurrent
+failed attempt and exits at the current job. An isolated failed job (for example a
+timeout) is recorded and the run continues; a streak of
+`limits.max_consecutive_failures` failures (default 3) stops the run so a broken
+device cannot burn the budget. An advisory OS lock prevents concurrent
 writers. Records are fsynced and atomically replaced, with SHA-256 checksums.
 Temporary/incomplete writes are never treated as completed jobs. A corrupt budget
-ledger stops the run so it cannot accidentally authorize extra computation.
+ledger stops the run so it cannot accidentally authorize extra computation. The
+ledger is scanned once per invocation and then tallied in memory; `status.json`
+reports that tally, which equals a full rescan.
 
 Each job reserves its **maximum** possible generated plus inserted-closure tokens
 before generation. Successful attempts release unused tokens. Failed attempts with
 unknown token counts keep the entire reservation. Interrupted attempts remain
 charged even when retried. Budgets persist across invocations. A changed resolved
 configuration (including limits), device, precision, model/tokenizer revision,
-software environment, or generation implementation creates a distinct run.
-Changing a limit therefore does not extend an existing run; select limits before
-launch. Job seeds depend on experiment seed, question content, mode, and sample,
+software environment, chat template, decoder configuration, closure or EOS ids, or
+generation protocol version creates a distinct run. The source hash is recorded in
+the manifest as provenance but is not part of the identity, so an unrelated code
+edit does not orphan a run; `GENERATION_PROTOCOL` in `backend.py` must be bumped
+when generation semantics change. Changing a limit therefore does not extend an
+existing run; select limits before launch. Job seeds depend on experiment seed, question content, mode, and sample,
 so job order and interruption do not alter them. MPS/CUDA can still differ
 numerically; results are identified separately, and bitwise cross-device
 reproducibility is not claimed.
@@ -108,27 +128,40 @@ full checkpoint chat template and effective decoder configuration are saved.
 For offline resume, keep the same config and use `HF_HUB_OFFLINE=1` after the cache
 is populated; changing `local_files_only` itself changes the experiment config.
 
-The Qwen chat template receives `enable_thinking=False` for direct mode and `True`
-for thinking mode. Both receive the same question and boxed-answer instruction.
-Direct uses temperature 0.7, top-p 0.8, top-k 20 and at most 256 generated tokens.
-Thinking uses temperature 0.6, top-p 0.95, top-k 20, with up to 2,048 reasoning
-tokens and a separate 256-token answer allowance. These sampling defaults follow
-the [official Qwen model card](https://huggingface.co/Qwen/Qwen3-1.7B).
+The Qwen chat template receives `enable_thinking=False` for direct mode (the
+template prefills an empty think block, so "direct" is Qwen3 non-thinking mode with
+whatever short working the model chooses to write) and `True` for thinking mode.
+Both receive the same question and the same `prompt_suffix`. Direct uses
+temperature 0.7, top-p 0.8, top-k 20; thinking uses temperature 0.6, top-p 0.95,
+top-k 20. These sampling defaults follow the
+[official Qwen model card](https://huggingface.co/Qwen/Qwen3-1.7B). Every EOS id
+declared by the checkpoint's generation configuration ends a stage.
+
+Protocol v1 (`configs/pilot.yaml`) used the suffix "give only the numerical answer",
+2,048 reasoning tokens and 256 answer tokens; the pilot showed the model ignores the
+suffix and the answer allowance truncated a third of direct and half of thinking
+answers. Protocol v2 (`configs/*_v2.yaml`) uses the model card's "Please reason step
+by step, and put your final answer within \boxed{}", 4,096 reasoning tokens and
+1,024 answer tokens.
 
 The reasoning stage stops at the single-token `</think>` marker, EOS, deadline,
-or reasoning limit. At the limit, it inserts `</think>\n\n` and continues the same
-assistant prefix. An early EOS in reasoning is a model failure with no final
-answer. The second `generate` call reprocesses the full prefix instead of reusing
-a KV cache between calls; this deliberate implementation overhead is included in
-answer-stage and total timings for both natural and forced closure. The pipeline
-uses [Transformers generation and stopping hooks](https://huggingface.co/docs/transformers/main_classes/text_generation).
+or reasoning limit. At the limit, it inserts the configured `closure_text` (v1:
+`</think>\n\n`; v2: the Qwen3 report's budget phrase ending in `</think>\n\n`) and
+continues the same assistant prefix. An early EOS in reasoning is a model failure
+with no final answer. The second `generate` call reprocesses the full prefix
+instead of reusing a KV cache between calls; this deliberate implementation
+overhead is included in answer-stage and total timings for both natural and forced
+closure. The pipeline uses
+[Transformers generation and stopping hooks](https://huggingface.co/docs/transformers/main_classes/text_generation).
 
 Generated token counts include control/EOS tokens; inserted closure tokens are
 counted separately. `raw_output` contains only sampled tokens. `effective_output`
-and stored token IDs reconstruct the response including inserted closure. Direct
-mean token log-probability is calculated after the configured decoder warpers,
-including EOS, for later confidence routing. Reasoning-stage score tensors are
-not retained, keeping memory manageable.
+and stored token IDs reconstruct the response including inserted closure. For
+direct answers two mean token log-probabilities are stored for later confidence
+routing: `mean_generated_logprob` after the configured decoder warpers, and
+`mean_generated_logprob_raw` from the logits seen before the sampling warpers,
+recorded one step at a time by a logits processor. Reasoning-stage score tensors
+are not retained, keeping memory manageable.
 
 ## Artifacts and scoring
 
@@ -156,11 +189,16 @@ different revision or split. The source is [openai/gsm8k](https://huggingface.co
 
 Scoring parses only separated final answers using exact rational arithmetic.
 Integers, decimals, fractions, scientific notation, negatives, thousands separators,
-and nested LaTeX fraction boxes are supported. Conflicting explicit final answers
-are unscorable. Without explicit markers, the sole numeric literal on the last
-nonempty line is accepted; this conservative heuristic is versioned and audited.
-Truncated answers are counted incorrect even when they contain a plausible number.
-The parser never receives gold labels. Generation never opens `gold.json`.
+and nested LaTeX fraction boxes are supported. `numeric-v3` also ignores currency
+and percent signs, spacing macros, and `\text{}`-style wrappers inside a claim, and
+accepts one number followed by a plain unit word (`18 hours`); anything with a
+second number, an equals sign or an unrecognised command stays unscorable.
+Conflicting explicit final answers are unscorable. Without explicit markers, the
+sole numeric literal on the last nonempty line is accepted; this conservative
+heuristic is versioned and audited. Truncated answers are counted incorrect even
+when they contain a plausible number. The parser never receives gold labels.
+Generation never opens `gold.json`. The frozen GSM8K split manifest is tracked in
+version control; questions, gold and runs stay local.
 
 Reports show completed denominators and pending/failed counts. Repeated samples
 are averaged within questions; bootstrap intervals resample whole questions.
