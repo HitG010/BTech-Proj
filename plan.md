@@ -71,8 +71,10 @@ throughput was about 24 tokens per second and the run took 3.4 hours including s
   "Considering the limited time by the user, I have to give the solution based on the
   thinking directly now.\n</think>\n\n" (23 tokens, counted separately as inserted tokens).
 - Decoding per model card: direct 0.7 / 0.8 / 20, thinking 0.6 / 0.95 / 20; both EOS ids.
-- Scoring `numeric-v3`: LaTeX currency, percent, spacing and text wrappers are stripped
-  inside claims; conflicts, `2:30`-style values, and truncated outputs remain unscorable.
+- Scoring `numeric-v4`: LaTeX currency, percent, spacing and text wrappers are stripped
+  inside claims, and prose after an answer label is not a claim (the v2 smoke showed
+  "the answer is correct, ..." being read as a conflicting claim); conflicts,
+  `2:30`-style values, and truncated outputs remain unscorable.
 - Confidence: store both post-warper and raw-logit mean log-probability for direct answers.
 - Same 100 pilot questions, 2 samples per mode; Mac MPS fp16; new run identity.
 

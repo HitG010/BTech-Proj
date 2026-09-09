@@ -5,7 +5,7 @@ from fractions import Fraction
 
 from .records import ScoredResult
 
-SCORING_VERSION = "numeric-v3"
+SCORING_VERSION = "numeric-v4"
 NUMBER = r"[+−-]?(?:(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?|\.\d+)(?:[eE][+-]?\d+)?(?:\s*/\s*[+-]?\d+(?:\.\d+)?)?"
 TOKEN = re.compile(r"(?<![\w.])" + NUMBER + r"(?![\w.])")
 # numeric-v3: LaTeX decoration that carries no numeric information.
@@ -93,6 +93,13 @@ def parse_answer(final_answer, *, incomplete=False):
     claims = list(boxed)
     for match in re.finditer(r"(?:####|(?:final\s+)?answer\s*(?:is|:|=))\s*([^\n]+)", text, re.I):
         segment = match.group(1)
+        head = re.sub(r"^(?:\s|\$|\*|~|:|\\\(|\\\[|[(\[{])+", "", segment)
+        if not (
+            head.startswith("\\boxed") or re.match(NUMBER, head) or re.match(r"\\[dt]?frac", head)
+        ):
+            # numeric-v4: prose after a label ("the answer is correct, so ...") is
+            # not a claim; a claim starts with a number, a fraction, or a box.
+            continue
         segment_boxes, _ = _boxes(segment)
         if segment_boxes:
             # Remove balanced boxes before looking for a second explicit claim.

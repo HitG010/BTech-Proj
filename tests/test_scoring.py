@@ -113,3 +113,16 @@ def test_latex_decoration_is_ignored_numeric_v3(text, expected):
 )
 def test_decorated_claims_stay_conservative(text):
     assert parse_answer(text) == (None, "invalid_number")
+
+
+@pytest.mark.parametrize(
+    "text, expected",
+    [
+        ("To ensure the answer is correct, add it back: 54 + 37 = 91.\n\n\\boxed{54}", "54"),
+        ("The answer is approximately 18.\n\n$$\\boxed{18}$$", "18"),
+        ("The answer is: **18**", "18"),
+        ("Final answer: $\\boxed{7}$", "7"),
+    ],
+)
+def test_prose_after_answer_label_is_not_a_claim_numeric_v4(text, expected):
+    assert parse_answer(text) == (expected, "ok")

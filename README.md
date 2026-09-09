@@ -189,11 +189,13 @@ different revision or split. The source is [openai/gsm8k](https://huggingface.co
 
 Scoring parses only separated final answers using exact rational arithmetic.
 Integers, decimals, fractions, scientific notation, negatives, thousands separators,
-and nested LaTeX fraction boxes are supported. `numeric-v3` also ignores currency
-and percent signs, spacing macros, and `\text{}`-style wrappers inside a claim, and
-accepts one number followed by a plain unit word (`18 hours`); anything with a
-second number, an equals sign or an unrecognised command stays unscorable.
-Conflicting explicit final answers are unscorable. Without explicit markers, the
+and nested LaTeX fraction boxes are supported. The current scorer (`numeric-v4`)
+also ignores currency and percent signs, spacing macros, and `\text{}`-style
+wrappers inside a claim, accepts one number followed by a plain unit word
+(`18 hours`), and treats prose after an answer label ("the answer is correct, so
+...") as no claim at all; anything with a second number, an equals sign or an
+unrecognised command stays unscorable. Conflicting explicit final answers are
+unscorable. Without explicit markers, the
 sole numeric literal on the last nonempty line is accepted; this conservative
 heuristic is versioned and audited. Truncated answers are counted incorrect even
 when they contain a plausible number. The parser never receives gold labels.
