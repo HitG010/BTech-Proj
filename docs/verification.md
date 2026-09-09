@@ -1,15 +1,19 @@
 # Implementation verification
 
-The first pass implements Milestones A–C. Detailed run artifacts are local and
-excluded from Git; the source, tests, configurations, plan, and dependency lock
-are tracked.
+The first pass implements Milestones A–C; branch `research/pilot-v2` adds protocol
+v2, scorer v4, the runner fixes and `rb analyze` (see `plan.md`). Detailed run
+artifacts are local and excluded from version control; the source, tests,
+configurations, plan, dependency lock and the frozen GSM8K split manifest are
+tracked.
 
 ## Environment and tests
 
 - Managed Python 3.11.13; PyTorch 2.14.0; Transformers 4.57.6.
 - Qwen3-1.7B model/tokenizer commit `70d244cc86ccca08cf5af4e1e306ecf908b1ad5e`.
 - FP16, MPS, SDPA, one question per batch; no fallback or quantization.
-- 59 offline tests passed; Ruff checks passed; uv lock consistency verified.
+- 87 offline tests pass on the branch (59 on `master`); Ruff check and format pass;
+  uv lock consistency verified. `rb prepare gsm8k` in a fresh worktree reproduced
+  the frozen manifest, questions and gold byte-for-byte.
 - Offline end-to-end run `0d73cf0fd0c32a5c5722` completed 20/20 jobs, produced
   reports, and a second invocation skipped all completed records.
 - Interruption, incomplete/corrupt writes, conservative token reservations,
@@ -49,16 +53,51 @@ It motivated a clearer shared final-answer instruction before the definitive
 smoke/pilot. Its scores also exposed the multiline boxed-answer parser defect,
 which was fixed and regression-tested in `numeric-v2`.
 
-## Pilot
+## Pilot v1 (protocol v1, superseded)
 
 GSM8K commit `740312add88f781978c0658806c59bc2815b9866`; seed 20260909. Frozen
 splits contain 100 pilot, 400 training, 100 validation, and 500 official-test
-questions. The pilot is run `af1f1e56c5d453bbfd5e`, with two samples per question
-per mode (400 jobs). Its final completion and audit results will be recorded here.
+questions. Run `af1f1e56c5d453bbfd5e` completed all 400 jobs (two samples per
+question per mode) in 3.44 hours including setup, 296,422 charged tokens, no cloud
+billing. It was scored on 2026-09-09 during the review that started this branch.
 
-The smoke throughput projects roughly 2.17 hours for 400 jobs and 23.84 hours for
-1,100 questions × two samples × both modes. These are arithmetic-based local
-estimates. A hypothetical $1/hour rental at identical speed would cost $2.17 and
-$23.84 respectively; CUDA speed, idle time, setup, acquisition repeats, and
-confirmation are not measured by this projection. The pilot will replace these
-preliminary throughput estimates.
+| Mode | Accuracy as scored | Answers cut at 256 tokens | Accuracy among untruncated | Forced closure at 2,048 | Mean generated tokens | Mean seconds |
+|---|---:|---:|---:|---:|---:|---:|
+| Direct | 63.0% | 63 / 200 | 92.0% | 0 / 200 | 194.3 | 7.90 |
+| Thinking | 46.0% | 105 / 200 | 96.8% | 30 / 200 | 1,287.5 | 53.91 |
+
+The paired difference of -0.17 (interval [-0.255, -0.085]) is a protocol artifact:
+the prompt's "only the numerical answer" instruction was ignored in both modes and
+the 256-token answer allowance truncated the answers. Forced closure at 15% trips
+the proposal's 5% gate. No human audit was performed on this run; it is retained
+as evidence for the protocol change, not as a result. Rescoring it with
+`numeric-v3` and `numeric-v4` changed no correctness value.
+
+## Protocol v2 smoke
+
+Run `2116b22fe18c9b25a354`: ten arithmetic fixtures, one sample per mode, prompt
+"Please reason step by step, and put your final answer within \boxed{}", 4,096
+reasoning and 1,024 answer tokens, Qwen3 budget closure phrase, both EOS ids.
+All 20 responses were individually inspected by Claude (an agent review, not a
+human review). Scorer `numeric-v4`; actual cloud billing $0.
+
+| Mode | Accuracy | Mean generated tokens | Mean seconds | Truncated | Forced closure |
+|---|---:|---:|---:|---:|---:|
+| Direct | 9/10 | 132.2 | 5.96 | 0/10 | 0/10 |
+| Thinking | 10/10 | 1,178.5 | 50.94 | 0/10 | 0/10 |
+
+The single direct failure computed 17 + 25 = 44 (a sampled model error, scored
+correctly). Every response ended with a natural EOS. Raw-logit mean
+log-probability was recorded for all ten direct answers and was below the
+post-warper value in every case, as expected from renormalisation. One thinking
+answer exposed a scorer defect: "To ensure the answer is correct, we can reverse
+the operation ... 37" was read as a conflicting labelled claim; `numeric-v4` now
+requires a labelled claim to start with a number, fraction or box. Total charged
+tokens 13,107; throughput about 22 to 23 tokens per second on MPS.
+
+## Pilot v2
+
+Run `f73a5665230cd83a7f12`, `configs/pilot_v2.yaml`: the same 100 pilot questions,
+two samples per mode, 400 jobs, launched 2026-09-09 on the Mac. Its completion,
+`rb analyze` output, scorer pre-screen and the human audit will be recorded in
+`docs/pilot-v2-report.md`.
