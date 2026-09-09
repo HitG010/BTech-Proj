@@ -127,6 +127,19 @@ cannot exist in this setting.
 - **Procedural probe**: Boolean and state-tracking generators with executable keys, validated
   against an independent implementation, 100 questions, only if the feasibility gate asks.
 
+## 6. Status
+
+- 2026-09-09: items 1–6 done and committed; 89 tests; frozen dataset reproduced
+  byte-for-byte in the worktree; v2 smoke `2116b22fe18c9b25a354` 20/20 with no
+  truncation; scorer went to `numeric-v4` after the smoke exposed a labelled-claim
+  defect; pilot v2 `f73a5665230cd83a7f12` launched.
+- 2026-09-10: pilot v2 complete, 400/400 in 4.93 h; direct 83.5%, thinking 93.0%,
+  paired +0.10 [0.03, 0.16]; forced closure 7%; agent pre-screen of 82 responses found
+  no scorer defect (`docs/pilot-v2-prescreen.md`); feasibility report written
+  (`docs/pilot-v2-report.md`). Item 8's human audit and item 9's supervisor decisions
+  are open. Recommendation: add a wider-gap task set and measure tokens at matched
+  accuracy; build the vLLM backend before any cache generation.
+
 ## Appendix: previous checklist and execution notes (verbatim from `master`)
 
 # Research repository implementation checklist

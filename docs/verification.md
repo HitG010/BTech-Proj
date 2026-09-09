@@ -98,6 +98,19 @@ tokens 13,107; throughput about 22 to 23 tokens per second on MPS.
 ## Pilot v2
 
 Run `f73a5665230cd83a7f12`, `configs/pilot_v2.yaml`: the same 100 pilot questions,
-two samples per mode, 400 jobs, launched 2026-09-09 on the Mac. Its completion,
-`rb analyze` output, scorer pre-screen and the human audit will be recorded in
-`docs/pilot-v2-report.md`.
+two samples per mode, 400 jobs, run 2026-09-09 to 2026-09-10 on the Mac. Completed
+400/400 with no failed jobs in 4.93 hours including setup; 410,462 charged tokens;
+actual cloud billing $0. Scorer `numeric-v4`.
+
+| Mode | Accuracy | Untruncated accuracy | Truncated at 1,024 | Forced closure at 4,096 | Mean generated tokens | Mean seconds |
+|---|---:|---:|---:|---:|---:|---:|
+| Direct | 83.5% | 84.3% | 2 / 200 | 0 / 200 | 301 | 12.94 |
+| Thinking | 93.0% | 93.5% | 1 / 200 | 14 / 200 | 1,751 | 75.63 |
+
+Paired thinking minus direct: +0.10, whole-question bootstrap interval [0.03, 0.16].
+Oracle best mode per question 96.0%; thinking better on 18 questions, direct better
+on 5. Direct-confidence AUROC for correctness: 0.82 post-warper, 0.83 raw logits.
+Forced closure is 7.0%, above the 5% gate; half of those responses still scored
+correct. Agent pre-screen of 82 responses found no scorer defect
+(`docs/pilot-v2-prescreen.md`). The human audit (`audit.json`, 50 rows) is pending,
+so the report remains provisional. Full figures: `docs/pilot-v2-report.md`.
