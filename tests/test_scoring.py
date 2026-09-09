@@ -77,3 +77,39 @@ def test_conflicting_inline_box_and_final_claim():
 def test_multiline_display_box_after_final_answer_label():
     assert parse_answer("### Final Answer:\n$$\n\\boxed{54}\n$$") == ("54", "ok")
     assert parse_answer("Final answer:\n\\[\n\\boxed{12}\n\\]") == ("12", "ok")
+
+
+@pytest.mark.parametrize(
+    "text, expected",
+    [
+        (r"\boxed{\$18}", "18"),
+        (r"\boxed{18\%}", "18"),
+        (r"\boxed{18 \text{ hours}}", "18"),
+        (r"\boxed{\text{18}}", "18"),
+        (r"\boxed{\$1,800}", "1800"),
+        (r"\boxed{~18}", "18"),
+        (r"\boxed{18 \, \text{dollars}}", "18"),
+        (r"\boxed{18\text{ cm}}", "18"),
+        (r"\boxed{18.}", "18"),
+        (r"\boxed{18 km/h}", "18"),
+        (r"\boxed{\dfrac{3}{4}}", "3/4"),
+        (r"\boxed{\textbf{-4}}", "-4"),
+        (r"\boxed{18} and \boxed{18 \text{ hours}}", "18"),
+    ],
+)
+def test_latex_decoration_is_ignored_numeric_v3(text, expected):
+    assert parse_answer(text) == (expected, "ok")
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        r"\boxed{2:30}",
+        r"\boxed{18 \div 2 = 9}",
+        r"\boxed{x = 18}",
+        r"\boxed{137.\overline{3}}",
+        r"\boxed{18 \text{ or } 19}",
+    ],
+)
+def test_decorated_claims_stay_conservative(text):
+    assert parse_answer(text) == (None, "invalid_number")

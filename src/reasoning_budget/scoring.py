@@ -5,9 +5,13 @@ from fractions import Fraction
 
 from .records import ScoredResult
 
-SCORING_VERSION = "numeric-v2"
+SCORING_VERSION = "numeric-v3"
 NUMBER = r"[+−-]?(?:(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?|\.\d+)(?:[eE][+-]?\d+)?(?:\s*/\s*[+-]?\d+(?:\.\d+)?)?"
 TOKEN = re.compile(r"(?<![\w.])" + NUMBER + r"(?![\w.])")
+# numeric-v3: LaTeX decoration that carries no numeric information.
+WRAPPER = re.compile(r"\\(?:textbf|textit|textrm|text|mathrm|mathbf|operatorname)\s*\{([^{}]*)\}")
+SPACING = re.compile(r"\\(?:qquad|quad|[,;!: ])|~")
+UNIT_REMAINDER = re.compile(r"[A-Za-z\s.,/()'°-]*")
 
 
 def numeric(text):
@@ -23,6 +27,34 @@ def numeric(text):
         return Fraction(text)
     except (ValueError, ZeroDivisionError, OverflowError) as exc:
         raise ValueError(f"Invalid numeric answer: {text!r}") from exc
+
+
+def clean_claim(text):
+    """Remove currency and percent signs, spacing macros, and text wrappers.
+
+    A wrapper whose content is not itself a number is a unit and is dropped.
+    """
+    for marker in ("\\$", "$", "\\%", "%"):
+        text = text.replace(marker, " ")
+    text = SPACING.sub(" ", text)
+    text = WRAPPER.sub(
+        lambda m: m.group(1) if re.fullmatch(NUMBER, m.group(1).strip()) else " ", text
+    )
+    return text.strip().rstrip(".").strip()
+
+
+def claim_value(claim):
+    """Exact value of one explicit claim, or ValueError. Never sees the gold label."""
+    cleaned = clean_claim(claim)
+    try:
+        return numeric(cleaned)
+    except ValueError:
+        pass
+    tokens = TOKEN.findall(cleaned)
+    if len(tokens) == 1 and UNIT_REMAINDER.fullmatch(cleaned.replace(tokens[0], " ", 1)):
+        # One number with a plain unit word, e.g. "18 hours" or "18 km/h".
+        return numeric(tokens[0])
+    raise ValueError(f"Not a numeric claim: {claim!r}")
 
 
 def _boxes(text):
@@ -79,7 +111,7 @@ def parse_answer(final_answer, *, incomplete=False):
         claims.append(tokens[0])
     if claims:
         try:
-            values = {numeric(claim) for claim in claims}
+            values = {claim_value(claim) for claim in claims}
         except ValueError:
             return None, "invalid_number"
         if len(values) != 1:
