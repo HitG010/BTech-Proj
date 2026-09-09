@@ -53,8 +53,10 @@ uv run --locked rb analyze artifacts/runs/PILOT_RUN_ID --cloud-tokens-per-second
 `analyze` writes `report/analysis.{json,md}`: per-question outcome matrix, oracle
 best-mode accuracy, decision-relevant fraction, forced-closure rate against the 5%
 gate, direct-confidence AUROC, a power estimate for 500 test questions, a programme
-projection at observed and scenario throughput, and a scorer pre-screen listing
-parser failures and LaTeX-decorated boxes to seed the human audit. The large-model
+projection at observed and scenario throughput, and a scorer pre-screen to seed the
+human audit: parser failures, LaTeX-decorated boxes, answers without a box,
+thinking responses whose reasoning states a different answer than the final
+response, and wrong answers within rounding or 2% of gold. The large-model
 slowdown and cloud throughput are explicit assumptions, not measurements.
 
 `--hourly-rate 1` means a **hypothetical $1/hour scenario**, not a provider quote or

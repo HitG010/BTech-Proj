@@ -2,6 +2,7 @@
 
 import collections
 import math
+import re
 from pathlib import Path
 
 import numpy as np
@@ -9,7 +10,7 @@ import numpy as np
 from .data import load_gold
 from .reporting import paired_statistics, score_run
 from .runner import load_run
-from .scoring import _boxes, numeric
+from .scoring import NUMBER, _boxes, claim_value, numeric
 from .storage import atomic_json
 
 # Full programme per model as (questions, responses per mode). Each response unit
@@ -45,6 +46,45 @@ def _bare_number(text):
         return True
     except ValueError:
         return False
+
+
+REASONING_CLAIM = re.compile(
+    r"(?:final answer|answer)\s*(?:is|should be|would be|:)\s*(?:\$\s*)?(" + NUMBER + r")",
+    re.I,
+)
+BOX_START = re.compile(r"\\boxed\s*\{")
+
+
+def reasoning_claim(text):
+    """The last answer the reasoning itself states: the latest box or labelled number."""
+    candidates = []
+    for match in BOX_START.finditer(text):
+        boxes, _ = _boxes(text[match.start() :])
+        if boxes:
+            candidates.append((match.start(), boxes[0]))
+    candidates += [(m.start(), m.group(1)) for m in REASONING_CLAIM.finditer(text)]
+    for _, candidate in sorted(candidates, reverse=True):
+        try:
+            return str(claim_value(candidate))
+        except ValueError:
+            continue
+    return None
+
+
+def _near_miss(extracted, gold):
+    """Wrong answers that differ from gold only by rounding or under 2%."""
+    if extracted is None:
+        return False
+    try:
+        value, target = numeric(extracted), numeric(gold)
+    except (ValueError, TypeError):
+        return False
+    if value == target:
+        return False
+    if target.denominator == 1 and round(value) == target:
+        return True
+    scale = max(abs(target), 1)
+    return abs(value - target) / scale < 0.02
 
 
 def _confidence(rows, scores):
@@ -237,37 +277,63 @@ def analyze(run_dir, cloud_tokens_per_second=None, four_b_slowdown=2.5, hourly_r
             "scope": "generation only; excludes setup, idle time, retries and analysis",
         }
 
-    prescreen = {"parser_failures": [], "decorated_boxes": [], "truncated": {}}
+    # Rows a human auditor should look at first. Each flag names a way the scorer
+    # or the model could have gone wrong; unflagged rows are bare boxed numbers
+    # that agree with the reasoning and are either right or plainly wrong.
+    prescreen = {
+        "parser_failures": [],
+        "decorated_boxes": [],
+        "no_box": [],
+        "reasoning_answer_mismatch": [],
+        "near_miss": [],
+        "truncated": {},
+    }
     for mode in modes:
         prescreen["truncated"][mode] = mode_stats[mode]["answer_truncated"]
     for r in complete:
         s = scores[r["job"]["id"]]
         final = r["result"]["final_answer"]
         qid = r["job"]["question_id"]
+        base = {
+            "job_id": r["job"]["id"],
+            "question_id": qid,
+            "mode": r["job"]["mode"],
+            "gold": gold[qid],
+            "extracted": s["extracted_answer"],
+            "correct": s["correct"],
+        }
         if s["parser_status"] not in {"ok", "incomplete"}:
             prescreen["parser_failures"].append(
-                {
-                    "job_id": r["job"]["id"],
-                    "mode": r["job"]["mode"],
-                    "status": s["parser_status"],
-                    "gold": gold[qid],
-                    "tail": final[-200:],
-                }
+                base | {"status": s["parser_status"], "tail": final[-200:]}
             )
-        elif s["parser_status"] == "ok":
-            boxes, _ = _boxes(final)
-            decorated = [b for b in boxes if not _bare_number(b)]
-            if decorated:
-                prescreen["decorated_boxes"].append(
-                    {
-                        "job_id": r["job"]["id"],
-                        "mode": r["job"]["mode"],
-                        "boxes": decorated[:3],
-                        "extracted": s["extracted_answer"],
-                        "gold": gold[qid],
-                        "correct": s["correct"],
-                    }
-                )
+            continue
+        if s["parser_status"] != "ok":
+            continue
+        boxes, _ = _boxes(final)
+        decorated = [b for b in boxes if not _bare_number(b)]
+        if decorated:
+            prescreen["decorated_boxes"].append(base | {"boxes": decorated[:3]})
+        if not boxes:
+            prescreen["no_box"].append(base | {"tail": final[-160:]})
+        if r["result"]["reasoning"]:
+            stated = reasoning_claim(r["result"]["reasoning"])
+            if stated is not None and stated != s["extracted_answer"]:
+                prescreen["reasoning_answer_mismatch"].append(base | {"reasoning_claim": stated})
+        if not s["correct"] and _near_miss(s["extracted_answer"], gold[qid]):
+            prescreen["near_miss"].append(base)
+    prescreen["flagged_rows"] = len(
+        {
+            row["job_id"]
+            for key in [
+                "parser_failures",
+                "decorated_boxes",
+                "no_box",
+                "reasoning_answer_mismatch",
+                "near_miss",
+            ]
+            for row in prescreen[key]
+        }
+    )
 
     result = {
         "run_id": manifest["run_id"],
@@ -416,17 +482,35 @@ def _markdown(config, result):
         "",
         "## Scorer pre-screen",
         "",
-        f"Truncated answers per mode: {ps['truncated']}. Parser failures other than truncation: "
-        f"{len(ps['parser_failures'])}. Boxes that needed LaTeX cleaning: {len(ps['decorated_boxes'])}.",
+        f"Truncated answers per mode: {ps['truncated']}. Distinct flagged rows: {ps['flagged_rows']}. "
+        f"Parser failures other than truncation: {len(ps['parser_failures'])}; boxes needing LaTeX "
+        f"cleaning: {len(ps['decorated_boxes'])}; answers without a box: {len(ps['no_box'])}; "
+        f"reasoning stating a different answer than the final response: "
+        f"{len(ps['reasoning_answer_mismatch'])}; near misses against gold: {len(ps['near_miss'])}.",
     ]
     for row in ps["parser_failures"][:50]:
         lines.append(
-            f"- {row['mode']} `{row['job_id'][:12]}` {row['status']} gold={row['gold']}: "
+            f"- parser {row['mode']} `{row['job_id'][:12]}` {row['status']} gold={row['gold']}: "
             f"`{row['tail'][-120:]!r}`"
         )
     for row in ps["decorated_boxes"][:50]:
         lines.append(
-            f"- {row['mode']} `{row['job_id'][:12]}` boxes={row['boxes']} extracted={row['extracted']} "
-            f"gold={row['gold']} correct={row['correct']}"
+            f"- decorated {row['mode']} `{row['job_id'][:12]}` boxes={row['boxes']} "
+            f"extracted={row['extracted']} gold={row['gold']} correct={row['correct']}"
+        )
+    for row in ps["no_box"][:50]:
+        lines.append(
+            f"- no box {row['mode']} `{row['job_id'][:12]}` extracted={row['extracted']} "
+            f"gold={row['gold']} correct={row['correct']}: `{row['tail'][-100:]!r}`"
+        )
+    for row in ps["reasoning_answer_mismatch"][:50]:
+        lines.append(
+            f"- mismatch {row['mode']} `{row['job_id'][:12]}` reasoning={row['reasoning_claim']} "
+            f"final={row['extracted']} gold={row['gold']} correct={row['correct']}"
+        )
+    for row in ps["near_miss"][:50]:
+        lines.append(
+            f"- near miss {row['mode']} `{row['job_id'][:12]}` extracted={row['extracted']} "
+            f"gold={row['gold']}"
         )
     return "\n".join(lines) + "\n"
