@@ -1,7 +1,13 @@
 .venv/
-.cache/
-.python/
-artifacts/
+.cache
+.python
+# Runs, caches and gold stay local; only the frozen GSM8K split manifest is tracked.
+artifacts/*
+!artifacts/data/
+artifacts/data/*
+!artifacts/data/gsm8k/
+artifacts/data/gsm8k/*
+!artifacts/data/gsm8k/manifest.json
 __pycache__/
 *.py[cod]
 *.egg-info/
