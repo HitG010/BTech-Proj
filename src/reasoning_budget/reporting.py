@@ -294,6 +294,10 @@ def report(run_dir, hourly_rate=None, projection_questions=1100, projection_samp
         "",
         "Accuracy uses completed jobs, counting parse failures as incorrect. Pending/failed jobs are shown in JSON/CSV; partial runs are provisional.",
         "",
+        f"These accuracies measure the configured {config['answer_tokens']}-token answer allowance. "
+        "Answer truncation can materially affect the comparison; they do not establish unconstrained reasoning accuracy. "
+        "Audit acceptance means the saved records and scoring were reviewed, not that the protocol or dataset is free of limitations.",
+        "",
         f"Paired comparison: {paired['questions']} complete questions; thinking minus direct accuracy = {paired['thinking_minus_direct_accuracy']}; 95% interval = {paired['ci95']}. Bootstrap resamples whole questions, retaining repeated samples.",
         "",
         f"All attempts and setup: {elapsed / 3600:.3f} hours; {tokens_charged:,} charged tokens (includes conservative interrupted reservations).",

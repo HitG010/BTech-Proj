@@ -9,7 +9,7 @@ Target: M2 Pro, 16 GB shared memory; explicit CUDA support for later experiments
 
 ## A — Bootstrap and offline pipeline
 
-- [ ] Initialize Git, Python 3.11 / uv project, local environment, dependency lock.
+- [x] Initialize Git, Python 3.11 / uv project, local environment, dependency lock.
 - [x] Add setup documentation and ignore environments, models, data, and traces.
 - [x] Implement strict YAML configuration and `rb doctor`.
 - [x] Add 10 arithmetic fixtures with separate scoring-only answers.
@@ -35,8 +35,8 @@ Target: M2 Pro, 16 GB shared memory; explicit CUDA support for later experiments
 - [x] Enforce cumulative token reservations and elapsed-time limits.
 - [x] Report accuracy, parsing failures, forced closure, truncation, tokens,
       runtime, question-level bootstrap intervals, and projected cost.
-- [ ] Run 400 pilot generations after smoke inspection.
-- [ ] Manually audit at least 50 real pilot scores before accepting the report.
+- [x] Run 400 pilot generations after smoke inspection.
+- [x] Manually audit at least 50 real pilot scores before accepting the report.
 
 ## Scientific integrity tests
 
@@ -89,3 +89,14 @@ Implementation and verification status will be recorded here as work completes.
   No remaining scorer defects in the smoke audit. Total 8,615 generated tokens;
   390.1 seconds generation, 403.1 seconds including setup. MPS driver memory
   samples were approximately 4 GB. Pilot `af1f1e56c5d453bbfd5e` launched after review.
+- 2026-09-13: verified the completed pilot: 400/400 successful generation records,
+  400 attempts, 296,362 sampled tokens plus 60 inserted closure tokens, 3.438 hours
+  including setup, and $0 cloud expenditure. All 30 forced closures and token
+  counts verified against saved token IDs. Final scoring: direct 126/200 (63%),
+  thinking 92/200 (46%); 63 and 105 answer truncations respectively.
+- Inspected 50 stratified sampled responses and additional nontruncated errors;
+  saved 51 formal audit reviews with no unresolved scorer defects. Added exact
+  repeating-decimal parsing (`numeric-v3`), with no change in accuracy; 64 tests
+  pass. Documented ambiguous upstream wording and the material answer-cap effect
+  in [pilot results](docs/pilot-results.md). Milestones A–C are complete;
+  Milestones D–F remain outside this pass.

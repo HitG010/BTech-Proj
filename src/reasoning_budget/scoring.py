@@ -5,7 +5,7 @@ from fractions import Fraction
 
 from .records import ScoredResult
 
-SCORING_VERSION = "numeric-v2"
+SCORING_VERSION = "numeric-v3"
 NUMBER = r"[+−-]?(?:(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?|\.\d+)(?:[eE][+-]?\d+)?(?:\s*/\s*[+-]?\d+(?:\.\d+)?)?"
 TOKEN = re.compile(r"(?<![\w.])" + NUMBER + r"(?![\w.])")
 
@@ -14,6 +14,16 @@ def numeric(text):
     text = text.strip().replace("−", "-").replace(",", "")
     text = re.sub(r"\\(?:dfrac|tfrac|frac)\s*\{([^{}]+)\}\s*\{([^{}]+)\}", r"\1/\2", text)
     text = text.strip(" $\t\n")
+    repeating = re.fullmatch(r"([+-]?)(\d*)\.(\d*)\\overline\{(\d+)\}", text)
+    if repeating:
+        sign, whole, prefix, cycle = repeating.groups()
+        scale = 10 ** len(prefix)
+        value = (
+            Fraction(int(whole or "0"))
+            + Fraction(int(prefix or "0"), scale)
+            + Fraction(int(cycle), scale * (10 ** len(cycle) - 1))
+        )
+        return -value if sign == "-" else value
     if not re.fullmatch(NUMBER, text):
         raise ValueError(f"Not a numeric answer: {text!r}")
     try:
@@ -67,7 +77,10 @@ def parse_answer(final_answer, *, incomplete=False):
             # "Final answer: 3, or \\boxed{4}" must not silently choose 4.
             for content in segment_boxes:
                 segment = re.sub(r"\\boxed\s*\{" + re.escape(content) + r"\}", "", segment)
-        tokens = TOKEN.findall(segment.rstrip("."))
+        try:
+            tokens = [str(numeric(segment.rstrip(".")))]
+        except ValueError:
+            tokens = TOKEN.findall(segment.rstrip("."))
         if not tokens and segment_boxes:
             continue
         if not tokens and boxed and not re.search(r"[A-Za-z0-9]", segment):

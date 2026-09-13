@@ -77,3 +77,20 @@ def test_conflicting_inline_box_and_final_claim():
 def test_multiline_display_box_after_final_answer_label():
     assert parse_answer("### Final Answer:\n$$\n\\boxed{54}\n$$") == ("54", "ok")
     assert parse_answer("Final answer:\n\\[\n\\boxed{12}\n\\]") == ("12", "ok")
+
+
+@pytest.mark.parametrize(
+    "text,expected",
+    [
+        (r"\boxed{137.\overline{3}}", "412/3"),
+        (r"Final answer: 0.1\overline{6}", "1/6"),
+        (r"-1.2\overline{34}", "-611/495"),
+        (r"\boxed{0.\overline{9}}", "1"),
+    ],
+)
+def test_repeating_decimals(text, expected):
+    assert parse_answer(text) == (expected, "ok")
+
+
+def test_repeating_decimal_does_not_round_to_gold():
+    assert parse_answer(r"\boxed{137.\overline{3}} \boxed{138}") == (None, "conflicting")

@@ -5,6 +5,9 @@ implementation covers [Milestones A–C](plan.md): offline scoring, local infere
 immutable GSM8K splits, resumable jobs, and a 100-question pilot. Controllers,
 adaptive acquisition, and confirmation experiments are later work.
 
+The [completed pilot results](docs/pilot-results.md) and
+[verification record](docs/verification.md) summarize the local runs and audit.
+
 ## Setup
 
 Run commands from this repository root. Python 3.11 is managed by `uv`; the local
@@ -156,7 +159,8 @@ different revision or split. The source is [openai/gsm8k](https://huggingface.co
 
 Scoring parses only separated final answers using exact rational arithmetic.
 Integers, decimals, fractions, scientific notation, negatives, thousands separators,
-and nested LaTeX fraction boxes are supported. Conflicting explicit final answers
+and nested LaTeX fraction boxes are supported. Scorer `numeric-v3` also supports
+exact repeating decimals written with LaTeX `\overline{}`. Conflicting explicit final answers
 are unscorable. Without explicit markers, the sole numeric literal on the last
 nonempty line is accepted; this conservative heuristic is versioned and audited.
 Truncated answers are counted incorrect even when they contain a plausible number.

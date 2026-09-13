@@ -9,7 +9,7 @@ are tracked.
 - Managed Python 3.11.13; PyTorch 2.14.0; Transformers 4.57.6.
 - Qwen3-1.7B model/tokenizer commit `70d244cc86ccca08cf5af4e1e306ecf908b1ad5e`.
 - FP16, MPS, SDPA, one question per batch; no fallback or quantization.
-- 59 offline tests passed; Ruff checks passed; uv lock consistency verified.
+- 64 offline tests passed; Ruff checks passed; uv lock consistency verified.
 - Offline end-to-end run `0d73cf0fd0c32a5c5722` completed 20/20 jobs, produced
   reports, and a second invocation skipped all completed records.
 - Interruption, incomplete/corrupt writes, conservative token reservations,
@@ -54,11 +54,29 @@ which was fixed and regression-tested in `numeric-v2`.
 GSM8K commit `740312add88f781978c0658806c59bc2815b9866`; seed 20260909. Frozen
 splits contain 100 pilot, 400 training, 100 validation, and 500 official-test
 questions. The pilot is run `af1f1e56c5d453bbfd5e`, with two samples per question
-per mode (400 jobs). Its final completion and audit results will be recorded here.
+per mode (400 jobs). All 400 jobs completed in 3.438 hours including setup, with
+296,362 sampled tokens and 60 inserted closure tokens. All 30 forced closures
+were checked against saved token IDs and the 2,048-token reasoning limit.
+There were no failed generation attempts. Maximum sampled MPS driver allocation
+was 4.32 GB (decimal; not a measured peak).
+
+The [final pilot results](pilot-results.md) report 63% direct accuracy and 46%
+thinking accuracy, with 31.5% and 52.5% answer truncation respectively. Fifty
+stratified sampled responses plus a repeating-decimal diagnostic have formal
+audit notes (51 total), authored after individual inspection by Codex. The
+additional parser case is fixed in `numeric-v3`; accuracy is unchanged. No
+unresolved scorer defects remain in the reviewed records. This is an agent audit,
+not a human review or a claim that the token-limited protocol is free of bias.
 
 The smoke throughput projects roughly 2.17 hours for 400 jobs and 23.84 hours for
 1,100 questions × two samples × both modes. These are arithmetic-based local
 estimates. A hypothetical $1/hour rental at identical speed would cost $2.17 and
 $23.84 respectively; CUDA speed, idle time, setup, acquisition repeats, and
-confirmation are not measured by this projection. The pilot will replace these
-preliminary throughput estimates.
+confirmation are not measured by this projection. The completed pilot replaces
+these preliminary throughput estimates: the measured pilot projects 37.78 inference
+hours for 1,100 questions, or $37.78 in the same hypothetical $1/hour scenario.
+Actual cloud billing was $0.
+
+A guarded real-backend resume verification skipped all 400 saved pilot jobs
+without loading model weights or generating new answers. The saved configuration,
+software environment, backend metadata, implementation digest, and jobs matched.
