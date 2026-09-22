@@ -94,3 +94,22 @@ def test_repeating_decimals(text, expected):
 
 def test_repeating_decimal_does_not_round_to_gold():
     assert parse_answer(r"\boxed{137.\overline{3}} \boxed{138}") == (None, "conflicting")
+
+
+@pytest.mark.parametrize(
+    "heading", ["#### Billy:", "#### **Tiffany's total**:", "#### Saturday (day 7)"]
+)
+def test_markdown_headings_do_not_override_a_box(heading):
+    assert parse_answer(heading + "\nCalculation.\nFinal answer:\n$$\n\\boxed{1}\n$$") == (
+        "1",
+        "ok",
+    )
+    assert parse_answer(heading) == (None, "missing")
+
+
+def test_hash_answer_claims_still_conflict_without_using_gold():
+    assert parse_answer("#### 3\n\\boxed{4}") == (None, "conflicting")
+    assert parse_answer("#### Final answer: 3\n\\boxed{4}") == (None, "conflicting")
+    assert parse_answer("#### -3/2\n\\boxed{-1.5}") == ("-3/2", "ok")
+    assert parse_answer("#### 3 or 4") == (None, "ambiguous")
+    assert parse_answer("#### Billy:\n\\boxed{1}", incomplete=True) == (None, "incomplete")

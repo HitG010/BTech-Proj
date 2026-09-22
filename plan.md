@@ -56,18 +56,98 @@ separate from token/time limits, which cannot stop idle instance charges.
 Reserve maximum generated tokens before every job. Do not silently switch
 device, precision, quantization, or inference engine. Report partial runs honestly.
 
-## Later milestones (outside this implementation pass)
+## C.5 — Calibrate answer completion before training (active)
 
-- D: always-direct/thinking, random and confidence routing; frozen MiniLM plus
-  question length/numeric/operator features; chunk long inputs; four standardized
-  ridge predictors; validation-only alpha tuning over 0.1, 1, 10, 100; clipped
-  accuracy/cost predictions and accuracy-minus-cost decisions.
-- E: uniform, random and uncertainty/cost-aware acquisition; Beta(1,1), 512 seeded
-  posterior draws, expected decision regret across cost preferences per pair cost;
-  equal token ceilings, eight-pair cap, periodic fitting, hidden-outcome replay.
-- F: SVAMP and procedural tasks, Qwen3-4B confirmation, published comparison
-  (method still to be specified), ablations, frozen policies before test, and
-  manuscript figures. Two Qwen checkpoints do not establish cross-family transfer.
+Accepted revision, 2026-09-14; rationale and related work in
+[research next steps](docs/research-next-steps.md). Existing pilot stays immutable.
+
+- [x] Freeze 25 pilot questions by a seeded hash of question identity, without
+      using responses or labels; preserve original per-job generation seeds.
+- [x] Compare answer allowances 256, 512, and 1,024 with two samples per mode;
+      retain 2,048 reasoning tokens and all other generation settings.
+- [x] Reuse the selected original 256-token records as the baseline. Generate
+      actual 512/1,024-token runs with measured timing. Prefix reuse remains an
+      optional optimization requiring explicit equivalence verification.
+- [x] Report paired accuracy, truncation, tokens, runtime, forced closure, and
+      retrospective sample-estimated routing headroom; show uncertainty and
+      distinguish completed-run counts from successfully finished answers.
+- [x] Implement tested `rb calibrate prepare/run/report/audit` commands, frozen
+      arm configurations, matched-comparison checks, and resumable execution.
+- [x] Inspect residual errors. A Markdown-heading scorer defect was corrected
+      in numeric-v4; original pilot scores are unchanged. Prompt/extraction
+      changes remain separate optional comparisons if full-pilot results warrant.
+- [x] Select and freeze a protocol: 512 answer tokens and 2,048 reasoning tokens.
+- [x] Finish the full 100-question confirmation, separately report the 75 not
+      used for cap selection, and check mode complementarity before scaling D/E.
+- [x] Prepare a stratified human-review artifact (50 calibration responses).
+- [x] Resolve the human-review gate: explicitly waived by the user on
+      2026-09-18 ("ignore the scoring audit"). The audit is not completed;
+      preserve its pending worksheet and record the waiver in subsequent studies.
+
+Keep the strict completion-aware scoring policy unchanged; version and audit
+extraction bug fixes. Any additional answer-present
+metric requires a predefined gold-independent rule and separate reporting. If
+headroom remains small, use predeclared procedural/SVAMP diagnostics before
+committing to large training acquisition; never select test cases by mode wins.
+
+## D — Fixed baselines and a question-only controller
+
+- [x] First learnability check: reuse the complete calibrated pilot in nested
+      question-level cross-validation. Outer folds estimate performance; inner
+      folds tune ridge alpha. Treat this as exploratory, since protocol selection
+      already used pilot questions and the human audit remains pending.
+- [x] Always-direct/thinking, exact expected random allocation, confidence
+      routing, and explicitly labelled DART-SC-2 adaptation; count every draft
+      and escalation. Save full curves, paired question intervals, and models.
+- [ ] Complete the stronger published comparison: DART default third draft and
+      budget-probing stage require additional traces and explicit adaptation
+      settings. The two-draft cached comparison is not a full reproduction.
+- [x] Frozen MiniLM plus question length/numeric/operator features; chunk long
+      inputs; four standardized ridge predictors; validation-only alpha tuning
+      over 0.1, 1, 10, 100; clipped accuracy/cost and accuracy-minus-cost routing.
+- [x] With the audit gate waived, collect the common 32–50-question training seed set and
+      disjoint validation responses. Freeze cost preferences and a learnability
+      criterion before inspecting validation performance; do not choose a
+      policy using the exploratory pilot's most favorable curve point.
+- [ ] Confirm a reproducible accuracy–cost advantage over matched-cost random
+      allocation before scaling adaptive acquisition. Failure of this small
+      pilot check does not establish that routing is impossible.
+- [ ] Keep architecture fixed across acquisition strategies and all response
+      features confined to training acquisition. Keep official test data sealed.
+
+## E — Acquire new questions, repetitions, or completions
+
+- [ ] Begin every strategy with the same charged 32–50-question seed set; retain
+      one pair on all 400 questions as an initialization ablation.
+- [ ] Compare uniform, random, uncertainty-only, original regret-per-cost, and
+      an explicitly documented relevant active-learning router baseline.
+- [ ] Investigate expected reduction in downstream router regret per marginal
+      training cost, choosing new questions, independent repeats, or completion
+      of unfinished trajectories. Current regret/cost remains a heuristic
+      baseline, not a claim of expected information gain or optimality.
+- [ ] Test acquisition on synthetic observations first. Keep Beta(1,1) for
+      independent fixed-budget correctness observations and 512 seeded posterior
+      draws where applicable. Track correlated continuations by trajectory ID;
+      never count one extended response as another independent Bernoulli trial.
+- [ ] Use equal token ceilings, eight-independent-pair cap per question,
+      periodic fitting, at least three acquisition seeds, and hidden-outcome
+      replay. Generate the union of requested traces lazily and record actual
+      cache cost separately. Charge prefix processing and continuation overhead.
+- [ ] Report held-out utility versus acquired training tokens and tokens to a
+      predefined utility target. Ablate completion information, continuation,
+      cost normalization, and expected learning gain. Pair question bootstraps.
+
+## F — Confirmation after the method demonstrates value
+
+- [ ] SVAMP and procedural tasks; Qwen3-4B scale replication only after the main
+      method works; another family only if needed for a broader claim and budget.
+- [ ] Freeze controllers/cost preferences before test; generate manuscript
+      figures and error summaries from saved records with one command.
+- [ ] Two Qwen checkpoints do not establish cross-family generalization.
+
+The earlier 37.78-hour estimate excludes the full eight-pair training cache:
+400 questions × eight pairs = 6,400 responses, approximately 55 local hours at
+the original pilot rates. Larger answer allowances can increase that estimate.
 
 ## Execution notes
 
@@ -100,3 +180,107 @@ Implementation and verification status will be recorded here as work completes.
   pass. Documented ambiguous upstream wording and the material answer-cap effect
   in [pilot results](docs/pilot-results.md). Milestones A–C are complete;
   Milestones D–F remain outside this pass.
+- 2026-09-14: accepted C.5 and revised D–F; added calibration CLI and six-arm
+  comparison reporting with unchanged numeric-v3 scoring. 69 tests pass.
+  Frozen study: `artifacts/calibration/answer-cap-v1`, selection seed 20260914.
+  Selected baseline: direct 30/50 correct, thinking 23/50; 15/27 truncated.
+  Launched the sequential 512/1,024-token MPS calibration using cached weights;
+  512-token run `d883ad976fc94dfe4cda`. Results remain provisional until both
+  arms complete and are inspected. No cloud instance or expenditure introduced.
+- Calibration completed: direct 72%, thinking 88% at both 512 and 1,024 tokens
+  after the numeric-v4 heading fix. All token accounting and 200 cap-to-cap
+  prefix comparisons verified; 161,729 new charged tokens, 1.823 local hours,
+  $0 cloud. See [calibration results](docs/calibration-results.md).
+- Added automatic confirmation reporting for the full pilot and its 25/75
+  question partitions; froze `configs/pilot-calibrated.yaml` and launched
+  `d00485799f1c8932bafa`. 76 tests pass. Human review remains pending;
+  controller-training and official test generation have not started.
+- 2026-09-17: confirmed full calibrated pilot completion: 400/400 responses,
+  direct 84%, thinking 92%, answer truncation 1.5% in each mode, 310,586 charged
+  tokens and 3.661 local hours. Human review still pending.
+- Implemented `rb routing`, pinned CPU MiniLM, portable four-ridge fold models,
+  five outer/four inner question folds, full baseline curves and paired
+  descriptive intervals. Study `artifacts/routing/e1dd762743e19f93fb7d` reuses
+  existing responses; zero new Qwen generations, GPU work, or cloud expense.
+  Ridge has not shown a reliable gain over cost-matched random; the two-draft
+  DART adaptation is promising but inconclusive. See
+  [routing learnability](docs/routing-learnability.md). No official train,
+  validation, or test generations have been launched for this step.
+- Verification: 84 offline tests pass; Ruff and whitespace checks pass. Verified
+  all source checksums and five disjoint evaluation folds, inspected the curve,
+  and loaded a saved model to route a new question without an answer or response.
+- 2026-09-18: user authorized the stronger-router implementation and waived the
+  scoring-audit gate. Implemented portable retrieval/shrinkage and regret-weighted
+  logistic routers with training-only PCA, plus an explicit utility-tuned ridge
+  comparator. Retained the original four-ridge MSE baseline. 94 offline tests
+  pass, including the complete fake-backend workflow and resume checks.
+- Frozen disjoint study `artifacts/learnability/baselines-v1`: 50 training
+  questions (one pair each); 50 tuning and 50 diagnostic validation questions
+  (two pairs each). Predeclared nested training sizes 32/50, hyperparameter grids,
+  and primary lambda=.05. Policies freeze before diagnostic generation; official
+  test remains excluded. Generation started locally on MPS, training run
+  `496228862bd511f17dd5`, with automatic subsequent stages, fitting and reporting.
+  See [study tracking](docs/stronger-router-study.md). Actual results are pending.
+- Completion, 2026-09-18: all 500 responses succeeded; policies froze before
+  diagnostic generation, verified against timestamps and source/model checksums.
+  Total acquisition 431,026 tokens, 5.064 local hours, $0 cloud. At primary
+  lambda=.05, decision router improves utility over ridge by .039592 (paired
+  interval [.006630,.077631]) but selects direct on 49/50 diagnostic questions
+  and does not improve on always-direct or matched-cost random. The two-draft
+  DART adaptation scores 95% at 759 tokens/question versus always-thinking 92%
+  at 1,600. This is promising response-assisted development evidence; it does
+  not establish question-only learnability, full-DART superiority, or novelty.
+  Updated study analysis and next-step recommendation; no further GPU job started.
+- Next accepted step, 2026-09-18: implement first-draft continuation routing,
+  distinguishing predicted rescue, regression, and incremental token cost.
+  Reuse the 100-question pilot for training and previous validation partitions
+  for development tuning; reserve 100 unused training-pool questions permanently
+  as a fresh diagnostic. Compare three actions against confidence gates,
+  MiniLM/ridge, gain/cost regression, random policies and DART SC's third-draft
+  branch. Freeze before new generation; retain the sealed official test.
+  Full ReASC and DART SC-Budget, live latency, new seeds/tasks and Qwen3-4B remain
+  later confirmation requirements. Generic confidence gating and optional
+  information purchase are already prior work; novelty is conditional on a
+  demonstrated distinction. See [continuation study](docs/continuation-study.md).
+- Continuation implementation verified: 103 offline tests pass, including
+  failure/resume, cost accounting, invalid agreement, future-response exclusion,
+  frozen fitting and sealed-test rejection. Ruff and whitespace checks pass.
+  Real models trained/frozen from 100 pilot and 100 prior validation questions;
+  selected joint C=.1, cost alpha=10. Confirmed the deployed router accepts only
+  the question and first response and the preceding study fingerprints remain
+  valid. Frozen study `artifacts/probe/continuation-v1` reserves 100 fresh IDs.
+- Launched bounded MPS collection with PID 92189: direct run
+  `931c0e7a434abe265049` (300 responses), followed automatically by 200 thinking
+  responses and reporting. Verified the first seven records completed without
+  failure and model freezing preceded the first attempt. No diagnostic accuracy
+  has been inspected; results and any novelty claim remain pending. No cloud
+  spending. Tracking files are listed in the continuation-study document.
+- 2026-09-19: continuation study complete, 500/500 successful final records on
+  100 questions. At lambda=.05, joint routing scores 88% at 728 tokens/question;
+  confidence continuation 86.5% at 591.8, gain ridge 89% at 877.3. Primary
+  utility difference +.008188, bootstrap CI [-.020329,.044029]; inconclusive.
+  Against gain ridge the utility difference is -.002536. Do not claim a novel
+  statistical advantage or alter the completed study to create one.
+- Added `rb power`: verified-source, whole-question paired power/sensitivity
+  calculations. Approximate positive primary-effect confirmation needs 3,029
+  fresh questions for 80% power, conditional on the noisy development estimate;
+  estimated 122–139 local hours. Reserved unused non-test pool: 250 questions;
+  official test remains sealed. The recommended next step is improving the
+  method on development data before a costly confirmation. A fixed 3,100-question
+  alternative, stopping/analysis rules and missing published comparisons are
+  documented in [confirmation design](docs/confirmation-design.md). This is a
+  draft, not a launched or registered confirmatory study.
+- User selected freezing the current router for larger confirmation. Prepared
+  `artifacts/confirmation/frozen-router-v1` on 2026-09-19: 3,100 fresh questions
+  selected deterministically from 6,873 eligible cached upstream-training rows,
+  excluding all 1,110 previously allocated IDs and normalized prompt matches.
+  Original model/threshold bytes are unchanged; code snapshots and uv.lock are
+  saved. Official test labels remain sealed, audit waiver retained.
+- Implemented `rb confirm prepare|run|report|status`, 31 resumable batches,
+  15,500-response fixed endpoint, and a gate preventing scoring/comparative
+  analysis before full completion. Primary: two-sided paired t test, lambda=.05,
+  alpha=.05; 10,000 whole-question bootstrap draws as a robustness interval.
+  Four secondary tests use Holm adjustment with a positive-primary gate.
+  113 offline tests and actual artifact checks passed. No refitting or generation
+  was performed during preparation; GPU collection has not started. Expected
+  local time 125–142 hours; ceilings 21.7M charged tokens/217 cumulative hours.

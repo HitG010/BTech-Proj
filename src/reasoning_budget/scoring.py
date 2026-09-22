@@ -5,7 +5,7 @@ from fractions import Fraction
 
 from .records import ScoredResult
 
-SCORING_VERSION = "numeric-v3"
+SCORING_VERSION = "numeric-v4"
 NUMBER = r"[+−-]?(?:(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?|\.\d+)(?:[eE][+-]?\d+)?(?:\s*/\s*[+-]?\d+(?:\.\d+)?)?"
 TOKEN = re.compile(r"(?<![\w.])" + NUMBER + r"(?![\w.])")
 
@@ -69,7 +69,13 @@ def parse_answer(final_answer, *, incomplete=False):
     if unclosed:
         return None, "incomplete"
     claims = list(boxed)
-    for match in re.finditer(r"(?:####|(?:final\s+)?answer\s*(?:is|:|=))\s*([^\n]+)", text, re.I):
+    # GSM8K's #### delimiter must introduce a numerical claim. Markdown
+    # headings such as "#### Billy:" are not missing/conflicting answers.
+    # Keep the lexical answer matcher independent so "#### Final answer: 3"
+    # is still checked against every box, rather than swallowed as a heading.
+    hash_marker = r"(?<!#)####(?!#)(?=[ \t]*(?:[+$−\d.-]|\\(?:boxed|frac|dfrac|tfrac)\b))"
+    pattern = rf"(?:{hash_marker}|(?:final\s+)?answer\s*(?:is|:|=))\s*([^\n]+)"
+    for match in re.finditer(pattern, text, re.I):
         segment = match.group(1)
         segment_boxes, _ = _boxes(segment)
         if segment_boxes:
@@ -99,6 +105,8 @@ def parse_answer(final_answer, *, incomplete=False):
             return None, "conflicting"
         return str(values.pop()), "ok"
     last_line = text.splitlines()[-1].strip().rstrip(".")
+    if re.match(r"^#{1,6}(?:[ \t]|$)", last_line):
+        return None, "missing"
     try:
         return str(numeric(last_line)), "ok"
     except ValueError:

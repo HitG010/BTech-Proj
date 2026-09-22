@@ -1,0 +1,19 @@
+# Frozen after the 25-question answer-cap comparison; original pilot unchanged.
+name: qwen3-1.7b-pilot-answer512
+backend: transformers
+seed: 20260909
+data_dir: artifacts/data/gsm8k
+split: pilot
+samples: 2
+answer_tokens: 512
+reasoning_tokens: 2048
+model:
+  name: Qwen/Qwen3-1.7B
+  revision: 70d244cc86ccca08cf5af4e1e306ecf908b1ad5e
+  tokenizer_revision: 70d244cc86ccca08cf5af4e1e306ecf908b1ad5e
+  device: mps
+  dtype: float16
+limits:
+  max_tokens: 700000
+  max_elapsed_seconds: 21600
+  job_seconds: 600

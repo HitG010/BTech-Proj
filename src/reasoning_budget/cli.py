@@ -32,12 +32,152 @@ def main(argv=None):
     audit = sub.add_parser("audit", help="Create a deterministic manual-review artifact")
     audit.add_argument("run_dir")
     audit.add_argument("--count", type=int, default=50)
+    routing = sub.add_parser("routing", help="Exploratory pilot routing without new generations")
+    routing.add_argument("run_dir")
+    routing.add_argument("--output", default="artifacts/routing")
+    routing.add_argument("--seed", type=int, default=20260917)
+    learning = sub.add_parser("learnability", help="Disjoint stronger-router baseline study")
+    learning_sub = learning.add_subparsers(dest="learning_command", required=True)
+    learning_prepare = learning_sub.add_parser("prepare")
+    learning_prepare.add_argument("--config", default="configs/pilot-calibrated.yaml")
+    learning_prepare.add_argument("--output", default="artifacts/learnability/baselines-v1")
+    for action in ["run", "fit", "report"]:
+        learning_sub.add_parser(action).add_argument("study_dir")
+    probe = sub.add_parser("probe", help="First-draft continuation study on fresh questions")
+    probe_sub = probe.add_subparsers(dest="probe_command", required=True)
+    probe_prepare = probe_sub.add_parser("prepare")
+    probe_prepare.add_argument("--config", default="configs/pilot-calibrated.yaml")
+    probe_prepare.add_argument("--output", default="artifacts/probe/continuation-v1")
+    for action in ["run", "fit", "report"]:
+        probe_sub.add_parser(action).add_argument("study_dir")
+    power = sub.add_parser("power", help="Prospective power planning from completed diagnostic")
+    power.add_argument("study_dir")
+    power.add_argument("--data-dir", default="artifacts/data/gsm8k")
+    confirmation = sub.add_parser("confirm", help="Fixed independent frozen-router confirmation")
+    confirm_sub = confirmation.add_subparsers(dest="confirm_command", required=True)
+    confirm_prepare = confirm_sub.add_parser("prepare")
+    confirm_prepare.add_argument("--parent", default="artifacts/probe/continuation-v1")
+    confirm_prepare.add_argument("--output", default="artifacts/confirmation/frozen-router-v1")
+    confirm_prepare.add_argument("--data-dir", default="artifacts/data/gsm8k")
+    confirm_prepare.add_argument("--artifacts", default="artifacts")
+    confirm_prepare.add_argument("--cache-dir", default=".cache/huggingface")
+    for action in ["run", "report", "status"]:
+        command = confirm_sub.add_parser(action)
+        command.add_argument("study_dir")
+        if action == "run":
+            command.add_argument("--batches", type=int)
+    calibration = sub.add_parser("calibrate", help="Freeze, run, or report answer-cap calibration")
+    calibration_sub = calibration.add_subparsers(dest="calibration_command", required=True)
+    calibration_prepare = calibration_sub.add_parser("prepare")
+    calibration_prepare.add_argument("--baseline", required=True)
+    calibration_prepare.add_argument("--output", default="artifacts/calibration/answer-cap-v1")
+    calibration_prepare.add_argument("--count", type=int, default=25)
+    calibration_prepare.add_argument("--seed", type=int, default=20260914)
+    for command in ["run", "report", "confirm"]:
+        calibration_sub.add_parser(command).add_argument("study_dir")
+    calibration_audit = calibration_sub.add_parser("audit")
+    calibration_audit.add_argument("study_dir")
+    calibration_audit.add_argument("--count", type=int, default=50)
     args = parser.parse_args(argv)
     try:
         if args.command == "doctor":
             from .backend import environment
 
             print(json.dumps(environment(), indent=2))
+        elif args.command == "confirm":
+            from .confirmation import evaluate, prepare, run_study, status
+            from .storage import run_lock
+
+            def progress(message):
+                print(message, flush=True)
+
+            if args.confirm_command == "prepare":
+                print(
+                    prepare(args.parent, args.output, args.data_dir, args.artifacts, args.cache_dir)
+                )
+            elif args.confirm_command == "run":
+                print(run_study(args.study_dir, progress, args.batches))
+            elif args.confirm_command == "status":
+                print(json.dumps(status(args.study_dir), indent=2))
+            else:
+                with run_lock(args.study_dir):
+                    print(evaluate(args.study_dir, progress))
+        elif args.command == "power":
+            from .power import analyze
+
+            print(analyze(args.study_dir, args.data_dir))
+        elif args.command == "probe":
+            from .probe_study import evaluate, freeze_models, prepare, run_study
+            from .storage import run_lock
+
+            def progress(message):
+                print(message, flush=True)
+
+            if args.probe_command == "prepare":
+                print(prepare(args.config, args.output))
+            elif args.probe_command == "run":
+                print(run_study(args.study_dir, progress))
+            else:
+                with run_lock(args.study_dir):
+                    if args.probe_command == "fit":
+                        freeze_models(args.study_dir, progress)
+                        print(f"{args.study_dir}/models.json")
+                    else:
+                        print(evaluate(args.study_dir, progress))
+        elif args.command == "learnability":
+            from .learnability import evaluate, freeze_models, prepare, run_study
+            from .storage import run_lock
+
+            def progress(message):
+                print(message, flush=True)
+
+            if args.learning_command == "prepare":
+                print(prepare(args.config, args.output))
+            elif args.learning_command == "run":
+                print(run_study(args.study_dir, progress))
+            else:
+                with run_lock(args.study_dir):
+                    if args.learning_command == "fit":
+                        freeze_models(args.study_dir, progress)
+                        print(f"{args.study_dir}/models.json")
+                    else:
+                        print(evaluate(args.study_dir, progress))
+        elif args.command == "routing":
+            from .routing import explore
+
+            print(
+                explore(
+                    args.run_dir,
+                    args.output,
+                    args.seed,
+                    progress=lambda message: print(message, flush=True),
+                )
+            )
+        elif args.command == "calibrate":
+            from .calibration import (
+                confirm_pilot,
+                create_study_audit,
+                prepare,
+                report_study,
+                run_study,
+            )
+
+            if args.calibration_command == "prepare":
+                print(prepare(args.baseline, args.output, args.count, args.seed))
+            elif args.calibration_command == "run":
+                print(
+                    run_study(args.study_dir, progress=lambda message: print(message, flush=True))
+                )
+            elif args.calibration_command == "audit":
+                print(create_study_audit(args.study_dir, args.count))
+            elif args.calibration_command == "confirm":
+                print(
+                    confirm_pilot(
+                        args.study_dir, progress=lambda message: print(message, flush=True)
+                    )
+                )
+            else:
+                print(report_study(args.study_dir))
         elif args.command == "prepare":
             from .data import prepare_fixtures, prepare_gsm8k
 
