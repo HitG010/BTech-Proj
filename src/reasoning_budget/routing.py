@@ -16,6 +16,7 @@ from sklearn.model_selection import KFold
 from .controller import choose_modes, feature_matrix, fit_controller
 from .data import check_questions
 from .records import Question
+from .reporting import scores_path
 from .runner import _usage, load_run
 from .scoring import SCORING_VERSION, parse_answer
 from .storage import atomic_json, digest, envelope, read_json, run_lock
@@ -33,7 +34,7 @@ def load_pilot(run_dir):
     if any(q.split != "pilot" for q in questions):
         raise ValueError("Only pilot questions may enter exploratory cross-validation")
     check_questions(questions)
-    artifact = read_json(Path(run_dir) / "scores.json")
+    artifact = read_json(scores_path(run_dir))
     if (
         artifact["records_sha256"] != digest(records)
         or artifact["run_id"] != manifest["run_id"]

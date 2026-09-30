@@ -9,7 +9,9 @@ Snapshot: 2026-10-01. The active implementation branch is
 `codex/research-data-efficiency`, based on `research/router-studies` at
 `15a4d2d`, with the prior research handoff checkpointed at `1b67fbc`.
 The [research roadmap](research-roadmap.md) defines the current phases and gates;
-the [Phase 1 record](phase-1-evidence-repair.md) records the first correction.
+the [first Phase 1 record](phase-1-evidence-repair.md) records the correction,
+and [checkpoint 2](phase-1-protocol-reconciliation.md) records protocol integration
+and legacy reproduction. Current offline verification: 195 passing tests.
 
 ## 1. The question
 
@@ -53,7 +55,7 @@ primary preference: five accuracy points are worth 1,000 generated tokens.
 
 ## 3. Two lines of work: read this before comparing numbers
 
-The project diverged after commit `03380a9`. Both lines fixed the same pilot v1
+The project diverged after commit `03380a9`. Both historical lines fixed the same pilot v1
 truncation problem, independently and with **different protocols**.
 
 | | router-studies lineage (this directory) | `research/pilot-v2` worktree |
@@ -77,14 +79,17 @@ the two lines:
 - On the branch, v3 strips LaTeX decoration and v4 stops prose after an answer
   label from being read as a claim.
 
-Scores labelled `numeric-v4` are therefore not comparable across lines. The two
-lines should be reconciled, with each fix given a unique scorer version, before
-any result is written up.
+Scores labelled `numeric-v4` are therefore not comparable across lines. The active
+branch now merges the parser fixes as `numeric-v5`, with a source digest and
+versioned caches. Their historical generation settings still differ.
 
-Backend fixes that exist only on the branch: the full EOS list, raw-logit confidence,
-configurable closure text, the incremental budget ledger, the consecutive-failure
-policy, and a run identity that no longer hashes source files. See the branch's
-`docs/project-status.md`, section 5.
+The active `qwen3-boxed-budget-v3` protocol ports the full EOS list, raw-logit
+confidence, configurable closure, incremental ledger, consecutive-failure policy,
+and source provenance separate from run identity. Each new response identifies
+its producing session/code; frozen-study readers reject mixed implementations.
+The prompt, 2,048/512 research caps, closure, and original confidence signal are
+retained. See [checkpoint 2](phase-1-protocol-reconciliation.md) for the exact
+configuration. The 25-question generation bridge and role manifests are pending.
 
 ## 4. Study timeline
 
@@ -105,6 +110,7 @@ ignored by Git.
 | 8 | Frozen confirmation | Confirm the unchanged router on 3,100 fresh questions | **Prepared, not started** (15,500 responses in 31 batches) | [confirmation-design](confirmation-design.md) · `confirmation/frozen-router-v1` |
 | 9 | Shared-correctness CPU development | Does a coherent first-correctness model improve continuation decisions? | At λ=.05: 90.25% at 622 tokens; confidence also 90.25% at 589.4. Secondary high-accuracy lead remains exploratory | [router-dev-results](router-dev-results.md) · corrected `router-dev/shared-base-v2`; v1 preserved |
 | 10 | Evidence repair | Is standalone thinking charged correctly? | Corrected to 91.50% at 1,430.69 tokens; all six other policies unchanged; no solver generation | [Phase 1 record](phase-1-evidence-repair.md) |
+| 11 | Protocol reconciliation | Can new collection be consistent and historical artifacts preserved? | 195 offline tests; 900 records and 14 artifacts preserved; zero gold-free parser differences; real bridge pending | [Checkpoint 2](phase-1-protocol-reconciliation.md) |
 | — | Active roadmap | What should come next? | Protocol repair, supervision diagnosis, then gated data-efficient acquisition; defer study 8 | [research roadmap](research-roadmap.md) |
 
 ### Run registry (`artifacts/runs/`)
@@ -179,8 +185,9 @@ or use a GPU.
   generated artifacts stay local and ignored by Git. Recheck branch and
   status before continuing work; the root [AGENTS.md](../AGENTS.md) records the
   layout and the active research handoff.
-- **Protocol divergence.** See section 3. Choose one protocol and one scorer
-  lineage before any write-up.
+- **Protocol divergence.** Section 3 describes the historical lineages. The new
+  protocol/scorer identities are implemented; their real generation bridge is
+  pending. Use pinned legacy code to reproduce earlier frozen studies.
 - **Task headroom.** Both lines found that GSM8K leaves little room between
   cheap confidence routing and the per-question oracle. The branch recommended
   adding a set with a wider thinking gap (numeric MATH, GSM-Plus, or procedural

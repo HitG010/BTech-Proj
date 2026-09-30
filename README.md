@@ -12,6 +12,32 @@ The [completed pilot results](docs/pilot-results.md) and
 The [answer-cap calibration](docs/calibration-results.md) selects 512 answer
 tokens for the full pilot confirmation; the original 256-token pilot is retained.
 
+## Active research protocol
+
+[Phase 1 checkpoint 2](docs/phase-1-protocol-reconciliation.md) defines
+`qwen3-boxed-budget-v3` and the uniquely identified `numeric-v5` scorer.
+The explicit [bridge config](configs/research-gsm8k-v3.yaml) retains the calibrated
+2,048/512 caps and original prompt, adds both checkpoint stop tokens, and records
+source provenance for every response. Its role manifest and real generation
+bridge are the next step; no new solver outcomes have been collected.
+
+Completed studies below use the pinned legacy source at commit `6999eb5`.
+If its local checkout is absent, recreate it with
+`git worktree add --detach artifacts/legacy/router-studies-6999eb5 6999eb5`.
+After setup, define this shell helper from the repository root:
+
+```sh
+legacy_rb() {
+  PYTHONPATH="$PWD/artifacts/legacy/router-studies-6999eb5/src" \
+    .venv/bin/python -m reasoning_budget.cli "$@"
+}
+```
+
+The active code rejects old frozen-study fingerprints. The helper preserves their
+protocol; the existing editable Python environment alone uses the new source.
+New scores/reports are versioned alongside historical artifacts. The current
+human scoring audit is waived; audit commands below document earlier workflows.
+
 ## Setup
 
 Run commands from this repository root. Python 3.11 is managed by `uv`; the local
@@ -57,7 +83,8 @@ a cloud launch. Reports project 1,100 questions × two samples × both modes by
 default; customize with `--projection-questions` and `--projection-samples`.
 Local MPS throughput cannot establish CUDA cost. Dollar estimates exclude idle
 rental time, setup, repeated acquisition, and confirmation. Track actual billing
-separately. Budget: $10 pilot, $50 main, $20 confirmation, $20 reserve. No command
+separately. Active cloud ceiling: $10 foundation, $15 signal, $30 main, $30 shared
+replication/confirmation, $15 extensions/buffer ($100 total). No command
 creates a cloud instance or spends provider credits.
 
 ## Answer allowance calibration
@@ -67,13 +94,13 @@ hash, without consulting outcomes, and compare its selected 256-token responses
 with actual 512- and 1,024-token runs:
 
 ```sh
-.venv/bin/rb calibrate prepare --baseline artifacts/runs/af1f1e56c5d453bbfd5e
-HF_HUB_OFFLINE=1 .venv/bin/rb calibrate run artifacts/calibration/answer-cap-v1
-.venv/bin/rb calibrate report artifacts/calibration/answer-cap-v1
+legacy_rb calibrate prepare --baseline artifacts/runs/af1f1e56c5d453bbfd5e
+HF_HUB_OFFLINE=1 legacy_rb calibrate run artifacts/calibration/answer-cap-v1
+legacy_rb calibrate report artifacts/calibration/answer-cap-v1
 # After all arms finish, export a stratified worksheet for a person to review.
-.venv/bin/rb calibrate audit artifacts/calibration/answer-cap-v1 --count 50
+legacy_rb calibrate audit artifacts/calibration/answer-cap-v1 --count 50
 # After freezing protocol-decision.json, run/resume the full confirmation.
-HF_HUB_OFFLINE=1 .venv/bin/rb calibrate confirm artifacts/calibration/answer-cap-v1
+HF_HUB_OFFLINE=1 legacy_rb calibrate confirm artifacts/calibration/answer-cap-v1
 ```
 
 `prepare` freezes `study.json`, a scoring-isolated subset, and resolved YAMLs.
@@ -98,6 +125,8 @@ To include recorded billing in a report, create `RUN_DIR/billing.json` with
 or the actual invoiced total and explanatory note for a cloud run. Missing billing
 stays unknown, rather than being inferred from token usage.
 
+The following describes the historical pilot acceptance fields; the active
+roadmap retains the human audit waiver and does not impose this gate.
 Review `audit.json` manually: set `reviewer`, then mark each reviewed row
 `correct_score`, `model_failure`, or `scorer_defect` and explain it in `notes`.
 Use `model_failure` when the parser correctly judges an incorrect, missing, or
@@ -123,7 +152,10 @@ before generation. Successful attempts release unused tokens. Failed attempts wi
 unknown token counts keep the entire reservation. Interrupted attempts remain
 charged even when retried. Budgets persist across invocations. A changed resolved
 configuration (including limits), device, precision, model/tokenizer revision,
-software environment, or generation implementation creates a distinct run.
+software environment, or generation protocol creates a distinct run. Source code
+is tracked on each session/attempt/response; a same-protocol maintenance edit can
+resume a general run, while frozen-study readers reject mixed implementations.
+Behavior-changing edits require a new protocol identity.
 Changing a limit therefore does not extend an existing run; select limits before
 launch. Job seeds depend on experiment seed, question content, mode, and sample,
 so job order and interruption do not alter them. MPS/CUDA can still differ
@@ -134,8 +166,9 @@ Elapsed limits count model/tokenizer setup and attempt time, excluding idle time
 between invocations. A process killed without finalizing an attempt conservatively
 charges its entire reserved job duration. Stopping hooks check the deadline after
 each generated token; a single model forward, filesystem operation, or model
-download cannot be preempted by this cooperative limit. Setup time is recorded
-after model loading. A process killed during setup can leave unrecorded setup time.
+download cannot be preempted by this cooperative limit. A setup reservation is
+persisted before model loading and finalized with observed time after it returns
+or raises. A hard kill during loading keeps the remaining time allowance charged.
 Do not treat these controls as a cloud billing limit.
 
 ## Generation protocol
@@ -167,8 +200,10 @@ Generated token counts include control/EOS tokens; inserted closure tokens are
 counted separately. `raw_output` contains only sampled tokens. `effective_output`
 and stored token IDs reconstruct the response including inserted closure. Direct
 mean token log-probability is calculated after the configured decoder warpers,
-including EOS, for later confidence routing. Reasoning-stage score tensors are
-not retained, keeping memory manageable.
+including EOS, for later confidence routing. A separate optional pre-warper mean
+is now recorded. The raw recorder keeps one vocabulary row, but the existing
+post-warper score tensors still grow with answer length. Reasoning-stage score
+tensors are not retained. Both declared checkpoint EOS IDs are used.
 
 ## Artifacts and scoring
 
@@ -182,8 +217,10 @@ artifacts/runs/RUN_ID/
   resolved_config.json, environment.json, questions.json
   results/JOB_ID.json # checksum envelope around latest result or failure
   attempts/           # immutable attempt history and budget ledger
-  sessions/           # setup timing
+  sessions/           # setup reservations/timing and source provenance
   status.json, scores.json, audit.json
+  scores.numeric-v5.json # new scoring alongside a historical canonical cache
+  report.numeric-v5/  # new reports alongside legacy/unversioned report output
   report/             # Markdown, JSON, CSV, PNG and PDF
 ```
 
@@ -196,10 +233,14 @@ different revision or split. The source is [openai/gsm8k](https://huggingface.co
 
 Scoring parses only separated final answers using exact rational arithmetic.
 Integers, decimals, fractions, scientific notation, negatives, thousands separators,
-and nested LaTeX fraction boxes are supported. Scorer `numeric-v3` also supports
-exact repeating decimals written with LaTeX `\overline{}`. Conflicting explicit final answers
-are unscorable. Without explicit markers, the sole numeric literal on the last
-nonempty line is accepted; this conservative heuristic is versioned and audited.
+and nested LaTeX fraction boxes are supported. Current scorer `numeric-v5`
+combines exact repeating decimals, Markdown-heading handling, decorated numbers
+and answer-label guards. Numeric unit suffixes use a finite vocabulary; arbitrary
+prose, alternatives and negated numeric claims are rejected. Conflicting explicit
+final answers are unscorable. Without explicit markers, the last nonempty line
+must be a number with an optional supported unit suffix. See the
+[protocol record](docs/phase-1-protocol-reconciliation.md) for historical version
+collisions and score/report preservation.
 Truncated answers are counted incorrect even when they contain a plausible number.
 The parser never receives gold labels. Generation never opens `gold.json`.
 
@@ -235,7 +276,7 @@ separate results for questions used and not used to choose the answer allowance.
 
 ```sh
 HF_HUB_OFFLINE=1 MPLCONFIGDIR=.cache/matplotlib OMP_NUM_THREADS=1 \
-  uv run --locked rb routing artifacts/runs/d00485799f1c8932bafa
+  legacy_rb routing artifacts/runs/d00485799f1c8932bafa
 ```
 
 Remove `HF_HUB_OFFLINE=1` for the first download of the pinned
@@ -269,12 +310,12 @@ only a two-draft stage-one adaptation; full DART still needs additional traces.
 ## Disjoint stronger-router study
 
 ```sh
-uv run --locked rb learnability prepare
+legacy_rb learnability prepare
 HF_HUB_OFFLINE=1 MPLCONFIGDIR=.cache/matplotlib OMP_NUM_THREADS=1 \
-  uv run --locked rb learnability run artifacts/learnability/baselines-v1
+  legacy_rb learnability run artifacts/learnability/baselines-v1
 # Standalone CPU operations after their required generation stages complete:
-uv run --locked rb learnability fit artifacts/learnability/baselines-v1
-uv run --locked rb learnability report artifacts/learnability/baselines-v1
+legacy_rb learnability fit artifacts/learnability/baselines-v1
+legacy_rb learnability report artifacts/learnability/baselines-v1
 ```
 
 `prepare` freezes the questions, generation configs, code/package identities,
@@ -302,10 +343,10 @@ See [study protocol and tracking](docs/stronger-router-study.md).
 ## First-draft continuation study
 
 ```sh
-uv run --locked rb probe prepare
-HF_HUB_OFFLINE=1 OMP_NUM_THREADS=1 uv run --locked rb probe fit artifacts/probe/continuation-v1
+legacy_rb probe prepare
+HF_HUB_OFFLINE=1 OMP_NUM_THREADS=1 legacy_rb probe fit artifacts/probe/continuation-v1
 HF_HUB_OFFLINE=1 MPLCONFIGDIR=.cache/matplotlib OMP_NUM_THREADS=1 \
-  uv run --locked rb probe run artifacts/probe/continuation-v1
+  legacy_rb probe run artifacts/probe/continuation-v1
 ```
 
 This step reuses existing development traces, freezes three-action continuation
@@ -318,7 +359,7 @@ assumptions. See [research rationale, limitations, and tracking](docs/continuati
 To estimate a fresh confirmation study from the completed question-level results:
 
 ```sh
-uv run --locked rb power artifacts/probe/continuation-v1
+legacy_rb power artifacts/probe/continuation-v1
 ```
 
 This verifies the saved result dependencies and writes power/sensitivity and
@@ -333,6 +374,7 @@ first-draft orientations stay together. No Qwen generation runs:
 
 ```sh
 HF_HUB_OFFLINE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  PYTHONPATH=artifacts/legacy/router-studies-6999eb5/src \
   .venv/bin/python -m reasoning_budget.router_dev \
   --output artifacts/router-dev/shared-base-v2
 ```
@@ -348,11 +390,12 @@ The unchanged router is frozen for 3,100 fresh upstream-training questions,
 15,500 responses, in 31 resumable batches. Preparation does not generate responses.
 
 ```sh
-uv run --locked rb confirm prepare
-uv run --locked rb confirm status artifacts/confirmation/frozen-router-v1
+legacy_rb confirm prepare
+legacy_rb confirm status artifacts/confirmation/frozen-router-v1
 # Separate collection command; omit --batches to run all remaining batches:
 HF_HUB_OFFLINE=1 MPLCONFIGDIR=.cache/matplotlib OMP_NUM_THREADS=1 \
-  caffeinate -i uv run --locked rb confirm run artifacts/confirmation/frozen-router-v1 --batches 1
+  PYTHONPATH=artifacts/legacy/router-studies-6999eb5/src \
+  caffeinate -i .venv/bin/python -m reasoning_budget.cli confirm run artifacts/confirmation/frozen-router-v1 --batches 1
 ```
 
 The fixed primary comparison uses lambda=.05 and a whole-question paired t test.

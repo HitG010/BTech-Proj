@@ -204,10 +204,10 @@ def main(argv=None):
             path = run(config, progress=lambda message: print(message, flush=True))
             print(path)
         elif args.command == "score":
-            from .reporting import score_run
+            from .reporting import score_run, scores_path
 
             artifact = score_run(args.run_dir)
-            print(f"Scored {len(artifact['scores'])} expected jobs: {args.run_dir}/scores.json")
+            print(f"Scored {len(artifact['scores'])} expected jobs: {scores_path(args.run_dir)}")
         elif args.command == "report":
             from .reporting import report
 

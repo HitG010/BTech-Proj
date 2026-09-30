@@ -10,14 +10,22 @@ import numpy as np
 import yaml
 
 from . import probe
+from .backend import GENERATION_PROTOCOL
 from .calibration import select_questions
 from .config import from_dict, load_config
 from .controller import Controller, choose_modes, feature_matrix, fit_controller
 from .data import check_questions, load_gold, load_questions, save_dataset
 from .records import Question
-from .reporting import bootstrap, score_run
+from .reporting import bootstrap, score_run, scores_path
 from .routing import summarize
-from .runner import _usage, implementation_digest, load_run, run
+from .runner import (
+    _usage,
+    build_run_identity,
+    implementation_digest,
+    load_run,
+    require_implementation,
+    run,
+)
 from .scoring import SCORING_VERSION, parse_answer
 from .storage import atomic_json, digest, envelope, read_json, run_lock, verified
 
@@ -47,7 +55,7 @@ def implementation():
 
 
 def comparable(config):
-    return {
+    settings = {
         k: config[k]
         for k in [
             "backend",
@@ -60,22 +68,34 @@ def comparable(config):
             "thinking",
         ]
     }
+    settings["closure_text"] = config.get("closure_text")
+    return settings
 
 
 def read_sources(paths, *, expected=None, diagnostic=False):
     """Verify complete inputs; combine either question partitions or mode partitions."""
     questions, observations, sources = {}, {}, {}
-    reference = None
+    reference = reference_backend = None
     for path in paths:
         manifest, records = load_run(path)
         config = manifest["identity"]["config"]
         if config["split"] not in ({"train"} if diagnostic else {"pilot", "validation"}):
             raise ValueError("Invalid source role; official test is sealed")
+        source_backend = manifest["identity"]["backend"]
+        if (
+            manifest["identity"].get("protocol_version") != GENERATION_PROTOCOL
+            or source_backend.get("generation_protocol") != GENERATION_PROTOCOL
+        ):
+            raise ValueError("Source generation protocol differs from current decoder")
+        require_implementation(manifest, records, implementation_digest())
         settings = comparable(config)
         if reference is not None and settings != reference:
             raise ValueError("Decoder/model settings differ across source runs")
+        if reference_backend is not None and source_backend != reference_backend:
+            raise ValueError("Backend metadata differs across source runs")
         reference = settings
-        artifact = read_json(Path(path) / "scores.json")
+        reference_backend = source_backend
+        artifact = read_json(scores_path(path))
         if (
             artifact["records_sha256"] != digest(records)
             or artifact["run_id"] != manifest["run_id"]
@@ -481,13 +501,9 @@ def run_study(directory, progress=print):
                 ]:
                     raise ValueError("Diagnostic question allocation changed")
                 backend = make_backend(config)
-                identity = {
-                    "config": config.to_dict(),
-                    "questions": protocol["diagnostic"],
-                    "backend": backend.metadata,
-                    "environment": environment(),
-                    "implementation_sha256": implementation_digest(),
-                }
+                identity = build_run_identity(
+                    config, protocol["diagnostic"], backend.metadata, environment()
+                )
                 actual_path = Path(config.output_dir) / digest(identity)[:20]
                 if mode in runs and Path(runs[mode]) != actual_path:
                     raise ValueError("Run identity changed on resume")

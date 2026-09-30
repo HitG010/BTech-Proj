@@ -6,10 +6,50 @@ import platform
 import random
 import time
 from dataclasses import asdict
+from numbers import Integral
 from pathlib import Path
 
 from .records import GenerationResult
 from .storage import digest, read_json
+
+GENERATION_PROTOCOL = "qwen3-boxed-budget-v3"
+
+
+def normalize_eos_ids(*sources):
+    """Combine tokenizer and checkpoint EOS IDs without accepting malformed IDs."""
+    ids = set()
+    for source in sources:
+        values = source if isinstance(source, (list, tuple)) else [source]
+        for value in values:
+            if value is None:
+                continue
+            if isinstance(value, bool) or not isinstance(value, Integral) or value < 0:
+                raise ValueError("EOS token IDs must be nonnegative integers")
+            ids.add(int(value))
+    if not ids:
+        raise ValueError("Checkpoint and tokenizer provide no EOS token ID")
+    return sorted(ids)
+
+
+class RawLogprobRecorder:
+    """Record selected-token likelihood before sampling warpers, one logit row at a time."""
+
+    def __init__(self, torch):
+        self.torch, self.previous, self.values = torch, None, []
+
+    def __call__(self, input_ids, scores):
+        if self.previous is not None:
+            self.values.append(self._logprob(int(input_ids[0, -1])))
+        self.previous = scores[0].detach().float().clone()
+        return scores
+
+    def _logprob(self, token):
+        return float(self.torch.log_softmax(self.previous, dim=-1)[token])
+
+    def finish(self, last_token):
+        if self.previous is not None:
+            self.values.append(self._logprob(last_token))
+            self.previous = None
 
 
 def environment():
@@ -54,9 +94,11 @@ class FakeBackend:
         self.config = config
         self.metadata = {
             "backend": "fake",
+            "generation_protocol": GENERATION_PROTOCOL,
             "model_revision": "fake-v1",
             "tokenizer_revision": "fake-v1",
             "chat_template": "fake-v1",
+            "closure_text": config.closure_text,
             "closure_tokens": 1,
             "device": "cpu",
             "dtype": "float32",
@@ -92,6 +134,7 @@ class TransformersBackend:
     def __init__(self, config):
         import torch
         from huggingface_hub import hf_hub_download
+        from huggingface_hub.utils import EntryNotFoundError
         from transformers import AutoTokenizer, GenerationConfig
 
         self.config, self.torch, self.model = config, torch, None
@@ -113,6 +156,12 @@ class TransformersBackend:
         tokenizer_file = hf_hub_download(
             filename="tokenizer_config.json", revision=config.model.tokenizer_revision, **shared
         )
+        try:
+            generation_file = hf_hub_download(
+                filename="generation_config.json", revision=config.model.revision, **shared
+            )
+        except EntryNotFoundError:
+            generation_file = None
         model_revision = Path(model_file).parent.name
         model_config = read_json(model_file)
         tokenizer_revision = Path(tokenizer_file).parent.name
@@ -129,7 +178,19 @@ class TransformersBackend:
         if len(close) != 1:
             raise ValueError("This backend requires Qwen's single-token </think> marker")
         self.close_id = close[0]
-        self.closure = self.tokenizer.encode("</think>\n\n", add_special_tokens=False)
+        self.closure = self.tokenizer.encode(config.closure_text, add_special_tokens=False)
+        if self.close_id not in self.closure:
+            raise ValueError("closure_text must encode to a sequence containing </think>")
+        declared_eos = read_json(generation_file).get("eos_token_id") if generation_file else None
+        self.eos_ids = normalize_eos_ids(
+            self.tokenizer.eos_token_id, model_config.get("eos_token_id"), declared_eos
+        )
+        pad_id = self.tokenizer.pad_token_id
+        if pad_id is None:
+            pad_id = self.eos_ids[0]
+        bos_id = self.tokenizer.bos_token_id
+        if bos_id is None:
+            bos_id = model_config.get("bos_token_id")
         self.generation_configs = {}
         for mode in config.modes:
             self.generation_configs[mode] = GenerationConfig(
@@ -139,19 +200,22 @@ class TransformersBackend:
                 repetition_penalty=1.0,
                 num_beams=1,
                 use_cache=True,
-                eos_token_id=self.tokenizer.eos_token_id,
-                pad_token_id=self.tokenizer.pad_token_id or self.tokenizer.eos_token_id,
-                bos_token_id=self.tokenizer.bos_token_id or model_config.get("bos_token_id"),
+                eos_token_id=self.eos_ids,
+                pad_token_id=pad_id,
+                bos_token_id=bos_id,
             )
         self.metadata = {
             "backend": "transformers",
+            "generation_protocol": GENERATION_PROTOCOL,
             "model_name": config.model.name,
             "model_revision": model_revision,
             "tokenizer_revision": tokenizer_revision,
             "chat_template": self.tokenizer.chat_template,
             "chat_template_sha256": digest(self.tokenizer.chat_template),
+            "closure_text": config.closure_text,
             "closure_tokens": len(self.closure),
             "closure_ids": self.closure,
+            "eos_token_ids": self.eos_ids,
             "device": device,
             "dtype": config.model.dtype,
             "attention": config.model.attention,
@@ -185,7 +249,7 @@ class TransformersBackend:
             self.torch.cuda.synchronize()
 
     def _stage(self, prefix, limit, mode, deadline, stop_on_close=False, confidence=False):
-        from transformers import StoppingCriteria, StoppingCriteriaList
+        from transformers import LogitsProcessorList, StoppingCriteria, StoppingCriteriaList
 
         torch = self.torch
         close_id = self.close_id
@@ -196,6 +260,7 @@ class TransformersBackend:
                     stop_on_close and int(input_ids[0, -1]) == close_id
                 )
 
+        recorder = RawLogprobRecorder(torch) if confidence else None
         input_ids = torch.tensor([prefix], dtype=torch.long, device=self.config.model.device)
         self._sync()
         started = time.monotonic()
@@ -206,29 +271,37 @@ class TransformersBackend:
                 generation_config=self.generation_configs[mode],
                 max_new_tokens=limit,
                 stopping_criteria=StoppingCriteriaList([Stop()]),
+                logits_processor=LogitsProcessorList([recorder]) if recorder else None,
                 return_dict_in_generate=True,
                 output_scores=confidence,
             )
         self._sync()
         elapsed = time.monotonic() - started
         tokens = output.sequences[0, len(prefix) :].tolist()
-        logprob = None
+        logprob = logprob_raw = None
         if confidence and tokens:
+            if output.scores is None or len(output.scores) != len(tokens):
+                raise ValueError("Direct confidence needs one score row per generated token")
             # Scores are after the configured temperature / top-k / top-p warpers.
             values = [
                 float(torch.log_softmax(scores[0].float(), dim=-1)[token])
                 for scores, token in zip(output.scores, tokens)
             ]
             logprob = sum(values) / len(values)
+            recorder.finish(tokens[-1])
+            if recorder.values:
+                if len(recorder.values) != len(tokens):
+                    raise ValueError("Raw confidence hook did not observe every generated token")
+                logprob_raw = sum(recorder.values) / len(recorder.values)
         if tokens and tokens[-1] == self.close_id and stop_on_close:
             reason = "close"
-        elif tokens and tokens[-1] == self.tokenizer.eos_token_id:
+        elif tokens and tokens[-1] in self.eos_ids:
             reason = "eos"
         elif time.monotonic() >= deadline:
             reason = "timeout"
         else:
             reason = "limit"
-        return tokens, reason, elapsed, logprob
+        return tokens, reason, elapsed, logprob, logprob_raw
 
     def generate(self, question, job, deadline):
         import numpy as np
@@ -256,10 +329,10 @@ class TransformersBackend:
         prompt_tokens = len(prefix)
         reasoning, answer, inserted = [], [], []
         reasoning_seconds = answer_seconds = closure_seconds = 0.0
-        forced, truncated, logprob = False, False, None
+        forced, truncated, logprob, logprob_raw = False, False, None, None
         termination = "timeout"
         if time.monotonic() < deadline and job.mode == "thinking":
-            reasoning, reason, reasoning_seconds, _ = self._stage(
+            reasoning, reason, reasoning_seconds, _, _ = self._stage(
                 prefix, self.config.reasoning_tokens, job.mode, deadline, stop_on_close=True
             )
             prefix += reasoning
@@ -284,9 +357,10 @@ class TransformersBackend:
                     False,
                     termination,
                     None,
+                    None,
                 )
         if time.monotonic() < deadline:
-            answer, reason, answer_seconds, logprob = self._stage(
+            answer, reason, answer_seconds, logprob, logprob_raw = self._stage(
                 prefix,
                 self.config.answer_tokens,
                 job.mode,
@@ -308,6 +382,7 @@ class TransformersBackend:
             truncated,
             termination,
             logprob,
+            logprob_raw,
         )
 
     def _result(
@@ -324,6 +399,7 @@ class TransformersBackend:
         truncated,
         termination,
         logprob,
+        logprob_raw,
     ):
         decode = self.tokenizer.decode
         final_answer = decode(answer, skip_special_tokens=True).strip()
@@ -357,6 +433,7 @@ class TransformersBackend:
             answer_truncated=truncated,
             termination=termination,
             mean_generated_logprob=logprob,
+            mean_generated_logprob_raw=logprob_raw,
             metadata={
                 "reasoning_token_ids": reasoning,
                 "answer_token_ids": answer,

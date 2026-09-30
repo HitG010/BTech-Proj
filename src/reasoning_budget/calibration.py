@@ -9,7 +9,15 @@ from .config import from_dict
 from .data import load_gold, save_dataset
 from .records import Question
 from .reporting import bootstrap, create_audit, paired_statistics, report
-from .runner import _usage, load_run, run
+from .runner import (
+    _usage,
+    build_run_identity,
+    implementation_digest,
+    load_run,
+    manifest_implementation,
+    require_implementation,
+    run,
+)
 from .scoring import SCORING_VERSION, score_record
 from .storage import atomic_json, digest, envelope, read_json, run_lock, verified
 
@@ -101,9 +109,13 @@ def _validate_arm(study, cap, manifest, baseline_manifest):
         raise ValueError("Calibration arm configuration differs from its frozen study")
     if digest(manifest["identity"]["questions"]) != study["questions_sha256"]:
         raise ValueError("Calibration arm question content differs")
-    for key in ["environment", "backend", "implementation_sha256"]:
-        if manifest["identity"][key] != baseline_manifest["identity"][key]:
+    for key in ["environment", "backend", "protocol_version"]:
+        if manifest["identity"].get(key) != baseline_manifest["identity"].get(key):
             raise ValueError(f"Calibration comparison changed {key}; use a new matched baseline")
+    if manifest_implementation(manifest) != manifest_implementation(baseline_manifest):
+        raise ValueError(
+            "Calibration comparison changed implementation; use a new matched baseline"
+        )
 
 
 def run_study(directory, progress=print):
@@ -119,17 +131,16 @@ def run_study(directory, progress=print):
             config = from_dict(study["configs"][str(cap)])
             # Check comparability BEFORE model weights or generation, including on resume.
             from .backend import environment, make_backend
-            from .runner import implementation_digest
 
             backend = make_backend(config)
             prospective = {
-                "identity": {
-                    "config": config.to_dict(),
-                    "questions": read_json(directory / "data/questions.json"),
-                    "backend": backend.metadata,
-                    "environment": environment(),
-                    "implementation_sha256": implementation_digest(),
-                }
+                "identity": build_run_identity(
+                    config,
+                    read_json(directory / "data/questions.json"),
+                    backend.metadata,
+                    environment(),
+                ),
+                "implementation_sha256": implementation_digest(),
             }
             _validate_arm(study, cap, prospective, baseline_manifest)
             path = Path(config.output_dir) / digest(prospective["identity"])[:20]
@@ -215,6 +226,9 @@ def report_study(directory):
     directory = Path(directory)
     study = verified(directory / "study.json")
     baseline_manifest, baseline_records = load_run(study["baseline"])
+    require_implementation(
+        baseline_manifest, baseline_records, manifest_implementation(baseline_manifest)
+    )
     if digest(baseline_manifest) != study["baseline_manifest_sha256"]:
         raise ValueError("Baseline manifest changed")
     selected = set(study["question_ids"])
@@ -244,6 +258,7 @@ def report_study(directory):
                 continue  # Preflight journal exists before the generation manifest.
             manifest, records = load_run(path)
             _validate_arm(study, cap, manifest, baseline_manifest)
+            require_implementation(manifest, records, manifest_implementation(baseline_manifest))
         else:
             continue
         if len(records) != len(selected) * 4:
@@ -551,17 +566,20 @@ def confirm_pilot(directory, progress=print):
         ):
             raise ValueError("Confirmation pilot differs from the frozen calibration questions")
         from .backend import environment, make_backend
-        from .runner import implementation_digest
 
         backend = make_backend(config)
         baseline = verified(Path(study["baseline"]) / "manifest.json")
         actual = {
             "environment": environment(),
             "backend": backend.metadata,
-            "implementation_sha256": implementation_digest(),
+            "protocol_version": build_run_identity(
+                config, questions, backend.metadata, environment()
+            )["protocol_version"],
         }
-        if any(actual[k] != baseline["identity"][k] for k in actual):
+        if any(actual[k] != baseline["identity"].get(k) for k in actual):
             raise ValueError("Confirmation changed environment or generation implementation")
+        if implementation_digest() != manifest_implementation(baseline):
+            raise ValueError("Confirmation changed generation implementation")
         path = run(config, backend=backend, progress=progress)
         atomic_json(directory / "confirmation-run.json", envelope({"path": str(path.resolve())}))
         report(path)

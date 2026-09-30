@@ -51,6 +51,7 @@ From the repository root, using this checkpoint's source and environment:
 
 ```sh
 HF_HUB_OFFLINE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  PYTHONPATH=artifacts/legacy/router-studies-6999eb5/src \
   .venv/bin/python -m reasoning_budget.router_dev \
   --source artifacts/probe/continuation-v1 \
   --output artifacts/router-dev/shared-base-v2
@@ -105,6 +106,6 @@ The code audits established these concrete requirements:
 4. Add branch-crossing parser and fake-backend tests before the 25-question
    generation bridge. Measure actual throughput before cloud expenditure.
 
-These integrations and the bridge remain pending. The checkpoint does not
+Update, 2026-10-01: the integrations are complete in [checkpoint 2](phase-1-protocol-reconciliation.md); use its pinned legacy checkout for the replay above. Role allocation and the real generation bridge remain pending. The checkpoint does not
 establish a novel routing method or authorize reinterpreting the old frozen
 confirmation as a test of a new candidate.

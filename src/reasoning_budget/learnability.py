@@ -18,9 +18,16 @@ from .config import from_dict, load_config
 from .controller import Controller, choose_modes, feature_matrix, fit_controller
 from .data import check_questions, load_gold, load_questions, save_dataset
 from .records import Question
-from .reporting import bootstrap, score_run
+from .reporting import bootstrap, score_run, scores_path
 from .routing import confidence_threshold, escalation, outcomes, summarize
-from .runner import _usage, implementation_digest, load_run, run
+from .runner import (
+    _usage,
+    build_run_identity,
+    implementation_digest,
+    load_run,
+    require_implementation,
+    run,
+)
 from .scoring import SCORING_VERSION, parse_answer
 from .storage import atomic_json, digest, envelope, read_json, run_lock, verified
 from .stronger import (
@@ -145,11 +152,12 @@ def load_observations(path, expected_questions, split):
     config = manifest["identity"]["config"]
     if split not in {"train", "validation"} or config["split"] != split:
         raise ValueError("Only disjoint train/validation observations are permitted")
+    require_implementation(manifest, records, implementation_digest())
     if manifest["identity"]["questions"] != expected_questions:
         raise ValueError("Run questions differ from frozen role")
     if set(config["modes"]) != {"direct", "thinking"}:
         raise ValueError("Both modes must be present")
-    scores = read_json(Path(path) / "scores.json")
+    scores = read_json(scores_path(path))
     if (
         scores["records_sha256"] != digest(records)
         or scores["run_id"] != manifest["run_id"]
@@ -425,17 +433,13 @@ def run_study(directory, progress=print):
                 ][role]:
                     raise ValueError("Dataset changed after freezing role allocation")
                 backend = make_backend(config)
-                identity = {
-                    "config": config.to_dict(),
-                    "questions": protocol["groups"][role],
-                    "backend": backend.metadata,
-                    "environment": environment(),
-                    "implementation_sha256": implementation_digest(),
-                }
+                identity = build_run_identity(
+                    config, protocol["groups"][role], backend.metadata, environment()
+                )
                 comparable = {
-                    key: identity[key]
-                    for key in ["backend", "environment", "implementation_sha256"]
+                    key: identity[key] for key in ["backend", "environment", "protocol_version"]
                 }
+                comparable["implementation_sha256"] = implementation_digest()
                 if reference is not None and comparable != reference:
                     raise ValueError("Backend/environment changed between study stages")
                 reference = comparable

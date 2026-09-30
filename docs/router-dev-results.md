@@ -8,11 +8,14 @@ accuracy–token curve. Run the comparison again from the repository root with:
 
 ```sh
 HF_HUB_OFFLINE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  PYTHONPATH=artifacts/legacy/router-studies-6999eb5/src \
   .venv/bin/python -m reasoning_budget.router_dev \
   --output artifacts/router-dev/shared-base-v2
 ```
 
-This loads saved generation records and cached MiniLM question features. It fits
+After protocol integration, this command requires the pinned legacy checkout;
+see [checkpoint 2](phase-1-protocol-reconciliation.md). It loads saved generation
+records and cached MiniLM question features and fits
 small CPU models; it does not generate Qwen responses or use MPS/CUDA.
 
 The original `shared-base-v1/` artifacts remain unchanged. They incorrectly

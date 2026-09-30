@@ -1,0 +1,36 @@
+# Phase 1 bridge configuration. Role manifest preparation must precede generation.
+# This isolated data directory does not exist until the next checkpoint.
+name: qwen3-1.7b-research-bridge-v3
+backend: transformers
+seed: 20261001
+data_dir: artifacts/research/data-efficiency-v1/data/bridge
+split: bridge
+output_dir: artifacts/research/data-efficiency-v1/runs
+samples: 2
+modes: [direct, thinking]
+answer_tokens: 512
+reasoning_tokens: 2048
+prompt_suffix: 'In your final response, give only the numerical answer in \boxed{}.'
+closure_text: "</think>\n\n"
+model:
+  name: Qwen/Qwen3-1.7B
+  revision: 70d244cc86ccca08cf5af4e1e306ecf908b1ad5e
+  tokenizer_revision: 70d244cc86ccca08cf5af4e1e306ecf908b1ad5e
+  device: mps
+  dtype: float16
+  attention: sdpa
+  cache_dir: .cache/huggingface
+  local_files_only: true
+direct:
+  temperature: 0.7
+  top_p: 0.8
+  top_k: 20
+thinking:
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+limits:
+  max_tokens: 200000
+  max_elapsed_seconds: 14400
+  job_seconds: 600
+  max_consecutive_failures: 3

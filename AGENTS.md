@@ -10,9 +10,12 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
   its history; `master` at `0087b92` is not the current checkout.
 - The sibling worktree `/Users/hiteshgupta/Documents/BTechProj-pilot-v2` is on
   `research/pilot-v2` at `6c7903c`. It was also clean. Its prompt, token caps,
-  backend and scorer differ from the router-studies branch. `numeric-v3` and
-  `numeric-v4` have different meanings on the two branches; reconcile protocols
-  and give parser versions unique identities before combining their results.
+  backend and scorer differ from the historical router-studies branch.
+  `numeric-v3` and `numeric-v4` have different historical meanings. The active
+  branch now uses `numeric-v5` and `qwen3-boxed-budget-v3`; the
+  [protocol record](docs/phase-1-protocol-reconciliation.md) explains the merge.
+  A real 25-question generation bridge remains pending; historical generation
+  protocols are still not interchangeable.
 - Start with [the research map](docs/README.md) for study results, code layout,
   artifact paths and reading order. [The root README](README.md) covers setup and
   commands; [the plan](plan.md) is the milestone and execution log. Source is in
@@ -22,6 +25,11 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
   The pilot-v2 worktree shares `.cache/`, `.python/` and `artifacts/runs/` with
   this worktree through symlinks. Preserve existing run records and frozen study
   identities. Its `artifacts/data/` is a separate directory.
+- `artifacts/legacy/router-studies-6999eb5/` is a detached legacy checkout for
+  frozen-study commands. Use its `src/` through `PYTHONPATH` from this root; the
+  shared editable environment alone imports the current source. The new code
+  correctly rejects legacy frozen studies. Current offline verification is
+  195 tests; no new generation, gold/test access, or cloud spend in checkpoint 2.
 - The 3,100-question confirmation in
   `artifacts/confirmation/frozen-router-v1/` is prepared for the **unchanged**
   joint router; `status.json` says generation has not started. The user deferred

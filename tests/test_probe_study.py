@@ -8,6 +8,7 @@ from reasoning_budget.backend import FakeBackend
 from reasoning_budget.config import from_dict
 from reasoning_budget.data import save_dataset
 from reasoning_budget.probe_study import (
+    comparable,
     freeze_models,
     prepare,
     read_protocol,
@@ -16,7 +17,7 @@ from reasoning_budget.probe_study import (
 )
 from reasoning_budget.records import Question
 from reasoning_budget.reporting import score_run
-from reasoning_budget.runner import run
+from reasoning_budget.runner import implementation_digest, run
 from reasoning_budget.storage import atomic_json, envelope, read_json, verified
 
 
@@ -129,6 +130,60 @@ def test_test_split_is_rejected_before_score_access(monkeypatch):
     )
     with pytest.raises(ValueError, match="sealed"):
         read_sources(["unused"])
+
+
+def test_source_protocol_checked_before_score_access(monkeypatch):
+    monkeypatch.setattr(
+        "reasoning_budget.probe_study.load_run",
+        lambda _: (
+            {
+                "identity": {
+                    "config": {"split": "pilot"},
+                    "backend": {"generation_protocol": "qwen3-boxed-budget-v2"},
+                    "protocol_version": "qwen3-boxed-budget-v2",
+                }
+            },
+            [],
+        ),
+    )
+    with pytest.raises(ValueError, match="generation protocol"):
+        read_sources(["unused"])
+
+
+def test_mixed_code_source_rejected_before_score_access(monkeypatch):
+    from reasoning_budget.backend import GENERATION_PROTOCOL
+
+    manifest = {
+        "implementation_sha256": implementation_digest(),
+        "identity": {
+            "config": {"split": "pilot"},
+            "backend": {"generation_protocol": GENERATION_PROTOCOL},
+            "protocol_version": GENERATION_PROTOCOL,
+        },
+    }
+    records = [{"status": "completed", "implementation_sha256": "0" * 64}]
+    monkeypatch.setattr("reasoning_budget.probe_study.load_run", lambda _: (manifest, records))
+    with pytest.raises(ValueError, match="different generation implementation"):
+        read_sources(["unused"])
+
+
+def test_closure_text_is_part_of_source_comparability():
+    config = {
+        key: "fixture"
+        for key in (
+            "backend",
+            "seed",
+            "answer_tokens",
+            "reasoning_tokens",
+            "prompt_suffix",
+            "closure_text",
+            "model",
+            "direct",
+            "thinking",
+        )
+    }
+    changed = config | {"closure_text": "</think>\n"}
+    assert comparable(config) != comparable(changed)
 
 
 def test_failed_stage_resumes_without_repeating_completed_drafts(study, monkeypatch):

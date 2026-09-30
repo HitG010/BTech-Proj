@@ -31,6 +31,7 @@ class Limits:
     max_tokens: int = 30000
     max_elapsed_seconds: float = 3600
     job_seconds: float = 600
+    max_consecutive_failures: int = 3
 
 
 @dataclass
@@ -46,6 +47,7 @@ class Config:
     answer_tokens: int = 256
     reasoning_tokens: int = 2048
     prompt_suffix: str = "In your final response, give only the numerical answer in \\boxed{}."
+    closure_text: str = "</think>\n\n"
     model: Model = field(default_factory=Model)
     limits: Limits = field(default_factory=Limits)
     direct: Decoder = field(default_factory=Decoder)
@@ -75,9 +77,12 @@ class Config:
             ("answer_tokens", self.answer_tokens),
             ("reasoning_tokens", self.reasoning_tokens),
             ("limits.max_tokens", self.limits.max_tokens),
+            ("limits.max_consecutive_failures", self.limits.max_consecutive_failures),
         ]:
             if type(value) is not int or value <= 0:
                 raise ValueError(f"{name} must be a positive integer")
+        if not isinstance(self.closure_text, str) or "</think>" not in self.closure_text:
+            raise ValueError("closure_text must be a string containing </think>")
         if type(self.seed) is not int or self.seed < 0:
             raise ValueError("seed must be a nonnegative integer")
         for name in ["max_elapsed_seconds", "job_seconds"]:

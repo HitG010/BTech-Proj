@@ -113,3 +113,115 @@ def test_hash_answer_claims_still_conflict_without_using_gold():
     assert parse_answer("#### -3/2\n\\boxed{-1.5}") == ("-3/2", "ok")
     assert parse_answer("#### 3 or 4") == (None, "ambiguous")
     assert parse_answer("#### Billy:\n\\boxed{1}", incomplete=True) == (None, "incomplete")
+
+
+@pytest.mark.parametrize(
+    "text, expected",
+    [
+        (r"\boxed{\$18}", "18"),
+        (r"\boxed{18\%}", "18"),
+        (r"\boxed{18 \text{ hours}}", "18"),
+        (r"\boxed{\text{18}}", "18"),
+        (r"\boxed{\text{18 dollars}}", "18"),
+        (r"Final answer: \text{18 dollars}", "18"),
+        (r"\boxed{\text{18 cm}}", "18"),
+        (r"\boxed{18 miles per hour}", "18"),
+        (r"\boxed{\$1,800}", "1800"),
+        (r"\boxed{~18}", "18"),
+        (r"\boxed{18 \, \text{dollars}}", "18"),
+        (r"\boxed{18\text{ cm}}", "18"),
+        (r"\boxed{18.}", "18"),
+        (r"\boxed{18 km/h}", "18"),
+        (r"\boxed{\dfrac{3}{4}}", "3/4"),
+        (r"\boxed{\textbf{-4}}", "-4"),
+        (r"\boxed{18} and \boxed{18 \text{ hours}}", "18"),
+        (r"\boxed{\$0.1\overline{6} \text{ dollars}}", "1/6"),
+        (r"Final answer: \$0.1\overline{6} dollars", "1/6"),
+        (r"#### 137.\overline{3} \text{ cm}", "412/3"),
+    ],
+)
+def test_decorated_numeric_claims(text, expected):
+    assert parse_answer(text) == (expected, "ok")
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        r"\boxed{2:30}",
+        r"\boxed{18 \div 2 = 9}",
+        r"\boxed{x = 18}",
+        r"\boxed{18 \text{ or } 19}",
+        r"\boxed{7 \text{or 8}}",
+        r"\boxed{7 \text{x = 8}}",
+        r"\boxed{not 7}",
+        r"\boxed{7 is wrong}",
+        r"\boxed{7 or eight}",
+        r"\boxed{7 \text{hours} or \text{eight hours}}",
+        r"\boxed{7 \text{not hours}}",
+        r"\boxed{7 \text{or} \text{eight}}",
+        r"\boxed{\text{not 7}}",
+        r"\boxed{7 plus eight}",
+        r"\boxed{7 was incorrect}",
+    ],
+)
+def test_decorated_claims_stay_conservative(text):
+    assert parse_answer(text) == (None, "invalid_number")
+
+
+@pytest.mark.parametrize(
+    "text", ["Final answer: 7 or eight", "Final answer: 7 is wrong", "7 or eight"]
+)
+def test_written_alternatives_and_negation_cannot_score_correct(text):
+    assert parse_answer(text) == (None, "invalid_number")
+    record = {
+        "job": {"id": "j", "question_id": "q", "mode": "direct"},
+        "status": "completed",
+        "result": {"final_answer": text, "answer_truncated": False, "termination": "eos"},
+    }
+    assert not score_record(record, "7")["correct"]
+
+
+@pytest.mark.parametrize(
+    "text, expected",
+    [
+        (
+            "To ensure the answer is correct, add it back: 54 + 37 = 91.\n\n\\boxed{54}",
+            "54",
+        ),
+        ("The answer is approximately 18.\n\n$$\\boxed{18}$$", "18"),
+        ("The answer is: **18**", "18"),
+        (r"Final answer: $\boxed{7}$", "7"),
+        ("Answer: the calculation is correct.\n\\boxed{54}", "54"),
+    ],
+)
+def test_prose_after_answer_label_is_not_a_claim(text, expected):
+    assert parse_answer(text) == (expected, "ok")
+
+
+def test_decorated_and_plain_claims_must_agree():
+    assert parse_answer("Final answer: \\$18 dollars\n\\boxed{\\textbf{18.0}}") == (
+        "18",
+        "ok",
+    )
+    assert parse_answer("Final answer: \\$18 dollars\n\\boxed{\\textbf{19}}") == (
+        None,
+        "conflicting",
+    )
+
+
+def test_multiple_explicit_numbers_remain_ambiguous_with_decorations():
+    assert parse_answer(r"Final answer: 18 cm or 19 cm") == (None, "ambiguous")
+    assert parse_answer(r"#### 18 \text{ cm} or 19 \text{ cm}") == (None, "ambiguous")
+    assert parse_answer(r"Final answer: 7 \text{or 8}") == (None, "ambiguous")
+
+
+def test_latex_fraction_claim_survives_heading_and_prose_matching():
+    assert parse_answer(r"#### Final answer: \dfrac{3}{4}") == ("3/4", "ok")
+    assert parse_answer("#### Final answer: \\dfrac{3}{4}\n\\boxed{2/3}") == (
+        None,
+        "conflicting",
+    )
+    assert parse_answer("Answer: the answer is correct.\n\\boxed{3/4}") == (
+        "3/4",
+        "ok",
+    )

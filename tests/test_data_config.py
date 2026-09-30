@@ -17,6 +17,10 @@ from reasoning_budget.storage import read_json
         ({"model": None}, "mapping"),
         ({"samples": True}, "integer"),
         ({"model": {"local_files_only": "false"}}, "boolean"),
+        ({"closure_text": "stop"}, "closure_text"),
+        ({"closure_text": None}, "closure_text"),
+        ({"limits": {"max_consecutive_failures": 0}}, "max_consecutive_failures"),
+        ({"limits": {"max_consecutive_failures": True}}, "max_consecutive_failures"),
     ],
 )
 def test_invalid_configuration(config, message):
@@ -28,6 +32,10 @@ def test_decoding_defaults():
     c = from_dict({"thinking": {"top_k": 10}})
     assert c.thinking.temperature == 0.6
     assert c.thinking.top_p == 0.95
+    assert c.closure_text == "</think>\n\n"
+    assert c.limits.max_consecutive_failures == 3
+    assert c.answer_tokens == 256 and c.reasoning_tokens == 2048
+    assert c.prompt_suffix == r"In your final response, give only the numerical answer in \boxed{}."
 
 
 def test_fixtures_gold_separate(tmp_path):

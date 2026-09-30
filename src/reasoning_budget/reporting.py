@@ -12,8 +12,34 @@ from .scoring import SCORING_VERSION, score_record
 from .storage import atomic_json, digest, read_json
 
 
+def scoring_digest():
+    from . import scoring
+
+    return digest(Path(scoring.__file__).read_text())
+
+
+def scores_path(run_dir):
+    """Keep a historical scorer's canonical cache; write new versions alongside it."""
+    run_dir = Path(run_dir)
+    canonical = run_dir / "scores.json"
+    if not canonical.exists() or read_json(canonical).get("scoring_version") == SCORING_VERSION:
+        return canonical
+    return run_dir / f"scores.{SCORING_VERSION}.json"
+
+
+def _check_scorer_identity(path):
+    if path.exists():
+        previous = read_json(path)
+        if previous.get("scoring_version") != SCORING_VERSION or previous.get(
+            "scoring_implementation_sha256"
+        ) != scoring_digest():
+            raise ValueError("Scorer identity changed; use a new scoring version")
+
+
 def score_run(run_dir):
     run_dir = Path(run_dir)
+    path = scores_path(run_dir)
+    _check_scorer_identity(path)
     manifest, records = load_run(run_dir)
     gold = load_gold(manifest["identity"]["config"]["data_dir"])
     if "scoring_gold_sha256" in manifest and digest(gold) != manifest["scoring_gold_sha256"]:
@@ -21,13 +47,29 @@ def score_run(run_dir):
     scores = [score_record(record, gold[record["job"]["question_id"]]) for record in records]
     artifact = {
         "scoring_version": SCORING_VERSION,
+        "scoring_implementation_sha256": scoring_digest(),
         "run_id": manifest["run_id"],
         "gold_sha256": digest(gold),
         "records_sha256": digest(records),
         "scores": scores,
     }
-    atomic_json(run_dir / "scores.json", artifact)
+    if not path.exists() or read_json(path) != artifact:
+        atomic_json(path, artifact)
     return artifact
+
+
+def report_path(run_dir):
+    """Do not replace a report whose scorer provenance is older or unspecified."""
+    run_dir = Path(run_dir)
+    canonical = run_dir / "report"
+    summary = canonical / "summary.json"
+    if summary.exists():
+        if read_json(summary).get("scoring_version") == SCORING_VERSION:
+            return canonical
+        return run_dir / f"report.{SCORING_VERSION}"
+    if canonical.exists() and any(canonical.iterdir()):
+        return run_dir / f"report.{SCORING_VERSION}"
+    return canonical
 
 
 def bootstrap(values, seed=20260909, draws=2000):
@@ -254,6 +296,8 @@ def report(run_dir, hourly_rate=None, projection_questions=1100, projection_samp
     )
     result = {
         "run_id": manifest["run_id"],
+        "scoring_version": SCORING_VERSION,
+        "scoring_implementation_sha256": scoring_digest(),
         "backend": config["backend"],
         "split": config["split"],
         "complete": complete,
@@ -264,10 +308,18 @@ def report(run_dir, hourly_rate=None, projection_questions=1100, projection_samp
         "projection": projection,
         "charged_tokens_all_attempts": tokens_charged,
         "elapsed_seconds_all_attempts_and_setup": elapsed,
-        "budgets_usd": {"pilot": 10, "main": 50, "confirmation": 20, "reserve": 20},
+        "budget_plan": "data-efficiency-roadmap-2026-10-01",
+        "budgets_usd": {
+            "foundation": 10,
+            "signal": 15,
+            "main": 30,
+            "replication_and_confirmation": 30,
+            "extensions_and_buffer": 15,
+        },
         "actual_cloud_billing_usd": actual_billing,
     }
-    out = run_dir / "report"
+    out = report_path(run_dir)
+    _check_scorer_identity(out / "summary.json")
     out.mkdir(exist_ok=True)
     atomic_json(out / "summary.json", result)
     with (out / "modes.csv").open("w", newline="") as stream:
@@ -323,7 +375,7 @@ def report(run_dir, hourly_rate=None, projection_questions=1100, projection_samp
     lines += [
         projection["scope"] + ". " + projection["cloud_warning"],
         "",
-        "Budget allocation: $10 pilot, $50 main, $20 confirmation, $20 reserve. No cloud instance is launched by this package. Actual billing must be tracked separately; limits cannot stop idle rental charges.",
+        "Active roadmap cloud ceiling: $10 foundation, $15 signal, $30 main, $30 shared replication and confirmation, $15 conditional extensions and buffer ($100 total). No cloud instance is launched by this package. Actual billing must be tracked separately; limits cannot stop idle rental charges.",
         "",
         "Reasoning and answer token counts include generated control/EOS tokens. Inserted closure tokens are separate. The answer stage reprocesses the same assistant prefix; its timing includes that overhead, including forced closure. Raw output excludes inserted tokens; effective output and token IDs retain reconstruction details.",
     ]

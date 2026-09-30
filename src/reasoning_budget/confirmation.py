@@ -15,6 +15,7 @@ import numpy as np
 import yaml
 
 from . import probe
+from .config import from_dict
 from .confirmation_stats import BOOTSTRAP_DRAWS, SECONDARY, SEED, analyze_policies
 from .controller import Controller, choose_modes, feature_matrix
 from .data import check_questions, load_questions, normalized, save_dataset
@@ -23,7 +24,15 @@ from .probe_study import read_protocol as read_parent
 from .probe_study import read_sources
 from .records import Question
 from .reporting import score_run
-from .runner import _usage, implementation_digest, load_run, run
+from .runner import (
+    _usage,
+    build_run_identity,
+    implementation_digest,
+    load_run,
+    manifest_implementation,
+    require_implementation,
+    run,
+)
 from .scoring import SCORING_VERSION
 from .storage import atomic_json, digest, envelope, read_json, run_lock, verified
 
@@ -192,17 +201,20 @@ def prepare(
                 ("direct", 3, 170000, 7200),
                 ("thinking", 2, 530000, 18000),
             ]:
-                config = dict(prior["configs"][mode]) | {
-                    "name": f"confirmation-v1-{batch_id}-{mode}",
-                    "data_dir": str(data_path),
-                    "output_dir": str((directory / "runs").resolve()),
-                    "samples": samples,
-                    "limits": {
-                        "max_tokens": token_limit,
-                        "max_elapsed_seconds": seconds,
-                        "job_seconds": 600,
-                    },
-                }
+                config = from_dict(
+                    dict(prior["configs"][mode])
+                    | {
+                        "name": f"confirmation-v1-{batch_id}-{mode}",
+                        "data_dir": str(data_path),
+                        "output_dir": str((directory / "runs").resolve()),
+                        "samples": samples,
+                        "limits": {
+                            "max_tokens": token_limit,
+                            "max_elapsed_seconds": seconds,
+                            "job_seconds": 600,
+                        },
+                    }
+                ).to_dict()
                 configs[mode] = config
                 config_path = directory / "configs" / f"{batch_id}-{mode}.yaml"
                 config_path.parent.mkdir(parents=True, exist_ok=True)
@@ -333,10 +345,11 @@ def read_protocol(directory):
 
 def _checked_records(path, batch, mode):
     manifest, records = load_run(path)
+    require_implementation(manifest, records, implementation_digest())
     if (
         manifest["identity"]["config"] != batch["configs"][mode]
         or manifest["identity"]["questions"] != batch["questions"]
-        or manifest["identity"]["implementation_sha256"] != implementation_digest()
+        or manifest_implementation(manifest) != implementation_digest()
     ):
         raise ValueError("Run differs from frozen confirmation job specification")
     return manifest, records
@@ -441,13 +454,9 @@ def run_study(directory, progress=print, max_batches=None):
                     key = f"{batch['id']}/{mode}"
                     config = from_dict(batch["configs"][mode])
                     backend = make_backend(config)
-                    identity = {
-                        "config": config.to_dict(),
-                        "questions": batch["questions"],
-                        "backend": backend.metadata,
-                        "environment": environment(),
-                        "implementation_sha256": implementation_digest(),
-                    }
+                    identity = build_run_identity(
+                        config, batch["questions"], backend.metadata, environment()
+                    )
                     comparable = {k: identity[k] for k in ("backend", "environment")}
                     if reference is not None and comparable != reference:
                         raise ValueError("Backend/environment changed across confirmation stages")

@@ -310,3 +310,21 @@ Implementation and verification status will be recorded here as work completes.
   All 118 offline tests, Ruff, and diff checks passed; no solver generation,
   official-test scoring, or cloud/API expenditure. See the
   [Phase 1 evidence-repair record](docs/phase-1-evidence-repair.md).
+- 2026-10-01: Phase 1 checkpoint 2 reconciled the parser as `numeric-v5` and
+  generation as `qwen3-boxed-budget-v3`. Ported full EOS handling, separately
+  recorded raw confidence, configurable closure, incremental accounting and
+  consecutive-failure recovery. Added durable setup reservations and source
+  provenance on sessions, attempts and responses; frozen-study readers reject
+  mixed implementations. Preserved a detached legacy checkout at `6999eb5` for
+  earlier study commands, without relaxing source/package/scorer guards.
+  Versioned new score/report outputs preserve old artifacts and reject reuse of
+  a scorer name with changed source. Independent agent review found numeric
+  negation/alternative and response-provenance gaps; fixed them with adversarial
+  and resume checks. All 195 offline tests, Ruff and whitespace checks passed.
+  Verified 14 protected artifacts, 21 legacy source files, and 900 saved response
+  records retain their hashes. Gold-free v4/v5 extraction had zero differences;
+  pinned legacy probe/confirmation validation still succeeds. Cached MPS tokenizer
+  inspection verified EOS `[151643, 151645]` and closure `[151668, 271]` without
+  model weights. New bridge config is prepared; role manifests and real bridge
+  generation remain next. Solver generations, gold/test access and cloud/API
+  spend: zero. See [checkpoint 2](docs/phase-1-protocol-reconciliation.md).
