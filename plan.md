@@ -1,5 +1,11 @@
 # Research repository implementation checklist
 
+**Active roadmap, 2026-10-01:** [data-efficient trace acquisition](docs/research-roadmap.md).
+The historical milestone decisions below remain an execution record. The new
+roadmap governs current scope, phase gates, and the $100 cloud allocation.
+Work continues on `codex/research-data-efficiency`; see the
+[Phase 1 evidence-repair record](docs/phase-1-evidence-repair.md).
+
 ## Scope and first deliverable
 
 Implement Milestones A–C in this first pass. Run 10 arithmetic questions through
@@ -293,3 +299,14 @@ Implementation and verification status will be recorded here as work completes.
   region is exploratory, not a revised primary endpoint. The 100-question diagnostic and official test
   stayed out of fitting and evaluation. All 116 offline tests and Ruff passed;
   no GPU generation or cloud spend. See [router development results](docs/router-dev-results.md).
+- 2026-10-01: started the accepted data-efficiency roadmap on
+  `codex/research-data-efficiency`, based on `research/router-studies` at
+  `15a4d2d`. Checkpointed the pre-existing research handoff at `1b67fbc`.
+  Phase 1 checkpoint 1 corrected standalone always-thinking accounting and
+  produced `artifacts/router-dev/shared-base-v2/` without replacing v1.
+  Thinking remains 91.50% accurate at 1,430.69 rather than 1,654.47 tokens;
+  all six other policies, settings, actions, and confidence curves are identical.
+  Ten preserved artifact hashes and the legacy generation digest are unchanged.
+  All 118 offline tests, Ruff, and diff checks passed; no solver generation,
+  official-test scoring, or cloud/API expenditure. See the
+  [Phase 1 evidence-repair record](docs/phase-1-evidence-repair.md).

@@ -1,12 +1,13 @@
 # Repository orientation
 
-Snapshot checked 2026-09-23. Verify `git status --short --branch` and
+Snapshot checked 2026-10-01. Verify `git status --short --branch` and
 `git worktree list` before relying on branch names or this snapshot.
 
 - This worktree, `/Users/hiteshgupta/Documents/BTechProj`, is on
-  `research/router-studies` at `15a4d2d` when this note was written. It was
-  clean before this documentation update. Router studies 2–8 are committed on
-  this branch; `master` remains at `0087b92` and is not the current checkout.
+  `codex/research-data-efficiency`, created from `research/router-studies` at
+  `15a4d2d`. The pre-existing documentation and shared-router work were
+  checkpointed at `1b67fbc` before Phase 1 changes. Router studies 2–8 remain in
+  its history; `master` at `0087b92` is not the current checkout.
 - The sibling worktree `/Users/hiteshgupta/Documents/BTechProj-pilot-v2` is on
   `research/pilot-v2` at `6c7903c`. It was also clean. Its prompt, token caps,
   backend and scorer differ from the router-studies branch. `numeric-v3` and
@@ -26,13 +27,19 @@ Snapshot checked 2026-09-23. Verify `git status --short --branch` and
   joint router; `status.json` says generation has not started. The user deferred
   its 125–142-hour local run to improve the router first. The official 500-test
   split is sealed. The human scoring audit was explicitly waived.
+- The active [research roadmap](docs/research-roadmap.md) targets data-efficient
+  acquisition, with protocol repair and supervision diagnosis before scaling.
+  Jev/RL are conditional extensions. Do not treat generic RL, agreement, or
+  cost-aware acquisition as an established novel contribution.
 - The cached-trace CPU test is complete; see
   [router development results](docs/router-dev-results.md) and
-  `artifacts/router-dev/shared-base-v1/report.md`. On 200 reused development
+  the corrected `artifacts/router-dev/shared-base-v2/report.md` (v1 preserved).
+  The standalone-thinking cost was corrected from 1,654.47 to 1,430.69 tokens;
+  all six other policies and the legacy generator are unchanged. On 200 reused development
   questions, the shared-correctness router improved over refitted joint and
   gain-ridge models, but at the preselected `λ=.05` tuned confidence matched its
   90.25% accuracy with fewer generated tokens (589.4 versus 622.0 per question).
   A higher-accuracy, low-penalty part of the curve is exploratory. This is not
   independent confirmation. Do not treat the prepared 3,100-question protocol
-  as a test of the new router. The next candidate is selective verification of
-  wrong direct-draft agreements, though only 11 such cases exist in development.
+  as a test of the new router. Only 11 wrong direct-draft agreements exist in
+  development, so selective verification remains a limited optional direction.

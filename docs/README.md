@@ -5,7 +5,11 @@ the project asks, which study answered which question, where each result lives,
 and how the code is laid out. It adds no results of its own. Every number below is
 copied from the linked study document, which remains authoritative.
 
-Snapshot: 2026-09-23. Worktree and branch information was rechecked on this date.
+Snapshot: 2026-10-01. The active implementation branch is
+`codex/research-data-efficiency`, based on `research/router-studies` at
+`15a4d2d`, with the prior research handoff checkpointed at `1b67fbc`.
+The [research roadmap](research-roadmap.md) defines the current phases and gates;
+the [Phase 1 record](phase-1-evidence-repair.md) records the first correction.
 
 ## 1. The question
 
@@ -52,11 +56,11 @@ primary preference: five accuracy points are worth 1,000 generated tokens.
 The project diverged after commit `03380a9`. Both lines fixed the same pilot v1
 truncation problem, independently and with **different protocols**.
 
-| | `research/router-studies` worktree (this directory) | `research/pilot-v2` worktree |
+| | router-studies lineage (this directory) | `research/pilot-v2` worktree |
 |---|---|---|
 | Location | `BTechProj/` | `BTechProj-pilot-v2/` (git worktree) |
 | Dates | 2026-09-13 → 2026-09-22 | 2026-09-09 → 2026-09-10 |
-| Git state before this documentation update | HEAD `15a4d2d`; studies 2–8 committed in `5519867`; `master` remains at `0087b92` | HEAD `6c7903c` |
+| Git lineage | Active `codex/research-data-efficiency`; base `15a4d2d`; handoff checkpoint `1b67fbc`; studies 2–8 committed in `5519867` | HEAD `6c7903c` |
 | Prompt | original boxed-answer instruction | Qwen3 model-card math prompt |
 | Reasoning / answer tokens | 2,048 / 512 | 4,096 / 1,024 |
 | Forced-closure text | `</think>\n\n` | Qwen3 report budget phrase |
@@ -99,8 +103,9 @@ ignored by Git.
 | 6 | Continuation routing | After one direct draft: accept, buy a second draft, or think now? | Joint 88.0% at 728 tokens; gain-ridge 89.0% at 877; confidence 86.5% at 592; always-thinking 89.5% at 1,414. Primary +0.008 [−0.020, +0.044]: inconclusive | [continuation-study](continuation-study.md) · `probe/continuation-v1` |
 | 7 | Power analysis | How many fresh questions would confirm study 6? | 3,029 for 80% power; about 122–139 local hours | [confirmation-design](confirmation-design.md) · `probe/continuation-v1/power-analysis.md` |
 | 8 | Frozen confirmation | Confirm the unchanged router on 3,100 fresh questions | **Prepared, not started** (15,500 responses in 31 batches) | [confirmation-design](confirmation-design.md) · `confirmation/frozen-router-v1` |
-| 9 | Shared-correctness CPU development | Does a coherent first-correctness model improve continuation decisions? | At λ=.05: 90.25% at 622 tokens; confidence also 90.25% at 589.4. Secondary high-accuracy lead remains exploratory | [router-dev-results](router-dev-results.md) · `router-dev/shared-base-v1` |
-| — | Proposals | What should come next? | Explore selective verification or a task with more routing headroom; defer study 8 | [router-improvement-research](router-improvement-research.md), [router-research-proposal](router-research-proposal.md), [research-next-steps](research-next-steps.md) |
+| 9 | Shared-correctness CPU development | Does a coherent first-correctness model improve continuation decisions? | At λ=.05: 90.25% at 622 tokens; confidence also 90.25% at 589.4. Secondary high-accuracy lead remains exploratory | [router-dev-results](router-dev-results.md) · corrected `router-dev/shared-base-v2`; v1 preserved |
+| 10 | Evidence repair | Is standalone thinking charged correctly? | Corrected to 91.50% at 1,430.69 tokens; all six other policies unchanged; no solver generation | [Phase 1 record](phase-1-evidence-repair.md) |
+| — | Active roadmap | What should come next? | Protocol repair, supervision diagnosis, then gated data-efficient acquisition; defer study 8 | [research roadmap](research-roadmap.md) |
 
 ### Run registry (`artifacts/runs/`)
 
@@ -168,10 +173,10 @@ or use a GPU.
 
 ## 7. Open decisions and hazards
 
-- **Current worktrees.** This directory is on `research/router-studies`, and the
-  sibling worktree is on `research/pilot-v2`. Both were clean before this
-  documentation update. The studies are committed, while generated artifacts
-  stay local and ignored by Git. Recheck branch and
+- **Current worktrees.** This directory is on `codex/research-data-efficiency`,
+  descended from `research/router-studies`, and the sibling worktree remains on
+  `research/pilot-v2`. The prior handoff is checkpointed at `1b67fbc`, while
+  generated artifacts stay local and ignored by Git. Recheck branch and
   status before continuing work; the root [AGENTS.md](../AGENTS.md) records the
   layout and the active research handoff.
 - **Protocol divergence.** See section 3. Choose one protocol and one scorer

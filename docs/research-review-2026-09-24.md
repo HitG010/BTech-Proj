@@ -1,5 +1,12 @@
 # Research review — 24 September 2026
 
+**Implementation update, 2026-10-01:** the standalone-thinking accounting defect
+in section 2.A is corrected in a new v2 development artifact; v1 is preserved.
+All six other policies and the shared-versus-confidence comparison are unchanged.
+See the [Phase 1 evidence-repair record](phase-1-evidence-repair.md) and the
+[active research roadmap](research-roadmap.md). The review below records the
+evidence and proposals as inspected on September 24.
+
 This review covers the current router-studies worktree, its saved development and diagnostic reports, and the sibling pilot-v2 protocol. Sol and Luna agents assisted with read-only code and evidence inspection. Primary literature and TypeSafe's official Jev documentation were checked on the review date. This is a review and proposed experimental program, not a new experiment or an exhaustive novelty clearance.
 
 **Assessment:** the project has a useful, unusually explicit experimental record, but has not established a new router that beats its strongest simple baseline. The best next investment is protocol repair followed by a small test of learnable, reproducible reasoning benefit. A Jev-inspired decision model is reasonable to investigate; adding Jev or reinforcement learning does not itself establish novelty.

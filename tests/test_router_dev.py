@@ -1,8 +1,10 @@
 import json
 
 import numpy as np
+import pytest
 
-from reasoning_budget import router_dev
+from reasoning_budget import probe, router_dev
+from reasoning_budget.storage import verified
 
 
 def synthetic_states(n=20):
@@ -56,6 +58,22 @@ def test_question_folds_keep_both_orientations_together():
     assert sorted(seen) == list(range(20))
 
 
+def test_standalone_thinking_charges_only_its_generation():
+    direct = np.array([[[0, 100, 2], [0, 250, 5]], [[1, 40, 1], [1, 60, 1.5]]])
+    thinking = np.array([[[1, 800, 16], [0, 900, 18]], [[0, 300, 6], [1, 500, 10]]])
+    rows = probe.continuation_rows(
+        {"direct": direct, "thinking": thinking, "answers": [["3", "3"], ["4", "4"]]}
+    )
+    original = rows.copy()
+    baselines = router_dev.fixed_baselines(rows)
+    np.testing.assert_allclose(baselines["always-thinking"], thinking.mean(axis=1))
+    np.testing.assert_allclose(baselines["always-direct"], direct.mean(axis=1))
+    np.testing.assert_allclose(baselines["DART-SC-2-adapted"], rows[:, :, 1].mean(axis=1))
+    # Thinking after a draft is a different policy and still pays for both calls.
+    np.testing.assert_allclose(rows[:, :, 2, 1:], direct[:, :, 1:] + thinking[:, :, 1:])
+    np.testing.assert_array_equal(rows, original)
+
+
 def test_outer_fold_actions_do_not_use_held_out_outcomes(monkeypatch):
     x, rows = synthetic_states()
     roles = np.array(["train"] * 10 + ["tune"] * 10)
@@ -98,3 +116,42 @@ def test_outer_fold_actions_do_not_use_held_out_outcomes(monkeypatch):
         == result["shared_minus"]["confidence-continuation"]["mean_utility_difference"]
     )
     assert "Held-out fold" in router_dev.report_markdown(result)
+    for i, question in enumerate(result["per_question"]):
+        expected = rows[i, :, 2].mean(axis=0)
+        expected[1:] -= rows[i, :, 0, 1:].mean(axis=0)
+        np.testing.assert_allclose(question["policies"]["always-thinking"], expected)
+    thinking_curve = [p for p in result["curve"] if p["policy"] == "always-thinking"]
+    expected_tokens = (rows[:, :, 2, 1] - rows[:, :, 0, 1]).mean()
+    assert all(p["charged_tokens_per_question"] == expected_tokens for p in thinking_curve)
+
+
+def test_report_creates_new_output_and_rejects_changed_identity(tmp_path, monkeypatch):
+    questions = [{"id": "q0"}]
+    monkeypatch.setattr(
+        router_dev, "load_development", lambda *_args: (questions, None, None, None, {"v": 1})
+    )
+    calls = []
+
+    def evaluate(*_args, **_kwargs):
+        calls.append("evaluate")
+        return {"marker": "corrected"}
+
+    monkeypatch.setattr(router_dev, "evaluate", evaluate)
+    monkeypatch.setattr(router_dev, "report_markdown", lambda report: report["marker"])
+
+    def write_artifacts(output, _report):
+        (output / "curve.csv").write_text("curve")
+        (output / "accuracy-cost.png").write_bytes(b"plot")
+
+    monkeypatch.setattr(router_dev, "write_curve_artifacts", write_artifacts)
+    output = tmp_path / "new" / "shared-base-v2"
+    report_path = router_dev.run(tmp_path / "source", output)
+    saved = verified(report_path)
+    assert saved["identity"]["analysis_version"] == router_dev.ANALYSIS_VERSION
+    assert (output / "report.md").read_text() == "corrected"
+    assert router_dev.run(tmp_path / "source", output) == report_path
+    assert calls == ["evaluate"]
+    monkeypatch.setattr(router_dev, "ANALYSIS_VERSION", "different-analysis")
+    with pytest.raises(ValueError, match="choose a new output directory"):
+        router_dev.run(tmp_path / "source", output)
+    assert verified(report_path) == saved

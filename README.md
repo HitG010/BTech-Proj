@@ -4,7 +4,8 @@ A reproducible Qwen3-1.7B direct-versus-thinking experiment pipeline. The
 repository includes offline scoring, local inference, immutable GSM8K splits,
 resumable jobs, pilot calibration, router studies, and a prepared confirmation
 protocol. See the [research map](docs/README.md) for the current worktree layout,
-results and next research step, and the [plan](plan.md) for the milestone log.
+results, the [active research roadmap](docs/research-roadmap.md) for phases and
+decision gates, and the [plan](plan.md) for the milestone log.
 
 The [completed pilot results](docs/pilot-results.md) and
 [verification record](docs/verification.md) summarize the local runs and audit.
@@ -332,11 +333,13 @@ first-draft orientations stay together. No Qwen generation runs:
 
 ```sh
 HF_HUB_OFFLINE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
-  .venv/bin/python -m reasoning_budget.router_dev
+  .venv/bin/python -m reasoning_budget.router_dev \
+  --output artifacts/router-dev/shared-base-v2
 ```
 
 The [development result](docs/router-dev-results.md) explains the comparison
-and links to its local report. The prepared confirmation protocol belongs to
+and links to its corrected local report. Version 2 repairs standalone-thinking
+costs; the original version 1 artifacts are preserved. The prepared confirmation protocol belongs to
 the earlier unchanged router.
 
 ## Frozen confirmation study

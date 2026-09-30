@@ -23,7 +23,8 @@ from .stronger import fit_transform, transform
 
 SEED = 20260923
 DEFAULT_SOURCE = "artifacts/probe/continuation-v1"
-DEFAULT_OUTPUT = "artifacts/router-dev/shared-base-v1"
+DEFAULT_OUTPUT = "artifacts/router-dev/shared-base-v2"
+ANALYSIS_VERSION = "shared-development-v2"
 PREFERENCE = 0.05
 OUTER_FOLDS = 5
 INNER_FOLDS = 3
@@ -229,6 +230,17 @@ def load_development(source=DEFAULT_SOURCE, progress=print):
     return questions, np.asarray(roles), x, rows, {"protocol": digest(protocol), "sources": sources}
 
 
+def fixed_baselines(rows):
+    """Standalone thinking skips the first draft required by continuation action 2."""
+    thinking = rows[:, :, 2].copy()
+    thinking[:, :, 1:] -= rows[:, :, 0, 1:]
+    return {
+        "always-direct": rows[:, :, 0].mean(axis=1),
+        "always-thinking": thinking.mean(axis=1),
+        "DART-SC-2-adapted": rows[:, :, 1].mean(axis=1),
+    }
+
+
 def evaluate(questions, roles, x, rows, *, progress=print):
     n = len(questions)
     if roles.shape != (n,) or x.shape != (n, 2, 391) or rows.shape != (n, 2, 3, 3):
@@ -295,11 +307,7 @@ def evaluate(questions, roles, x, rows, *, progress=print):
         or any(not np.isfinite(value).all() for value in curve_rows.values())
     ):
         raise ValueError("Out-of-fold result incomplete")
-    base = {
-        "always-direct": rows[:, :, 0].mean(axis=1),
-        "always-thinking": rows[:, :, 2].mean(axis=1),
-        "DART-SC-2-adapted": rows[:, :, 1].mean(axis=1),
-    }
+    base = fixed_baselines(rows)
     all_policies = base | observed
     curve = []
     for name in all_policies:
@@ -408,8 +416,9 @@ def report_markdown(report):
         "Exploratory out-of-fold replay on 200 previously used pilot/validation questions.",
         "Five question-level outer folds; three inner folds select model settings.",
         "The two first-draft orientations stay together. No diagnostic or official test",
-        "question enters fitting or evaluation. One first direct generation and all",
-        "requested continuations count in charged tokens. Cached generation seconds",
+        "question enters fitting or evaluation. Continuation policies charge the first",
+        "direct generation and all requested continuations. Standalone always-thinking",
+        "charges only its thinking generation. Cached generation seconds",
         "exclude encoder/router CPU time. The human scoring audit was waived.",
         "",
         "| Policy | Accuracy | Tokens/question | Utility at λ=.05 |",
@@ -538,6 +547,7 @@ def run(source=DEFAULT_SOURCE, output=DEFAULT_OUTPUT, progress=print):
     source, output = Path(source), Path(output)
     questions, roles, x, rows, sources = load_development(source, progress)
     identity = {
+        "analysis_version": ANALYSIS_VERSION,
         "source": str(source.resolve()),
         "source_checksums": sources,
         "implementation": digest(Path(__file__).read_text()),
@@ -561,6 +571,7 @@ def run(source=DEFAULT_SOURCE, output=DEFAULT_OUTPUT, progress=print):
         return path
     result = evaluate(questions, roles, x, rows, progress=progress)
     payload = {"identity": identity, "result": result}
+    output.mkdir(parents=True, exist_ok=True)
     write_curve_artifacts(output, result)
     (output / "report.md").write_text(report_markdown(result))
     atomic_json(path, envelope(payload))

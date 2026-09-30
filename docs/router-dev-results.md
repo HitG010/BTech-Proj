@@ -1,17 +1,28 @@
 # CPU development test of the shared-correctness router
 
-Completed 2026-09-23. The reproducible local outputs are
-`artifacts/router-dev/shared-base-v1/report.md` and its checksummed
+Completed 2026-09-23; standalone-thinking accounting corrected 2026-10-01.
+The corrected reproducible local outputs are
+`artifacts/router-dev/shared-base-v2/report.md` and its checksummed
 `report.json`; `curve.csv` and `accuracy-cost.png` contain the full out-of-fold
 accuracy–token curve. Run the comparison again from the repository root with:
 
 ```sh
 HF_HUB_OFFLINE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
-  .venv/bin/python -m reasoning_budget.router_dev
+  .venv/bin/python -m reasoning_budget.router_dev \
+  --output artifacts/router-dev/shared-base-v2
 ```
 
 This loads saved generation records and cached MiniLM question features. It fits
 small CPU models; it does not generate Qwen responses or use MPS/CUDA.
+
+The original `shared-base-v1/` artifacts remain unchanged. They incorrectly
+labelled the cost of a direct draft followed by thinking as standalone
+always-thinking. Version 2 subtracts that unnecessary first draft from the
+baseline's token and cached-time costs, retaining its thinking accuracy.
+Continuation action 2 still charges both calls. All six other policies,
+selected settings, actions, calibration results, and shared-versus-confidence
+curves are identical to v1. The preservation and correction checks are saved in
+`artifacts/research/data-efficiency-v1/phase-1-step-1/verification.json`.
 
 ## Question and design
 
@@ -44,7 +55,7 @@ draft, thinking output, gold answer, or held-out labels when choosing an action.
 | Policy | Accuracy | Charged tokens/question | Utility, λ=.05 |
 |---|---:|---:|---:|
 | Always direct | 86.00% | 223.8 | 0.8488 |
-| Always thinking | 91.50% | 1,654.5 | 0.8323 |
+| Always thinking | 91.50% | 1,430.7 | 0.8435 |
 | DART SC-2 adaptation | 90.25% | 702.2 | 0.8674 |
 | Shared-correctness router | 90.25% | 622.0 | 0.8714 |
 | Existing joint router, refitted in folds | 88.50% | 641.9 | 0.8529 |
@@ -57,6 +68,11 @@ existing joint model was **+0.0185** [+0.0061, +0.0315]. But shared minus the
 confidence baseline was **−0.0016** [−0.0092, +0.0055]. Confidence achieved the
 same accuracy using 32.6 fewer generated tokens/question, so the shared router
 does not clear the practical baseline at the preselected preference.
+
+Shared minus correctly charged standalone thinking utility is **+0.0279**,
+with exploratory paired interval **[−0.0015, +0.0572]**. This interval also
+crosses zero. Standalone thinking uses 60.1361 cached generation seconds per
+question; v1 included 9.1229 additional direct-draft seconds per question.
 
 The full curve has a **secondary high-accuracy lead**. At `λ=0`, shared reached
 91.50% at 1,285.7 tokens/question; confidence reached 90.50% at 1,283.2.
@@ -88,6 +104,11 @@ was not a separately frozen confirmation. The cached replay excludes CPU
 encoding/routing time; full DART SC-Budget and ReASC are not reproduced. The
 user waived the human scoring audit.
 
+The active next program is [data-efficient trace acquisition](research-roadmap.md),
+with protocol repair and a supervision-noise diagnosis before new methods or
+large experiments. Selective wrong-agreement verification remains an optional
+development question, with only 11 such cases in these data.
+
 Do not freeze this shared router as a claimed new method or launch the prepared
 3,100-question confirmation for it. That confirmation remains for the unchanged
 old router and has not begun generation. The next useful router question is
@@ -99,7 +120,9 @@ thinking gap may be needed before investing in another large router study.
 
 `src/reasoning_budget/router_dev.py` contains the fit and replay procedure.
 `tests/test_router_dev.py` checks rare-event fallback, question grouping, and
-that changing held-out outcomes does not change that fold's actions. All 116
-offline tests and Ruff lint passed after implementation; the final report
-generation was also rerun after code formatting. The frozen continuation and
-confirmation source files were not changed.
+that changing held-out outcomes does not change that fold's actions. The v2
+tests additionally check standalone versus continuation costs, fresh output
+directory creation, and rejection of changed report identities. All 116
+original offline tests and Ruff passed before the correction; see the
+[Phase 1 record](phase-1-evidence-repair.md) for the corrected validation.
+The frozen continuation and confirmation source files were not changed.
