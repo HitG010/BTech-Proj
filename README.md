@@ -1,10 +1,10 @@
 # Reasoning budget experiments
 
-A reproducible Qwen3-1.7B direct-versus-thinking experiment pipeline. This first
-implementation covers [Milestones A–C](plan.md): offline scoring, local inference,
-immutable GSM8K splits, resumable jobs, and a 100-question pilot. Controllers,
-adaptive acquisition, and confirmation experiments follow the active
-[C.5 calibration and revised acquisition plan](plan.md).
+A reproducible Qwen3-1.7B direct-versus-thinking experiment pipeline. The
+repository includes offline scoring, local inference, immutable GSM8K splits,
+resumable jobs, pilot calibration, router studies, and a prepared confirmation
+protocol. See the [research map](docs/README.md) for the current worktree layout,
+results and next research step, and the [plan](plan.md) for the milestone log.
 
 The [completed pilot results](docs/pilot-results.md) and
 [verification record](docs/verification.md) summarize the local runs and audit.
@@ -323,6 +323,21 @@ uv run --locked rb power artifacts/probe/continuation-v1
 This verifies the saved result dependencies and writes power/sensitivity and
 compute estimates without generation. It cannot guarantee significance. See
 [confirmation design and current feasibility](docs/confirmation-design.md).
+
+## CPU router development comparison
+
+Replay the shared-correctness router and its baselines on cached development
+traces. Settings are selected in inner folds and each held-out question's two
+first-draft orientations stay together. No Qwen generation runs:
+
+```sh
+HF_HUB_OFFLINE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  .venv/bin/python -m reasoning_budget.router_dev
+```
+
+The [development result](docs/router-dev-results.md) explains the comparison
+and links to its local report. The prepared confirmation protocol belongs to
+the earlier unchanged router.
 
 ## Frozen confirmation study
 

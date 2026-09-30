@@ -284,3 +284,12 @@ Implementation and verification status will be recorded here as work completes.
   113 offline tests and actual artifact checks passed. No refitting or generation
   was performed during preparation; GPU collection has not started. Expected
   local time 125–142 hours; ceilings 21.7M charged tokens/217 cumulative hours.
+- 2026-09-23: completed a CPU-only nested question-fold comparison on the
+  existing 100 pilot plus 100 validation questions. A shared first-correctness
+  and action-conditional rescue/harm router reached 90.25% at 622 tokens per
+  question, improving on refitted joint and gain-ridge models. Tuned confidence
+  continuation also reached 90.25% at 589.4 tokens, so the new router did not
+  clear the baseline at the preselected lambda=.05. A secondary high-accuracy
+  region is exploratory, not a revised primary endpoint. The 100-question diagnostic and official test
+  stayed out of fitting and evaluation. All 116 offline tests and Ruff passed;
+  no GPU generation or cloud spend. See [router development results](docs/router-dev-results.md).

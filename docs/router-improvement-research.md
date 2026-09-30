@@ -4,6 +4,10 @@ Research note, 2026-09-22. This is a proposed development path, not a measured
 improvement or a novelty claim. It uses only saved responses and published work;
 no new generation, fitting, or GPU experiment was run for this note.
 
+**Update, 2026-09-23:** the proposed shared-correctness CPU test is complete.
+See [its development results](router-dev-results.md). It improved on refitted
+joint/gain-ridge models but did not beat tuned confidence routing.
+
 ## Decision
 
 Develop a **shared-base continuation router** on the existing 200 development
