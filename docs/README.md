@@ -11,7 +11,9 @@ Snapshot: 2026-10-01. The active implementation branch is
 The [research roadmap](research-roadmap.md) defines the current phases and gates;
 the [first Phase 1 record](phase-1-evidence-repair.md) records the correction,
 and [checkpoint 2](phase-1-protocol-reconciliation.md) records protocol integration
-and legacy reproduction. Current offline verification: 195 passing tests.
+and legacy reproduction. [Checkpoint 3](phase-1-bridge.md) freezes the disjoint
+roles and defines the paired generation bridge. Current offline verification:
+212 passing tests; actual bridge collection is next.
 
 ## 1. The question
 

@@ -19,7 +19,8 @@ tokens for the full pilot confirmation; the original 256-token pilot is retained
 The explicit [bridge config](configs/research-gsm8k-v3.yaml) retains the calibrated
 2,048/512 caps and original prompt, adds both checkpoint stop tokens, and records
 source provenance for every response. Its role manifest and real generation
-bridge are the next step; no new solver outcomes have been collected.
+bridge follow in [checkpoint 3](docs/phase-1-bridge.md), which freezes the disjoint
+roles and provides the bounded collection commands.
 
 Completed studies below use the pinned legacy source at commit `6999eb5`.
 If its local checkout is absent, recreate it with

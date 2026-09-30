@@ -328,3 +328,17 @@ Implementation and verification status will be recorded here as work completes.
   model weights. New bridge config is prepared; role manifests and real bridge
   generation remain next. Solver generations, gold/test access and cloud/API
   spend: zero. See [checkpoint 2](docs/phase-1-protocol-reconciliation.md).
+- 2026-10-01: Phase 1 checkpoint 3 freezes all 4,023 unused GSM8K training
+  questions into disjoint bridge/repeat/acquisition/validation/confirmation/reserve
+  roles (25/50/1200/200/2000/548). Source revision and train Arrow SHA match the
+  prior frozen source; allocation uses only IDs/prompts, seeded normalized hash
+  order and all historical exclusions. Loading fails on source/inventory changes,
+  index mismatch or reserved/external role swaps. No answer/outcome enters selection.
+  Implemented a serial paired bridge: identical 25 questions and per-cell seeds,
+  2 draws/mode, 100 responses/arm; each arm capped at 200k tokens and 4 hours.
+  Legacy source/import/EOS guards, source archives, cumulative resume budgets,
+  common v5 scoring and whole-question paired analysis freeze before generation.
+  All 212 offline tests, Ruff and whitespace checks pass. Fourteen protected
+  artifacts and 21 legacy Python sources retain their hashes. The allocation is
+  now persistent; real bridge preparation/collection follows. Cloud spend $0.
+  See [checkpoint 3](docs/phase-1-bridge.md).

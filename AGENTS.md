@@ -14,7 +14,7 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
   `numeric-v3` and `numeric-v4` have different historical meanings. The active
   branch now uses `numeric-v5` and `qwen3-boxed-budget-v3`; the
   [protocol record](docs/phase-1-protocol-reconciliation.md) explains the merge.
-  A real 25-question generation bridge remains pending; historical generation
+  A real 25-question generation bridge is next; historical generation
   protocols are still not interchangeable.
 - Start with [the research map](docs/README.md) for study results, code layout,
   artifact paths and reading order. [The root README](README.md) covers setup and
@@ -51,3 +51,11 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
   independent confirmation. Do not treat the prepared 3,100-question protocol
   as a test of the new router. Only 11 wrong direct-draft agreements exist in
   development, so selective verification remains a limited optional direction.
+- Phase 1 checkpoint 3 freezes all new GSM8K roles in
+  `artifacts/research/data-efficiency-v1/allocations/manifest.json`: 25 bridge,
+  50 repeat, one 1,200-question acquisition pool, 200 validation, 2,000 new sealed
+  confirmation, 548 reserve. Preparation reads question-only source rows; loading
+  validates live inventory/source hashes, source index, exclusions and pool roles.
+  The [paired bridge](docs/phase-1-bridge.md) is implemented with 100 responses per
+  arm, common v5 scoring only after all 200 complete, and unchanged old code at
+  `6999eb5`. All 212 offline tests pass; real local collection is next.
