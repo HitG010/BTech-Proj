@@ -14,7 +14,7 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
   `numeric-v3` and `numeric-v4` have different historical meanings. The active
   branch now uses `numeric-v5` and `qwen3-boxed-budget-v3`; the
   [protocol record](docs/phase-1-protocol-reconciliation.md) explains the merge.
-  A real 25-question generation bridge is next; historical generation
+  A real 25-question generation bridge is collecting; historical generation
   protocols are still not interchangeable.
 - Start with [the research map](docs/README.md) for study results, code layout,
   artifact paths and reading order. [The root README](README.md) covers setup and
@@ -58,4 +58,11 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
   validates live inventory/source hashes, source index, exclusions and pool roles.
   The [paired bridge](docs/phase-1-bridge.md) is implemented with 100 responses per
   arm, common v5 scoring only after all 200 complete, and unchanged old code at
-  `6999eb5`. All 212 offline tests pass; real local collection is next.
+  `6999eb5`. All 212 offline tests pass. Real local collection is running from
+  frozen `bbcaac2`, supervised by `scripts/bridge_background_worker.py` in a
+  detached process. Read `bridge-v1/background-status.json` under the research
+  artifact root for current progress or use the script's `--status` command.
+  It writes a report and independently verifies the fixed 200-response endpoint,
+  with at most one automatic resume under unchanged budgets. Do not change the
+  frozen package sources/config or launch a duplicate collector. Bridge results
+  and the later-phase gates remain pending; no cloud jobs are launched.

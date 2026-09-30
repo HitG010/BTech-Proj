@@ -1,8 +1,9 @@
 # Phase 1, checkpoint 3: disjoint roles and paired protocol bridge
 
 Allocation frozen 2026-10-01 on `codex/research-data-efficiency`. The bridge
-collector is implemented and verified offline; real collection is next. This
-record will be updated after the fixed endpoint. It follows
+collector is implemented and verified offline; real local collection is running
+under a detached supervisor. This record will be updated after the fixed
+endpoint. It follows
 [protocol reconciliation](phase-1-protocol-reconciliation.md).
 
 ## Frozen allocation
@@ -90,6 +91,9 @@ HF_HUB_OFFLINE=1 caffeinate -i .venv/bin/python -m reasoning_budget.research_bri
   artifacts/research/data-efficiency-v1/bridge-v1
 .venv/bin/python -m reasoning_budget.research_bridge status \
   artifacts/research/data-efficiency-v1/bridge-v1
+# Detach supervision; reuse an active collector or resume under unchanged limits.
+.venv/bin/python scripts/bridge_background_worker.py
+.venv/bin/python scripts/bridge_background_worker.py --status
 ```
 
 The collector writes `legacy.log`, `v3.log`, per-arm runs/completion records,
@@ -106,6 +110,38 @@ and protocol; agent review is not human validation.
 
 ## Collection result
 
-Pending the fixed 200-response endpoint. Do not advance the repeated-draw panel
-until the report and engineering gates have been checked. Preservation evidence
-lives under `artifacts/research/data-efficiency-v1/phase-1-step-3/`.
+Collection started from frozen code `bbcaac2`, with legacy `6999eb5`;
+protocol payload digest
+`ed5f40e722ef869c33a396c55ec57ab3b741a01ee6014612c8c8925376968066`.
+At 2026-09-30 22:30:26 UTC (2026-10-01 local), legacy had completed 49/100
+responses with zero failures; v3 had not started. Comparative outcomes remain
+locked. This is a dated progress snapshot, not a result.
+
+At the user's request, `scripts/bridge_background_worker.py` now supervises the
+collector in a detached process with idle-sleep prevention and a 60-second
+operational heartbeat. It checks the study and both arm locks before starting
+at most one automatic resume, preserving completed cells and the original
+cumulative budgets. It stops with an attention record on errors, incomplete
+coverage after that resume, or its nine-hour monitoring limit. It never starts
+the repeat panel, confirmation or any cloud job.
+
+After all 200 responses finish and collection releases its locks, the worker
+ensures the frozen report exists and runs
+`scripts/verify_phase1_bridge.py`. This separate audit checks common v5 scores,
+matched seeds/cells, token IDs and charges, attempts/setup/reservations, summary
+arithmetic, whole-question bootstrap intervals, all gates, and protected hashes.
+It records checksummed `phase-1-step-3/verification.json`. A manual pre-endpoint
+invocation correctly rejected analysis before gold access. Both new scripts pass
+Ruff; no frozen package source, configuration or analysis rule was changed.
+
+Live state and any completion/error decision are in
+`bridge-v1/background-status.json`; worker output is in
+`bridge-v1/background-worker.log`. Completed output will be `bridge-v1/report.md`
+and `report.json`. Status token/time totals include active or unreleased
+reservations, so they are not elapsed wall-clock measurements during collection.
+The report's MPS memory maximum samples post-response allocation; it is not a
+true peak-memory measurement.
+
+The fixed endpoint and gate review remain pending. Do not advance the
+repeated-draw panel until they pass. Preservation evidence lives under
+`artifacts/research/data-efficiency-v1/phase-1-step-3/`.

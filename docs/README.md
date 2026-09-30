@@ -13,7 +13,7 @@ the [first Phase 1 record](phase-1-evidence-repair.md) records the correction,
 and [checkpoint 2](phase-1-protocol-reconciliation.md) records protocol integration
 and legacy reproduction. [Checkpoint 3](phase-1-bridge.md) freezes the disjoint
 roles and defines the paired generation bridge. Current offline verification:
-212 passing tests; actual bridge collection is next.
+212 passing tests; actual bridge collection is running in the background.
 
 ## 1. The question
 
@@ -91,7 +91,9 @@ and source provenance separate from run identity. Each new response identifies
 its producing session/code; frozen-study readers reject mixed implementations.
 The prompt, 2,048/512 research caps, closure, and original confidence signal are
 retained. See [checkpoint 2](phase-1-protocol-reconciliation.md) for the exact
-configuration. The 25-question generation bridge and role manifests are pending.
+configuration. New role manifests are frozen; the 25-question generation bridge
+is collecting under a detached supervisor. Its artifact status is authoritative
+for completion and gate results; see [checkpoint 3](phase-1-bridge.md).
 
 ## 4. Study timeline
 
@@ -189,7 +191,7 @@ or use a GPU.
   layout and the active research handoff.
 - **Protocol divergence.** Section 3 describes the historical lineages. The new
   protocol/scorer identities are implemented; their real generation bridge is
-  pending. Use pinned legacy code to reproduce earlier frozen studies.
+  collecting. Use pinned legacy code to reproduce earlier frozen studies.
 - **Task headroom.** Both lines found that GSM8K leaves little room between
   cheap confidence routing and the per-question oracle. The branch recommended
   adding a set with a wider thinking gap (numeric MATH, GSM-Plus, or procedural

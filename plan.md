@@ -342,3 +342,14 @@ Implementation and verification status will be recorded here as work completes.
   artifacts and 21 legacy Python sources retain their hashes. The allocation is
   now persistent; real bridge preparation/collection follows. Cloud spend $0.
   See [checkpoint 3](docs/phase-1-bridge.md).
+- 2026-10-01: froze the actual paired bridge at source `bbcaac2` / legacy
+  `6999eb5`, protocol payload `ed5f40e7…68066`, and started local collection.
+  At 22:30:26 UTC, 49 legacy responses were complete with zero failures; outcomes
+  remained locked. At the user's request, replaced chat polling with a detached
+  background supervisor. It waits for collection locks, permits at most one
+  automatic resume under unchanged cumulative limits, then writes the frozen
+  report and runs an independent fixed-endpoint arithmetic/preservation audit.
+  The incomplete-endpoint audit guard and script lint checks pass. Frozen package
+  source/configuration are unchanged. No later experiment or cloud job is launched;
+  report/gate review remains pending in the live artifact status. See
+  [background operation](docs/phase-1-bridge.md).
