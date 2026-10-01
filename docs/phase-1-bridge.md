@@ -212,3 +212,11 @@ and test whether repeated labels and solver-aware features supply reproducible
 routing signal. The current allocation permits only bridge generation; a new
 role-specific protocol must reference its unchanged manifest. No repeat-panel,
 acquisition, confirmation or cloud generation was launched in this checkpoint.
+
+**Later parser preflight, 2026-10-01:** the documented intermediate-box issue is
+resolved by separate opt-in `numeric-v7`; see [the policy and validation
+record](parser-preflight.md). The gold-free 1,100-response check changed only the
+same final-180 case in each arm. Separate sensitivity scores are 41/50 (82%)
+direct and 47/50 (94%) thinking in both arms, with three incomplete responses per
+arm still rejected. This does not revise the frozen v5 bridge report, gates,
+generation source or token charges. A separate Phase 2 protocol is still required.

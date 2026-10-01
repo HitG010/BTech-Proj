@@ -24,6 +24,13 @@ all six engineering gates passed, with identical token sequences across protocol
 on these 25 questions. The next checkpoint is the repeated-label signal study;
 the bridge does not establish router novelty or general protocol equivalence.
 
+The [final-answer parser preflight](docs/parser-preflight.md) resolves the
+documented intermediate-box issue with opt-in `numeric-v7`. A gold-free check of
+1,100 cached responses changed only the same final-180 case in each bridge arm;
+341 offline tests pass. The separate v7 bridge sensitivity is 82% direct / 94%
+thinking. Primary v5 bridge results remain 80% / 94%, and `rb score` still uses
+v5. A new repeat-panel protocol must explicitly pin v7 before using it.
+
 Completed studies below use the pinned legacy source at commit `6999eb5`.
 If its local checkout is absent, recreate it with
 `git worktree add --detach artifacts/legacy/router-studies-6999eb5 6999eb5`.

@@ -369,3 +369,19 @@ Implementation and verification status will be recorded here as work completes.
   speed or novelty claim. Checkpoint 3 is complete; next is a separate frozen
   repeat-panel protocol. Official test stays sealed, old confirmation unstarted,
   and cloud spend $0. See [completed bridge](docs/phase-1-bridge.md).
+- 2026-10-01: completed the requested intermediate-box parser preflight on
+  `codex/research-data-efficiency`. V6 (`715e0f0`) was rejected after a gold-free
+  1,100-response check found 44 prose regressions; no real v6 gold scoring.
+  V7 source/policy froze at `2607206` before its comparison: zero changes on 900
+  historical responses and exactly two changes in the 200 bridge records, the
+  same explicit final-180 case in both arms. Independent gold-free agent review
+  agrees. All 341 tests (66 v7), Ruff and whitespace checks pass. Separate v7
+  sensitivity, using only isolated bridge training gold, is 41/50 direct (82%)
+  and 47/50 thinking (94%) per arm; all three remaining parse failures per arm
+  are truncated and still rejected. Original v5 bridge scores/gates, 2,319
+  protected files, 1,100 input records and 81,593 tokens per arm are unchanged.
+  No new solver generation, shared/official-test gold access, confirmation start
+  or cloud spend. This is a scoring repair on reused data, not novelty or a
+  solver/router gain. Next: freeze a separate repeat-panel protocol pinning v7
+  and its dependency digest, with the unchanged allocation and its own complete
+  endpoint/gold lock. See [parser policy/results](docs/parser-preflight.md).

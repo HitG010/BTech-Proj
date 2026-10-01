@@ -13,8 +13,9 @@ the [first Phase 1 record](phase-1-evidence-repair.md) records the correction,
 and [checkpoint 2](phase-1-protocol-reconciliation.md) records protocol integration
 and legacy reproduction. [Checkpoint 3](phase-1-bridge.md) freezes the disjoint
 roles and defines the paired generation bridge. Current offline verification:
-212 passing tests; actual bridge collection and endpoint verification are complete,
-with all six engineering gates passed.
+341 passing tests; actual bridge collection and endpoint verification are complete,
+with all six engineering gates passed. The [parser preflight](parser-preflight.md)
+adds opt-in v7 while preserving the primary bridge's frozen v5 results.
 
 ## 1. The question
 
@@ -96,7 +97,11 @@ configuration. New role manifests are frozen; the 25-question generation bridge
 completed 200/200 responses and passed all six engineering gates. All 100 matched
 cells have identical token sequences across protocols on these inputs. See
 [checkpoint 3](phase-1-bridge.md) for results and the unexercised new-EOS path,
-conservative scoring limitation, and Phase 2 preflight.
+conservative scoring limitation, and Phase 2 preflight. That scoring issue is now
+resolved by separate v7 extraction: zero changes on 900 historical responses,
+and only the duplicated final-180 case changes in the 200 bridge responses.
+The separate sensitivity is 82% direct / 94% thinking; the v5 primary bridge
+remains 80% / 94%. See [parser preflight](parser-preflight.md).
 
 ## 4. Study timeline
 
@@ -119,6 +124,7 @@ ignored by Git.
 | 10 | Evidence repair | Is standalone thinking charged correctly? | Corrected to 91.50% at 1,430.69 tokens; all six other policies unchanged; no solver generation | [Phase 1 record](phase-1-evidence-repair.md) |
 | 11 | Protocol reconciliation | Can new collection be consistent and historical artifacts preserved? | 195 offline tests; 900 records and 14 artifacts preserved; zero gold-free parser differences; real bridge pending | [Checkpoint 2](phase-1-protocol-reconciliation.md) |
 | 12 | Paired protocol bridge | Does v3 pass the engineering screen on 25 new training questions? | 200/200 completed; all gates pass; 100/100 matched token sequences; direct 80%, thinking 94% in both arms; finite v3 direct confidence 50/50 | [Checkpoint 3](phase-1-bridge.md) · `research/data-efficiency-v1/bridge-v1` |
+| 13 | Parser preflight | Can final sections distinguish intermediate boxes without losing valid cached answers? | V6 rejected for 44 prose regressions; v7 changes only one duplicated bridge case across 1,100 records. Separate sensitivity 82%/94%; primary v5 unchanged | [Parser preflight](parser-preflight.md) · `research/data-efficiency-v1/parser-v7-preflight-v1` |
 | — | Active roadmap | What should come next? | Protocol repair, supervision diagnosis, then gated data-efficient acquisition; defer study 8 | [research roadmap](research-roadmap.md) |
 
 ### Run registry (`artifacts/runs/`)
@@ -153,6 +159,8 @@ reports → router studies.
 | Generation | `backend.py` | Batch-one Transformers backend with a two-stage (reasoning, answer) protocol and forced closure; fake backend for tests | `rb doctor` |
 | | `runner.py` | Resumable jobs, per-job seeds, token/time reservations, attempt ledger | `rb smoke`, `rb generate` |
 | Scoring & reporting | `scoring.py` | Exact rational numeric parser that never sees gold | `rb score` |
+| | `scoring_v7.py` | Opt-in final-section parser; complete frozen bridge or synthetic fixtures only | `python -m reasoning_budget.scoring_v7` |
+| | `scoring_v6.py` | Rejected numeric-only candidate retained for provenance; v7 also reuses structural helpers | Do not select for new studies |
 | | `reporting.py` | Whole-question bootstrap, paired differences, audit worksheets, cost projection | `rb report`, `rb audit` |
 | Study 2 | `calibration.py` | Answer-cap comparison and confirmation | `rb calibrate …` |
 | Study 4 | `controller.py` | MiniLM + lexical features (387 dims); four ridge predictors; portable model | — |

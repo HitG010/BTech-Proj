@@ -28,8 +28,8 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
 - `artifacts/legacy/router-studies-6999eb5/` is a detached legacy checkout for
   frozen-study commands. Use its `src/` through `PYTHONPATH` from this root; the
   shared editable environment alone imports the current source. The new code
-  correctly rejects legacy frozen studies. Current offline verification is
-  195 tests; no new generation, gold/test access, or cloud spend in checkpoint 2.
+  correctly rejects legacy frozen studies. Checkpoint 2 verified
+  195 tests; no new generation, gold/test access, or cloud spend in that checkpoint.
 - The 3,100-question confirmation in
   `artifacts/confirmation/frozen-router-v1/` is prepared for the **unchanged**
   joint router; `status.json` says generation has not started. The user deferred
@@ -58,8 +58,8 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
   validates live inventory/source hashes, source index, exclusions and pool roles.
   The [paired bridge](docs/phase-1-bridge.md) is implemented with 100 responses per
   arm, common v5 scoring only after all 200 complete, and unchanged old code at
-  `6999eb5`. All 212 offline tests pass. Collection from frozen `bbcaac2` is
-  complete: 200/200 responses, zero failures/retries, all six engineering gates
+  `6999eb5`. Its pre-collection verification passed 212 offline tests. Collection
+  from frozen `bbcaac2` is complete: 200/200 responses, zero failures/retries, all six engineering gates
   passed, and every matched cell has identical token sequences across protocols.
   Direct accuracy is 80%, thinking 94%; v3 raw direct confidence is finite on
   50/50 responses. Both arms charge 81,593 tokens. Independent endpoint
@@ -67,8 +67,24 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
   recorded `complete` at 2026-09-30 23:52:04 UTC; report and verification paths
   are in `bridge-v1/background-status.json`. Do not restart the completed study
   or change frozen package sources/config. EOS `151643` was not emitted in this
-  bridge; timing is not a causal speed comparison. A conservative multiple-box
-  scoring limitation is documented for the Phase 2 preflight. Next is a separate
-  frozen 50-question repeat-panel protocol (projected 7.04 local hours excluding
+  bridge; timing is not a causal speed comparison. The multiple-box
+  scoring limitation is resolved by the separate parser preflight below. Next is
+  a separate frozen 50-question repeat-panel protocol (projected 7.04 local hours excluding
   setup/retries); its generation permission must reference the unchanged role
   allocation. Later phases remain pending. Cloud expenditure is $0.
+- The [parser preflight](docs/parser-preflight.md) is complete. V6 was rejected
+  for 44 gold-free prose regressions and is retained for provenance. Opt-in v7
+  was frozen at `2607206`; its implementation digest is
+  `c63d69c3c9cb89a0ee72915172bba569b3ec8329d5ef0be30291297fe7bb8964`.
+  All 341 offline tests pass (66 v7 tests). Of 1,100 cached responses, only the
+  same final-180 case in each bridge arm changes; 900 historical extracts are
+  identical. Separate v7 sensitivity is 82% direct / 94% thinking, using only
+  isolated 25-question bridge training gold. Primary bridge v5 remains 80%/94%;
+  all 2,319 protected files and input records are unchanged. The ordinary CLI
+  still uses v5. V7's opt-in scorer permits only complete frozen bridge arms or
+  synthetic fixtures; real repeat scoring requires a new endpoint-locked Phase 2
+  protocol pinning v7/dependencies and the unchanged allocation. No generation,
+  historical shared/official-test gold access, confirmation start or cloud spend
+  occurred in this preflight. Do not restart the bridge or edit frozen existing
+  package files. Artifacts: `parser-v6-preflight-v1/` and `parser-v7-preflight-v1/`
+  under `artifacts/research/data-efficiency-v1/`.
