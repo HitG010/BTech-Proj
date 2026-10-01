@@ -14,7 +14,7 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
   `numeric-v3` and `numeric-v4` have different historical meanings. The active
   branch now uses `numeric-v5` and `qwen3-boxed-budget-v3`; the
   [protocol record](docs/phase-1-protocol-reconciliation.md) explains the merge.
-  A real 25-question generation bridge is collecting; historical generation
+  The real 25-question generation bridge is complete; historical generation
   protocols are still not interchangeable.
 - Start with [the research map](docs/README.md) for study results, code layout,
   artifact paths and reading order. [The root README](README.md) covers setup and
@@ -58,11 +58,17 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
   validates live inventory/source hashes, source index, exclusions and pool roles.
   The [paired bridge](docs/phase-1-bridge.md) is implemented with 100 responses per
   arm, common v5 scoring only after all 200 complete, and unchanged old code at
-  `6999eb5`. All 212 offline tests pass. Real local collection is running from
-  frozen `bbcaac2`, supervised by `scripts/bridge_background_worker.py` in a
-  detached process. Read `bridge-v1/background-status.json` under the research
-  artifact root for current progress or use the script's `--status` command.
-  It writes a report and independently verifies the fixed 200-response endpoint,
-  with at most one automatic resume under unchanged budgets. Do not change the
-  frozen package sources/config or launch a duplicate collector. Bridge results
-  and the later-phase gates remain pending; no cloud jobs are launched.
+  `6999eb5`. All 212 offline tests pass. Collection from frozen `bbcaac2` is
+  complete: 200/200 responses, zero failures/retries, all six engineering gates
+  passed, and every matched cell has identical token sequences across protocols.
+  Direct accuracy is 80%, thinking 94%; v3 raw direct confidence is finite on
+  50/50 responses. Both arms charge 81,593 tokens. Independent endpoint
+  arithmetic/provenance/preservation checks passed. The background supervisor
+  recorded `complete` at 2026-09-30 23:52:04 UTC; report and verification paths
+  are in `bridge-v1/background-status.json`. Do not restart the completed study
+  or change frozen package sources/config. EOS `151643` was not emitted in this
+  bridge; timing is not a causal speed comparison. A conservative multiple-box
+  scoring limitation is documented for the Phase 2 preflight. Next is a separate
+  frozen 50-question repeat-panel protocol (projected 7.04 local hours excluding
+  setup/retries); its generation permission must reference the unchanged role
+  allocation. Later phases remain pending. Cloud expenditure is $0.

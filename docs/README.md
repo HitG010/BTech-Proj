@@ -13,7 +13,8 @@ the [first Phase 1 record](phase-1-evidence-repair.md) records the correction,
 and [checkpoint 2](phase-1-protocol-reconciliation.md) records protocol integration
 and legacy reproduction. [Checkpoint 3](phase-1-bridge.md) freezes the disjoint
 roles and defines the paired generation bridge. Current offline verification:
-212 passing tests; actual bridge collection is running in the background.
+212 passing tests; actual bridge collection and endpoint verification are complete,
+with all six engineering gates passed.
 
 ## 1. The question
 
@@ -92,8 +93,10 @@ its producing session/code; frozen-study readers reject mixed implementations.
 The prompt, 2,048/512 research caps, closure, and original confidence signal are
 retained. See [checkpoint 2](phase-1-protocol-reconciliation.md) for the exact
 configuration. New role manifests are frozen; the 25-question generation bridge
-is collecting under a detached supervisor. Its artifact status is authoritative
-for completion and gate results; see [checkpoint 3](phase-1-bridge.md).
+completed 200/200 responses and passed all six engineering gates. All 100 matched
+cells have identical token sequences across protocols on these inputs. See
+[checkpoint 3](phase-1-bridge.md) for results and the unexercised new-EOS path,
+conservative scoring limitation, and Phase 2 preflight.
 
 ## 4. Study timeline
 
@@ -115,6 +118,7 @@ ignored by Git.
 | 9 | Shared-correctness CPU development | Does a coherent first-correctness model improve continuation decisions? | At λ=.05: 90.25% at 622 tokens; confidence also 90.25% at 589.4. Secondary high-accuracy lead remains exploratory | [router-dev-results](router-dev-results.md) · corrected `router-dev/shared-base-v2`; v1 preserved |
 | 10 | Evidence repair | Is standalone thinking charged correctly? | Corrected to 91.50% at 1,430.69 tokens; all six other policies unchanged; no solver generation | [Phase 1 record](phase-1-evidence-repair.md) |
 | 11 | Protocol reconciliation | Can new collection be consistent and historical artifacts preserved? | 195 offline tests; 900 records and 14 artifacts preserved; zero gold-free parser differences; real bridge pending | [Checkpoint 2](phase-1-protocol-reconciliation.md) |
+| 12 | Paired protocol bridge | Does v3 pass the engineering screen on 25 new training questions? | 200/200 completed; all gates pass; 100/100 matched token sequences; direct 80%, thinking 94% in both arms; finite v3 direct confidence 50/50 | [Checkpoint 3](phase-1-bridge.md) · `research/data-efficiency-v1/bridge-v1` |
 | — | Active roadmap | What should come next? | Protocol repair, supervision diagnosis, then gated data-efficient acquisition; defer study 8 | [research roadmap](research-roadmap.md) |
 
 ### Run registry (`artifacts/runs/`)
@@ -191,7 +195,9 @@ or use a GPU.
   layout and the active research handoff.
 - **Protocol divergence.** Section 3 describes the historical lineages. The new
   protocol/scorer identities are implemented; their real generation bridge is
-  collecting. Use pinned legacy code to reproduce earlier frozen studies.
+  complete with all engineering gates passed. Exact observed agreement on the
+  bridge does not justify pooling other historical protocols or claiming global
+  equivalence. Use pinned legacy code to reproduce earlier frozen studies.
 - **Task headroom.** Both lines found that GSM8K leaves little room between
   cheap confidence routing and the per-question oracle. The branch recommended
   adding a set with a wider thinking gap (numeric MATH, GSM-Plus, or procedural

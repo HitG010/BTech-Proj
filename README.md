@@ -18,9 +18,11 @@ tokens for the full pilot confirmation; the original 256-token pilot is retained
 `qwen3-boxed-budget-v3` and the uniquely identified `numeric-v5` scorer.
 The explicit [bridge config](configs/research-gsm8k-v3.yaml) retains the calibrated
 2,048/512 caps and original prompt, adds both checkpoint stop tokens, and records
-source provenance for every response. Its role manifest and real generation
-bridge follow in [checkpoint 3](docs/phase-1-bridge.md), which freezes the disjoint
-roles and provides the bounded collection commands.
+source provenance for every response. [Checkpoint 3](docs/phase-1-bridge.md)
+freezes the disjoint roles and records the completed 200-response paired bridge:
+all six engineering gates passed, with identical token sequences across protocols
+on these 25 questions. The next checkpoint is the repeated-label signal study;
+the bridge does not establish router novelty or general protocol equivalence.
 
 Completed studies below use the pinned legacy source at commit `6999eb5`.
 If its local checkout is absent, recreate it with

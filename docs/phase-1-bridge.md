@@ -1,9 +1,8 @@
 # Phase 1, checkpoint 3: disjoint roles and paired protocol bridge
 
 Allocation frozen 2026-10-01 on `codex/research-data-efficiency`. The bridge
-collector is implemented and verified offline; real local collection is running
-under a detached supervisor. This record will be updated after the fixed
-endpoint. It follows
+collector completed its fixed endpoint and passed all six engineering gates.
+Background verification finished on 2026-10-01 local time. It follows
 [protocol reconciliation](phase-1-protocol-reconciliation.md).
 
 ## Frozen allocation
@@ -113,11 +112,67 @@ and protocol; agent review is not human validation.
 Collection started from frozen code `bbcaac2`, with legacy `6999eb5`;
 protocol payload digest
 `ed5f40e722ef869c33a396c55ec57ab3b741a01ee6014612c8c8925376968066`.
-At 2026-09-30 22:30:26 UTC (2026-10-01 local), legacy had completed 49/100
-responses with zero failures; v3 had not started. Comparative outcomes remain
-locked. This is a dated progress snapshot, not a result.
+Both arms completed **100/100 responses**, with zero failed attempts, one model
+loading session per arm, and no automatic resume. The detached supervisor
+recorded completion at 2026-09-30 23:52:04 UTC (2026-10-01 05:22:04 IST).
+Comparative scoring ran only after all 200 responses finished.
 
-At the user's request, `scripts/bridge_background_worker.py` now supervises the
+| Arm | Mode | Correct / responses | Charged tokens / response | Seconds / response | Parse failures | Answer truncations |
+|---|---|---:|---:|---:|---:|---:|
+| Legacy | Direct | 40/50 (80%) | 211.00 | 8.23 | 2/50 (4%) | 1/50 (2%) |
+| Legacy | Thinking | 47/50 (94%) | 1,420.86 | 57.09 | 2/50 (4%) | 2/50 (4%) |
+| V3 | Direct | 40/50 (80%) | 211.00 | 8.10 | 2/50 (4%) | 1/50 (2%) |
+| V3 | Thinking | 47/50 (94%) | 1,420.86 | 55.30 | 2/50 (4%) | 2/50 (4%) |
+
+All **100 matched cells have identical token sequences, terminations and extracted
+answers** across arms. Paired accuracy, charged-token and utility differences
+are zero, with bootstrap intervals `[0, 0]` on these 25 questions. This exact
+observed match supports continuing with v3, but does not establish equivalence
+on unseen inputs or a novel router result. Each arm charged 81,593 tokens,
+including 16 inserted closure tokens: **163,186 charged tokens total**. Recorded
+inference/attempt/setup time was 0.9107 legacy hours plus 0.8833 v3 hours;
+setup accounted for 12.26 and 9.67 seconds respectively. No retries or cloud
+expenditure occurred.
+
+| Predeclared engineering gate | Observed result | Decision |
+|---|---|---|
+| Complete matched collection and valid provenance/accounting | 200/200 completed; matched seeds; frozen code/config and ledger checks pass | Pass |
+| Finite v3 raw direct confidence on every response | 50/50 | Pass |
+| At most 5% answer truncation in each v3 mode | Direct 2%; thinking 4% | Pass |
+| At most 5% parser failure in each v3 mode | Direct 4%; thinking 4% | Pass |
+| No observed accuracy loss larger than 10 percentage points per mode | Zero loss in both modes | Pass |
+| Projected 50-question/eight-draw-per-mode panel at most 48 local hours | 7.04 hours, excluding setup/retries | Pass |
+
+The 800-response repeat-panel projection is
+`50 × 8 × (8.0972 + 55.3022) / 3600 = 7.0444` hours. It is a planning estimate,
+not a guaranteed runtime. The bridge supports local collection; no cloud pilot
+is needed for this checkpoint.
+
+### Remaining limitations and next preflight
+
+- Every naturally terminated response ended with EOS `151645` (97/100 per arm);
+  none generated `151643`. The added EOS stop path is configured and tested
+  offline, but was not exercised by real outputs here. Eight thinking responses
+  per arm used forced closure. Broader EOS equivalence is untested.
+- Three v3 parse failures are incomplete, answer-capped responses. The fourth,
+  direct sample 0 of `gsm8k-train-b4edeb1f526dc57ea197`, boxes intermediate totals
+  170 and 180 before a final answer of 180, matching the isolated bridge gold.
+  The frozen v5 rule rejects differing explicit boxes as `conflicting`. This is
+  a conservative scoring limitation, not evidence that the model's final answer
+  was numerically wrong. Keep the primary bridge scores unchanged. Before new
+  repeated-label collection, document a gold-independent, adversarially checked
+  scoring policy for intermediate versus final claims; any change needs its own
+  version and frozen protocol rather than silently replacing v5.
+- Finite confidence coverage establishes measurement availability, not confidence
+  calibration or predictive usefulness. Those are Phase 2 questions.
+- V3's observed timing is lower, but serial arm order and MPS thermal variation
+  prevent a causal speed-improvement claim. The observed MPS allocation maximum
+  is sampled after each response, not the actual generation-time memory peak.
+- The loss and failure thresholds are engineering screens on 25 questions.
+  Passing them does not establish superiority, noninferiority, equivalence,
+  novelty or task/model generalization.
+
+At the user's request, `scripts/bridge_background_worker.py` supervised the
 collector in a detached process with idle-sleep prevention and a 60-second
 operational heartbeat. It checks the study and both arm locks before starting
 at most one automatic resume, preserving completed cells and the original
@@ -125,23 +180,35 @@ cumulative budgets. It stops with an attention record on errors, incomplete
 coverage after that resume, or its nine-hour monitoring limit. It never starts
 the repeat panel, confirmation or any cloud job.
 
-After all 200 responses finish and collection releases its locks, the worker
-ensures the frozen report exists and runs
+After all 200 responses finished and collection released its locks, the worker
+checked the frozen report and ran
 `scripts/verify_phase1_bridge.py`. This separate audit checks common v5 scores,
 matched seeds/cells, token IDs and charges, attempts/setup/reservations, summary
 arithmetic, whole-question bootstrap intervals, all gates, and protected hashes.
-It records checksummed `phase-1-step-3/verification.json`. A manual pre-endpoint
+It recorded checksummed `phase-1-step-3/verification.json`. A manual pre-endpoint
 invocation correctly rejected analysis before gold access. Both new scripts pass
 Ruff; no frozen package source, configuration or analysis rule was changed.
 
-Live state and any completion/error decision are in
+The final state (`complete`) and gate decision are in
 `bridge-v1/background-status.json`; worker output is in
-`bridge-v1/background-worker.log`. Completed output will be `bridge-v1/report.md`
+`bridge-v1/background-worker.log`. Completed output is `bridge-v1/report.md`
 and `report.json`. Status token/time totals include active or unreleased
 reservations, so they are not elapsed wall-clock measurements during collection.
 The report's MPS memory maximum samples post-response allocation; it is not a
 true peak-memory measurement.
 
-The fixed endpoint and gate review remain pending. Do not advance the
-repeated-draw panel until they pass. Preservation evidence lives under
+The endpoint audit passed: common frozen-v5 rescoring, cache digests, paired
+arithmetic/bootstrap, stage token counts, ledgers and budgets all agree. It
+reuses the same scorer and is not a second independently implemented parser or
+human validation. All 14 protected artifacts and 21 legacy Python sources retain
+their hashes; the old 3,100-question confirmation remains unstarted, and official
+test gold stays sealed. Independent agent review agrees with the engineering
+decision and the limitations above. Preservation evidence lives under
 `artifacts/research/data-efficiency-v1/phase-1-step-3/`.
+
+**Checkpoint 3 is complete.** Next is Phase 2: freeze a separate protocol for the
+already allocated 50-question repeat panel, resolve the scoring-policy preflight,
+and test whether repeated labels and solver-aware features supply reproducible
+routing signal. The current allocation permits only bridge generation; a new
+role-specific protocol must reference its unchanged manifest. No repeat-panel,
+acquisition, confirmation or cloud generation was launched in this checkpoint.

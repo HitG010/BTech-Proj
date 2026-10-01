@@ -353,3 +353,19 @@ Implementation and verification status will be recorded here as work completes.
   source/configuration are unchanged. No later experiment or cloud job is launched;
   report/gate review remains pending in the live artifact status. See
   [background operation](docs/phase-1-bridge.md).
+- 2026-10-01: the paired bridge completed its fixed 200-response endpoint and
+  background verification at 23:52:04 UTC (05:22:04 IST), without a retry or
+  automatic resume. Each arm charges 81,593 tokens; 163,186 total, including
+  inserted closures. Direct accuracy is 40/50 (80%) and thinking 47/50 (94%) in
+  both arms; all 100 matched token sequences, terminations and extracted answers
+  are identical. V3 finite raw direct confidence covers 50/50. All six
+  predeclared engineering gates pass; the 800-response repeat-panel projection
+  is 7.04 local hours excluding setup/retries. Independent arithmetic/bootstrap,
+  common-v5 score-cache, budget and source checks pass; all 14 protected artifacts
+  and 21 legacy sources retain their hashes. New EOS 151643 was not generated;
+  one otherwise correct final answer is rejected for differing intermediate
+  boxes under the frozen conservative scorer. Record this as a Phase 2 scoring
+  preflight issue, preserve the bridge scores, and make no equivalence, causal
+  speed or novelty claim. Checkpoint 3 is complete; next is a separate frozen
+  repeat-panel protocol. Official test stays sealed, old confirmation unstarted,
+  and cloud spend $0. See [completed bridge](docs/phase-1-bridge.md).
