@@ -88,3 +88,24 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
   occurred in this preflight. Do not restart the bridge or edit frozen existing
   package files. Artifacts: `parser-v6-preflight-v1/` and `parser-v7-preflight-v1/`
   under `artifacts/research/data-efficiency-v1/`.
+- Phase 2 [repeat-panel preparation](docs/phase-2-repeat-panel.md) is complete
+  from source `272403f`. Protocol `8b01db2c…6f3c812` under `repeat-panel-v1/`
+  pins the unchanged allocation and 50 repeat questions, v7, all 800 independent
+  jobs/seeds, 50×387 question features and five 10-question folds. All 363 tests
+  pass (22 new repeat tests). Status is prepared, 0/800, generation not started;
+  no repeat reference answers or official-test gold were opened. Maximum planned
+  reservations are 1,229,600 tokens; cumulative local limits are 1.4M tokens and
+  12 hours including setup/retries. The question-only `data/repeat/` manifest has
+  `gold_sha256: null`; do not add a gold file or use ordinary `rb score` on it.
+  Use the additive `python -m reasoning_budget.research_repeat` prepare/status/
+  collect/score/analyze commands. Only its full 800-completed endpoint permits
+  fetching the 50 selected upstream-training answers and separate v7 scoring.
+  Every source/config/feature/role and attempt/setup timestamp is guarded; do not
+  edit frozen existing package files or launch duplicate collectors. The two
+  four-draw halves provide independent-draw diagnostics; all model tuning stays
+  within the acquired training-half labels and question folds. Eight-draw labels
+  have no independent same-question eight-draw replica. Scale acquisition only
+  if all predeclared signal/utility gates pass. The next slice is bounded local
+  collection with a dedicated detached worker, not the completed bridge worker.
+  No Phase 2 generation or cloud spend in this preparation checkpoint; all 2,319
+  protected original files and the old unstarted confirmation remain unchanged.

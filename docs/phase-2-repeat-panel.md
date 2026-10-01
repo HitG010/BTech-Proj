@@ -143,6 +143,7 @@ Commands from the repository root with the pinned environment:
 
 ```sh
 HF_HUB_OFFLINE=1 PYTORCH_ENABLE_MPS_FALLBACK=0 \
+  OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
   .venv/bin/python -m reasoning_budget.research_repeat prepare
 .venv/bin/python -m reasoning_budget.research_repeat status
 ```
@@ -153,6 +154,7 @@ and cumulative limits:
 
 ```sh
 HF_HUB_OFFLINE=1 PYTORCH_ENABLE_MPS_FALLBACK=0 \
+  OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
   .venv/bin/python -m reasoning_budget.research_repeat collect
 .venv/bin/python -m reasoning_budget.research_repeat analyze
 ```
@@ -163,5 +165,46 @@ be restarted or pointed at this protocol. The v7 standalone bridge CLI remains
 restricted; repeat scoring uses this study's complete-endpoint guard and separate
 sidecar. No new generation or reference-answer access occurs in preparation.
 
-Actual preparation identifiers, test/preservation evidence and current status
-will be recorded below after the real tokenizer/feature preflight completes.
+## Actual preparation checkpoint
+
+Prepared from committed source **`272403f`**. Real cached tokenizer inspection
+resolved `qwen3-boxed-budget-v3`, Qwen revision
+`70d244cc86ccca08cf5af4e1e306ecf908b1ad5e`, MPS/float16, EOS
+`[151643,151645]` and closure `[151668,271]`; Qwen weights were not loaded.
+The pinned MiniLM question encoder produced a frozen **50 × 387** feature
+matrix on CPU. Every outer fold has ten questions. All 800 job IDs and seeds
+are unique. Maximum job reservations total **1,229,600 tokens**, within the
+1,400,000 ceiling.
+
+- Repeat protocol: `8b01db2cbb7b8d1777c40aa0a873f4626e4c6b2a04e9135a377a085a76f3c812`.
+- Repeat implementation: `cd3bf4240b7f31921fe71c2e10120f0454527263e570b6f6bd5f67b17e5416db`.
+- V7 scorer: `c63d69c3c9cb89a0ee72915172bba569b3ec8329d5ef0be30291297fe7bb8964`.
+
+All **363 offline tests** pass, including 22 new repeat tests; Ruff and whitespace
+checks pass. Meaningful synthetic checks cover held-out label invariance,
+unused-draw invariance in inner tuning, correct sunk/total-cost arithmetic,
+grouped bootstrap, deterministic ties, selected-only reference access, incomplete
+and over-budget gold locks, resume without duplicates, changed data/features/
+sources, score-cache tampering, pre-freeze/orphan attempts and deferred gold.
+Agents reviewed allocation/source isolation and statistical design; the existing
+human-audit waiver remains unchanged. Agent review found the inner tuning leak,
+formula/config issues and orphan-attempt boundary; all were repaired before freeze.
+
+Checksummed `repeat-panel-v1/preflight-verification.json` verifies the unchanged
+allocation, decoder, job/fold identities, feature dimensions, frozen package,
+scorer and all **2,319 protected original files**. Original bridge scores and
+cached responses remain unchanged. Old confirmation remains unstarted. Current
+status is **prepared, 0/800, generation not started, analysis locked**. No repeat
+reference answer or official-test gold was opened; no real solver response,
+cloud job or expenditure occurred in this checkpoint.
+
+`endpoint-lock-verification.json` additionally confirms repeated preparation
+preserves protocol bytes and a real unstarted scoring call rejects before
+reference-answer access, without creating scores or a result report.
+
+Artifacts under `artifacts/research/data-efficiency-v1/repeat-panel-v1/` are
+`protocol.json`, `config.yaml`, `question-features.json`, `feature-cache/`,
+`frozen_code/reasoning_budget/`, `status.json` and `preflight-verification.json`.
+The question-only role lives under `data/repeat/`. No run manifest, score artifact
+or result report exists yet. The next execution slice is bounded local collection
+under this exact protocol, using a dedicated detached worker.

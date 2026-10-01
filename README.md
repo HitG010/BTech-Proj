@@ -29,7 +29,9 @@ documented intermediate-box issue with opt-in `numeric-v7`. A gold-free check of
 1,100 cached responses changed only the same final-180 case in each bridge arm;
 341 offline tests pass. The separate v7 bridge sensitivity is 82% direct / 94%
 thinking. Primary v5 bridge results remain 80% / 94%, and `rb score` still uses
-v5. A new repeat-panel protocol must explicitly pin v7 before using it.
+v5. The [Phase 2 repeat-panel protocol](docs/phase-2-repeat-panel.md) now pins v7,
+the unchanged 50-question role and 800 independent generation jobs. It is
+prepared with generation unstarted and reference answers deferred until completion.
 
 Completed studies below use the pinned legacy source at commit `6999eb5`.
 If its local checkout is absent, recreate it with

@@ -385,3 +385,24 @@ Implementation and verification status will be recorded here as work completes.
   solver/router gain. Next: freeze a separate repeat-panel protocol pinning v7
   and its dependency digest, with the unchanged allocation and its own complete
   endpoint/gold lock. See [parser policy/results](docs/parser-preflight.md).
+- 2026-10-01: prepared the separate Phase 2 repeat-panel protocol from `272403f`,
+  protocol `8b01db2c…6f3c812`, on the same implementation branch. All 50 frozen
+  repeat-role questions and 800 independent job IDs/seeds are pinned with v7,
+  unchanged bridged inference settings, five 10-question folds and 50×387 pinned
+  question features. Question data is gold-free (`gold_sha256: null`); only the
+  completed endpoint permits selected-training-answer access and a versioned
+  score sidecar. Added bounded resumable collection, source/role/package/data/
+  feature guards, all-attempt/session provenance and cumulative budget checks.
+  Nested question-fold analyses compare independent four-draw halves and 1/2/4
+  supervision budgets, with eight draws secondary; inner tuning uses only the
+  acquired training-half labels. Report standalone/post-direct gains distinctly,
+  charge the sunk draft in total policy cost, and freeze conservative progression
+  gates before outcomes. Agent review exposed configuration/formula/tuning and
+  orphan-attempt issues; fixed before real preflight. All 363 tests (22 new),
+  Ruff, whitespace, real tokenizer/feature preflight and 2,319-file preservation
+  checks pass. Planned maximum reservations 1,229,600 tokens; local cumulative
+  ceiling 1.4M tokens/12 hours, projected generation 7.04 hours excluding overhead.
+  Status prepared, 0/800: generation unstarted, analysis locked, repeat reference
+  answers and official test unopened, old confirmation unstarted, cloud spend $0.
+  Next slice is local collection with a dedicated detached worker under this exact
+  protocol. See [Phase 2 design and preparation](docs/phase-2-repeat-panel.md).
