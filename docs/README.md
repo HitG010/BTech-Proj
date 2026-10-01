@@ -13,12 +13,13 @@ the [first Phase 1 record](phase-1-evidence-repair.md) records the correction,
 and [checkpoint 2](phase-1-protocol-reconciliation.md) records protocol integration
 and legacy reproduction. [Checkpoint 3](phase-1-bridge.md) freezes the disjoint
 roles and defines the paired generation bridge. Current offline verification:
-363 passing tests; actual bridge collection and endpoint verification are complete,
+372 passing checks (363 existing tests plus nine operational tests); actual bridge collection and endpoint verification are complete,
 with all six engineering gates passed. The [parser preflight](parser-preflight.md)
 adds opt-in v7 while preserving the primary bridge's frozen v5 results.
-The [repeat-panel protocol](phase-2-repeat-panel.md) is prepared: 50 disjoint
+The [repeat-panel protocol](phase-2-repeat-panel.md) is frozen: 50 disjoint
 questions, 800 jobs, independent draw halves, question-held-out diagnostics and
-deferred reference answers. Local collection is unstarted.
+deferred reference answers. Local collection is running under the dedicated
+background supervisor; analysis remains locked until all 800 responses complete.
 
 ## 1. The question
 
@@ -128,7 +129,7 @@ ignored by Git.
 | 11 | Protocol reconciliation | Can new collection be consistent and historical artifacts preserved? | 195 offline tests; 900 records and 14 artifacts preserved; zero gold-free parser differences; real bridge pending | [Checkpoint 2](phase-1-protocol-reconciliation.md) |
 | 12 | Paired protocol bridge | Does v3 pass the engineering screen on 25 new training questions? | 200/200 completed; all gates pass; 100/100 matched token sequences; direct 80%, thinking 94% in both arms; finite v3 direct confidence 50/50 | [Checkpoint 3](phase-1-bridge.md) · `research/data-efficiency-v1/bridge-v1` |
 | 13 | Parser preflight | Can final sections distinguish intermediate boxes without losing valid cached answers? | V6 rejected for 44 prose regressions; v7 changes only one duplicated bridge case across 1,100 records. Separate sensitivity 82%/94%; primary v5 unchanged | [Parser preflight](parser-preflight.md) · `research/data-efficiency-v1/parser-v7-preflight-v1` |
-| 14 | Repeat-panel preparation | Does repeated supervision support useful routing on independent draws and unseen questions? | Prepared, unstarted: 50 questions × 8 draws × 2 modes; v7 pinned; 5 question folds and deferred gold; results pending | [Phase 2 protocol](phase-2-repeat-panel.md) · `research/data-efficiency-v1/repeat-panel-v1` |
+| 14 | Repeat-panel study | Does repeated supervision support useful routing on independent draws and unseen questions? | Local collection running: 50 questions × 8 draws × 2 modes; v7 pinned; 5 question folds and deferred gold; results pending | [Phase 2 protocol](phase-2-repeat-panel.md) · `research/data-efficiency-v1/repeat-panel-v1` |
 | — | Active roadmap | What should come next? | Protocol repair, supervision diagnosis, then gated data-efficient acquisition; defer study 8 | [research roadmap](research-roadmap.md) |
 
 ### Run registry (`artifacts/runs/`)

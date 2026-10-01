@@ -1,6 +1,6 @@
 # Phase 2: independent-draw routing signal
 
-Preparation checkpoint, 2026-10-01. The purpose is to establish whether router
+Local collection started, 2026-10-01; results are pending. The purpose is to establish whether router
 supervision reproduces across independent draws and predicts useful escalation
 on unseen questions before scaling adaptive acquisition. This is a small
 diagnostic study; it cannot establish the roadmap's acquisition contribution.
@@ -189,7 +189,7 @@ Jev/RL, or cloud jobs.
 
 Operational artifacts in `repeat-panel-v1/` are `background-status.json`,
 `background-worker.log`, checksummed `background-policy.json` and
-`background-journal.json`, and, only after successful endpoint analysis/audit,
+`background-journal.json`, `background-launch-verification.json`, and, only after successful endpoint analysis/audit,
 `background-verification.json`. Inspect these instead of repeated chat polling.
 Do not edit the operational scripts while the supervisor runs or manually start
 another collector. The completed bridge supervisor remains specific to its own
@@ -225,8 +225,8 @@ formula/config issues and orphan-attempt boundary; all were repaired before free
 Checksummed `repeat-panel-v1/preflight-verification.json` verifies the unchanged
 allocation, decoder, job/fold identities, feature dimensions, frozen package,
 scorer and all **2,319 protected original files**. Original bridge scores and
-cached responses remain unchanged. Old confirmation remains unstarted. Current
-status is **prepared, 0/800, generation not started, analysis locked**. No repeat
+cached responses remain unchanged. Old confirmation remains unstarted. Preparation
+status was **prepared, 0/800, generation not started, analysis locked**. No repeat
 reference answer or official-test gold was opened; no real solver response,
 cloud job or expenditure occurred in this checkpoint.
 
@@ -238,5 +238,38 @@ Artifacts under `artifacts/research/data-efficiency-v1/repeat-panel-v1/` are
 `protocol.json`, `config.yaml`, `question-features.json`, `feature-cache/`,
 `frozen_code/reasoning_budget/`, `status.json` and `preflight-verification.json`.
 The question-only role lives under `data/repeat/`. No run manifest, score artifact
-or result report exists yet. The next execution slice is bounded local collection
-under this exact protocol, using a dedicated detached worker.
+or result report existed at preparation. Bounded collection under this exact
+protocol follows in the next checkpoint.
+
+## Collection checkpoint
+
+The user authorized local collection on 2026-10-01. The operational supervisor
+and verifier were committed at **`3505a77`**, outside the frozen package. The
+363 existing tests and nine new operational tests pass; Ruff and whitespace
+checks pass. A real pre-launch verifier call rejected the incomplete endpoint
+before scores/report access, and all **2,319 protected files** retained their
+hashes. The generation protocol, source `272403f`, config, roles and scorer are
+unchanged.
+
+The detached supervisor started at **2026-10-01 17:37:19 UTC** (23:07:19 IST),
+PID **27132**, with collector PID **27339**. The first invocation is durably
+reserved; no automatic resume has been used. Cached Qwen weights loaded locally
+on the frozen MPS backend. At **17:40:49 UTC**, launch verification recorded
+**2/800 completed, zero failures**, both supervisor/collector locks held, no
+scores/report and unchanged protocol/policy hashes. Its ledger included active
+reservations, so charged-token/time status is not just completed-response cost.
+The proof is `background-launch-verification.json`.
+The live heartbeat and run ledger are authoritative
+for progress; results and scoring remain locked until 800 completed responses.
+The 7.04-hour generation projection remains an estimate, with the original
+1.4M-token/12-hour cumulative ceilings and a separate 14-hour supervisor ceiling.
+
+Operational policy digest:
+`dd24204476f10e7334005c6de4e6c33833221d26b14edb0e530389f4a44b50be`.
+Its supervisor and verifier hashes are
+`7e1ea514800726de4a1429b471721c5f4f82d5b03d0c05bf598d0da456f8ffa7`
+and `42ad7e8e05c4ea0bfb52c81045642537613a301ebf3340e8aa6209d56bdbe083`.
+Old confirmation is unstarted, official-test gold stays sealed and cloud
+expenditure is $0. Analysis and independent endpoint verification are automatic
+after completion; progression to later phases still requires review of the
+predeclared gates.

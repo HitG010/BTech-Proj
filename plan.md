@@ -406,3 +406,24 @@ Implementation and verification status will be recorded here as work completes.
   answers and official test unopened, old confirmation unstarted, cloud spend $0.
   Next slice is local collection with a dedicated detached worker under this exact
   protocol. See [Phase 2 design and preparation](docs/phase-2-repeat-panel.md).
+- 2026-10-01: started the user-authorized frozen Phase 2 local repeat collection
+  on `codex/research-data-efficiency`. Committed the dedicated supervisor,
+  independent endpoint verifier and nine operational tests at `3505a77`; the
+  frozen generation package/config/source `272403f` and protocol `8b01db2c…6f3c812`
+  are unchanged. All 363 existing tests plus the nine new checks pass, with Ruff
+  and whitespace checks clean. Real pre-launch verification rejected the
+  incomplete endpoint before score/report access and preserved all 2,319 originals.
+  Supervisor PID 27132 started at 17:37:19 UTC (23:07:19 IST), collector 27339;
+  cached Qwen weights loaded on MPS. At 17:40:49 UTC, independent launch proof
+  recorded 2/800 completed, zero failures, both locks held and outcomes locked.
+  Operational policy `dd242044…4b50be` pins both scripts, a 60-second heartbeat
+  and a durable initial invocation plus at most one automatic resume. Original
+  1.4M-token/12-hour cumulative collection limits remain authoritative; the
+  supervisor's separate 14-hour wall ceiling includes post-collection analysis.
+  It runs frozen analysis and independent accounting/policy/preservation
+  verification only after all 800 responses complete and the collector exits,
+  then stops regardless of the gates. Read the live status/log under
+  `repeat-panel-v1/`; do not edit frozen sources or launch duplicate collectors.
+  Later acquisition/confirmation/Jev/RL and cloud jobs are not started; official
+  test stays sealed and old confirmation unstarted. See
+  [Phase 2 collection and operation](docs/phase-2-repeat-panel.md).

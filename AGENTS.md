@@ -92,8 +92,8 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
   from source `272403f`. Protocol `8b01db2c…6f3c812` under `repeat-panel-v1/`
   pins the unchanged allocation and 50 repeat questions, v7, all 800 independent
   jobs/seeds, 50×387 question features and five 10-question folds. All 363 tests
-  pass (22 new repeat tests). Status is prepared, 0/800, generation not started;
-  no repeat reference answers or official-test gold were opened. Maximum planned
+  pass (22 new repeat tests). Preparation was 0/800, generation not started;
+  no repeat reference answers or official-test gold were opened then. Maximum planned
   reservations are 1,229,600 tokens; cumulative local limits are 1.4M tokens and
   12 hours including setup/retries. The question-only `data/repeat/` manifest has
   `gold_sha256: null`; do not add a gold file or use ordinary `rb score` on it.
@@ -105,7 +105,24 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
   four-draw halves provide independent-draw diagnostics; all model tuning stays
   within the acquired training-half labels and question folds. Eight-draw labels
   have no independent same-question eight-draw replica. Scale acquisition only
-  if all predeclared signal/utility gates pass. The next slice is bounded local
-  collection with a dedicated detached worker, not the completed bridge worker.
+  if all predeclared signal/utility gates pass. Collection is now running with the
+  dedicated detached worker described below.
   No Phase 2 generation or cloud spend in this preparation checkpoint; all 2,319
   protected original files and the old unstarted confirmation remain unchanged.
+- Phase 2 local collection started at 2026-10-01 17:37:19 UTC (23:07:19 IST)
+  under `scripts/repeat_background_worker.py`, committed with the independent
+  endpoint verifier at `3505a77`. Initial supervisor/collector PIDs are
+  27132/27339; read `repeat-panel-v1/background-status.json` for current state,
+  or use the script's `--status` command. It records 60-second heartbeats, holds
+  a singleton lock, and permits at most one automatic resume through a durable
+  invocation journal. Script hashes and protocol are pinned in checksummed
+  `background-policy.json`; do not edit these scripts, frozen package/config,
+  or launch a duplicate collector. The same 1.4M-token/12-hour cumulative
+  generation limits apply, with a separate 14-hour monitoring ceiling. Only
+  the full 800-response endpoint and collector exit permit automatic analysis
+  and an independent accounting/policy/preservation audit. It stops after that
+  audit, including if the progression gates fail; no later studies or cloud jobs
+  are launched. All 363 existing tests plus nine new operational tests pass.
+  Pre-launch incomplete-endpoint and 2,319-file preservation checks passed;
+  repeat reference answers remain locked until completion, official test sealed
+  and old confirmation unstarted.
