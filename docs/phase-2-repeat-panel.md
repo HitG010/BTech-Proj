@@ -159,11 +159,43 @@ HF_HUB_OFFLINE=1 PYTORCH_ENABLE_MPS_FALLBACK=0 \
 .venv/bin/python -m reasoning_budget.research_repeat analyze
 ```
 
-Use a detached worker for the long collection slice rather than chat polling.
-The existing bridge supervisor is specific to its completed study and must not
-be restarted or pointed at this protocol. The v7 standalone bridge CLI remains
-restricted; repeat scoring uses this study's complete-endpoint guard and separate
-sidecar. No new generation or reference-answer access occurs in preparation.
+The dedicated detached supervisor starts this exact protocol:
+
+```sh
+HF_HUB_OFFLINE=1 PYTORCH_ENABLE_MPS_FALLBACK=0 \
+  OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  .venv/bin/python scripts/repeat_background_worker.py
+.venv/bin/python scripts/repeat_background_worker.py --status
+```
+
+It uses `caffeinate` to inhibit idle sleep, single-supervisor and collection locks,
+and an atomic heartbeat every 60 seconds. Its checksummed operational policy pins
+the protocol and both operational script hashes. A durable invocation journal
+allows the initial collector and at most one automatic resume, including across
+supervisor restarts. Both retain the same generation ledger and 1.4M-token/
+12-hour cumulative limits. The supervisor has a separate 14-hour wall-clock
+monitoring ceiling to allow analysis after collection; it cannot extend the
+generation budget. Collector errors require inspection. A zero exit code alone
+does not establish completion.
+
+Only after all 800 responses complete and collection exits does it run the frozen
+analysis, then `scripts/verify_phase2_repeat.py`. That verifier refuses incomplete
+collection before opening scores or the report, reads no reference answers, and
+checks job/cell coverage, scorer/report identity, all-attempt/setup accounting,
+token-ID counts, frozen folds, training acquisition costs, policy utility and
+protected originals. Terminal status distinguishes completion with passing gates
+from completion with failed gates. It never launches acquisition, confirmation,
+Jev/RL, or cloud jobs.
+
+Operational artifacts in `repeat-panel-v1/` are `background-status.json`,
+`background-worker.log`, checksummed `background-policy.json` and
+`background-journal.json`, and, only after successful endpoint analysis/audit,
+`background-verification.json`. Inspect these instead of repeated chat polling.
+Do not edit the operational scripts while the supervisor runs or manually start
+another collector. The completed bridge supervisor remains specific to its own
+study. The v7 standalone bridge CLI remains restricted; repeat scoring uses this
+study's complete-endpoint guard and separate sidecar. Preparation accesses no
+repeat reference answers.
 
 ## Actual preparation checkpoint
 
