@@ -427,3 +427,26 @@ Implementation and verification status will be recorded here as work completes.
   Later acquisition/confirmation/Jev/RL and cloud jobs are not started; official
   test stays sealed and old confirmation unstarted. See
   [Phase 2 collection and operation](docs/phase-2-repeat-panel.md).
+- 2026-10-02: diagnosed and repaired the stopped repeat collection under the
+  user's explicit instruction, keeping Docker running as requested. Initial and
+  automatic-resume collectors each hit three consecutive timeouts, stopping at
+  51/800 with six failed attempts. Median throughput fell from 17.34 to 0.0347
+  tokens/s while sampled MPS allocation stayed near 3.456 GB. Docker's VM started
+  13.07 seconds before the first failed attempt; this is suggestive of contention,
+  not causal proof. Current synthetic MPS arithmetic is healthy. Frozen decoder,
+  model, protocol, seeds, scorer and budgets are unchanged. Committed additive
+  recovery scripts/tests/evidence at `3698102`: collector-scoped user-initiated
+  activity, read-only telemetry, one manual invocation and first-failure stop.
+  All 386 offline tests, native activity checks, Ruff and diff checks pass.
+  Recovery supervisor/collector 4158/4365 are active under policy `3205df22…6f7e864`;
+  old 2/2 journal, status and logs remain preserved, new journal is 1/1.
+  Independent startup proof at 22:38:16 UTC (04:08:16 IST) records 59/800,
+  zero failed current jobs, all three timed-out cells completed in 49.5/10.3/52.7
+  seconds at 17–22 tokens/s and matching archived timeout prefixes. Original
+  51 completed responses, 57 attempts, two setup sessions and all 2,319 protected
+  files retain their hashes; three failed result rows are archived. Ledger is
+  42,223 tokens / 1.909 cumulative hours including active reservations at this
+  snapshot, within unchanged 1.4M/12-hour limits. Outcomes/reference answers
+  remain locked until all 800 complete. Original confirmation unstarted,
+  official test sealed, no later-phase/cloud launch. Use recovery-v1 status/log
+  for current state. See [runtime diagnosis and recovery](docs/phase-2-runtime-recovery.md).

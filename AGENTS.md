@@ -1,6 +1,6 @@
 # Repository orientation
 
-Snapshot checked 2026-10-01. Verify `git status --short --branch` and
+Snapshot checked 2026-10-02. Verify `git status --short --branch` and
 `git worktree list` before relying on branch names or this snapshot.
 
 - This worktree, `/Users/hiteshgupta/Documents/BTechProj`, is on
@@ -105,8 +105,8 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
   four-draw halves provide independent-draw diagnostics; all model tuning stays
   within the acquired training-half labels and question folds. Eight-draw labels
   have no independent same-question eight-draw replica. Scale acquisition only
-  if all predeclared signal/utility gates pass. Collection is now running with the
-  dedicated detached worker described below.
+  if all predeclared signal/utility gates pass. Initial collection stopped at
+  51/800 after timeouts; the separate manual recovery is described below.
   No Phase 2 generation or cloud spend in this preparation checkpoint; all 2,319
   protected original files and the old unstarted confirmation remain unchanged.
 - Phase 2 local collection started at 2026-10-01 17:37:19 UTC (23:07:19 IST)
@@ -126,3 +126,28 @@ Snapshot checked 2026-10-01. Verify `git status --short --branch` and
   Pre-launch incomplete-endpoint and 2,319-file preservation checks passed;
   repeat reference answers remain locked until completion, official test sealed
   and old confirmation unstarted.
+- Phase 2 [runtime recovery](docs/phase-2-runtime-recovery.md) is now active.
+  The original supervisor stopped at 51/800 after six timeout attempts, with
+  its two invocation reservations exhausted. Its policy/journal/status/log,
+  all 51 completed responses, 57 attempts and two setup sessions are preserved;
+  three failed result rows are archived under `recovery-v1/failed-results-before/`.
+  Gold-free diagnosis records a throughput collapse from 17.34 to 0.0347 tokens/s,
+  flat sampled MPS allocation, and Docker's VM starting 13 seconds before the
+  first failed attempt. Docker contention is an inference, not proven causality;
+  no contemporaneous host-pressure trace exists. The user requested repair and
+  explicitly chose to keep Docker running. Additive scripts at `3698102` provide
+  one manual recovery invocation, with process-scoped macOS user-initiated
+  activity, read-only telemetry and a stop at the first durable failed job.
+  Do not stop Docker, edit any pinned scripts/package/config, reset either
+  invocation journal or launch duplicate collectors. New supervisor/collector
+  PIDs are 4158/4365; live state is `repeat-panel-v1/recovery-v1/status.json`,
+  not the original terminal `background-status.json`. The new policy digest is
+  `3205df22e02694ea41f58fdbd1b66d56e01bc731c8173fa29eaa2ea7e6f7e864`.
+  Original protocol `8b01db2c…6f3c812`, seeds, solver, scorer and cumulative
+  1.4M-token/12-hour limits are unchanged. All 386 offline tests pass. Independent
+  `recovery-v1/startup-verification.json` at 2026-10-01 22:38:16 UTC records
+  59/800 complete, zero failed current rows, all three previously timed-out cells
+  completed at 17–22 tokens/s with matching archived token prefixes, and all old
+  records/2,319 protected files unchanged. Full endpoint remains pending.
+  Outcomes/reference answers stay locked,
+  official test sealed, old confirmation unstarted and cloud expenditure $0.

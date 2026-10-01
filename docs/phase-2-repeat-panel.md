@@ -1,6 +1,7 @@
 # Phase 2: independent-draw routing signal
 
-Local collection started, 2026-10-01; results are pending. The purpose is to establish whether router
+Local collection started, 2026-10-01; [runtime recovery](phase-2-runtime-recovery.md)
+is active after timeouts. Results are pending. The purpose is to establish whether router
 supervision reproduces across independent draws and predicts useful escalation
 on unseen questions before scaling adaptive acquisition. This is a small
 diagnostic study; it cannot establish the roadmap's acquisition contribution.
@@ -273,3 +274,25 @@ Old confirmation is unstarted, official-test gold stays sealed and cloud
 expenditure is $0. Analysis and independent endpoint verification are automatic
 after completion; progression to later phases still requires review of the
 predeclared gates.
+
+## Runtime recovery checkpoint
+
+The original supervisor stopped at 51/800 after its initial invocation and one
+automatic resume each hit three consecutive timeouts. Its status/log/policy and
+exhausted 2/2 journal are preserved. The [diagnosis and recovery record](phase-2-runtime-recovery.md)
+documents the abrupt throughput collapse, Docker startup correlation and
+uncertainty about cause. The user authorized repair and requested Docker remain
+running. A separate, single-invocation recovery wrapper from source **`3698102`**
+is running under the same protocol, jobs, seeds and cumulative limits. It adds
+process-scoped activity protection, read-only telemetry and a stop after the
+first durable failed job. All **386 offline tests**, Ruff and diff checks pass.
+Current operational progress is now `recovery-v1/status.json`; original
+`background-status.json` is a frozen record of the stopped supervisor. Analysis
+and reference access remain locked until 800 completed responses.
+
+Recovery verification at 2026-10-01 22:38:16 UTC records **59/800 complete**,
+zero failed current jobs and all three previously timed-out cells completed at
+17–22 tokens/s. Archived token prefixes match. All original completed responses,
+attempts/setup records, supervisor artifacts and 2,319 protected originals are
+unchanged. The separate proof is `recovery-v1/startup-verification.json`; full
+endpoint results remain pending.

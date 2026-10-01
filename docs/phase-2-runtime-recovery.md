@@ -97,3 +97,39 @@ Use the new recovery status for current progress. Original
 `background-status.json` remains a preserved record of the exhausted supervisor.
 Do not relaunch either collector or edit the pinned operational scripts while
 recovery is active.
+
+## Verified recovery checkpoint
+
+Recovery scripts froze at **`3698102`**; all **386 offline tests**, Ruff and
+whitespace checks pass. Separate policy digest:
+`3205df22e02694ea41f58fdbd1b66d56e01bc731c8173fa29eaa2ea7e6f7e864`.
+Supervisor/collector PIDs are **4158/4365**. Its invocation journal is 1/1;
+the original remains 2/2. Docker continues running and no system preference
+was changed. The collector's own native activity assertion is active.
+
+At **2026-10-01 22:38:16 UTC** (2026-10-02 04:08:16 IST), independent
+`recovery-v1/startup-verification.json` recorded **59/800 complete**, zero failed
+current job rows and outcomes locked. All three previously failed cells are
+complete under the identical job definitions and seeds:
+
+| Mode / draw | Latest timeout | Recovered response | Throughput |
+| --- | --- | --- | --- |
+| Thinking / 1 | 24 tokens / 630.0 s | 993 tokens / 49.5 s | 20.05 tokens/s |
+| Direct / 2 | 23 tokens / 608.7 s | 177 tokens / 10.3 s | 17.15 tokens/s |
+| Thinking / 2 | 28 tokens / 628.6 s | 1,143 tokens / 52.7 s | 21.68 tokens/s |
+
+Every archived timeout token prefix matches the corresponding recovered token
+sequence. This supports unchanged sampling behavior for the observed prefixes;
+it does not establish universal determinism or a causal effect of the activity
+guard. Ordinary full-model throughput has returned with Docker still active.
+The exact historical trigger remains unproven.
+
+The proof verifies all original 51 completed files, 57 attempts, two setup
+sessions, old supervisor artifacts, archived failed rows and 2,319 protected
+original files. No source/config/role or cumulative-budget identity changed.
+The cumulative ledger, including old failures and active reservations, is
+42,223 tokens / 1.909 hours at this snapshot. Those charges are not just the
+cost of completed responses. No score/report exists yet, repeat data still has
+`gold_sha256: null`, official test stays sealed and old confirmation unstarted.
+Collection continues independently; future failure stops the recovery worker
+for inspection. Full endpoint analysis and verification remain pending.

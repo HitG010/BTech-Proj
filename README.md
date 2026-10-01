@@ -31,10 +31,12 @@ documented intermediate-box issue with opt-in `numeric-v7`. A gold-free check of
 thinking. Primary v5 bridge results remain 80% / 94%, and `rb score` still uses
 v5. The [Phase 2 repeat-panel protocol](docs/phase-2-repeat-panel.md) now pins v7,
 the unchanged 50-question role and 800 independent generation jobs. Local
-collection is running under a dedicated detached supervisor; reference answers
-remain deferred until completion. Inspect its live `background-status.json`
+collection is in [runtime recovery](docs/phase-2-runtime-recovery.md) after
+repeated local timeouts. Docker stays running at the user's request; the separate
+recovery supervisor uses the unchanged solver and cumulative budget. Reference
+answers remain deferred until completion. Inspect live `recovery-v1/status.json`
 under `artifacts/research/data-efficiency-v1/repeat-panel-v1/` or run
-`.venv/bin/python scripts/repeat_background_worker.py --status`.
+`.venv/bin/python scripts/repeat_recovery_worker.py --status`.
 
 Completed studies below use the pinned legacy source at commit `6999eb5`.
 If its local checkout is absent, recreate it with
