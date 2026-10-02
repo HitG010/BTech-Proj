@@ -26,6 +26,11 @@ analysis reproduced exactly, and all 2,319 protected originals are unchanged.
 Separate gold-free triage found five presentation candidates among 27 rejected
 answers. Fixed-policy bounds show that these cases cannot reverse the observed
 combined-versus-baseline comparison; parser compatibility is the next preflight.
+The [October checkpoint and contrastive-router review](contrastive-router-review-2026-10-02.md)
+adds bounded confidence/capacity and draft-representation controls, followed by
+an optional released-CLM probe and a separately locked fresh signal test.
+CLM integration and all new candidate fits remain unstarted; contrastive routing
+itself is not a new contribution.
 
 ## 1. The question
 

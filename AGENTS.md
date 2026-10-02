@@ -156,3 +156,17 @@ Snapshot checked 2026-10-02. Verify `git status --short --branch` and
   endpoint/analysis protocol and fresh signal evidence before scaling. Jev/RL,
   acquisition, validation and confirmation generation remain unstarted; official
   test sealed, old confirmation unstarted, human audit waived and cloud spend $0.
+- The [October contrastive-router checkpoint](docs/contrastive-router-review-2026-10-02.md)
+  revises the pending roadmap without running new experiments: 2a bounded
+  gold-free parser compatibility (retain v7 if the candidate fails), 2b CPU
+  confidence/capacity controls, 2c matched question/draft representation and
+  supervised/contrastive objective controls, 2d optional resource-gated frozen
+  CLM probe, 2e separately frozen fresh signal test. Current MiniLM already has
+  contrastive pretraining; released CLM heads require Qwen3-8B last-token
+  representations and cannot be attached to Qwen3-1.7B/MiniLM. Measure full
+  router overhead and use a matched-backbone control. RouterDC, CSCR and
+  SEMIROUTER restrict novelty claims. All new fitting remains exploratory on
+  this panel; freeze grids, pair construction and training-fold/half boundaries
+  before execution. No CLM download/API/training, new generation, role changes
+  or sealed-label access is authorized by the review itself. Acquisition scaling
+  and Jev/RL remain stopped pending fresh signal evidence. Docker stays running.

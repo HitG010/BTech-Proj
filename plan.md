@@ -8,7 +8,9 @@ Work continues on `codex/research-data-efficiency`; see the
 The [Phase 2 results](docs/phase-2-repeat-results.md) stop acquisition scaling
 after four failed progression gates. The next bounded step is a gold-free parser
 compatibility preflight, then CPU-only router capacity/calibration feasibility
-on existing development traces.
+on existing development traces. The [October contrastive-router review](docs/contrastive-router-review-2026-10-02.md)
+adds matched representation/objective controls and an optional resource-gated
+CLM probe before a separate fresh signal test; none has been executed yet.
 
 ## Scope and first deliverable
 
@@ -500,3 +502,18 @@ Implementation and verification status will be recorded here as work completes.
   next boundary: separate gold-free parser compatibility preflight before new
   learner fitting, with conservative incomplete/multi-answer rejection and
   adversarial tests; preserve frozen v7 and all primary labels/gates.
+- 2026-10-02: completed a research/planning checkpoint prompted by the user's
+  CLM article. Reviewed the official CLM repository, model card and relevant
+  head/training/embedding code, MiniLM model card, RouterDC, Cost-Spectrum
+  Contrastive Routing and SEMIROUTER, alongside the completed repeat results.
+  An independent Sol agent reviewed the local statistical/code boundaries.
+  Added [the contrastive-router review](docs/contrastive-router-review-2026-10-02.md)
+  and revised the roadmap: bounded parser compatibility → confidence/capacity
+  controls → matched question/draft representation and objective comparisons →
+  optional frozen CLM probe with a matched 8B-backbone control → fresh locked
+  signal test. CLM's encoder cost and binary action calibration are explicit;
+  contrastive/cost-aware/sparse routing are acknowledged prior art. Candidate
+  novelty remains a specific noise-aware supervision-acquisition method, subject
+  to equal-budget evidence. No candidate fitting, parser implementation,
+  generation, reference access, model download, API call or cloud spend; no
+  frozen artifact/source/role changes. Docker remains running.
