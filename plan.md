@@ -536,3 +536,18 @@ Implementation and verification status will be recorded here as work completes.
   or Docker interruption. Next is a prospective design/power review of a broader
   signal study, with separate roles/protocol before any new generation.
   See [results and provenance](docs/phase-2-router-feasibility-results.md).
+
+- 2026-10-03: user authorized continuing the research design and specified
+  **local experiments only** for the released-CLM probe. Added a prospective
+  [broader signal design](docs/broader-signal-design.md) with a question-level
+  power/budget sensitivity script and meaningful arithmetic tests. Proposed
+  64-question/two-solver diagnostic remains unallocated/unstarted; response-only
+  reservations are 786,944 tokens, including forced closure. At hypothetical
+  SD=.16, +.01 needs 2,010 question groups for 80% normal-approximation power.
+  Added a separately frozen [synthetic local CLM preflight](docs/clm-local-preflight.md)
+  using released heads plus pinned MLX 4-bit Qwen3-8B. Native Metal matrix check
+  passed; dependencies are isolated from the frozen research environment.
+  Public asset preparation is bounded to 5 GiB. Source/tests/protocol are
+  checkpointed before model encoding; no cached study inputs enter this
+  engineering endpoint. This authorization does not promote the failed MiniLM
+  candidates or change primary gates. Docker stays running; cloud spend $0.
