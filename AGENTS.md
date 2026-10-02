@@ -1,6 +1,6 @@
 # Repository orientation
 
-Snapshot checked 2026-10-02. Verify `git status --short --branch` and
+Snapshot checked 2026-10-03. Verify `git status --short --branch` and
 `git worktree list` before relying on branch names or this snapshot.
 
 - This worktree, `/Users/hiteshgupta/Documents/BTechProj`, is on
@@ -170,3 +170,25 @@ Snapshot checked 2026-10-02. Verify `git status --short --branch` and
   before execution. No CLM download/API/training, new generation, role changes
   or sealed-label access is authorized by the review itself. Acquisition scaling
   and Jev/RL remain stopped pending fresh signal evidence. Docker stays running.
+- Phases 2a–2c are now complete. The [parser compatibility preflight](docs/phase-2-parser-compatibility.md)
+  froze one balanced-bold final-declaration wrapper: 56 fixtures, 1,900 outputs,
+  one newly extracted scalar, zero accepted-answer regressions; v7/primary labels
+  unchanged. Its script/tests/results checkpoint is `b15e7de`. The
+  [bounded router experiments](docs/phase-2-router-feasibility-results.md) froze
+  code/protocols at `1886bd4` before real fits. CPU: 1,035 Ridge/75 PCA fits;
+  training-selected average four-draw difference vs confidence −0.014287
+  (90% CI −0.025680 to −0.004425). Compact MiniLM representation/objective pilot:
+  600 neural/150 PCA fits, all eight family average point differences negative;
+  nested-selected −0.033817 (90% CI −0.052515 to −0.017266). Both screens fail.
+  Draft features used tail-256 encoding; 111/400 truncated. One optimization
+  seed and mean-vector fusion limit generalization. Full 500-test suite plus
+  two independent accounting tests pass. New read-only review verified 33,600
+  decisions and all 2,319 originals without refitting/scoring/references.
+  Artifacts: `repeat-cpu-feasibility-v1/`, `repeat-contrastive-pilot-v1/` and
+  `router-feasibility-review-v1/`. Preserve their plans/source/test/protocol pins
+  and completed outputs; do not rerun the neural executor or expand the grid.
+  CPU completed-run lookup returns cached results. No CLM-8B/API/new generation
+  or sealed access occurred. Close this bounded reused-panel search; next is a
+  prospective broader-signal design/power review under a separate protocol.
+  Acquisition, CLM-8B, Jev/RL and fresh superiority testing remain unstarted;
+  Docker running, cloud spend $0, original failed gates/roles unchanged.

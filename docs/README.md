@@ -5,7 +5,7 @@ the project asks, which study answered which question, where each result lives,
 and how the code is laid out. It adds no results of its own. Every number below is
 copied from the linked study document, which remains authoritative.
 
-Snapshot: 2026-10-02. The active implementation branch is
+Snapshot: 2026-10-03. The active implementation branch is
 `codex/research-data-efficiency`, based on `research/router-studies` at
 `15a4d2d`, with the prior research handoff checkpointed at `1b67fbc`.
 The [research roadmap](research-roadmap.md) defines the current phases and gates;
@@ -13,7 +13,7 @@ the [first Phase 1 record](phase-1-evidence-repair.md) records the correction,
 and [checkpoint 2](phase-1-protocol-reconciliation.md) records protocol integration
 and legacy reproduction. [Checkpoint 3](phase-1-bridge.md) freezes the disjoint
 roles and defines the paired generation bridge. Current offline verification:
-386 existing tests plus seven new diagnosis tests pass; actual bridge collection and endpoint verification are complete,
+the full 500-test suite plus two independent accounting tests pass; actual bridge collection and endpoint verification are complete,
 with all six engineering gates passed. The [parser preflight](parser-preflight.md)
 adds opt-in v7 while preserving the primary bridge's frozen v5 results.
 The [repeat-panel protocol](phase-2-repeat-panel.md) is frozen: 50 disjoint
@@ -25,12 +25,20 @@ progression gates out of five; acquisition scaling remains stopped. The frozen
 analysis reproduced exactly, and all 2,319 protected originals are unchanged.
 Separate gold-free triage found five presentation candidates among 27 rejected
 answers. Fixed-policy bounds show that these cases cannot reverse the observed
-combined-versus-baseline comparison; parser compatibility is the next preflight.
+combined-versus-baseline comparison; the bounded parser compatibility preflight
+has since completed with one narrow formatting repair.
 The [October checkpoint and contrastive-router review](contrastive-router-review-2026-10-02.md)
 adds bounded confidence/capacity and draft-representation controls, followed by
 an optional released-CLM probe and a separately locked fresh signal test.
-CLM integration and all new candidate fits remain unstarted; contrastive routing
-itself is not a new contribution.
+The [bounded feasibility results](phase-2-router-feasibility-results.md) are now
+complete: 1,035 Ridge and 600 compact neural fits, with both exploratory screens
+failed. All eight representation/objective families have negative average
+point differences versus confidence. The [parser compatibility preflight](phase-2-parser-compatibility.md)
+repairs one narrow formatting case without changing primary labels. The full
+500-test suite plus two independent accounting tests pass; 33,600 reported
+decisions were verified and all protected originals preserved. Released CLM,
+new generation and scaling remain unstarted. Contrastive routing itself is not
+a new contribution.
 
 ## 1. The question
 

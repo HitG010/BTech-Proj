@@ -1,6 +1,6 @@
 # Research roadmap: budgeted trace acquisition
 
-**Decision record, updated 2026-10-02.** The original target was an 8–12-week, evidence-first study on the local M2 Pro with a **$100 total cloud ceiling**. The failed signal gate adds the bounded feasibility phases below; historical week labels are not a renewed completion promise. Work on `codex/research-data-efficiency` starts from `15a4d2d`; `1b67fbc` is the first checkpoint. This document is an execution checklist, not a claim of a new method or a record of completed experiments.
+**Decision record, updated 2026-10-03.** The original target was an 8–12-week, evidence-first study on the local M2 Pro with a **$100 total cloud ceiling**. The failed signal gate adds the bounded feasibility phases below; historical week labels are not a renewed completion promise. Work on `codex/research-data-efficiency` starts from `15a4d2d`; `1b67fbc` is the first checkpoint. This document is an execution checklist, not a claim of a new method or a record of completed experiments.
 
 The [October checkpoint and contrastive-router review](contrastive-router-review-2026-10-02.md)
 adds a controlled representation/objective investigation. First establish value
@@ -8,6 +8,16 @@ beyond confidence with cheap models; treat released CLM-8B as an optional,
 separately costed probe. Contrastive routing, cost-aware contrastive routing and
 sparse-data routing all have direct prior work. The acquisition hypothesis
 remains conditional on fresh evidence of useful routing signal.
+
+**Phases 2a–2c completed on 2026-10-03.** The narrow parser candidate passes
+compatibility while v7 labels remain unchanged. The CPU capacity/calibration
+and compact representation/objective studies both fail their exploratory
+promotion screens. The training-selected policies average −0.014287 and
+−0.033817 utility versus confidence, respectively. All eight neural families
+have negative average point differences. [Results and verification](phase-2-router-feasibility-results.md).
+Do not expand architecture search, launch CLM-8B or scale acquisition on this
+evidence. Next is a prospective design/power review for a broader signal study;
+new generation needs its own protocol and question roles.
 
 The main hypothesis is that choosing **which question, continuation action, and independent repeat to observe** can train a calibrated router to reach a held-out utility target with fewer *acquired generation tokens* than strong acquisition baselines. The solver remains frozen at Qwen3-1.7B. GSM8K and a numeric-answer MATH subset are the two core tasks. If the proposed acquisition rule does not win, report the strongest reproducible empirical result or a well-controlled negative result. Do not add a neural architecture or reinforcement-learning claim to compensate for a failed acquisition comparison.
 
@@ -44,9 +54,9 @@ The hard cloud envelopes are **$10 foundation / $15 signal / $30 main experiment
 |---|---|---|---:|
 | **1. Foundation — week 1** | [x] Preserve checksums of the old development report and frozen confirmation. [x] Fix standalone always-thinking accounting, add a one-thinking-call test, and write the corrected report/curve/figure into `artifacts/router-dev/shared-base-v2/` without replacing v1. **First implementation checkpoint complete:** 118 tests and preservation checks passed. [x] Merge the scorers as `numeric-v5`; define prompt, caps, closure, EOS, confidence measurement, backend and runner as `qwen3-boxed-budget-v3`, with session/response source provenance and frozen-study identity checks. **Second checkpoint complete:** 195 tests; [protocol record](phase-1-protocol-reconciliation.md). [x] Freeze all disjoint GSM8K roles and enforce source/index/pool/exclusion checks. [x] Implement the paired 25-question bridge collector with matched seeds, fixed caps and endpoint-locked scoring; [checkpoint 3](phase-1-bridge.md), 212 offline tests. [x] Complete the local bridge and its engineering gates: 200/200 responses, all six gates passed. A bounded cloud pilot remains conditional if later compute requires it. | Corrected costs reproduce; original artifacts remain byte-identical; source and scorer provenance are unambiguous before new generation. | Up to $10 foundation |
 | **2. Signal — weeks 2–3** | [x] Resolve intermediate-box scoring with opt-in v7, preserving bridge v5 results/source; [parser preflight](parser-preflight.md), 341 tests and 1,100 gold-free extracts checked. [x] Freeze a separate repeat-panel protocol pinning v7 and the unchanged allocation; [Phase 2 preparation](phase-2-repeat-panel.md), 363 tests, 800 jobs, deferred gold. [x] Generate eight independent draws per mode for the fixed 50-question panel. [x] Compare 1/2/4/8-draw labels, independent-draw reproducibility, confidence, question-only and solver-aware features with grouped uncertainty. **Complete: four of five progression gates fail; acquisition scaling stopped.** [Results](phase-2-repeat-results.md). [x] Separate CPU-only post-hoc diagnosis of oracle headroom, variance and policy decisions. | A useful rescue or mode-advantage signal reproduces on independent draws and unseen questions; otherwise narrow the claim or stop acquisition scaling. | Up to $15 signal |
-| **2a. Measurement compatibility preflight** | [ ] Freeze a separate gold-free parser policy and fixtures for the five presentation candidates. Keep frozen v7 and primary labels unchanged; check cached-output compatibility and adversarial negation/alternative/context/unit cases. Treat the unmarked terminal claim as a separate broader-policy decision. | No regressions or ambiguity acceptance under the defined policy; retain v7 if the candidate fails. A rejected candidate completes this bounded preflight. Any correctness sensitivity needs a separately pinned endpoint/sidecar and is exploratory. This does not restore the failed progression gate. | $0; no generation or new gold |
-| **2b. Bounded feasibility after failed signal gate** | [ ] Freeze a small CPU-only candidate grid for capacity and decision calibration around confidence. Keep the existing solver-only and combined learners as controls; test stronger regularization, training-fold-only question-feature compression/scaling and conservative thresholds. Use cached development labels with the same grouped draw-half boundaries; record all variants and failures. | Exploratory reused-data evidence only. Freeze exact grid and fit budget before fitting; no outcome-driven expansion. | $0; no new generation |
-| **2c. Representation/objective controls** | [ ] Compare question-only and question-plus-direct-draft MiniLM features at matched capacity. On identical representations, compare supervised gain, ordinary classification and a small contrastive action head with utility-aware supervision. [Review and proposed design](contrastive-router-review-2026-10-02.md). | A selected candidate must add value beyond confidence; distinguish new input information from training-objective gains. All preprocessing, pair construction and calibration stay within training folds/halves. No novelty or confirmation claim from reused data. | $0; cached data and encoder |
+| **2a. Measurement compatibility preflight** | [x] Freeze a separate gold-free parser policy and fixtures for the five presentation candidates. Keep frozen v7 and primary labels unchanged; check cached-output compatibility and adversarial negation/alternative/context/unit cases. Treat the unmarked terminal claim as a separate broader-policy decision. | No regressions or ambiguity acceptance under the defined policy; retain v7 if the candidate fails. A rejected candidate completes this bounded preflight. Any correctness sensitivity needs a separately pinned endpoint/sidecar and is exploratory. This does not restore the failed progression gate. | $0; no generation or new gold |
+| **2b. Bounded feasibility after failed signal gate** | [x] Freeze a small CPU-only candidate grid for capacity and decision calibration around confidence. Keep the existing solver-only and combined learners as controls; test stronger regularization, training-fold-only question-feature compression/scaling and conservative thresholds. Use cached development labels with the same grouped draw-half boundaries; record all variants and failures. | Exploratory reused-data evidence only. Freeze exact grid and fit budget before fitting; no outcome-driven expansion. | $0; no new generation |
+| **2c. Representation/objective controls** | [x] Compare question-only and question-plus-direct-draft MiniLM features at matched capacity. On identical representations, compare supervised gain, ordinary classification and a small contrastive action head with utility-aware supervision. [Review and proposed design](contrastive-router-review-2026-10-02.md). | A selected candidate must add value beyond confidence; distinguish new input information from training-objective gains. All preprocessing, pair construction and calibration stay within training folds/halves. No novelty or confirmation claim from reused data. | $0; cached data and encoder |
 | **2d. Optional released-CLM probe** | [ ] Only after resource feasibility, compare frozen CLM action margins with a matched raw-Qwen3-8B embedding head and cheap controls. Pin encoder, heads, pooling, input/action text and runtime. | Do not substitute backbones under released heads. Measure full state-encoding overhead; skip this probe if infeasible. No default large-model download, fine-tuning or local 8B deployment. | Conditional; shares existing signal/extensions envelopes |
 | **2e. Fresh signal test** | [ ] Freeze one candidate, strongest comparator, sample-size/compute calculation and a separate question-role/endpoint/analysis protocol. Preserve all existing manifests and sealed roles. | Fresh-question practical benefit is required before scaling. A development screen cannot reverse the failed primary gate. If adequate precision is unaffordable, narrow the claim. | Shares remaining signal envelope; no added budget |
 | **3. Harness — weeks 3–5** | [ ] Build a replay/acquisition ledger that hides unrevealed outcomes, charges actual tokens, records selection rules/seeds and randomized-action propensities where applicable, and resumes deterministically. [ ] Freeze the common 1,200-question pool, one final router architecture, the three acquisition seeds, baselines, ablations and normalized-AULC analysis. [ ] Verify the harness on synthetic and existing development traces before purchases. | Equal-budget policy comparisons are reproducible and cannot inspect hidden cache outcomes. | Local work; no new cloud envelope |
@@ -85,15 +95,16 @@ record this without switching the gate learner or cost preference. Some repeated
 question-level structure and hindsight headroom exist, but the combined learner
 makes poorly targeted escalations. More repeats alone did not improve it.
 
-The next boundary first resolves measurement compatibility: gold-free triage
+The completed measurement boundary addressed compatibility: gold-free triage
 found five presentation candidates among 27 rejected outputs, with 16 rejects
 being multiple component answers on one question and five incomplete outputs.
 Fixed-action point bounds cannot reverse the observed router comparison on
-those candidates. Define a separate parser compatibility preflight, keep v7 and
-the primary report frozen, and test valid/adversarial cases without gold before
-any new scorer or label sensitivity is considered.
+those candidates. The [separate compatibility preflight](phase-2-parser-compatibility.md)
+passes for balanced whole-line bold final declarations: one changed extraction
+in 1,900 outputs, no regressions. Broader context/units and unmarked terminal
+claims remain outside the candidate. No real labels were changed.
 
-The following bounded slice is **CPU-only feasibility on existing development traces**:
+The completed bounded slice is **CPU-only feasibility on existing development traces**:
 test low-capacity, conservative corrections to confidence and question-feature
 capacity/scaling controls. Then separate representation from objective: compare
 question-plus-draft embeddings against question-only inputs, and small
@@ -101,6 +112,12 @@ contrastive heads against matched supervised heads. Our current MiniLM encoder
 already has contrastive pretraining. Released CLM uses an encoder-locked 8B
 backbone, so its optional probe needs matched-backbone controls and full runtime
 accounting. See the [detailed October review](contrastive-router-review-2026-10-02.md).
+
+The [2b–2c results](phase-2-router-feasibility-results.md) find no promoted
+candidate after the fixed 1,035 Ridge and 600 neural fits. Retain the evidence
+and stop this reused-panel search. Optional CLM and the fresh superiority test
+remain unstarted; the next design review must state a new testable hypothesis
+and affordable precision rather than extend this grid post hoc.
 
 Freeze the limited candidate grid and evaluation boundaries before fitting;
 keep all outcomes exploratory because these questions have influenced design.

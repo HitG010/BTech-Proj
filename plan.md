@@ -1,16 +1,17 @@
 # Research repository implementation checklist
 
-**Active roadmap, 2026-10-02:** [data-efficient trace acquisition](docs/research-roadmap.md).
+**Active roadmap, 2026-10-03:** [data-efficient trace acquisition](docs/research-roadmap.md).
 The historical milestone decisions below remain an execution record. The new
 roadmap governs current scope, phase gates, and the $100 cloud allocation.
 Work continues on `codex/research-data-efficiency`; see the
 [Phase 1 evidence-repair record](docs/phase-1-evidence-repair.md).
 The [Phase 2 results](docs/phase-2-repeat-results.md) stop acquisition scaling
-after four failed progression gates. The next bounded step is a gold-free parser
-compatibility preflight, then CPU-only router capacity/calibration feasibility
-on existing development traces. The [October contrastive-router review](docs/contrastive-router-review-2026-10-02.md)
-adds matched representation/objective controls and an optional resource-gated
-CLM probe before a separate fresh signal test; none has been executed yet.
+after four failed progression gates. The bounded parser, CPU capacity/calibration
+and representation/objective studies are now complete; both router promotion
+screens failed. [Results](docs/phase-2-router-feasibility-results.md).
+The [October contrastive-router review](docs/contrastive-router-review-2026-10-02.md)
+defines the earlier design. Released CLM and a fresh signal test remain
+conditional; next is a prospective broader-study design/power review.
 
 ## Scope and first deliverable
 
@@ -517,3 +518,21 @@ Implementation and verification status will be recorded here as work completes.
   to equal-budget evidence. No candidate fitting, parser implementation,
   generation, reference access, model download, API call or cloud spend; no
   frozen artifact/source/role changes. Docker remains running.
+
+- 2026-10-03: completed the bounded 2a–2c milestone. Parser preflight checkpoint
+  `b15e7de` repairs one balanced-bold final declaration across 1,900 outputs,
+  preserving primary v7 labels. Before fitting, code/protocols were checkpointed
+  at `1886bd4`. CPU grid completed 1,035 Ridge/75 PCA fits, selected average utility
+  difference −0.014287 vs confidence (90% CI −0.025680 to −0.004425). The compact
+  MiniLM pilot completed 600 neural/150 PCA fits: all eight family point differences
+  negative, nested selected −0.033817 (CI −0.052515 to −0.017266). Both exploratory
+  promotion screens fail; no expanded search, acquisition or CLM-8B launch.
+  Local 400-draft embedding took 4.12s; 111 drafts were tail-truncated at the frozen
+  256-token allowance. One optimizer seed and mean-vector fusion constrain claims.
+  Full 500-test suite and two new independent accounting tests pass; read-only
+  review recalculates 33,600 reported decisions and all 2,319 originals remain
+  unchanged. New ignored artifacts freeze plans/reports/verification and chart
+  exports. No new gold/references, solver generation, sealed access, cloud spend
+  or Docker interruption. Next is a prospective design/power review of a broader
+  signal study, with separate roles/protocol before any new generation.
+  See [results and provenance](docs/phase-2-router-feasibility-results.md).
