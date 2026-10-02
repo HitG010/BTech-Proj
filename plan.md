@@ -584,3 +584,8 @@ Implementation and verification status will be recorded here as work completes.
   40-minute wall cap; Docker stays running. Source/tests/protocol checkpoint
   precedes request/plan preparation and all real encoding/fitting. Preserve
   the earlier negative experiments, roles and preflight assets unchanged.
+- 2026-10-03: corrected the documented CLM launcher after a direct-file import
+  error before preparation created any plan/request/invocation. Use module
+  execution (`python -m scripts.repeat_clm_probe`) so the repository's `scripts`
+  namespace resolves. Source implementation, grid and data are unchanged;
+  checkpoint the corrected command before actual preparation/encoding.

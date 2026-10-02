@@ -127,8 +127,8 @@ applies frozen heads, fits the fixed grid, rechecks inputs and writes new report
 The encoder exits before CPU analysis. Never overwrite existing completed files.
 
 ```sh
-PYTHONPATH=src .venv/bin/python scripts/repeat_clm_probe.py prepare
-PYTHONPATH=src .venv/bin/python scripts/repeat_clm_probe.py execute
+PYTHONPATH=src .venv/bin/python -m scripts.repeat_clm_probe prepare
+PYTHONPATH=src .venv/bin/python -m scripts.repeat_clm_probe execute
 ```
 
 Execution needs native Metal access. The researcher verifies cached decisions
