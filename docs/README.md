@@ -36,9 +36,14 @@ failed. All eight representation/objective families have negative average
 point differences versus confidence. The [parser compatibility preflight](phase-2-parser-compatibility.md)
 repairs one narrow formatting case without changing primary labels. The full
 500-test suite plus two independent accounting tests pass; 33,600 reported
-decisions were verified and all protected originals preserved. Released CLM,
-new generation and scaling remain unstarted. Contrastive routing itself is not
-a new contribution.
+decisions were verified and all protected originals preserved. The subsequent
+[local released-CLM preflight and power review](local-clm-and-power-results.md)
+are complete: actual released heads with a 4-bit 8B encoder pass ten synthetic
+engineering inputs at 4.95 GiB peak MLX allocation. Task routing quality remains
+untested. The [broader signal design](broader-signal-design.md) proposes a
+diagnostic panel only; new generation/scaling remain unstarted. Contrastive
+routing itself is not a new contribution. The latest user preference is local
+experiments with Docker kept running.
 
 ## 1. The question
 

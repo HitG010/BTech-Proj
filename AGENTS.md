@@ -192,3 +192,36 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   prospective broader-signal design/power review under a separate protocol.
   Acquisition, CLM-8B, Jev/RL and fresh superiority testing remain unstarted;
   Docker running, cloud spend $0, original failed gates/roles unchanged.
+- Latest user preference is **local experiments only**; Docker must stay running.
+  The [local CLM/power checkpoint](docs/local-clm-and-power-results.md) follows
+  2a–2c and supersedes their CLM-unstarted statement for engineering only.
+  Source/tests/protocol froze at `c06e2ff`; full 514 offline tests plus two
+  new independent-review tests pass. Public assets (4,699,357,359 bytes) and
+  MLX 0.32.3 / mlx-lm 0.32.0 live in the separate ignored
+  `clm-local-environment-v1/`, leaving `.venv` unchanged. The actual released
+  heads plus pinned 4-bit Qwen3-8B passed all ten synthetic inputs in one
+  invocation, zero retries: peak MLX 4.951 GiB, 512-token encoding about 2 s,
+  2,047-token encoding about 8.2 s. No cached draft/label enters that endpoint.
+  The native worker has exited; no collector or training worker is running.
+  Frozen preflight plan `5364474e…ca7756`, report `53e2d76b…22f902`;
+  do not alter its script/tests/protocol/asset inventory, reset its journal,
+  redownload assets or restart the completed preflight. It verifies dimensions,
+  repeatability and arithmetic, **not full-precision equivalence, task signal,
+  calibration or co-resident solver/router latency**. RSS is separate from MLX
+  allocation, not total unified-memory accounting. No router deployment claim.
+  The prospective [broader signal design](docs/broader-signal-design.md) and
+  power report `3d5a798c…5191a7` are complete. SD=.16 sensitivity requires 2,010
+  question groups for +.01 at 80% power; proposed 64-question/two-solver panel
+  remains diagnostic/unallocated/unstarted, with 786,944 response-only token
+  reservations. Old protocol JSON was deserialized for integrity/cap metadata;
+  its question-only snapshots were not used in calculations. See the result
+  record's data-access clarification; no new questions, references or sealed
+  outcomes were opened. Preserve the additive power `access-clarification.json`
+  (`277b17fd…76f79c`) alongside the unchanged primary planning payload.
+  The independent reviewer `a27df46e…418f2` checks 130
+  power values and synthetic/resource/asset/input identities. All 2,319 originals
+  are unchanged. Next: **one separately frozen matched-backbone cached CLM
+  diagnostic**, keeping confidence, unchanged v7 labels and grouped independent
+  halves; not another MiniLM search. New generation still needs a separate
+  reserve-child-role/endpoint/analysis protocol. Acquisition, Jev/RL, MATH and
+  confirmation stay unstarted; cloud/API spend $0, official test sealed.

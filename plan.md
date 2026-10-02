@@ -551,3 +551,24 @@ Implementation and verification status will be recorded here as work completes.
   checkpointed before model encoding; no cached study inputs enter this
   engineering endpoint. This authorization does not promote the failed MiniLM
   candidates or change primary gates. Docker stays running; cloud spend $0.
+- 2026-10-03: source/protocol checkpoint `c06e2ff` completed local released-head
+  engineering and power review. Downloaded 4,699,357,359 public asset bytes;
+  all ten synthetic MLX encodings passed in one invocation, no retries, peak
+  4.951 GiB, native worker wall 30.917s. Actual released heads load strictly and
+  pass arithmetic; task-quality/full-precision transfer and live co-resident
+  cost remain untested. Frozen report `53e2d76b…22f902`; do not restart.
+  Power report `3d5a798c…5191a7` preserves all roles and leaves proposed 64 new
+  questions unallocated: only 7.9% power for +.01 at hypothetical SD=.16;
+  2,010 questions needed for 80%. The 786,944-token proposed budget is
+  response-only; additional setup/retry/runtime protocol still needed.
+  Fresh-process reviewer `a27df46e…418f2` checks 130 planning values plus cached
+  synthetic vectors, resource and asset/input hashes; original verifier confirms
+  all 800 responses and 2,319 originals unchanged. Full 514 offline tests plus
+  two reviewer tests, Ruff and whitespace checks pass. The completed protocol
+  JSON includes question-only snapshots; they were deserialized for integrity
+  and cap metadata, not used in planning calculations (recorded clarification).
+  No task-router fits, cached-draft CLM evaluation, new solver generation,
+  reference/sealed access, cloud/API spending or Docker interruption. Next is
+  one separately frozen cached CLM diagnostic with matched 8B supervised
+  control and confidence; earlier negative grids stay closed. See
+  [results and next boundary](docs/local-clm-and-power-results.md).
