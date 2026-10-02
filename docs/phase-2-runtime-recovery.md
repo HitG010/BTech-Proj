@@ -1,5 +1,11 @@
 # Phase 2 runtime diagnosis and recovery
 
+Recovery is **complete**, with all 800 responses and no further failed attempt.
+The frozen research analysis failed four progression gates; see
+[the separate result record](phase-2-repeat-results.md). The incident and startup
+evidence below are preserved as historical checkpoints. Do not relaunch workers
+or edit their pinned scripts.
+
 The original local repeat collector stopped at **51/800 responses**. Its initial
 invocation and the single automatic resume each encountered three consecutive
 timeouts. The original supervisor correctly stopped at `needs_attention` at
@@ -131,5 +137,32 @@ The cumulative ledger, including old failures and active reservations, is
 42,223 tokens / 1.909 hours at this snapshot. Those charges are not just the
 cost of completed responses. No score/report exists yet, repeat data still has
 `gold_sha256: null`, official test stays sealed and old confirmation unstarted.
-Collection continues independently; future failure stops the recovery worker
-for inspection. Full endpoint analysis and verification remain pending.
+Collection continued independently under this boundary; completion is recorded
+below.
+
+## Completion
+
+Terminal state is **`complete_with_gate_failures`**, recorded at
+**2026-10-02 05:20:08 UTC** (10:50:08 IST). All **800/800** final responses
+are completed. The recovery invocation encountered no further failed attempt.
+The full ledger has **806 attempts (800 completed, six earlier failures), three
+setup sessions, 644,519 charged tokens and 8.39463 cumulative hours**, below the
+unchanged 1.4M-token/12-hour limits. Cumulative charged time differs from elapsed
+wall time, which includes the diagnostic pause. Docker was kept running; no
+container or system preference was changed. The exact historical trigger and
+the activity guard's causal effect remain unproven.
+
+The collector and supervisor released their locks. The one-invocation recovery
+journal stays at 1/1, and the original exhausted journal stays at 2/2. All 51
+original completed files, 57 prior attempts, two original setup sessions,
+archived failed rows, old supervisor artifacts and 2,319 protected originals
+retain their hashes. `background-verification.json` independently verifies
+endpoint/accounting/policy arithmetic. The fresh review proof is
+`recovery-v1/completion-review-verification.json`; it also records exact CPU
+reproduction of the original statistical analysis from cached scores.
+
+The operational repair succeeded, but **acquisition scaling is stopped** because
+the fixed signal/utility gates failed. The supervisor launched no later study.
+Only the 50 selected training references were fetched after the completed
+endpoint; official test remains sealed and old confirmation unstarted. Cloud
+expenditure remains $0.

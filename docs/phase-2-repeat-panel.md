@@ -1,7 +1,9 @@
 # Phase 2: independent-draw routing signal
 
-Local collection started, 2026-10-01; [runtime recovery](phase-2-runtime-recovery.md)
-is active after timeouts. Results are pending. The purpose is to establish whether router
+Local collection and [runtime recovery](phase-2-runtime-recovery.md) are complete
+as of 2026-10-02. All 800 responses passed endpoint verification; four of five
+research gates failed. See [results and separate post-hoc diagnosis](phase-2-repeat-results.md).
+Do not restart the completed collectors. The purpose is to establish whether router
 supervision reproduces across independent draws and predicts useful escalation
 on unseen questions before scaling adaptive acquisition. This is a small
 diagnostic study; it cannot establish the roadmap's acquisition contribution.
@@ -283,16 +285,44 @@ exhausted 2/2 journal are preserved. The [diagnosis and recovery record](phase-2
 documents the abrupt throughput collapse, Docker startup correlation and
 uncertainty about cause. The user authorized repair and requested Docker remain
 running. A separate, single-invocation recovery wrapper from source **`3698102`**
-is running under the same protocol, jobs, seeds and cumulative limits. It adds
+completed under the same protocol, jobs, seeds and cumulative limits. It adds
 process-scoped activity protection, read-only telemetry and a stop after the
 first durable failed job. All **386 offline tests**, Ruff and diff checks pass.
 Current operational progress is now `recovery-v1/status.json`; original
 `background-status.json` is a frozen record of the stopped supervisor. Analysis
-and reference access remain locked until 800 completed responses.
+and reference access remained locked until 800 completed responses.
 
 Recovery verification at 2026-10-01 22:38:16 UTC records **59/800 complete**,
 zero failed current jobs and all three previously timed-out cells completed at
 17–22 tokens/s. Archived token prefixes match. All original completed responses,
 attempts/setup records, supervisor artifacts and 2,319 protected originals are
-unchanged. The separate proof is `recovery-v1/startup-verification.json`; full
-endpoint results remain pending.
+unchanged. The separate proof is `recovery-v1/startup-verification.json`.
+
+## Completed endpoint and decision
+
+The recovery supervisor recorded **`complete_with_gate_failures` at
+2026-10-02 05:20:08 UTC** (10:50:08 IST). All 800 final job rows are completed.
+The ledger includes **806 attempts: 800 completed, six failed**, and three setup
+sessions, charging **644,519 tokens / 8.39463 cumulative hours**. These are
+generation/setup/retry charges, not total wall-clock duration. No additional
+failed attempt occurred during recovery. All original recovery inputs and 2,319
+protected originals are unchanged; collection and supervisor locks are released.
+
+Only the full endpoint fetched the 50 selected training answers and produced
+the separate v7 score sidecar. The question dataset still has no gold file.
+`background-verification.json` checks the endpoint, accounting, policy arithmetic
+and preservation. A fresh CPU reconstruction reproduced the entire frozen
+statistics payload exactly; the separate proof is
+`recovery-v1/completion-review-verification.json`. The original report and scores
+are unchanged. The independent verifier and review read cached scores, not
+reference answers.
+
+The predeclared four-draw average combined-minus-selected-baseline utility is
+**−0.016204** (90% CI **−0.033276 to −0.000635**). Reproducibility's interval
+crosses zero, both replica point comparisons fail, and the secondary eight-draw
+comparison reverses. Only the informative-question count gate passes (14 ≥ 10).
+**Acquisition scaling is stopped.** The separate CPU-only diagnosis explains
+the failure without refitting a candidate or changing gates. Its evidence and
+the next bounded feasibility direction are in [the result record](phase-2-repeat-results.md).
+Official test remains sealed, old confirmation unstarted, and cloud expenditure
+is $0. No acquisition, confirmation or Jev/RL study was launched.

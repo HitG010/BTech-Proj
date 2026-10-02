@@ -1,10 +1,14 @@
 # Research repository implementation checklist
 
-**Active roadmap, 2026-10-01:** [data-efficient trace acquisition](docs/research-roadmap.md).
+**Active roadmap, 2026-10-02:** [data-efficient trace acquisition](docs/research-roadmap.md).
 The historical milestone decisions below remain an execution record. The new
 roadmap governs current scope, phase gates, and the $100 cloud allocation.
 Work continues on `codex/research-data-efficiency`; see the
 [Phase 1 evidence-repair record](docs/phase-1-evidence-repair.md).
+The [Phase 2 results](docs/phase-2-repeat-results.md) stop acquisition scaling
+after four failed progression gates. The next bounded step is a gold-free parser
+compatibility preflight, then CPU-only router capacity/calibration feasibility
+on existing development traces.
 
 ## Scope and first deliverable
 
@@ -450,3 +454,49 @@ Implementation and verification status will be recorded here as work completes.
   remain locked until all 800 complete. Original confirmation unstarted,
   official test sealed, no later-phase/cloud launch. Use recovery-v1 status/log
   for current state. See [runtime diagnosis and recovery](docs/phase-2-runtime-recovery.md).
+
+- 2026-10-02: completed Phase 2 at the full 800-response endpoint. Recovery
+  supervisor recorded `complete_with_gate_failures` at 05:20:08 UTC (10:50:08 IST),
+  with no further failed attempt. Cumulative ledger: 806 attempts (800 completed,
+  six prior failures), three setup sessions, 644,519 tokens and 8.39463 hours,
+  within unchanged 1.4M/12-hour limits. Docker stayed running. Both collection
+  and supervisor locks are released; original 51 completed files/57 attempts/
+  two sessions, archived failed rows, original worker artifacts and all 2,319
+  protected originals retain hashes. Only the 50 selected training references
+  were fetched after completion. Independent endpoint/accounting/policy audit
+  passed; fresh CPU reconstruction exactly reproduced frozen statistics SHA
+  `3eeb0129…ca40` from cached scores without reopening answers. Separate review
+  proof is `recovery-v1/completion-review-verification.json`.
+- 2026-10-02: reviewed the failed signal gate and committed isolated post-hoc
+  diagnostic code at `51530f2` before execution. Seven synthetic tests and Ruff
+  pass in addition to 386 existing checks from recovery. Primary report remains
+  unchanged: four-draw combined-minus-training-selected baseline average
+  −0.016204 (90% CI −0.033276 to −0.000635), split-half reproducibility interval
+  crosses zero, both replica point comparisons fail, and full8 is −0.051630.
+  Only informative-question count passes (14 ≥ 10). **Do not scale acquisition.**
+  The separately versioned `repeat-diagnosis-v1/` finds 30 positive-gain pairs
+  among 400, combined full8 capturing five in 174 escalations versus confidence
+  16 in 58. Confidence is 92.5% accurate at 466.9 tokens, combined 89% at 799.5.
+  Signed between-question variance is positive in this post-hoc decomposition,
+  but oracle and same-question transfer use unavailable labels and cannot
+  rescue the gate. Selection acquisition costs are reported separately.
+  Added result tables, primary/post-hoc figures and a source-hash plotting
+  recipe; updated roadmap to a bounded CPU-only conservative baseline/capacity
+  feasibility stage before a separately locked fresh-question signal study.
+  This is no new candidate fit, solver generation, reference access or cloud
+  spend. No novelty, deployment speed or independent confirmation is claimed.
+  Jev/RL and all later generation remain unstarted; official test sealed, old
+  confirmation unstarted, human audit waiver unchanged. See [Phase 2 results](docs/phase-2-repeat-results.md).
+- 2026-10-02: extended the checkpoint with gold-free syntax triage of all 27
+  rejected repeat outputs (11 direct, 16 thinking). Five are incomplete; 16
+  offer two different component quantities on one question. Five presentation
+  candidates cover units/context/emphasis, and one terminal claim would broaden
+  the explicit-final-marker policy. No references were opened, mathematical correctness assessed or
+  new scores computed. Separate `repeat-parser-audit-v1/` envelopes pin
+  the original inputs. Hypothetical fixed-action bounds, checked by exhaustive
+  binary enumeration, leave four-draw average difference unchanged at −0.016204
+  for the five presentation cases; full8 remains negative even at its upper
+  bound −0.049130. These are not refitted-policy or new-scoring results. Updated
+  next boundary: separate gold-free parser compatibility preflight before new
+  learner fitting, with conservative incomplete/multi-answer rejection and
+  adversarial tests; preserve frozen v7 and all primary labels/gates.

@@ -21,7 +21,7 @@ The explicit [bridge config](configs/research-gsm8k-v3.yaml) retains the calibra
 source provenance for every response. [Checkpoint 3](docs/phase-1-bridge.md)
 freezes the disjoint roles and records the completed 200-response paired bridge:
 all six engineering gates passed, with identical token sequences across protocols
-on these 25 questions. The next checkpoint is the repeated-label signal study;
+on these 25 questions. The repeated-label signal study is also complete;
 the bridge does not establish router novelty or general protocol equivalence.
 
 The [final-answer parser preflight](docs/parser-preflight.md) resolves the
@@ -30,11 +30,22 @@ documented intermediate-box issue with opt-in `numeric-v7`. A gold-free check of
 341 offline tests pass. The separate v7 bridge sensitivity is 82% direct / 94%
 thinking. Primary v5 bridge results remain 80% / 94%, and `rb score` still uses
 v5. The [Phase 2 repeat-panel protocol](docs/phase-2-repeat-panel.md) now pins v7,
-the unchanged 50-question role and 800 independent generation jobs. Local
-collection is in [runtime recovery](docs/phase-2-runtime-recovery.md) after
-repeated local timeouts. Docker stays running at the user's request; the separate
-recovery supervisor uses the unchanged solver and cumulative budget. Reference
-answers remain deferred until completion. Inspect live `recovery-v1/status.json`
+the unchanged 50-question role and 800 independent generation jobs. All **800
+responses are complete**, with endpoint accounting and preservation verified.
+The [results and signal diagnosis](docs/phase-2-repeat-results.md) report four
+failed progression gates out of five: the combined router's four-draw average
+utility difference is **−0.0162**, with a 90% interval below zero. Acquisition
+scaling and Jev/RL remain stopped. A separate CPU-only post-hoc diagnosis finds
+poor escalation selection despite some repeated question-level structure; it
+does not change the primary gates or establish novelty. The next bounded step is
+a gold-free parser compatibility preflight, followed by CPU-only router capacity
+and calibration tests.
+
+[Runtime recovery](docs/phase-2-runtime-recovery.md) completed with Docker
+running, using the unchanged solver and cumulative budget: **644,519 tokens,
+8.395 cumulative hours**, including setup and six failed attempts. Only the 50
+selected training references were fetched after completion; official test stays
+sealed. Inspect the terminal `recovery-v1/status.json`
 under `artifacts/research/data-efficiency-v1/repeat-panel-v1/` or run
 `.venv/bin/python scripts/repeat_recovery_worker.py --status`.
 

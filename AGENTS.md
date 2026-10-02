@@ -68,10 +68,9 @@ Snapshot checked 2026-10-02. Verify `git status --short --branch` and
   are in `bridge-v1/background-status.json`. Do not restart the completed study
   or change frozen package sources/config. EOS `151643` was not emitted in this
   bridge; timing is not a causal speed comparison. The multiple-box
-  scoring limitation is resolved by the separate parser preflight below. Next is
-  a separate frozen 50-question repeat-panel protocol (projected 7.04 local hours excluding
-  setup/retries); its generation permission must reference the unchanged role
-  allocation. Later phases remain pending. Cloud expenditure is $0.
+  scoring limitation is resolved by the separate parser preflight below. The
+  subsequent 50-question repeat study is now complete with failed progression
+  gates; see its result record below. Later phases remain pending. Cloud expenditure is $0.
 - The [parser preflight](docs/parser-preflight.md) is complete. V6 was rejected
   for 44 gold-free prose regressions and is retained for provenance. Opt-in v7
   was frozen at `2607206`; its implementation digest is
@@ -88,66 +87,72 @@ Snapshot checked 2026-10-02. Verify `git status --short --branch` and
   occurred in this preflight. Do not restart the bridge or edit frozen existing
   package files. Artifacts: `parser-v6-preflight-v1/` and `parser-v7-preflight-v1/`
   under `artifacts/research/data-efficiency-v1/`.
-- Phase 2 [repeat-panel preparation](docs/phase-2-repeat-panel.md) is complete
-  from source `272403f`. Protocol `8b01db2c…6f3c812` under `repeat-panel-v1/`
-  pins the unchanged allocation and 50 repeat questions, v7, all 800 independent
-  jobs/seeds, 50×387 question features and five 10-question folds. All 363 tests
-  pass (22 new repeat tests). Preparation was 0/800, generation not started;
-  no repeat reference answers or official-test gold were opened then. Maximum planned
-  reservations are 1,229,600 tokens; cumulative local limits are 1.4M tokens and
-  12 hours including setup/retries. The question-only `data/repeat/` manifest has
-  `gold_sha256: null`; do not add a gold file or use ordinary `rb score` on it.
-  Use the additive `python -m reasoning_budget.research_repeat` prepare/status/
-  collect/score/analyze commands. Only its full 800-completed endpoint permits
-  fetching the 50 selected upstream-training answers and separate v7 scoring.
-  Every source/config/feature/role and attempt/setup timestamp is guarded; do not
-  edit frozen existing package files or launch duplicate collectors. The two
-  four-draw halves provide independent-draw diagnostics; all model tuning stays
-  within the acquired training-half labels and question folds. Eight-draw labels
-  have no independent same-question eight-draw replica. Scale acquisition only
-  if all predeclared signal/utility gates pass. Initial collection stopped at
-  51/800 after timeouts; the separate manual recovery is described below.
-  No Phase 2 generation or cloud spend in this preparation checkpoint; all 2,319
-  protected original files and the old unstarted confirmation remain unchanged.
-- Phase 2 local collection started at 2026-10-01 17:37:19 UTC (23:07:19 IST)
-  under `scripts/repeat_background_worker.py`, committed with the independent
-  endpoint verifier at `3505a77`. Initial supervisor/collector PIDs are
-  27132/27339; read `repeat-panel-v1/background-status.json` for current state,
-  or use the script's `--status` command. It records 60-second heartbeats, holds
-  a singleton lock, and permits at most one automatic resume through a durable
-  invocation journal. Script hashes and protocol are pinned in checksummed
-  `background-policy.json`; do not edit these scripts, frozen package/config,
-  or launch a duplicate collector. The same 1.4M-token/12-hour cumulative
-  generation limits apply, with a separate 14-hour monitoring ceiling. Only
-  the full 800-response endpoint and collector exit permit automatic analysis
-  and an independent accounting/policy/preservation audit. It stops after that
-  audit, including if the progression gates fail; no later studies or cloud jobs
-  are launched. All 363 existing tests plus nine new operational tests pass.
-  Pre-launch incomplete-endpoint and 2,319-file preservation checks passed;
-  repeat reference answers remain locked until completion, official test sealed
-  and old confirmation unstarted.
-- Phase 2 [runtime recovery](docs/phase-2-runtime-recovery.md) is now active.
-  The original supervisor stopped at 51/800 after six timeout attempts, with
-  its two invocation reservations exhausted. Its policy/journal/status/log,
-  all 51 completed responses, 57 attempts and two setup sessions are preserved;
-  three failed result rows are archived under `recovery-v1/failed-results-before/`.
-  Gold-free diagnosis records a throughput collapse from 17.34 to 0.0347 tokens/s,
-  flat sampled MPS allocation, and Docker's VM starting 13 seconds before the
-  first failed attempt. Docker contention is an inference, not proven causality;
-  no contemporaneous host-pressure trace exists. The user requested repair and
-  explicitly chose to keep Docker running. Additive scripts at `3698102` provide
-  one manual recovery invocation, with process-scoped macOS user-initiated
-  activity, read-only telemetry and a stop at the first durable failed job.
-  Do not stop Docker, edit any pinned scripts/package/config, reset either
-  invocation journal or launch duplicate collectors. New supervisor/collector
-  PIDs are 4158/4365; live state is `repeat-panel-v1/recovery-v1/status.json`,
-  not the original terminal `background-status.json`. The new policy digest is
+- Phase 2 [repeat-panel protocol](docs/phase-2-repeat-panel.md) is frozen
+  from source `272403f`, protocol `8b01db2c…6f3c812`. It pins the unchanged
+  allocation, 50 repeat questions, v7, all 800 independent jobs/seeds, 50×387
+  question features and five 10-question folds. Preparation passed 363 tests
+  (22 new repeat tests), with no repeat references or official-test gold opened.
+  Maximum planned reservations are 1,229,600 tokens; cumulative local limits
+  remain 1.4M tokens/12 hours including setup/retries. The question-only
+  `data/repeat/` manifest still has `gold_sha256: null`; do not add a gold file
+  or use ordinary `rb score` on it. Frozen sources/config/roles/features and
+  attempt/setup timestamps are guarded. Only the full 800-response endpoint
+  permitted fetching exactly the 50 selected upstream-training references for
+  the separate v7 score sidecar. Future reviews use cached scores; do not call
+  score/analyze merely to reproduce statistics, because score reopens references.
+  All tuning used acquired training-half labels and question folds. The two
+  four-draw halves supply independent-draw diagnostics; eight-draw labels have
+  no independent same-question eight-draw replica.
+- Phase 2 [runtime recovery](docs/phase-2-runtime-recovery.md) is complete.
+  The original supervisor at `3505a77` stopped at 51/800 after six timeout
+  attempts, exhausting its initial/one-resume journal (2/2). The policy/journal/
+  status/log, all 51 completed responses, 57 attempts and two setup sessions are
+  preserved; three failed result rows are archived under
+  `recovery-v1/failed-results-before/`. Throughput fell from 17.34 to 0.0347
+  tokens/s; Docker's VM started 13 seconds before the first failure. Correlation
+  is not proven causality. The user explicitly chose to keep Docker running.
+  Additive scripts frozen at `3698102` supplied one manual invocation (1/1),
+  process-scoped macOS user-initiated activity, read-only telemetry and first-
+  failure stop, without changing protocol/model/decoder/seeds/scorer/budgets.
+  Do not stop Docker, edit pinned package/config/scripts, reset either journal
+  or relaunch completed collectors. The authoritative terminal status is
+  `repeat-panel-v1/recovery-v1/status.json`, **complete_with_gate_failures** at
+  **2026-10-02 05:20:08 UTC**, not the original stopped `background-status.json`.
+  Recovery policy digest:
   `3205df22e02694ea41f58fdbd1b66d56e01bc731c8173fa29eaa2ea7e6f7e864`.
-  Original protocol `8b01db2c…6f3c812`, seeds, solver, scorer and cumulative
-  1.4M-token/12-hour limits are unchanged. All 386 offline tests pass. Independent
-  `recovery-v1/startup-verification.json` at 2026-10-01 22:38:16 UTC records
-  59/800 complete, zero failed current rows, all three previously timed-out cells
-  completed at 17–22 tokens/s with matching archived token prefixes, and all old
-  records/2,319 protected files unchanged. Full endpoint remains pending.
-  Outcomes/reference answers stay locked,
-  official test sealed, old confirmation unstarted and cloud expenditure $0.
+  All 800 final responses completed, with no further failure during recovery.
+  Full ledger: 806 attempts (800 completed/six earlier failures), three setup
+  sessions, **644,519 tokens / 8.39463 cumulative hours**. Both collection and
+  supervisor locks are released. All original recovery inputs/archived rows and
+  2,319 protected originals are unchanged. `background-verification.json` and
+  `recovery-v1/completion-review-verification.json` record accounting, preservation
+  and exact fresh-CPU reproduction of the frozen statistics from cached scores.
+- Phase 2 [results](docs/phase-2-repeat-results.md) **stop acquisition scaling**:
+  four of five predeclared gates fail. Four-draw average combined-minus-training-
+  selected-baseline utility is −0.016204 (90% CI −0.033276 to −0.000635);
+  reproducibility's interval crosses zero and secondary full8 is −0.051630.
+  Only informative question count passes (14 ≥ 10). Primary report payload is
+  `e4d17cc5ab4e0d3ffd1b79d301a988537d43bd2379fd1a99243f1e2843dd6d56`.
+  Separate post-hoc/development diagnosis code froze at `51530f2`, with seven
+  synthetic tests plus 386 previously passing existing tests. Artifacts live in
+  `repeat-diagnosis-v1/` (plan `ae71e727…00a5c87`, report `4278a314…9d9aedf`).
+  It fits no candidate and reads no new references. Full8 combined escalates
+  174 times, with 5 positive-gain/169 nonpositive decisions, versus confidence
+  58 with 16/42. Confidence achieves 92.5% at 466.9 tokens; combined 89% at 799.5.
+  Some repeated question-level structure remains, but hindsight or same-question
+  label transfer is not deployable evidence or unseen-question generalization.
+  Separate gold-free syntax triage in `repeat-parser-audit-v1/` found five
+  presentation candidates, five incomplete outputs, 16 two-component answers
+  on one question, and one unmarked terminal claim requiring broader policy.
+  No mathematical correctness was assessed or label changed. Fixed-policy
+  bounds cannot reverse the combined-minus-baseline comparison on these cases;
+  this is not a result for refitted policies or unflagged scorer errors.
+  Next is a separately versioned gold-free parser compatibility preflight;
+  retain incomplete/multi-answer rejection, stress-test negation/alternatives/
+  context/units, and never edit frozen v7 or replace the primary report. Then
+  freeze a bounded CPU-only capacity/calibration grid around confidence,
+  explicitly exploratory; it cannot change failed primary gates.
+  Any new generation needs a separate frozen question-role/
+  endpoint/analysis protocol and fresh signal evidence before scaling. Jev/RL,
+  acquisition, validation and confirmation generation remain unstarted; official
+  test sealed, old confirmation unstarted, human audit waived and cloud spend $0.

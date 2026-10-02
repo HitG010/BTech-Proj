@@ -13,14 +13,19 @@ the [first Phase 1 record](phase-1-evidence-repair.md) records the correction,
 and [checkpoint 2](phase-1-protocol-reconciliation.md) records protocol integration
 and legacy reproduction. [Checkpoint 3](phase-1-bridge.md) freezes the disjoint
 roles and defines the paired generation bridge. Current offline verification:
-386 passing tests; actual bridge collection and endpoint verification are complete,
+386 existing tests plus seven new diagnosis tests pass; actual bridge collection and endpoint verification are complete,
 with all six engineering gates passed. The [parser preflight](parser-preflight.md)
 adds opt-in v7 while preserving the primary bridge's frozen v5 results.
 The [repeat-panel protocol](phase-2-repeat-panel.md) is frozen: 50 disjoint
 questions, 800 jobs, independent draw halves, question-held-out diagnostics and
-deferred reference answers. Initial collection stopped at 51/800 after timeouts;
-[runtime recovery](phase-2-runtime-recovery.md) is using a separate supervisor
-with Docker running. Analysis remains locked until all 800 responses complete.
+deferred reference answers. All **800 responses are complete** after
+[runtime recovery](phase-2-runtime-recovery.md) with Docker running. The
+[results and post-hoc diagnosis](phase-2-repeat-results.md) report four failed
+progression gates out of five; acquisition scaling remains stopped. The frozen
+analysis reproduced exactly, and all 2,319 protected originals are unchanged.
+Separate gold-free triage found five presentation candidates among 27 rejected
+answers. Fixed-policy bounds show that these cases cannot reverse the observed
+combined-versus-baseline comparison; parser compatibility is the next preflight.
 
 ## 1. The question
 
@@ -59,6 +64,12 @@ primary preference: five accuracy points are worth 1,000 generated tokens.
   at lower token cost. A high-accuracy region is exploratory. The prepared
   125–142-hour confirmation remains for the unchanged earlier router.
 - The official 500-question GSM8K test split has never been generated or scored.
+- The new 50-question repeat panel rejects progression for the predeclared
+  combined learner. Its four-draw average utility difference versus the
+  training-selected baseline is −0.0162 (90% CI −0.0333 to −0.0006). The
+  eight-draw secondary analysis favors tuned confidence: 92.5% accuracy at
+  466.9 tokens, versus combined 89% at 799.5. These are diagnostic results,
+  not independent confirmation. See [Phase 2 results](phase-2-repeat-results.md).
 - The human scoring audit was waived by the user on 2026-09-18. Every
   audit so far is an agent review.
 
@@ -130,7 +141,8 @@ ignored by Git.
 | 11 | Protocol reconciliation | Can new collection be consistent and historical artifacts preserved? | 195 offline tests; 900 records and 14 artifacts preserved; zero gold-free parser differences; real bridge pending | [Checkpoint 2](phase-1-protocol-reconciliation.md) |
 | 12 | Paired protocol bridge | Does v3 pass the engineering screen on 25 new training questions? | 200/200 completed; all gates pass; 100/100 matched token sequences; direct 80%, thinking 94% in both arms; finite v3 direct confidence 50/50 | [Checkpoint 3](phase-1-bridge.md) · `research/data-efficiency-v1/bridge-v1` |
 | 13 | Parser preflight | Can final sections distinguish intermediate boxes without losing valid cached answers? | V6 rejected for 44 prose regressions; v7 changes only one duplicated bridge case across 1,100 records. Separate sensitivity 82%/94%; primary v5 unchanged | [Parser preflight](parser-preflight.md) · `research/data-efficiency-v1/parser-v7-preflight-v1` |
-| 14 | Repeat-panel study | Does repeated supervision support useful routing on independent draws and unseen questions? | Initial collection stopped at 51/800; separate runtime recovery running with unchanged protocol/budgets; outcomes locked | [Phase 2 protocol](phase-2-repeat-panel.md) · [Runtime recovery](phase-2-runtime-recovery.md) · `research/data-efficiency-v1/repeat-panel-v1` |
+| 14 | Repeat-panel study | Does repeated supervision support useful routing on independent draws and unseen questions? | 800/800 complete; four of five progression gates fail; four-draw average utility difference −0.0162; acquisition scaling stopped | [Phase 2 results](phase-2-repeat-results.md) · [Protocol](phase-2-repeat-panel.md) · [Runtime recovery](phase-2-runtime-recovery.md) · `research/data-efficiency-v1/repeat-panel-v1` |
+| 15 | Post-hoc signal diagnosis | Is the failed learner missing useful escalation opportunities? | Combined full8 captures 5 positive-gain pairs in 174 escalations; confidence captures 16 in 58; no new candidate fitting or generation | [Separate development diagnosis](phase-2-repeat-results.md) · `research/data-efficiency-v1/repeat-diagnosis-v1` |
 | — | Active roadmap | What should come next? | Protocol repair, supervision diagnosis, then gated data-efficient acquisition; defer study 8 | [research roadmap](research-roadmap.md) |
 
 ### Run registry (`artifacts/runs/`)
@@ -169,6 +181,7 @@ reports → router studies.
 | | `scoring_v6.py` | Rejected numeric-only candidate retained for provenance; v7 also reuses structural helpers | Do not select for new studies |
 | Phase 2 | `research_repeat.py` | Frozen repeat role, jobs, budgets, source/endpoint guards and deferred selected-only v7 scoring | `python -m reasoning_budget.research_repeat …` |
 | | `repeat_stats.py` | Nested question-fold diagnostics, independent draw halves, acquisition accounting and scaling gates | Via repeat `analyze` |
+| | `scripts/diagnose_repeat_signal.py` | CPU-only post-hoc oracle, variance and policy-decision diagnostics from the completed scored endpoint | `.venv/bin/python scripts/diagnose_repeat_signal.py` |
 | | `reporting.py` | Whole-question bootstrap, paired differences, audit worksheets, cost projection | `rb report`, `rb audit` |
 | Study 2 | `calibration.py` | Answer-cap comparison and confirmation | `rb calibrate …` |
 | Study 4 | `controller.py` | MiniLM + lexical features (387 dims); four ridge predictors; portable model | — |
