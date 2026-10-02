@@ -572,3 +572,15 @@ Implementation and verification status will be recorded here as work completes.
   one separately frozen cached CLM diagnostic with matched 8B supervised
   control and confidence; earlier negative grids stay closed. See
   [results and next boundary](docs/local-clm-and-power-results.md).
+- 2026-10-03: user authorized the next cached released-CLM comparison. Added
+  `scripts/repeat_clm_probe.py`, synthetic leakage/endpoint/accounting tests and
+  [the frozen protocol](docs/phase-2-clm-probe-protocol.md). One fixed state/action
+  recipe encodes all 400 cached direct drafts and two action vectors; the worker
+  sees no labels/thinking text. Actual frozen heads, bounded scalar calibration,
+  a supervised PCA8/Ridge control on identical 8B embeddings, and historical
+  confidence are compared using unchanged v7/folds/independent halves.
+  Maximum 450 Ridge/75 PCA fits; no auxiliary-statistics fusion, head finetuning,
+  prompt search or new generation. Single encoder invocation, zero retries,
+  40-minute wall cap; Docker stays running. Source/tests/protocol checkpoint
+  precedes request/plan preparation and all real encoding/fitting. Preserve
+  the earlier negative experiments, roles and preflight assets unchanged.
