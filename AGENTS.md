@@ -225,3 +225,40 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   halves; not another MiniLM search. New generation still needs a separate
   reserve-child-role/endpoint/analysis protocol. Acquisition, Jev/RL, MATH and
   confirmation stay unstarted; cloud/API spend $0, official test sealed.
+- Phase 2d [cached released-CLM results](docs/phase-2-clm-probe-results.md) are
+  complete, superseding the preceding task-quality-untested/next-probe boundary.
+  Source/tests `5d40fa8`, launcher/protocol `ce1c7e6`, frozen plan
+  `270718aa…22a88c`; report `5c05f655…07f117`. One local worker finished all
+  400 direct-state plus two action encodings in 575.67 s, no retry, mean state
+  1.427 s/p95 2.244 s, maximum 659 input tokens, zero truncation, peak MLX
+  4.895 GiB. All 450 Ridge/75 PCA fits completed. Actual frozen heads were not
+  finetuned. The matched control uses PCA8 on the same 8B embeddings; scalar
+  CLM calibration and neither learned family include auxiliary draft statistics.
+  Every screen fails: averaged deltas vs confidence zero-shot −.026103 (90% CI
+  −.058826 to +.016513), calibrated −.033262 (−.053818 to −.015171), raw control
+  −.022617 (−.043758 to −.004464), nested-selected −.028893. Calibrated minus
+  raw −.010645. Zero-shot chooses thinking 380/400 times; secondary full8
+  94.75% at 1,550.53 tokens vs confidence 92.5% at 466.88. The four-draw
+  confidence comparator is different (92.75%/628.47); do not mix endpoints.
+  Close this recipe; no adaptive prompt/fusion/finetuning search or deployment,
+  acquisition/RL promotion follows. Quantized/full-precision equivalence,
+  pretraining disjointness and live co-resident latency remain untested.
+  Reporting deviation: imported CPU summary used bootstrap seed 20261002 for
+  75 per-condition intervals. Preserve frozen code/report. The additive
+  `repeat-clm-review-v1/conditional-intervals.protocol-seed.json`
+  (`ea1c9226…faaaf6`) supplies planned-20261006 versions; use it for conditional
+  intervals. Primary averaged intervals, points, actions, fits, selection and
+  screens are unchanged. Independent verification `8d7392b5…88524e` checks
+  20,000 decisions, boundaries, selection, costs, intervals and resource/input
+  identities; functional head logits reproduce exactly. All 2,319 originals
+  are preserved. Full 533 offline tests before launch plus four reviewer tests
+  pass. Both native worker and analysis exited; no job remains running.
+  Do not edit frozen probe script/tests/protocol or restart preparation/encoding/
+  fitting; preserve requests, invocation, NPZ, logs and completed reports.
+  Reviewer plotting recipe is `scripts/review_repeat_clm_probe.py`; PNG/PDF
+  comparison was visually checked. Docker stayed running, cloud/API spend $0,
+  no new solver response/reference/sealed access or role change occurred.
+  Next is a separately frozen broader opportunity-rate diagnostic protocol
+  (the proposed 64-question/two-solver panel is still unallocated/unstarted),
+  not superiority confirmation of a failed policy. Acquisition, Jev/RL, MATH,
+  confirmations remain stopped; official test stays sealed.

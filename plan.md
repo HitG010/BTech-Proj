@@ -589,3 +589,23 @@ Implementation and verification status will be recorded here as work completes.
   execution (`python -m scripts.repeat_clm_probe`) so the repository's `scripts`
   namespace resolves. Source implementation, grid and data are unchanged;
   checkpoint the corrected command before actual preparation/encoding.
+- 2026-10-03: completed the frozen cached released-CLM diagnostic from
+  `5d40fa8` / launcher-protocol `ce1c7e6`, plan `270718aa…22a88c`. One native
+  worker encodes 402/402 inputs in 575.67s, no retry, mean state 1.427s/p95
+  2.244s, peak MLX 4.895 GiB, zero truncation. All 450 Ridge/75 PCA fits
+  complete. Every exploratory screen fails: zero-shot −.026103 utility vs
+  confidence, calibrated −.033262, raw-encoder control −.022617, nested selected
+  −.028893. Zero-shot escalates 380/400; calibrated captures no positive gains
+  in either four-draw direction. Keep confidence and close the tested recipe.
+  Independent reviewer initially caught inherited per-condition bootstrap seed
+  20261002; added a regression and preserved original report/source with a
+  separate planned-20261006 interval sidecar for 75 policy intervals. Primary
+  averaged intervals and every action/fit/point/screen remain unchanged.
+  Verification `8d7392b5…88524e` checks 20,000 decisions and exact functional
+  head logits; all 2,319 originals unchanged. Full 533 tests before launch
+  plus four reviewer tests pass; graph PNG/PDF visually checked. All workers
+  exited. No generation/references/sealed access, allocation change, cloud/API
+  spend or Docker interruption. Report `5c05f655…07f117`; do not restart.
+  Next is a separately frozen broader opportunity-rate diagnostic (64-question/
+  two-solver proposal remains unallocated), not a fresh superiority test for
+  these failed policies. See [results/deviation/provenance](docs/phase-2-clm-probe-results.md).

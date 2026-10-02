@@ -40,7 +40,13 @@ decisions were verified and all protected originals preserved. The subsequent
 [local released-CLM preflight and power review](local-clm-and-power-results.md)
 are complete: actual released heads with a 4-bit 8B encoder pass ten synthetic
 engineering inputs at 4.95 GiB peak MLX allocation. Task routing quality remains
-untested. The [broader signal design](broader-signal-design.md) proposes a
+untested in that engineering stage. The subsequent
+[cached CLM diagnostic](phase-2-clm-probe-results.md) completes 402 encodings,
+450 Ridge/75 PCA fits and independent verification of 20,000 decisions; every
+exploratory screen fails. Calibrated CLM averages −.033262 utility vs confidence,
+with the raw encoder control also negative. Preserve the additive correction
+for 75 conditional bootstrap intervals; primary averaged intervals are unchanged.
+The [broader signal design](broader-signal-design.md) proposes a
 diagnostic panel only; new generation/scaling remain unstarted. Contrastive
 routing itself is not a new contribution. The latest user preference is local
 experiments with Docker kept running.

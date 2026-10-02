@@ -8,6 +8,7 @@ import numpy as np
 from reasoning_budget.confirmation import file_hash
 from reasoning_budget.storage import digest, verified
 from scripts import repeat_clm_probe as probe
+from scripts.repeat_cpu_feasibility import SPEC as CPU_SPEC
 from scripts.repeat_cpu_feasibility import load_panel
 from scripts.review_router_feasibility import close, interval, measured
 from scripts.verify_phase2_repeat import verify
@@ -54,9 +55,16 @@ def review_heads(states, actions, head):
         "checkpoint_and_margin_arithmetic_pass": True, "synthetic_inference_or_encoder_rerun": False}
 
 
+def conditional_interval(actual, delta, legacy_seed, protocol_seed):
+    """Verify the frozen helper result, then return an additive seed correction."""
+    old = interval(delta, legacy_seed)
+    np.testing.assert_allclose(actual, old, atol=1e-10, rtol=0)
+    return {"original_ci90": list(actual), "protocol_ci90": interval(delta, protocol_seed)}
+
+
 def review_statistics(panel, statistics, spec, margins, encoder_seconds, head_seconds):
     ids, count = panel["ids"], 0
-    metrics_by_condition = {}
+    metrics_by_condition, corrected_intervals = {}, {}
     for name, (train_draws, eval_draws) in spec["conditions"].items():
         condition = statistics["conditions"][name]
         if condition["train_draws"] != train_draws or condition["evaluation_draws"] != eval_draws:
@@ -111,6 +119,7 @@ def review_statistics(panel, statistics, spec, margins, encoder_seconds, head_se
                         raise ValueError("Timing proxy omits measured encoder/head work")
                     close(record["cached_solver_plus_observed_router_seconds"], record["seconds"] + overhead.mean())
         metrics_by_condition[name] = {}
+        corrected_intervals[name] = {}
         for policy, summary in condition["summary"].items():
             rows = [condition["per_question"][qid]["policies"][policy] for qid in ids]
             actions = np.asarray([row["decisions"] for row in rows])
@@ -129,7 +138,8 @@ def review_statistics(panel, statistics, spec, margins, encoder_seconds, head_se
             confidence = np.asarray([condition["per_question"][qid]["policies"]["confidence"]["utility"] for qid in ids])
             delta = values["utility"] - confidence
             close(summary["delta_vs_confidence"]["mean"], delta.mean())
-            np.testing.assert_allclose(summary["delta_vs_confidence"]["ci90"], interval(delta, spec["bootstrap_seed"]), atol=1e-10, rtol=0)
+            corrected_intervals[name][policy] = conditional_interval(summary["delta_vs_confidence"]["ci90"],
+                delta, CPU_SPEC["bootstrap_seed"], spec["bootstrap_seed"])
             if "cached_solver_plus_observed_router_seconds" in summary:
                 close(summary["cached_solver_plus_observed_router_seconds"], np.mean([
                     row["cached_solver_plus_observed_router_seconds"] for row in rows]))
@@ -156,7 +166,10 @@ def review_statistics(panel, statistics, spec, margins, encoder_seconds, head_se
     if statistics["fit_count"] != 450 or statistics["pca_fit_count"] != 75:
         raise ValueError("Total fit accounting mismatch")
     return {"decisions_checked": count, "fold_selection_and_accounting_pass": True,
-            "historical_confidence_preserved": True, "fixed_fit_intervals_and_screens_pass": True}
+            "historical_confidence_preserved": True, "primary_average_intervals_and_screens_pass": True,
+            "conditional_interval_correction": {"original_helper_seed": CPU_SPEC["bootstrap_seed"],
+                "protocol_seed": spec["bootstrap_seed"], "conditions": corrected_intervals,
+                "mean_actions_fits_and_primary_average_intervals_changed": False}}
 
 
 def review():
@@ -209,6 +222,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.parse_args()
     result = review()
+    correction = result["accounting"].pop("conditional_interval_correction")
+    correction.update(original_report_sha256=result["report_sha256"], plan_sha256=result["plan_sha256"],
+        reason="Per-condition summary helper inherited CPU bootstrap seed; primary averaged comparisons already use protocol seed")
+    probe.new(OUTPUT / "conditional-intervals.protocol-seed.json", correction)
+    result["conditional_interval_correction_sha256"] = digest(correction)
     probe.new(OUTPUT / "verification.json", result)
     render(verified(probe.OUTPUT / "report.json")["statistics"], OUTPUT)
     print({"verified": True, "verification_sha256": digest(result), "decisions": result["accounting"]["decisions_checked"]})
