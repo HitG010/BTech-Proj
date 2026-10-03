@@ -609,3 +609,17 @@ Implementation and verification status will be recorded here as work completes.
   Next is a separately frozen broader opportunity-rate diagnostic (64-question/
   two-solver proposal remains unallocated), not a fresh superiority test for
   these failed policies. See [results/deviation/provenance](docs/phase-2-clm-probe-results.md).
+- 2026-10-03: user requested a deeper CLM architecture/novelty assessment and
+  continued tests. Added a separately frozen descriptive cached-score audit
+  (ranking vs confidence, independent-half association, fixed-policy cost
+  sensitivity; no fitting/inference or new references), plus synthetic checks
+  of binary contrastive decisions, duplicate-action hazards and regret targets.
+  Reviewed the current official CLM code and RouterDC/CSCR/SEMIROUTER prior art;
+  two-action compatibility and repeated supervision alone are not novelty.
+  Added question-only reserve-child preparation and leakage/accounting tests
+  for the proposed 64-question/two-solver opportunity diagnostic. Parent roles
+  remain unchanged. Candidate 0.6B revision is identified, but its local asset/
+  closure and new endpoint/resource/scoring protocol remain pending; collection
+  stays locked. Full 555 offline tests, Ruff and whitespace checks pass before
+  real audit calculations or child preparation. Source/test/protocol checkpoint
+  precedes those exclusive additive artifacts. Docker remains running.
