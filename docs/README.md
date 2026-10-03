@@ -13,7 +13,7 @@ the [first Phase 1 record](phase-1-evidence-repair.md) records the correction,
 and [checkpoint 2](phase-1-protocol-reconciliation.md) records protocol integration
 and legacy reproduction. [Checkpoint 3](phase-1-bridge.md) freezes the disjoint
 roles and defines the paired generation bridge. Current offline verification:
-the full 500-test suite plus two independent accounting tests pass; actual bridge collection and endpoint verification are complete,
+the full 557-test suite passes; actual bridge collection and endpoint verification are complete,
 with all six engineering gates passed. The [parser preflight](parser-preflight.md)
 adds opt-in v7 while preserving the primary bridge's frozen v5 results.
 The [repeat-panel protocol](phase-2-repeat-panel.md) is frozen: 50 disjoint
@@ -46,10 +46,16 @@ untested in that engineering stage. The subsequent
 exploratory screen fails. Calibrated CLM averages −.033262 utility vs confidence,
 with the raw encoder control also negative. Preserve the additive correction
 for 75 conditional bootstrap intervals; primary averaged intervals are unchanged.
-The [broader signal design](broader-signal-design.md) proposes a
-diagnostic panel only; new generation/scaling remain unstarted. Contrastive
-routing itself is not a new contribution. The latest user preference is local
-experiments with Docker kept running.
+The [deeper CLM assessment](clm-research-assessment-2026-10-03.md) adds a cached
+score audit: positive-gain AUROC .500450 for released CLM versus .705045 for
+confidence, with wide grouped intervals. Keep CLM as a candidate representation;
+do not promote this recipe. It includes proposed problem-statement wording and
+conditional utility/objective adaptations. The [broader signal design](broader-signal-design.md)
+now has a [prepared, verified 64-question reserve child](opportunity-panel-preparation.md).
+Only questions are prepared; second-solver asset/closure and the new
+collection/scoring/resource protocol remain pending. New generation/scaling
+remain unstarted. Contrastive routing and repeated observations already have
+prior work. The latest user preference is local experiments with Docker running.
 
 ## 1. The question
 

@@ -262,3 +262,46 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   (the proposed 64-question/two-solver panel is still unallocated/unstarted),
   not superiority confirmation of a failed policy. Acquisition, Jev/RL, MATH,
   confirmations remain stopped; official test stays sealed.
+- The [deep CLM assessment](docs/clm-research-assessment-2026-10-03.md) and
+  descriptive cached-score audit are complete. Source/test/protocol `b2e4de8`,
+  base plan `048687b3…350846`. The first new launcher hit a cached-summary
+  field error before writing its report; preserve it unchanged and **do not
+  rerun its execute command**. Additive completion source `a266621`, plan
+  `4e0a58e6…64ba29`, report `d5010392…1a26f7`, independent automated review
+  `57604e81…ad1710` live in `clm-signal-audit-v1/completion-v1/`. They invoke
+  no fitting, encoding, scoring/reference access or solver generation.
+  Positive-gain AUROC is .500450 for CLM versus .705045 for negative confidence;
+  paired difference −.204595 has 90% interval [−.606961,+.195547]. This is
+  imprecise reused-data description, not proof of a population disadvantage.
+  CLM chooses 380/400 and has 7.89% positive-gain precision. Preserve λ=.05;
+  fixed-action break-even .021691 omits encoder cost and is not a new endpoint.
+  Six AUROCs, all paired intervals and cost algebra were independently reproduced
+  with scikit-learn. Full **557 offline tests** pass; 2,319 originals unchanged.
+  Retain CLM as a conditional representation, not claimed novelty; current
+  upstream choice training already deduplicates shared action texts. Neither
+  contrastive routing nor repeated supervision alone is novel (RouterDC uses
+  repeated solver samples). No renewed search/finetuning on the 50-question panel.
+  Both audit analyses are finished; preserve sources/tests/protocols/plans/results.
+- The [opportunity preparation](docs/opportunity-panel-preparation.md) supersedes
+  the preceding unallocated-64 statement: `reserve-children/opportunity64-v1/`
+  now contains a separately frozen **question-only child of 64 parent-reserve
+  rows**, split `opportunity64`, seed 20261007, fold counts 13/13/13/13/12.
+  Child payload `6d31e6e…50c230`, preparation plan `300bfbc…3ee10`; unchanged
+  parent payload `c2b28b3d…d3a4fd`. Parent roles remain 548 reserve, with 64
+  earmarked by this child and 484 unclaimed; audit sibling children before
+  any other allocation. Source/index/exclusion/normalized-prompt checks and
+  seven frozen preparation source hashes are independently verified. Dataset
+  `gold_sha256` remains null and no gold file may be added. Do not rerun prepare;
+  `python -m scripts.opportunity_panel_plan verify` is read-only. Preserve its
+  script/tests/preparation doc and child artifacts. The candidate Qwen3-0.6B
+  revision `c1899de289a04d12100db370d81485cdf75e47ca` is identified but not
+  downloaded or tokenizer/closure verified. Generation is **unstarted/locked**.
+  Next implement a separate additive local-asset preflight, then freeze both
+  solver arms, independent seeds/jobs, unchanged prompt/caps/scorer, both-arm
+  full endpoint before exactly selected training-reference access, analysis,
+  and global setup/retry/token/time limits. Existing preparation is not a full
+  collection protocol; its 786,944 token bound is response-only and assumes two
+  closure tokens. The pure confidence/opportunity helpers have synthetic tests
+  only; real use needs the new analysis protocol. This panel is diagnostic, not
+  +.01 confirmation. Official test sealed, both confirmations/acquisition/Jev/RL
+  unstarted, no worker running, Docker kept running, cloud/API spend $0.

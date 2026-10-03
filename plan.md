@@ -631,3 +631,19 @@ Implementation and verification status will be recorded here as work completes.
   checkpoint/plan; rank functions/endpoints/bootstrap remain unchanged. The
   64-question child preparation and read-only verification succeeded with
   collection locked; the parent allocation is unchanged.
+- 2026-10-03: completed the deeper [CLM research assessment](docs/clm-research-assessment-2026-10-03.md),
+  revised problem-statement wording and conditional adaptation/novelty decision.
+  Frozen cached-score audit completes through additive `a266621`, with original
+  `b2e4de8` source/plan preserved. Report `d5010392…1a26f7` finds positive-gain
+  AUROC .500450 for CLM vs .705045 for confidence; paired −.204595 interval
+  [−.606961,+.195547] is imprecise. Fixed-action λ break-even .021691 does not
+  change λ=.05 or any action. Independent automated review `57604e81…ad1710`
+  reproduces six AUROCs, all three paired intervals and cost algebra. Full 557
+  offline tests pass; all 2,319 protected originals remain unchanged.
+  The 64-question reserve child is prepared/verified (`6d31e6e…50c230`), with
+  parent unchanged, five grouped folds and gold deferred. No new generation,
+  reference/sealed outcomes, 0.6B download, fitting, encoder execution or spend
+  occurred. Next: separate pinned local 0.6B asset/closure preflight and full
+  two-arm collection/scoring/analysis/global-budget protocol before collection.
+  CLM remains conditional; tested recipe closed, acquisition/Jev/RL/confirmation
+  stopped, Docker running. No publication contribution is established yet.
