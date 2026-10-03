@@ -623,3 +623,11 @@ Implementation and verification status will be recorded here as work completes.
   stays locked. Full 555 offline tests, Ruff and whitespace checks pass before
   real audit calculations or child preparation. Source/test/protocol checkpoint
   precedes those exclusive additive artifacts. Docker remains running.
+- 2026-10-03: the new descriptive audit launcher at `b2e4de8` failed at final
+  sensitivity assembly because prior summaries use `mean_accuracy/mean_tokens`,
+  not `accuracy/tokens`. No report was written and no model/reference/fitting call
+  occurred. Preserve that source and plan `048687b3…350846`. Added a separate
+  completion wrapper with schema regression tests and its own pre-calculation
+  checkpoint/plan; rank functions/endpoints/bootstrap remain unchanged. The
+  64-question child preparation and read-only verification succeeded with
+  collection locked; the parent allocation is unchanged.
