@@ -342,3 +342,23 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   scoring or cloud access occurred. Official test/confirmations/acquisition/RL
   remain stopped; Docker running. More data needs a new prospective child/plan
   after the diagnostic; do not silently expand the frozen64 panel.
+- The additive [opportunity recovery](docs/opportunity-panel-runtime-recovery.md)
+  froze at `efa72b2` after 636 offline tests and independent review. Plan
+  `614f5ea7…7392be`, prelaunch review `69f66f1a…db961`; all 22 immutable study
+  originals, three new pins, two mutable archives and 52 original file pins pass.
+  One recovery launch `a0a21397…9777cb5` is **running**, supervisor PID32363,
+  temporary AC `caffeinate -s -i` PID32364, 1.7B collector PID32417/invocation
+  `a8745527…6151bed`. Launch verification `76ef00c9…a6fd64` observed 3/512
+  completed, 4,235 charged tokens including active/old failed reservations,
+  5,742.27 seconds global wall age, both process sleep assertions and no scoring
+  marker. These are snapshots, not terminal results. Authoritative live state:
+  `opportunity-panel-v1/recovery-v1/status.json`; old background status remains
+  the preserved failure. Do not relaunch, prepare again, edit frozen original
+  or recovery source/tests/policy, or reset clocks/journals. The 1.7B permitted
+  resume is consumed; 0.6B initial follows automatically after that arm completes.
+  Endpoint finalizer fetches exactly selected64 training references only after
+  all512 and collector exits; no earlier reference access. Same64/folds/jobs/
+  seeds/caps/v7/analysis/global1M/12h remain authoritative. No extra questions
+  allocated; decide after terminal diagnostic under a new prospective protocol.
+  Docker running, cloud/API spend $0, official test sealed and confirmations/
+  acquisition/Jev/RL remain stopped. See launch record for provenance and status.

@@ -703,3 +703,13 @@ Implementation and verification status will be recorded here as work completes.
   bytes. Full endpoint still delegates to the original finalizer. Freeze these
   new sources/tests/runtime policy before preparation or native launch. No new
   questions, model responses or references entered this implementation check.
+- 2026-10-05: additive recovery prepared from `efa72b2`, plan `614f5ea7…7392be`;
+  independent actual-input audit passes (`69f66f1a…db961`). One native detached
+  recovery launch `a0a21397…9777cb5` starts with original global budget and
+  launch/invocation journals intact. First three responses complete; process
+  idle/system-sleep assertions verified, no score/reference marker. Snapshot
+  4,235 charged tokens and 5,742.27 seconds global wall age; preserved first
+  failure included. Authoritative state is recovery-v1/status.json, not old
+  background-status.json. Worker sequences 1.7B then0.6B and full-endpoint
+  finalizer automatically, stopping on first failure. No extra allocation or
+  cloud spend; review terminal diagnostic before a new prospective data plan.

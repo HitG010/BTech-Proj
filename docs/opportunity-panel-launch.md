@@ -90,3 +90,36 @@ The new study directory is
 Narrow power-event evidence is under `clock-diagnosis-v1/power-events.json`.
 Cloud/API spend is **$0**. Official test and both confirmations remain sealed
 or unstarted. Acquisition and Jev/RL remain stopped.
+
+## Separately frozen recovery: running
+
+Recovery source/tests/runtime policy froze at **`efa72b2`**, after all **636
+offline tests** and independent Sol review passed. The
+[runtime policy](opportunity-panel-runtime-recovery.md) describes the unchanged
+study boundaries. The recovery plan is
+`614f5ea758f42995b3b5fe9c707364eb898afa371f6caa0ee770b732937392be`.
+An independent prelaunch audit verified all 22 immutable original study files,
+three recovery pins, two archived mutable files and 52 original source,
+protected-input and dataset pins. Its payload is `69f66f1a…db961`.
+
+The one recovery launch is **`a0a2139708944595a3f2bd4289777cb5`**.
+Supervisor PID is **32363**; its temporary `caffeinate -s -i` guard is PID
+**32364**. The 1.7B collector invocation is
+`a87455276d3f4c1d818abc2dd6151bed`, PID **32417**. This uses the existing permitted
+1.7B resume. The 0.6B initial invocation will follow after the 1.7B endpoint.
+
+At the launch verification snapshot, **3/512** responses were complete,
+all from 1.7B. Both idle-sleep and system-sleep assertions were observed for
+the recovery guard. The shared ledger charged **4,235 tokens**, including
+active reservations and the preserved failed attempt. Global wall age was
+**5,742.27 seconds**. This is a time-stamped progress snapshot, not final usage.
+No reference access or scoring marker existed. Launch review payload is
+`76ef00c9…a6fd64`.
+
+The authoritative live status is now
+`opportunity-panel-v1/recovery-v1/status.json`. It updates about every ten
+seconds. Original `background-status.json` remains the historical failure and
+must not be used as the recovery status. Do not restart either launcher or
+edit pinned recovery files. The detached worker will run both arms and the
+unchanged full-endpoint scoring/analysis transaction, or stop at the first
+failure. Review the terminal report before any new question allocation.
