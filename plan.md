@@ -666,3 +666,19 @@ Implementation and verification status will be recorded here as work completes.
   kept running. Next implement the separate two-arm collector with one global
   ledger, exact endpoint and cached-score analysis. Collection remains locked;
   synthetic timings are not full-budget throughput or task-quality evidence.
+- 2026-10-04: user authorized the full two-solver diagnostic and conditional
+  additional data. Implement additive `opportunity_panel_collect` and pure
+  `opportunity_panel_analysis`: unchanged 64-question child, pinned 1.7B/0.6B,
+  512 jobs with distinct per-arm seeds, one immutable global ledger, 1M tokens
+  and 12-hour collection wall/charge ceiling, first-failure stop, at most one
+  explicit runtime resume per arm. Native background supervisor has launch/
+  startup/setup/job/finalization watchdogs and keeps Docker running. Both-arm
+  full endpoint gates exactly selected training references and separate unchanged
+  v7 scores. Mandatory post-warper confidence and secondary raw confidence use
+  40 fixed scalar cutoffs; shared whole-question bootstrap is descriptive and
+  conditional on fitted actions. Sol implementation and independent reviews
+  identified/fixed launch and ledger read races, charge/attempt links, timestamp
+  provenance, decoded-accounting boundaries and reference-cache safeguards.
+  Freeze source/tests/protocol before native tokenizer-only preparation and
+  background launch. No new reserve allocation or adaptive panel expansion;
+  more data requires a separate prospective design after diagnostic evidence.
