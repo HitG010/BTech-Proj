@@ -647,3 +647,11 @@ Implementation and verification status will be recorded here as work completes.
   two-arm collection/scoring/analysis/global-budget protocol before collection.
   CLM remains conditional; tested recipe closed, acquisition/Jev/RL/confirmation
   stopped, Docker running. No publication contribution is established yet.
+- 2026-10-04: implement the next additive local second-solver engineering
+  preflight. Pin public Qwen3-0.6B revision, remote/local object hashes and isolated
+  caches; one bounded download and one two-job synthetic MPS invocation. No
+  diagnostic question enters the model. Sol review identified watchdog telemetry,
+  final disk growth and restart-journal gaps; fix these before freeze and add
+  synthetic failure tests. Real two-arm collection remains locked pending its
+  separate full endpoint/scoring/analysis/global-budget protocol. Keep Docker
+  running and the existing model/environment/study records unchanged.
