@@ -32,6 +32,11 @@ not an established method contribution. The
 [64-question reserve child](opportunity-panel-preparation.md) is now prepared and
 verified with no outcomes/references: second-solver local assets/closure,
 collection/scorer/analysis endpoints and global budgets remain pending.
+The [local second-solver engineering check](opportunity-solver-preflight-results.md)
+now passes, superseding the preceding asset/closure-pending boundary. The actual
+two-token closure and both modes work on MPS. Only two synthetic jobs ran.
+Real 64-question collection remains locked pending a separate shared-budget
+512-job endpoint/scoring/analysis protocol. This is not new routing evidence.
 The user's latest preference keeps experiments local; the earlier cloud ceiling
 is not an instruction to launch cloud work.
 

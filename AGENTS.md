@@ -305,3 +305,20 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   only; real use needs the new analysis protocol. This panel is diagnostic, not
   +.01 confirmation. Official test sealed, both confirmations/acquisition/Jev/RL
   unstarted, no worker running, Docker kept running, cloud/API spend $0.
+- The [local second-solver preflight](docs/opportunity-solver-preflight-results.md)
+  is complete and supersedes the preceding 0.6B-assets-unverified boundary.
+  Frozen source/tests/protocol `1e1e4d1`, plan `59827f88…99c04`; nine pinned
+  public files total 1,519,207,673 bytes and pass remote/local hashes. One bounded
+  download and one synthetic MPS worker, zero application retries. Both modes
+  pass, actual EOS `[151643,151645]`, closure `[151668,271]`, thinking forced
+  closure observed, 42 charged synthetic tokens, largest sampled RSS 2.06 GiB.
+  Report `ce24395e…44e21c`; all 2,319 originals unchanged; full 576 offline tests
+  pass. Preserve sources/tests/protocol/plan/assets/invocations/start markers/
+  logs/reports. Do not download again or restart the completed preflight. No
+  study question entered the model, no reference/scoring/sealed access occurred,
+  and the worker exited. This is engineering only, not real-cap throughput or
+  routing evidence. The real 64-question diagnostic remains unstarted/locked.
+  Next implement and freeze its separate 512-job two-arm collector with a shared
+  global ledger and full endpoint/scoring/analysis rules. The proposed 1M-token/
+  12-hour global limits are not yet a frozen collection protocol. Docker stays
+  running, cloud/API spend $0, acquisition/Jev/RL/confirmations remain stopped.

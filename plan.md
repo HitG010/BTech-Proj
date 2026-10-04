@@ -655,3 +655,14 @@ Implementation and verification status will be recorded here as work completes.
   synthetic failure tests. Real two-arm collection remains locked pending its
   separate full endpoint/scoring/analysis/global-budget protocol. Keep Docker
   running and the existing model/environment/study records unchanged.
+- 2026-10-04: completed frozen local 0.6B preflight from `1e1e4d1`, plan
+  `59827f88…99c04`. Nine pinned public assets total 1,519,207,673 bytes; one
+  application download, 162.94 seconds, remote/local hashes pass. One MPS worker
+  produces two valid synthetic outputs, including actual forced two-token
+  closure; 42 charged tokens, 11.30 seconds parent wall, 2.06 GiB maximum sampled
+  RSS. No retry. Completion payload `ce24395e…44e21c`; all 2,319 originals
+  unchanged. Full 576 offline tests and pre-launch Sol review pass. No real
+  question generation, reference/scoring/sealed access or cloud spend. Docker
+  kept running. Next implement the separate two-arm collector with one global
+  ledger, exact endpoint and cached-score analysis. Collection remains locked;
+  synthetic timings are not full-budget throughput or task-quality evidence.

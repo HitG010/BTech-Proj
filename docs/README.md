@@ -57,6 +57,13 @@ collection/scoring/resource protocol remain pending. New generation/scaling
 remain unstarted. Contrastive routing and repeated observations already have
 prior work. The latest user preference is local experiments with Docker running.
 
+The subsequent [local second-solver check](opportunity-solver-preflight-results.md)
+passes for pinned Qwen3-0.6B. Nine public files and two synthetic MPS jobs are
+complete. Actual closure is two tokens; largest sampled RSS is 2.06 GiB.
+The full suite passes 576 tests. Real collection remains locked until a separate
+512-job protocol implements a shared budget, endpoint and scoring/analysis rules.
+Do not restart this completed engineering check.
+
 ## 1. The question
 
 Qwen3 models have two inference modes: **direct** (non-thinking; a short answer,
