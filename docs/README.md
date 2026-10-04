@@ -64,6 +64,14 @@ The full suite passes 576 tests. Real collection remains locked until a separate
 512-job protocol implements a shared budget, endpoint and scoring/analysis rules.
 Do not restart this completed engineering check.
 
+The [full two-solver study](opportunity-panel-protocol.md) is now frozen and
+prepared: 512 jobs on the same 64 question groups, one global budget and fixed
+confidence controls. All 623 tests and independent prelaunch checks pass.
+Its [initial runtime record](opportunity-panel-launch.md) reports 0/512 after
+maintenance sleep caused a wall/monotonic watchdog mismatch. References remain
+locked. A separate additive runtime recovery is being prepared; no extra data
+has been allocated and no primary research result is available yet.
+
 ## 1. The question
 
 Qwen3 models have two inference modes: **direct** (non-thinking; a short answer,

@@ -322,3 +322,23 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   global ledger and full endpoint/scoring/analysis rules. The proposed 1M-token/
   12-hour global limits are not yet a frozen collection protocol. Docker stays
   running, cloud/API spend $0, acquisition/Jev/RL/confirmations remain stopped.
+- The [full two-solver diagnostic](docs/opportunity-panel-protocol.md) is frozen
+  from `a136f27` after 623 offline tests. Actual protocol `d4e511ad…c1e44bc`
+  binds both local solvers, unchanged 64-child/folds, 512 unique jobs/seeds,
+  786,944 response reservations, one 1M-token/12-hour shared budget and fixed
+  analysis. Actual independent prelaunch audit verified 39 source/11 protected/
+  two dataset/16 model-asset hashes and all job/seed identities. The first
+  background launch stopped 0/512 at `needs_attention`, before references.
+  See [runtime diagnosis](docs/opportunity-panel-launch.md): macOS maintenance
+  sleep106+929 seconds explains 26.98 monotonic vs1,057.29 wall seconds. The
+  old wall watchdog counted sleep; generator uses monotonic time. Preserve
+  every frozen file and initial status/log/journal/reservation/receipt. The
+  first unresolved job stays charged512tokens/600seconds, setup19.5537seconds;
+  collection start/global wall age including sleep/gaps must not reset. Only
+  one permitted 1.7B resume remains; 0.6B initial is unstarted. Next is a
+  separately pinned additive runtime recovery with matching monotonic watchdogs
+  and a process-scoped AC system-sleep guard. Do not call original launch again
+  while recovery is prepared. No new question allocation, label/reference,
+  scoring or cloud access occurred. Official test/confirmations/acquisition/RL
+  remain stopped; Docker running. More data needs a new prospective child/plan
+  after the diagnostic; do not silently expand the frozen64 panel.

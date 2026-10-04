@@ -682,3 +682,24 @@ Implementation and verification status will be recorded here as work completes.
   Freeze source/tests/protocol before native tokenizer-only preparation and
   background launch. No new reserve allocation or adaptive panel expansion;
   more data requires a separate prospective design after diagnostic evidence.
+- 2026-10-04: native two-solver preparation completes from `a136f27`, protocol
+  `d4e511ad…c1e44bc`; 623 tests and independent actual-job/asset audit pass.
+  First background launch `d8788cf…e0e986` stops 0/512 before first response.
+  Collector has only 26.98 monotonic seconds vs 1,057.29 wall seconds; power log
+  proves maintenance sleeps of 106 and 929 seconds. The wall-clock watchdog
+  counted sleep while the frozen generator's monotonic deadline did not.
+  Preserve original journals/status/logs/setup/unresolved job: 512 tokens and
+  619.55 charged seconds, with global wall age/sleep/gaps unchanged. No reference,
+  score, new allocation or cloud spend. Docker kept running. Implement separate
+  additive monotonic-watchdog/temporary-AC-sleep-guard recovery; use only the
+  already permitted one 1.7B resume and 0.6B initial invocation. Do not edit
+  frozen collector/protocol/configs or reset the budget. See the runtime record.
+- 2026-10-05: separately reviewed additive recovery implementation passes all
+  636 offline tests, including 13 recovery tests, Ruff and diff checks. Its
+  monotonic anchors bind the original reservation and collector PID. One
+  authenticated manual launch uses a temporary AC sleep guard, live progress,
+  unchanged global wall/ledger limits and preserved failure classifications.
+  Archive initial mutable status/active files; pin all existing immutable study
+  bytes. Full endpoint still delegates to the original finalizer. Freeze these
+  new sources/tests/runtime policy before preparation or native launch. No new
+  questions, model responses or references entered this implementation check.
