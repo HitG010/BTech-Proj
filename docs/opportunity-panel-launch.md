@@ -123,3 +123,32 @@ must not be used as the recovery status. Do not restart either launcher or
 edit pinned recovery files. The detached worker will run both arms and the
 unchanged full-endpoint scoring/analysis transaction, or stop at the first
 failure. Review the terminal report before any new question allocation.
+
+## Recovery terminal checkpoint: budget stop
+
+At **2026-10-05 05:13:30 UTC** (**10:43:30 Asia/Kolkata**), recovery stopped at
+`needs_attention`, failure kind `budget`, reason
+`BudgetExhausted: Original shared budget reached`. There are **452/512**
+completed responses: **256/256** for 1.7B and **196/256** for 0.6B. Sixty 0.6B
+responses remain missing. The 1.7B process exited successfully; the recovery
+supervisor terminated its own 0.6B process with exit code −15.
+
+Terminal ledger charges are **342,047 tokens / 14,701.20 seconds**. Global wall
+age is **43,732.91 seconds**, above the original **43,200-second** ceiling.
+The ledger includes active/unresolved reservations; these are not just tokens
+in completed outputs. There are 454 job reservations, 452 completed responses
+and two unresolved reservations. The initial failed job remains preserved.
+
+The original wall-time rule counts pauses, sleep and gaps. The terminal files
+alone do not establish why wall age exceeded charged operation time, or why
+the supervisor observed the ceiling about 533 seconds late. Diagnose that
+with separate read-only clock/power evidence before proposing another run.
+The temporary assertion observed at launch is not proof of uninterrupted wake.
+
+No collection-end, score-start, score sidecar or final report exists. References
+and task-quality analysis remain locked. No worker is collecting; recovery has
+an immutable supervisor finish. Do not relaunch, reset journals, increase the
+old budget, or score the partial endpoint. Preserve every response and input.
+Completing the missing 60 needs a separate prospective completion protocol
+that accounts for this failed run and retains unchanged question/job/scoring
+identities. No extra questions or cloud spend occurred.

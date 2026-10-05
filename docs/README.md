@@ -70,10 +70,13 @@ confidence controls. All 623 tests and independent prelaunch checks pass.
 Its [initial runtime record](opportunity-panel-launch.md) reports 0/512 after
 maintenance sleep caused a wall/monotonic watchdog mismatch. References remain
 locked until all 512 responses complete. A separately frozen
-[runtime recovery](opportunity-panel-runtime-recovery.md) is now running after
-636 tests and independent review. Its launch snapshot verifies 3/512 responses
-and both temporary sleep guards. Use `opportunity-panel-v1/recovery-v1/status.json`
-for live progress. No extra data has been allocated and no primary research
+[runtime recovery](opportunity-panel-runtime-recovery.md) passed 636 tests and
+independent review, but stopped at **452/512** on the original shared wall-time
+limit: 1.7B completed 256/256; 0.6B completed 196/256. Terminal status is
+`opportunity-panel-v1/recovery-v1/status.json`. References/scoring stay locked;
+do not relaunch or reset the expired budget. See the
+[terminal record](opportunity-panel-launch.md) before designing a separate
+completion protocol. No extra data has been allocated and no primary research
 result is available yet.
 
 ## 1. The question

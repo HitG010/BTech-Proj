@@ -713,3 +713,10 @@ Implementation and verification status will be recorded here as work completes.
   background-status.json. Worker sequences 1.7B then0.6B and full-endpoint
   finalizer automatically, stopping on first failure. No extra allocation or
   cloud spend; review terminal diagnostic before a new prospective data plan.
+- 2026-10-05 status checkpoint: recovery stops05:13:30UTC with budget failure,
+  452/512 complete (1.7B256,0.6B196); 60 missing. Original wall age43,732.91s
+  exceeds43,200s; ledger342,047tokens/14,701.20charged seconds, 454job reservations
+  and two unresolved. No collection end/reference/score/report. Preserve all
+  records; never reset/extend expired original budget or relaunch. Diagnose
+  lost wall time read-only before separately freezing a completion protocol.
+  No extra questions/cloud spend; no task-quality result yet.

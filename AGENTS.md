@@ -362,3 +362,17 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   allocated; decide after terminal diagnostic under a new prospective protocol.
   Docker running, cloud/API spend $0, official test sealed and confirmations/
   acquisition/Jev/RL remain stopped. See launch record for provenance and status.
+- Opportunity recovery is now **stopped**, superseding the preceding running
+  snapshot. At 2026-10-05 05:13:30 UTC, `recovery-v1/status.json` and immutable
+  supervisor finish record `needs_attention`/`budget`: original shared wall
+  ceiling reached. Completed452/512: 1.7B256/256 (exit0), 0.6B196/256 (own
+  process terminated−15). Sixty missing; 454attempt reservations/two unresolved,
+  342,047charged tokens/14,701.20charged seconds, 43,732.91global wall seconds
+  vs43,200limit. Preserve all inputs/responses/journals/charges. No collection
+  end/score marker/score sidecar/report; references remain locked. Do not
+  relaunch either collector/supervisor, reset the original start or extend old
+  budget. Next is read-only lost-wall-time diagnosis and a separately prospective
+  completion protocol, retaining unchanged64/job identities and accounting for
+  this stop. Launch guard does not prove uninterrupted wake or a cause of the
+  wall/charged-time difference. No new questions, reference access or cloud
+  spend; Docker kept running, official test sealed and other phases stopped.
