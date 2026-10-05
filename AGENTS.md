@@ -388,3 +388,21 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   selected training references. New report retains old budget failure as a
   deviation. Mac must stay open/onAC; Docker running. No extra question
   allocation, API/cloud spend or sealed access. Do not reuse expired launchers.
+- The completion child is now **running**, superseding the previous unstarted
+  boundary. Source/tests/protocol froze at `b7c3b1e` after643tests; plan
+  `387e139c…a71b1d`, independent actual-input audit `ef2e8882…e3b01` verifies
+  2319PARENT-STUDYfiles (distinct from2319protected historical originals), four
+  new pins,52original pins and all60exactjobs/seeds/order/15questions/92220cap.
+  One launch `4606906c…826ecb`, supervisorPID14364, temporaryACguardPID14365,
+  collectorPID14373/invocation `a922ea91…137e5`. Launch review `1eba21d4…093935`
+  verifies1/60new,453/512combined,344897combinedcharged tokens including active
+  and old unresolved reservations, both own sleep assertions and unchanged
+  parent inventory. Snapshot only; authoritative live state is
+  `opportunity-panel-v1/completion-v1/status.json`. Do not relaunch, reprepare,
+  edit frozen source/tests/protocol, mutate old study bytes or reset journals.
+  Old parent/recovery failure remains; child has separate4h and combined1Mtoken
+  limit, maximumplanned434267, one newsetup/invocation (combined4each). Full512
+  plus exited collector/preservation/accounting gates exactly64selected training
+  refs and unchangedv7/folds/analysis; all sidecars/reports are in completion-v1.
+  Keep Mac open/onAC and Docker running. No extra question allocation, reference
+  access at launch, cloud/API spend or official-test access. Other phases stopped.

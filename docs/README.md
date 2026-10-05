@@ -82,8 +82,11 @@ result is available yet.
 The user has authorized the [separate completion protocol](opportunity-panel-completion.md)
 for the 60 missing frozen jobs. Implementation and independent review pass
 643 offline tests. It preserves the expired parent and uses a new four-hour
-child limit with combined token accounting. Preparation and a single local
-background launch follow source freeze; no extra questions are allocated.
+child limit with combined token accounting. Source froze at `b7c3b1e`; the
+prepared plan and independent audit pass. The detached completion worker is
+now running; its launch review verifies 1/60 new responses and 453/512 combined.
+Use `opportunity-panel-v1/completion-v1/status.json` for current progress.
+No extra questions are allocated and task-quality results remain pending.
 
 ## 1. The question
 

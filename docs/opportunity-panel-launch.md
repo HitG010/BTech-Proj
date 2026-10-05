@@ -152,3 +152,37 @@ old budget, or score the partial endpoint. Preserve every response and input.
 Completing the missing 60 needs a separate prospective completion protocol
 that accounts for this failed run and retains unchanged question/job/scoring
 identities. No extra questions or cloud spend occurred.
+
+## Authorized completion child: running
+
+The user authorized completion of the missing 60 responses. The separate
+[completion protocol](opportunity-panel-completion.md) froze at **`b7c3b1e`**
+after all **643 offline tests** and independent Sol review passed. Plan identity:
+`387e139c492236c0e9719886e59d872f724242eac72af460ac969b42c4a71b1d`.
+Prelaunch verification `ef2e8882…e3b01` independently checked all **2,319 parent
+study files**, four completion source pins, 52 original input/source pins and
+the exact 60 jobs. This parent inventory is distinct from the historical
+2,319 protected originals checked separately by the endpoint finalizer.
+
+One completion launch **`4606906ca6c84dd89fc7ab8d46826ecb`** is running.
+Supervisor PID **14364**, temporary sleep-guard PID **14365**, collector PID
+**14373**, invocation **`a922ea9134f74448bef55efd9ec137e5`**. It uses only the
+original pending 0.6B jobs. The new child has a four-hour wall/charged allowance;
+combined original plus new token charges remain capped at one million. Maximum
+planned combined reservation is 434,267 tokens. Old journals, statuses, charges
+and the expired original budget remain unchanged.
+
+Launch verification `1eba21d4…093935` verified **1/60** settled new responses
+and **453/512** combined responses. At that snapshot the ledger charged 344,897
+combined tokens, including the active thinking reservation and both old
+unresolved charges. Both temporary idle/system-sleep assertions were observed
+for this worker; all parent inventory hashes matched. No reference-access
+marker existed. These are launch snapshots, not final usage or quality results.
+
+The authoritative status is now
+`opportunity-panel-v1/completion-v1/status.json`. Original and recovery statuses
+remain historical failures. Do not relaunch or edit frozen completion source,
+tests or protocol. The detached supervisor will run the exact 60 jobs, then
+perform endpoint-gated v7 scoring and the unchanged analysis, or stop on first
+failure. Keep the Mac open/on AC and Docker running. No extra questions, cloud
+spend, sealed access or acquisition/RL promotion occurred.

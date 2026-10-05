@@ -735,3 +735,11 @@ Implementation and verification status will be recorded here as work completes.
   seven new completion tests), Ruff and diff checks pass. Independent Sol review
   finds no launch blocker. Freeze the new source/test/protocol before preparing
   its exact parent inventory and starting one detached local worker.
+- 2026-10-05: completion freezes at `b7c3b1e`; prepare plan `387e139c…a71b1d`,
+  independent actual-parent/job audit `ef2e8882…e3b01` pass. Native detached
+  launch `4606906c…826ecb` starts, supervisor14364/collector14373. Launch
+  verification `1eba21d4…093935` confirms1/60settled new response,453/512combined,
+ 344897combinedcharges including active reservations, both process sleep guards
+  and all2319parentstudy originals unchanged. References not opened; no extra
+  allocation/spend. Use completion-v1/status.json; no relaunch. Worker completes
+  exact60 then endpoint scoring/analysis, preserving original budget failure.
