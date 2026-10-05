@@ -1,5 +1,20 @@
 # Research roadmap: budgeted trace acquisition
 
+**2026-10-06 addendum.** The [two-solver diagnostic](opportunity-panel-results.md)
+is complete. Qwen3-0.6B passes the opportunity/confidence screens; Qwen3-1.7B
+fails them. This changes the next exploratory solver regime to 0.6B, without
+rewriting the failed original gates or promoting a learned router. The
+[next experiment](qwen06-next-experiment.md) first runs one separately frozen
+20-fit CPU test on the completed 64-question development panel, against frozen
+confidence and matched cheap controls. No architecture grid, new solver response,
+reference access or allocation belongs to that pilot. A 228-question fresh
+fixed-policy signal proposal remains conditional on all pilot gates and a new
+role/collection/refit/analysis protocol. 484 reserve rows remain unclaimed.
+At hypothetical SD .16, 228 groups can detect approximately +.03 at 80% power;
+they do not generally confirm +.01. Acquisition/CLM/RL/MATH/confirmation remain
+conditional. Confidence-vs-direct improvement is not learner-vs-confidence power
+or novelty evidence. The historical milestones below remain an audit trail.
+
 **Decision record, updated 2026-10-03.** The original target was an 8–12-week, evidence-first study on the local M2 Pro with a **$100 total cloud ceiling**. The failed signal gate adds the bounded feasibility phases below; historical week labels are not a renewed completion promise. Work on `codex/research-data-efficiency` starts from `15a4d2d`; `1b67fbc` is the first checkpoint. This document is an execution checklist, not a claim of a new method or a record of completed experiments.
 
 The [October checkpoint and contrastive-router review](contrastive-router-review-2026-10-02.md)
@@ -66,7 +81,9 @@ At the maximum allocation, 548 GSM8K training IDs remain unused. The new role ma
 The unchanged parent reserve contains 548 rows. A separate child now earmarks
 64 for the opportunity diagnostic, leaving 484 unclaimed by that child. Future
 children must audit sibling conflicts; the parent manifest is not rewritten.
-No response or reference has been collected for these 64 questions.
+Their 512-response diagnostic and separate completion scoring are now complete;
+these 64 questions have influenced design and are development data. The live
+registry audit still finds only this child and 484 unclaimed reserve rows.
 
 For MATH, pin a revision of the [split-preserving source](https://huggingface.co/datasets/EleutherAI/hendrycks_math) and a numeric-answer selection rule before inspecting model outcomes. Preserve its train/test boundary: the defaults are 600 acquisition, 100 validation, and 50 calibration questions from training, plus 500 original-test questions where the predefined numeric filter permits. Record eligible counts, parent/template relationships, and parser coverage before sampling. Do not select examples by model wins or pool cross-protocol scores. The separate manifest and pilot must confirm feasibility before generation.
 

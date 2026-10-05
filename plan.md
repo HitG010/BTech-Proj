@@ -752,3 +752,15 @@ Implementation and verification status will be recorded here as work completes.
   utilitygain+.152677);1.7Bfailsboth(4positiveq,gain−.030540). Preservecompleted
   study; nextprospective0.6B designreview withconfidencebaseline, noautomatic
   expansion/promotion. See two-solver results. Noextraquestions/cloudspend.
+- 2026-10-06: user authorized the next 0.6B design/development step. Live
+  question-only role/source/sibling audit confirms only opportunity64-v1 and
+  484 unclaimed reserve rows; other roles remain unchanged. Rechecked primary
+  RouterDC/CSCR/Thinkless and cost-aware acquisition prior art; novelty remains
+  conditional on a specific equal-budget acquisition win, not this router.
+  Implement one fixed alpha10 three-feature Ridge and matched confidence-only
+  control,20 fits total across frozen question folds/opposite draws, plus frozen
+  confidence and parser-rejection heuristic baselines. Keep lambda.05 and
+  predeclare four further-study gates; no alpha/architecture search. Separate
+  power/role planning proposes228 fresh groups only conditionally,700872response
+  tokens, no allocation. All653 offline tests (ten new), Ruff and independent
+  review pass. Freeze sources/test/protocol before preparation or fitting.

@@ -429,3 +429,22 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   acquisition/CLM/RL promotion or sealedconfirmation followsautomatically.
   Officialtestsealed, Dockerkept running, cloud/APIspend$0, earlierfailedgates
   unchanged. Ordinary CLI remainsv5; completedstudyusesseparatev7sidecar.
+- User authorized the next 0.6B design and bounded development test. The
+  [next experiment](docs/qwen06-next-experiment.md) and
+  [fixed CPU pilot](docs/qwen06-router-pilot-protocol.md) are implemented:
+  653offline tests (ten new), Ruff and independent review pass. Exactly20fixed
+  Ridge fits,alpha10, three direct-only features (postwarperconfidence/loganswer
+  length/goldfreev7rejection) and matchedconfidence-only; trainonedraw excluding
+  heldoutquestionfold, testoppositedrawheldoutquestions. Reuse originalconfidence
+  actions, add confidenceORreject control; lambda.05 and four gates frozenbefore
+  fitting. Existing64 are exploratory development, no fresh claim. Source/test/
+  docs must checkpoint before realprepare/execute. New artifacts are siblings
+  qwen06-router-pilot-v1 and qwen06-next-design-v1, never inside closedstudy.
+  Role audit confirms548reserve/64claimed/484unclaimed andonlyonechild. Pure
+  powerdesign proposes228fresh fixedpolicy groups conditionally(700872response
+  tokens,256reservewouldremain), no actualselection/allocation/generation. Known
+  SD.16 needs2010groups for+.01;228detectsabout+.03, not generally+.01. Original
+  roles/sealedtest/failedgates unchanged; noCLM/RL/acquisitionpromotion. Never
+  adapt the pilotgrid fromheldout results; allfour gates mustpass before anew
+  freshprotocol proposal, and that protocol mustfreeze refits/comparators/roles/
+  endpoints before labels. Localonly,Dockerkept running,cloud/APIspend$0.

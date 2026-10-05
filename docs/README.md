@@ -92,6 +92,13 @@ status is `opportunity-panel-v1/completion-v1/status.json`. Combined charges
 or policy promotion. Next is a prospective 0.6B design review with confidence
 as its main baseline; not automatic scaling or novelty confirmation.
 
+The [next 0.6B design](qwen06-next-experiment.md) first checks value beyond
+confidence in a [fixed 20-fit CPU pilot](qwen06-router-pilot-protocol.md).
+All653 offline tests and independent review pass. It uses existing cached
+development labels only, three direct-output features and matched cheap
+controls. A separate power/role report leaves484 reserve rows unclaimed;
+228 fresh questions are a conditional proposal, not an allocation.
+
 ## 1. The question
 
 Qwen3 models have two inference modes: **direct** (non-thinking; a short answer,
