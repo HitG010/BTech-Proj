@@ -186,3 +186,19 @@ tests or protocol. The detached supervisor will run the exact 60 jobs, then
 perform endpoint-gated v7 scoring and the unchanged analysis, or stop on first
 failure. Keep the Mac open/on AC and Docker running. No extra questions, cloud
 spend, sealed access or acquisition/RL promotion occurred.
+
+## Completion terminal checkpoint
+
+Completion finished **2026-10-05 18:14:48 UTC** (23:44:48 Asia/Kolkata).
+All60 new responses completed with no failure/retry; combined512/512 were
+scored and analysed. Collector/finalizer exit zero, supervisor terminal
+`complete`, workers absent and locks released. Combined charges384,552tokens
+and16,134.02operationseconds; new collection wall1,466.61seconds. Original
+budget failure and both old unresolved charges remain unchanged.
+
+Report `f3f0d33c…ac6fd`, independent endpoint verification `b67d4e0a…5dfcc`.
+The review checks all parent hashes, job/score/record identities and costs, and
+reproduces107metric payloads without refitting, scoring or opening references.
+See [results](opportunity-panel-results.md). Preserve all frozen records and do
+not restart preparation/launch/collection/finalization. New data or policy work
+requires a prospective design; this diagnostic alone is not novelty evidence.

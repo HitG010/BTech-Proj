@@ -73,20 +73,24 @@ locked until all 512 responses complete. A separately frozen
 [runtime recovery](opportunity-panel-runtime-recovery.md) passed 636 tests and
 independent review, but stopped at **452/512** on the original shared wall-time
 limit: 1.7B completed 256/256; 0.6B completed 196/256. Terminal status is
-`opportunity-panel-v1/recovery-v1/status.json`. References/scoring stay locked;
+`opportunity-panel-v1/recovery-v1/status.json`. At that stop references/scoring stayed locked;
 do not relaunch or reset the expired budget. See the
 [terminal record](opportunity-panel-launch.md) before designing a separate
-completion protocol. No extra data has been allocated and no primary research
-result is available yet.
+completion protocol. No extra data was allocated in that stopped run.
 
 The user has authorized the [separate completion protocol](opportunity-panel-completion.md)
 for the 60 missing frozen jobs. Implementation and independent review pass
 643 offline tests. It preserves the expired parent and uses a new four-hour
 child limit with combined token accounting. Source froze at `b7c3b1e`; the
-prepared plan and independent audit pass. The detached completion worker is
-now running; its launch review verifies 1/60 new responses and 453/512 combined.
-Use `opportunity-panel-v1/completion-v1/status.json` for current progress.
-No extra questions are allocated and task-quality results remain pending.
+prepared plan and independent audit pass. The completion is now **complete**:
+60/60 new and **512/512 combined**, scored and analysed. Independent endpoint
+review reproduces 107 metric payloads without fitting or reference access.
+The [results](opportunity-panel-results.md) show 0.6B passes both further-study
+screens (confidence accuracy61.72% to81.25%);1.7B fails both. Workers exited;
+status is `opportunity-panel-v1/completion-v1/status.json`. Combined charges
+384,552tokens; original wall-budget failure remains failed. No new questions
+or policy promotion. Next is a prospective 0.6B design review with confidence
+as its main baseline; not automatic scaling or novelty confirmation.
 
 ## 1. The question
 

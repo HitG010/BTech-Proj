@@ -406,3 +406,26 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   refs and unchangedv7/folds/analysis; all sidecars/reports are in completion-v1.
   Keep Mac open/onAC and Docker running. No extra question allocation, reference
   access at launch, cloud/API spend or official-test access. Other phases stopped.
+- The [two-solver results](docs/opportunity-panel-results.md) are **complete**,
+  superseding running snapshots. Completion terminal2026-10-05 18:14:48UTC:
+  60/60new,512/512combined, zero new failures/retries, collector/finalizerexit0,
+  no worker remaining and allfive checkedlocks free. Report `f3f0d33c…ac6fd`,
+  cachedscores `f1326bf3…01283`, independentreview `b67d4e0a…5dfcc` verifies
+  2319parentstudy files/fournewpins/52oldpins/all512cells and reproduces107
+  fixed-action metric/interval payloads without fitting/scoring/references.
+  New42505tokens/1432.8221chargedseconds/1466.6103wallseconds; combined384552
+  tokens/16134.0217chargedseconds/foursetups+invocations. Both old unresolved
+  charges and expired original wall-budget failure remain; separate2319
+  protected historical originals verified before/after analysis. Atlambda.05,
+  0.6B24positivegainquestions passesavailability/confidencescreens: primary
+  confidence-minus-direct utility+.152677 (conditional90%CI[+.085535,+.220375]),
+  average direct61.719%/209.80tokens versus confidence81.25%/1062.52tokens.
+  1.7Bfourpositivequestions failsboth: difference−.030540 (CI[−.056066,−.006071]),
+  direct84.375% versusconfidence83.594%. These are64question/2draw diagnostic
+  results withfixed-action CIs omittingrefit uncertainty, not novelty/superiority
+  confirmation. Preserve source/test/protocol/input/results/scores; do not
+  prepare/launch/generate/score/finalize again or reopen64refs. Nextisprospective
+  0.6B designreview withconfidencebaseline; no extraallocation/adaptive search,
+  acquisition/CLM/RL promotion or sealedconfirmation followsautomatically.
+  Officialtestsealed, Dockerkept running, cloud/APIspend$0, earlierfailedgates
+  unchanged. Ordinary CLI remainsv5; completedstudyusesseparatev7sidecar.

@@ -743,3 +743,12 @@ Implementation and verification status will be recorded here as work completes.
   and all2319parentstudy originals unchanged. References not opened; no extra
   allocation/spend. Use completion-v1/status.json; no relaunch. Worker completes
   exact60 then endpoint scoring/analysis, preserving original budget failure.
+- 2026-10-06 status checkpoint: completion finishedOct5 18:14:48UTC. All512
+  responses scored/analyzed;60new havezero failures/retries, allworkers exited.
+  Combined384552tokens/16134.02chargedseconds; originalbudgetfailure/unresolved
+  charges preserved. Report `f3f0d33c…ac6fd`; independentreview `b67d4e0a…5dfcc`
+  checks artifacts/accounting and reproduces107fixed-action metrics/intervals
+  without fitting/scoring/refs. 0.6Bpassesboth screens (24positiveq, confidence
+  utilitygain+.152677);1.7Bfailsboth(4positiveq,gain−.030540). Preservecompleted
+  study; nextprospective0.6B designreview withconfidencebaseline, noautomatic
+  expansion/promotion. See two-solver results. Noextraquestions/cloudspend.
