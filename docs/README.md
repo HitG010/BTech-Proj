@@ -92,12 +92,17 @@ status is `opportunity-panel-v1/completion-v1/status.json`. Combined charges
 or policy promotion. Next is a prospective 0.6B design review with confidence
 as its main baseline; not automatic scaling or novelty confirmation.
 
-The [next 0.6B design](qwen06-next-experiment.md) first checks value beyond
-confidence in a [fixed 20-fit CPU pilot](qwen06-router-pilot-protocol.md).
-All653 offline tests and independent review pass. It uses existing cached
-development labels only, three direct-output features and matched cheap
-controls. A separate power/role report leaves484 reserve rows unclaimed;
-228 fresh questions are a conditional proposal, not an allocation.
+The [next 0.6B design](qwen06-next-experiment.md) and its
+[fixed 20-fit CPU pilot](qwen06-router-pilot-protocol.md) are now complete.
+[Pilot results](qwen06-router-pilot-results.md) fail two of four gates: the
+three-feature learner gains only .003516 utility over confidence and loses to
+confidence OR parser rejection. That simple control reaches 83.594% accuracy
+versus 81.250% for confidence, but adds only three rescued question groups.
+It is a stronger development baseline, not a promoted novel method. All 653
+offline tests and independent postrun/power reviews pass. No new solver response,
+reference or allocation was needed; all 484 reserve rows remain unclaimed.
+The conditional 228-question learner follow-up is stopped because its gate
+failed. Any fresh baseline validation needs a separate prospective protocol.
 
 ## 1. The question
 

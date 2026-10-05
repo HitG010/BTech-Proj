@@ -448,3 +448,25 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   adapt the pilotgrid fromheldout results; allfour gates mustpass before anew
   freshprotocol proposal, and that protocol mustfreeze refits/comparators/roles/
   endpoints before labels. Localonly,Dockerkept running,cloud/APIspend$0.
+- The [0.6B CPU pilot](docs/qwen06-router-pilot-results.md) is **complete**.
+  Source/test/protocol `8413e9e`, plan `1d0f145a…460a0`, rows `1864fa8c…c3dfc`,
+  report `ccdd2a2a…20ccf`, independent review `4316c492…4cb2f`. Exactly 20 Ridge
+  fits; all 2,652 closed-study files preserved. Review verifies normal-equation
+  optimality without refitting, 256 predictions, 768 decisions, all metrics and
+  12 minimum-N/72 power/24 detectable-effect planning values. Primary candidate
+  gains .003516 over confidence (conditional 90% CI [-.031959,+.037163]); fails
+  the .01 gain and parser-control comparisons, passes the other two: 2/4 gates.
+  Close this recipe and its conditional 228-question follow-up. Do not prepare,
+  execute, expand alpha/features/grid or reopen references. The parser-aware
+  confidence control reaches 83.594%/1081.41 tokens versus 81.25%/1062.52 for
+  confidence; utility gain .022493 (CI [.007453,.044905]) rests on three extra
+  escalations/rescues on three distinct questions, adding 2,419 total tokens.
+  It is a stronger development BASELINE, not a promoted primary or novel method.
+  Positive-gain sets 15/17, union 24/intersection 8 use different draft states;
+  they do not establish same-state noise or beneficial repeat acquisition.
+  Power report `fc2c4c5d…7734c9`; all 484 reserve rows remain unclaimed. No new
+  generation/scoring/reference/encoder/allocation/cloud/API action occurred;
+  roles, sealed data and old failed gates unchanged, Docker running, no worker.
+  Next design must retain parser-aware confidence as a cheap comparator; fresh
+  baseline validation needs a separate protocol. Acquisition/CLM/RL/MATH and
+  confirmations stay unpromoted. Preserve all frozen new sources and artifacts.

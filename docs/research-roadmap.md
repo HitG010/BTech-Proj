@@ -1,5 +1,16 @@
 # Research roadmap: budgeted trace acquisition
 
+**Latest pilot outcome, 2026-10-06.** The fixed 20-fit 0.6B development test is
+[complete and independently verified](qwen06-router-pilot-results.md). The
+primary learner fails two of four gates: +.003516 utility versus confidence,
+below .01, and worse than confidence OR parser rejection. Close that learned
+recipe and stop its conditional 228-question follow-up. The simple parser-aware
+control is a mandatory cheap baseline in the next design, with only three
+additional rescued question groups here. Its result is exploratory; it is not
+substituted for the failed primary candidate or claimed as novel. All 484 free
+reserve rows remain unallocated. Fresh baseline validation, acquisition and
+architecture work need distinct prospective protocols.
+
 **2026-10-06 addendum.** The [two-solver diagnostic](opportunity-panel-results.md)
 is complete. Qwen3-0.6B passes the opportunity/confidence screens; Qwen3-1.7B
 fails them. This changes the next exploratory solver regime to 0.6B, without

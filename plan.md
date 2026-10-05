@@ -764,3 +764,14 @@ Implementation and verification status will be recorded here as work completes.
   power/role planning proposes228 fresh groups only conditionally,700872response
   tokens, no allocation. All653 offline tests (ten new), Ruff and independent
   review pass. Freeze sources/test/protocol before preparation or fitting.
+- 2026-10-06: source `8413e9e` prepares pilot plan `1d0f145a…460a0`; preexecution
+  review `23c8a418…4f765` passes. One 20-fit execution produces `ccdd2a2a…20ccf`.
+  Primary gains .003516 utility over confidence and fails 2/4 gates; close it and
+  its conditional 228-question fresh run. Power report `fc2c4c5d…7734c9` keeps
+  all 484 reserve rows unclaimed. Independent review `4316c492…4cb2f` verifies
+  20 solutions, 256 predictions, 768 decisions, all 2,652 study files and planning
+  math without fitting/scoring/references/generation. Parser-aware confidence
+  rescues three extra distinct groups: 83.594% accuracy, +18.90 tokens/question.
+  Keep it as a stronger development baseline, not a promoted primary. Separate
+  prospective validation is required; no acquisition/CLM/RL/confirmation starts.
+  All 653 tests pass; no new generation tokens or cloud spend. See pilot results.
