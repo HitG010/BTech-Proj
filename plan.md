@@ -720,3 +720,18 @@ Implementation and verification status will be recorded here as work completes.
   records; never reset/extend expired original budget or relaunch. Diagnose
   lost wall time read-only before separately freezing a completion protocol.
   No extra questions/cloud spend; no task-quality result yet.
+- 2026-10-05: user authorized resuming the 60 missing responses, paused before
+  any new launch, then resumed that work. Implement a separately bounded
+  completion child; preserve the expired original run and its two unresolved
+  charges. Only the 60 original 0.6B jobs (last15 questions,30direct/30thinking)
+  are eligible, with unchanged seeds/backend/caps/v7/analysis. New wall/charged
+  allowance4hours; original+new token ceiling1M, maximum planned combined
+  reservation434,267. One child setup/invocation/launch; no automatic retry.
+  Exact combined512 and exited collector gate selected64 training references.
+  Child scores/report record the original budget failure as a deviation.
+  Read-only power diagnosis found lid-close sleep and AC-to-battery transition;
+  keep Mac open/onAC and Docker running. No new question allocation.
+- Completion implementation review is finished. All643 offline tests (including
+  seven new completion tests), Ruff and diff checks pass. Independent Sol review
+  finds no launch blocker. Freeze the new source/test/protocol before preparing
+  its exact parent inventory and starting one detached local worker.

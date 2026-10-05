@@ -376,3 +376,15 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   this stop. Launch guard does not prove uninterrupted wake or a cause of the
   wall/charged-time difference. No new questions, reference access or cloud
   spend; Docker kept running, official test sealed and other phases stopped.
+- User explicitly authorized resuming the60 missing jobs, paused before any
+  new launch, then resumed. The separate
+  [completion protocol](docs/opportunity-panel-completion.md) is implemented and
+  reviewed: all643 offline tests (seven new) and Ruff pass; no launch blockers.
+  Only original60 pending0.6B jobs, unchanged seeds/config/scorer/analysis; child
+  owns one launch/setup/invocation, own4h wall/charged limit, combined original+
+  new token ceiling1M (planned maximum434,267). No resets or writes to old parent
+  status/journals/results. Source/test/doc must freeze before prepare/launch;
+  full512 plus exited collector and accounting/preservation gates exactly64
+  selected training references. New report retains old budget failure as a
+  deviation. Mac must stay open/onAC; Docker running. No extra question
+  allocation, API/cloud spend or sealed access. Do not reuse expired launchers.

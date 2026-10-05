@@ -79,6 +79,12 @@ do not relaunch or reset the expired budget. See the
 completion protocol. No extra data has been allocated and no primary research
 result is available yet.
 
+The user has authorized the [separate completion protocol](opportunity-panel-completion.md)
+for the 60 missing frozen jobs. Implementation and independent review pass
+643 offline tests. It preserves the expired parent and uses a new four-hour
+child limit with combined token accounting. Preparation and a single local
+background launch follow source freeze; no extra questions are allocated.
+
 ## 1. The question
 
 Qwen3 models have two inference modes: **direct** (non-thinking; a short answer,
