@@ -124,6 +124,13 @@ worker after frozen runtime preparation and actual-input review. The
 on validation completion and independent review. No model or reference has
 entered either new execution before source freeze.
 
+The [validation background run](sparse-validation-runtime-launch.md) is now
+collecting from frozen `440f655`, after actual prelaunch review. Launch snapshot:
+8/228 direct responses; no references. Its status is
+`qwen06-sparse-validation-v1/runtime-v1/status.json`. The 1.7B preparation stays
+locked until completed validation and independent review; its generation
+executor is still a later boundary. Keep the Mac open and connected to power.
+
 ## 1. The question
 
 Qwen3 models have two inference modes: **direct** (non-thinking; a short answer,

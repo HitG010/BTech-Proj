@@ -814,3 +814,11 @@ Implementation and verification status will be recorded here as work completes.
   ordering requires completed+reviewed0.6validation but not scientific success.
   All694 offline tests, Ruff and independent reviews pass; no actualruntime
   prepare/launch/generation orcap preparation occurred before this freeze.
+- 2026-10-07: frozen `440f655` prepares runtime plan `e7479290…bff9b`; actual
+  prelaunch audit `7d67ae2a…8edea` passes. Native detached validation launch
+  `217655d0…66deb9` starts (supervisor55471/collector55488). Launch review
+  `3f8cf814…7050c8` verifies8/228direct results and both own sleep guards,
+  1933chargedtokens includingactive reservation, no reference marker. Runtime
+  proceeds allD→sealedmask→selectedT→endpoint scoring; usermustkeepMacopen/AC.
+  Ordered1.7Bcap preparation remainslocked behind complete+reviewedvalidation;
+  no1.7Bgen/executor or Kaggletraining started. Preserveallfrozen studies.

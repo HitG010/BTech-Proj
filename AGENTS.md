@@ -554,3 +554,19 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   remainsunimplemented andrequiresseparatefreeze/endpoints before gen/new11TRAIN
   refs. No oldscore rerun orfreshclaim. Docker running,defaultlocal; freeKaggle
   trainingoption separate, no upload/remotejob/paidcloud. Sources/studies stayfrozen.
+- Fresh sparse runtime is now **running** from `440f655` after694tests. Plan
+  `e7479290…bff9b`, exactprelaunchreview `80310432…81d9a`, richverification
+  `7d67ae2a…8edea` checks3runtime/9prepared/11prep pins and2652closedstudy files,
+  all456jobs/seeds/cutoff/scorer/caps/nogold/resource boundaries. One native
+  launch `217655d0…66deb9`, supervisorPID55471, ACguardPID55472, collectorPID55488,
+  invocation `0ebc68c1…6adc16`. Launch review `3f8cf814…7050c8` observed8/228
+  directdone,1933chargedtokens includingactive reservation, ownidle/systemsleep
+  guards, no score/refmarker. Snapshot only; liveauthority is
+  `qwen06-sparse-validation-v1/runtime-v1/status.json`. Do not reprepare/relaunch,
+  resetclock/journals, modifyfrozen files or use ordinaryrbscore. KeepMacopen/onAC
+  andDocker running; defaultlocalMPS. Full228direct thenallselectedT(max32),
+  completeactivatedendpoint/exits/bounds gatesMrefs andsparse∆analysis; M0 none.
+  1.7Bcap code frozenbutnotprepared: requirescompletedruntime+report-boundreview,
+  thenmanual36newpairedjobs18oldseeds/11DEVgroups, independentfrom0.6scientific
+  gate. Its generationexecutor isUNIMPLEMENTED andneedsnewfreeze. No concurrent
+  1.7Bmodel, GPUtraining, Kaggleupload, paidAPI orsealedlabel access occurs.
