@@ -802,3 +802,15 @@ Implementation and verification status will be recorded here as work completes.
   Allsixdiagnostic policyutilities traildirect atlambda.05. Preservefinished
   audit andprep; nextimplementbounded sparsecollector. KaggleFREEtrainingoption
   hasreadyhardware-only notebook, no upload/login/remoteexecution/training.
+- 2026-10-07: user authorized the fresh validation runtime first, then the
+  1.7B cap improvement plan. Implement additive qwen06 runtime-v1 with228direct
+  jobs, immutable gold-free eligibility, ALLselectedthinking(max32),250k/6h
+  cumulative tokens/wall/charges, one explicit runtime resume and conservative
+  preservation of prior unknown/published results. Independent prelaunch review
+  gates native launch; complete activated endpoint/exits/preservation gates only
+  eligible training references. Fix repeated large-plan hashing and live ledger
+  races before freezing. Add prep-only1.7B pairedcap plan:36newjobs/18oldseeded
+  cells/11developmentgroups,129096response reservation,2k/4k matched arms;
+  ordering requires completed+reviewed0.6validation but not scientific success.
+  All694 offline tests, Ruff and independent reviews pass; no actualruntime
+  prepare/launch/generation orcap preparation occurred before this freeze.

@@ -530,3 +530,27 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   butneveruploaded/executed, no credentials/login/dataexport/training occurred.
   Paidcloud/API remainsunauthorized, defaultlocal,Docker running, no worker;
   officialtest/confirmation/acquisition/CLM/RL/MATH unchanged/unpromoted.
+- User authorized **validation first, then1.7B improvement**. New
+  [sparse runtime](docs/qwen06-sparse-runtime-protocol.md) and
+  [cap bridge preparation](docs/qwen17-cap-bridge-protocol.md) are implemented;
+  694offline tests, Ruff and independent review pass. Freeze the new files
+  before runtime prepare/native launch. Runtime writes only sparse/runtime-v1,
+  with228direct thenimmutable ALLeligiblethinking mask(max32),250ktokens/6h
+  including setup/failures/sleep/gaps, firstfailure stop, one explicit runtime
+  resume(max2invocations/setups/launches), processACguard and useractivity. No
+  integrity/resource/budget resume. Prior exitedfailed unknown attempts retain
+  full charge; validpublished-before-receipt results are retained, not regenerated,
+  with mask timestamp after their prior exit evidence. Every current operation
+  must settle. Plan digest is hoisted from loops to avoid monitor CPU contention.
+  Prelaunch-review marker mandatory; privatechildren/finalizer boundtolivesupervisor.
+  Only eligible TRAINrefs unlock after completeactivatedendpoint/exit/accounting/
+  preservation; M0 meansnorefs. Reportonlysparse policy∆/95CI, noabsolutemetrics.
+  Cap prep isLOCKED until runtime/status complete and report-bound independent
+  completion-review checks_passed:true. Then compile36manual2k/4kthinkingjobs
+  inheriting18originalcellseeds on11enrichedDEVgroups (notnewreserveallocation).
+  Primaryquestionmean weights11groups equally;18cellmean secondary. Existing
+  2kcontrol mustregenerate, newpairreasoningprefix match isengineeringgate; actual
+  chargedtotal-token differences, notconstant2048, determineutility. Capexecutor
+  remainsunimplemented andrequiresseparatefreeze/endpoints before gen/new11TRAIN
+  refs. No oldscore rerun orfreshclaim. Docker running,defaultlocal; freeKaggle
+  trainingoption separate, no upload/remotejob/paidcloud. Sources/studies stayfrozen.

@@ -117,6 +117,13 @@ new router fitted on four positive groups. All670 tests and reviews pass. Free
 [Kaggle training](kaggle-free-gpu-plan.md) is an optional resource; its hardware
 notebook is prepared but has not been run or uploaded.
 
+The [fresh-validation runtime](qwen06-sparse-runtime-protocol.md) is implemented
+and reviewed, with694 offline tests passing. It will run in a detached local
+worker after frozen runtime preparation and actual-input review. The
+[1.7B cap-bridge preparation](qwen17-cap-bridge-protocol.md) is separately gated
+on validation completion and independent review. No model or reference has
+entered either new execution before source freeze.
+
 ## 1. The question
 
 Qwen3 models have two inference modes: **direct** (non-thinking; a short answer,
