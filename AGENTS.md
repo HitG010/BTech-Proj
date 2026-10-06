@@ -495,3 +495,38 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   [Kaggle plan](docs/kaggle-free-gpu-plan.md) and readinessnotebook inspectonly
   hardware/packages; no login/upload/install/remoteexecution/training occurred.
   Preserve oldroles/labels/sealedtest/studies and keep Docker running.
+- Sparse baseline [preparation](docs/sparse-validation-preparation-results.md)
+  is complete from source/test/protocol `9bc9ac7`, after670 tests and review.
+  One scalar fit plan `81c70aee…fe98a`, policy `c761a265…2b177`, shared cutoff
+  -.07951707680497253. Exact independent review checks all130 cutoffs;
+  training plain85 versus guard87 escalations means two extra training states,
+  not three old-CV events or a power guarantee. Requiredreview `9d1b04de…156e3`,
+  richreview `9b1dee5a…f50b8`. Then one question-only child228 was prepared:
+  `reserve-children/qwen06-guard-fresh228-v1/`, splitguard_fresh228, selectionseed
+  20261018/jobseed20261019, child `2e2d9623…e81f1`, protocol `de5011cb…194c8`,
+  actualreview `c24a7808…fef2e`. All456 potentialjobIDs/seeds/sourceindex/prompt/
+  exclusions/sibling/11source/2dataset pins pass. Parent548reserve unchanged:
+  old64+new228earmarked, **256unclaimed** now; allother roles unchanged.
+  Datasetgoldnull/no goldfile. Do not re-fit/reprepare/reselect or edit frozen
+  source/tests/doc/policy/protocol/child artifacts. Collector remainsUNIMPLEMENTED
+  andLOCKED; no generation/scoring/ref access is authorized by prep. Next is a
+  separately frozen runtime collector with activated endpoint/ledger/powerguard/
+  preservation and eligible-only-reference logic, not ordinary rb run/score.
+- The [1.7B audit](docs/qwen17-diagnosis-results.md) is complete: plan
+  `7c7c62b1…72592`, report `558a8486…05d79`, independentreview `c77eafcf…b27ac`,
+  all2652closedstudy files preserved,128cells/sixpolicies/cap andparser bounds
+  reproduced without fitting/gen/scoring/refs. Direct108/128=84.375%, thinking
+  112/128=87.5%; rescues7cells/4groups, harms3/2, bothwrong13/7. Forcedclosure
+  18cells/11groups:12thinkingwrong, including9bothwrong,3harms,1rescue; uncapped
+  wrong4/110. Confidencecaptures1rescue/2harms across34calls. Postcapfallback
+  improvescachedaccuracy to85.156% atsame682.56tokens bututility.817434 still
+  belowdirect.832350; allsixpolicyutilities belowdirect. These areposthoc,
+  associationnotcausal andno modelimprovement established. Currentsampling
+  matchesofficialQwen guidance; no greedythinking fix. Separate2k→4k pairedcap
+  bridge onenriched18cells (11groups),36jobs/129096response-bound,160k/4h only
+  proposed; needsnewsource/seed/backend/endpoints/trainingref protocol. Do not
+  rerunthisaudit/old collectors/scorers orrelabelv7. OptionalmathLoRA onFREE
+  Kaggle isconditionalafterdata/environment/training/evalfreeze; notebookready
+  butneveruploaded/executed, no credentials/login/dataexport/training occurred.
+  Paidcloud/API remainsunauthorized, defaultlocal,Docker running, no worker;
+  officialtest/confirmation/acquisition/CLM/RL/MATH unchanged/unpromoted.

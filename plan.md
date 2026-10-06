@@ -789,3 +789,16 @@ Implementation and verification status will be recorded here as work completes.
   labels or sources changed. Kaggle readiness notebook has only one hardware
   cell, syntax-checked but not remotely run. All670 offline tests (17new), Ruff
   and independent review pass; no actual fit/allocation/generation has run yet.
+- 2026-10-06: source `9bc9ac7` prepares one shared cutoff on acquired128states;
+  policy `c761a265…2b177`, exactreview `9b1dee5a…f50b8` passes130cutoff options.
+  Fixedtau-.0795171 changes two training actions. Review gate precedes new228
+  question-only child/protocol `2e2d9623…e81f1`/`de5011cb…194c8`; independent
+  preparation review `c24a7808…fef2e` reconstructs456job identities and certifies
+  disjointness/source/nogold. Parent unchanged,256reserve free. Runtime collector
+  stillunimplemented/locked; no newsolver response, scoring orreference access.
+  Cached1.7B audit `558a8486…05d79` review `c77eafcf…b27ac` passes all counts/
+  policytables/preservation. Cap18cells/11groups associates with12wrong thinking
+  outputs; matched2k→4k bridge is a hypothesis, not a demonstrated repair.
+  Allsixdiagnostic policyutilities traildirect atlambda.05. Preservefinished
+  audit andprep; nextimplementbounded sparsecollector. KaggleFREEtrainingoption
+  hasreadyhardware-only notebook, no upload/login/remoteexecution/training.
