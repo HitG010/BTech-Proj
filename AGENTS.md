@@ -470,3 +470,28 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   Next design must retain parser-aware confidence as a cheap comparator; fresh
   baseline validation needs a separate protocol. Acquisition/CLM/RL/MATH and
   confirmations stay unpromoted. Preserve all frozen new sources and artifacts.
+- User authorized the next fresh-baseline design and high-parameter-model
+  investigation, and offered FREE Kaggle GPU training as an optional resource.
+  This is an exception to local-only for separately frozen free training, not
+  paid cloud/API authorization. New prep-only
+  [sparse validation](docs/qwen06-sparse-validation-protocol.md) and
+  [1.7B diagnosis](docs/qwen17-performance-diagnosis.md) pass670 offline tests
+  (17new), Ruff and independent review. Source/test/doc must freeze before one
+  full-data scalar cutoff fit on128cached0.6B training rows; independentreview
+  must precede any fresh228question-only child. Both policies share cutoff,
+  strict<, plain-confidence training objective/ties. Thresholdalways blocks
+  preparation because there is no policy contrast. New direct/potentialthinking
+  jobs are compiled only from unchanged metadata; no model is constructed.
+  Proposed fresh endpoint:228direct plus ALLchanged-action thinking, max32;
+  responsecap198720, future250ktokens/6h, firstfailure/noautomaticresume.
+  Only eligible trainingrefs may unlock after the full activated endpoint and
+  exited/budget/preservation checks; zeroeligible meansnorefs. Sparse∆ is zero
+  outside changes, elseYthinking−.05Ttokens/1000. No full-policy absoluteaccuracy
+  orutility can be reported from these partial counterfactual observations.
+  Collector is UNIMPLEMENTED/LOCKED; prep commands do not authorize generation.
+  The1.7B audit is posthoc cached counts/fallbacks, no fitting/rescoring/refs/gen.
+  [Improvement plan](docs/qwen17-improvement-plan.md) prioritizes matchedcap
+  extension before optionalLoRA; no model improvement is yet established.
+  [Kaggle plan](docs/kaggle-free-gpu-plan.md) and readinessnotebook inspectonly
+  hardware/packages; no login/upload/install/remoteexecution/training occurred.
+  Preserve oldroles/labels/sealedtest/studies and keep Docker running.

@@ -775,3 +775,17 @@ Implementation and verification status will be recorded here as work completes.
   Keep it as a stronger development baseline, not a promoted primary. Separate
   prospective validation is required; no acquisition/CLM/RL/confirmation starts.
   All 653 tests pass; no new generation tokens or cloud spend. See pilot results.
+- 2026-10-06: user authorized a fresh parser-aware baseline validation design
+  and larger-model performance investigation; optional FREE Kaggle GPU training
+  is now permitted, without authorizing paid cloud. Implement a separate sparse
+  comparison: one full-data cached confidence cutoff shared by both policies,
+  228 fresh direct responses, thinking only when confidence accepts a v7-rejected
+  draft, max32 changed states. Exact response ceiling198720; all unchanged
+  policy outcomes cancel, so no absolute full-policy metrics are identified.
+  Freeze source/test/protocol before the scalar fit; independently review before
+  any question-only reserve child selection. Always-think cutoff blocks selection.
+  Collector/generation/reference access remain explicitly unimplemented/locked.
+  Add a cached-only1.7B diagnosis and matched2k→4k cap-bridge plan, with no old
+  labels or sources changed. Kaggle readiness notebook has only one hardware
+  cell, syntax-checked but not remotely run. All670 offline tests (17new), Ruff
+  and independent review pass; no actual fit/allocation/generation has run yet.

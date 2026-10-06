@@ -104,6 +104,16 @@ reference or allocation was needed; all 484 reserve rows remain unclaimed.
 The conditional 228-question learner follow-up is stopped because its gate
 failed. Any fresh baseline validation needs a separate prospective protocol.
 
+The [new sparse validation protocol](qwen06-sparse-validation-protocol.md)
+prepares a shared confidence cutoff and 228 question-only fresh rows, with
+independent policy review before selection. Thinking is planned only on changed
+actions, at most32; the response bound is198720tokens. The collector remains
+unimplemented and locked. The [1.7B diagnosis](qwen17-performance-diagnosis.md)
+and [improvement plan](qwen17-improvement-plan.md) examine its scarce rescues,
+costly cap hits and fallback controls. All670 tests and review pass. Free
+[Kaggle training](kaggle-free-gpu-plan.md) is an optional resource; its hardware
+notebook is prepared but has not been run or uploaded.
+
 ## 1. The question
 
 Qwen3 models have two inference modes: **direct** (non-thinking; a short answer,
