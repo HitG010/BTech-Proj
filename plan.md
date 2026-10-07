@@ -822,3 +822,19 @@ Implementation and verification status will be recorded here as work completes.
   proceeds allD→sealedmask→selectedT→endpoint scoring; usermustkeepMacopen/AC.
   Ordered1.7Bcap preparation remainslocked behind complete+reviewedvalidation;
   no1.7Bgen/executor or Kaggletraining started. Preserveallfrozen studies.
+- 2026-10-07 status checkpoint: fresh sparse validation finished Oct6 19:16:18UTC,
+  228 direct plus one eligible thinking response, no failures/retries, all workers
+  exited. Total43,448tokens/1,498.07chargedseconds/1,611.79wallseconds. Extra thinking
+  did not fix the scored draft: zero accuracy gain, utility−.000312061, 95%CI
+  [−.000936184,0]; screen fails. Only one selected training reference accessed.
+  Report `ee07790d…a98ed`, independent review `9a8077b5…ff882` passes cached
+  reproduction/accounting/preservation without refitting/scoring/references.
+  Preserve completed run; no relaunch or renewed search from this one event.
+- 2026-10-07: ordered1.7B cap preparation from frozen `440f655` completes plan
+  `553c514d…12e2e`; independent actual-input review `647fd8e3…21835` passes.
+  Exactly36new2k/4k jobs, same18originalcellseeds/11oldDEVquestions, primary equal
+  question weights,129096response bound. No new reserve allocation, inference,
+  reference access or training;256remainfree. Generation remainsUNIMPLEMENTED/
+  LOCKED. Next implement and freeze its separate bounded runtime, independently
+  review actual inputs, then perform the user-authorized matched development
+  comparison. No model improvement or novelty is established at this checkpoint.

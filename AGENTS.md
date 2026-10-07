@@ -570,3 +570,29 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   thenmanual36newpairedjobs18oldseeds/11DEVgroups, independentfrom0.6scientific
   gate. Its generationexecutor isUNIMPLEMENTED andneedsnewfreeze. No concurrent
   1.7Bmodel, GPUtraining, Kaggleupload, paidAPI orsealedlabel access occurs.
+- Fresh sparse [validation is complete](docs/sparse-validation-results.md),
+  superseding the running snapshot. Terminal 2026-10-06 19:16:18 UTC: 228 direct
+  plus one eligible thinking response, 229 attempts, zero failures/retries, one
+  setup, no unresolved reservations. Collector/finalizer exited zero; no worker
+  remains. Total 43,448 tokens / 1,498.07 charged seconds / 1,611.79 wall seconds.
+  Only one selected TRAIN reference opened after full endpoint; other 227 unopened,
+  dataset gold absent. Report `ee07790d…a98ed`, scores `4e545a59…1b690`, independent
+  review `9a8077b5…ff882` reproduces cached statistics and preservation. Extra
+  thinking uses 1,423 tokens, v7 invalid_number/incorrect; accuracy delta zero,
+  utility delta −.000312061 (95% CI [−.000936184,0]), screen fails. This sparse
+  endpoint identifies no absolute policy accuracy/utility. One event is limited
+  evidence; no tuning/expansion/promotion. Preserve frozen code, roles, policy,
+  jobs, responses, scores and journals; do not launch/prepare/score/finalize again
+  or reopen references. All 2,319 historical protected originals preserved.
+- The ordered [1.7B cap preparation](docs/qwen17-cap-bridge-preparation-results.md)
+  is complete from `440f655`: plan `553c514d…12e2e`, independent review
+  `647fd8e3…21835` passes ten source/three ordering pins, 36 unique matched jobs,
+  18 inherited original seeds/11 old DEV groups, equal-question primary weighting
+  and 129,096 response-only bound. Proposed global limits 160k tokens/four hours.
+  Generation executor is UNIMPLEMENTED/LOCKED; next implement/freeze/review the
+  separate runtime before inference or its exact 11 TRAIN references. Do not
+  prepare again or edit frozen preparation source/tests/protocol/artifacts.
+  No new reserve allocation; 256 remain unclaimed. No training/Kaggle upload,
+  paid cloud/API or sealed access. Docker stays running; all other stopped
+  research phases remain stopped. Failed guard efficacy does not block this
+  separately authorized development cap diagnostic or establish novelty.

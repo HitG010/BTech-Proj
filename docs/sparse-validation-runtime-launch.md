@@ -37,5 +37,17 @@ review with `checks_passed: true`. Baseline efficacy need not pass that ordering
 gate. The bridge uses 36 new matched 2k/4k thinking jobs on 18 old cap-hit cells
 across 11 development groups, with original seeds inherited and actual token
 differences charged. Its generation executor is a later implementation boundary.
-No cap preparation or 1.7B generation has started. Preserve previous negative
+At launch, no cap preparation or 1.7B generation had started. Preserve previous negative
 evidence regardless of the validation outcome.
+
+## Terminal checkpoint
+
+The launch snapshot above is superseded by the
+[completed validation result](sparse-validation-results.md). Terminal status
+is `complete` at 2026-10-06 19:16:18 UTC: 228 direct plus one thinking response,
+zero failures/retries, 43,448 tokens. All workers exited. Independent completion
+review `9a8077b5…ff882` passed; the scientific screen failed. Do not resume,
+relaunch, rescore or reopen references.
+
+The separately ordered [1.7B preparation](qwen17-cap-bridge-preparation-results.md)
+is now complete and verified. Its generation executor remains unimplemented.

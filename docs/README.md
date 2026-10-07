@@ -107,9 +107,8 @@ failed. Any fresh baseline validation needs a separate prospective protocol.
 The [new sparse protocol](qwen06-sparse-validation-protocol.md) is now
 [prepared and independently verified](sparse-validation-preparation-results.md):
 one shared cutoff and228 question-only fresh rows,456 potential jobs and256
-reserve rows still free. Thinking is planned only on changed actions, at most32;
-the response bound is198720tokens. Collection remains unimplemented/locked;
-no new response or reference access occurred. The
+reserve rows still free. Thinking is restricted to changed actions, at most32;
+the response bound is198720tokens. Its completed runtime is recorded below. The
 [verified 1.7B diagnosis](qwen17-diagnosis-results.md) finds18 cap hits on11 groups,
 including12 wrong thinking outputs. Its [improvement plan](qwen17-improvement-plan.md)
 prioritizes a matched longer-cap test, not an unsupported accuracy claim or a
@@ -118,18 +117,25 @@ new router fitted on four positive groups. All670 tests and reviews pass. Free
 notebook is prepared but has not been run or uploaded.
 
 The [fresh-validation runtime](qwen06-sparse-runtime-protocol.md) is implemented
-and reviewed, with694 offline tests passing. It will run in a detached local
-worker after frozen runtime preparation and actual-input review. The
+and reviewed, with694 offline tests passing. Collection and analysis are now
+complete. The
 [1.7B cap-bridge preparation](qwen17-cap-bridge-protocol.md) is separately gated
 on validation completion and independent review. No model or reference has
 entered either new execution before source freeze.
 
-The [validation background run](sparse-validation-runtime-launch.md) is now
-collecting from frozen `440f655`, after actual prelaunch review. Launch snapshot:
-8/228 direct responses; no references. Its status is
-`qwen06-sparse-validation-v1/runtime-v1/status.json`. The 1.7B preparation stays
-locked until completed validation and independent review; its generation
-executor is still a later boundary. Keep the Mac open and connected to power.
+The [fresh validation result](sparse-validation-results.md) is complete and
+independently verified: 228 direct responses plus one eligible thinking response,
+zero failures/retries, 43,448 charged tokens. The extra response did not produce
+a scored accuracy gain; incremental utility is −.000312061 and the screen fails.
+Only one selected training reference was opened. No worker remains running;
+preserve the completed run and do not score or launch again.
+
+The [1.7B cap bridge preparation](qwen17-cap-bridge-preparation-results.md) also
+passed independent review: 36 planned matched 2k/4k jobs on 11 existing
+development questions, 129,096 response-only token reservations. Generation is
+unimplemented and locked pending a separate frozen runtime. No new reserve
+allocation, model inference, reference access or GPU training occurred in that
+preparation. All 256 reserve rows remain free; Docker stays running.
 
 ## 1. The question
 
