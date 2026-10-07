@@ -881,3 +881,14 @@ Implementation and verification status will be recorded here as work completes.
   gap evident in wall/monotonic totals. Preserve first-failure stop and all
   records. Read-only diagnosis precedes any eligible manual runtime resume;
   do not automatically retry, change frozen deadlines or reset global budgets.
+- 2026-10-07: user explicitly requests restart. Read-only eligibility/resource
+  preflight `07019b9b…91481` passes AC/input/settled-cost/preserved-response and
+  original-budget checks. One manual resume `5a5334ab…36ac21` starts12:26:16UTC,
+  supervisor8362/collector8369/ownedguard8363. Independent review `1a6a7f08…b6050`
+  checks all original records/clock/inputs, owned assertions and retry seed.
+  First control retained; failed4k retried with same2536005410 seed and600s
+  deadline. Snapshot1/36complete,9,818conservative token charges includingactive
+  retry, no references/scoring. Both launch/setup/invocation slots consumed;
+  no third restart under this frozen protocol. Original15:51:49UTC wall deadline
+  remains. Resource snapshot does not establish the timeout's cause; no fix or
+  model improvement is claimed. Worker continues under unchanged limits.

@@ -75,3 +75,31 @@ correctness result is available. Preserve all successful/failed rows and
 charges. Do not automatically restart, change the frozen 600-second limit or
 reset the shared wall clock. Next is a read-only throughput/resource diagnosis
 before deciding whether the one eligible explicit runtime resume is justified.
+
+## User-requested manual restart
+
+The user explicitly requested restart. Read-only preflight `07019b9b…91481`
+verified the settled prior charges, preserved response, unchanged frozen inputs,
+eligible runtime failure, remaining original budget and AC power. The resource
+snapshot reports 24% system memory free, 22,243.88 MiB swap used and no recorded
+thermal warning. Swap occupancy alone does not establish active paging or a
+cause of the timeout.
+
+The single permitted resume launched as **5a5334ab23a446ce89b2b5e4dc36ac21**
+at **2026-10-07 12:26:16 UTC**. Supervisor PID **8362**, owned AC guard **8363**,
+collector **8369**, invocation **fe65838914fc4ec999a811a20251699a**. The worker
+skips the completed control and retries the failed extended cell with its
+original seed **2536005410**, unchanged 4k cap and 600-second job limit.
+
+Independent restart verification `1a6a7f08…b6050` checks the second explicit
+launch, owned processes/assertions, all source/prepared pins, prior completed
+and failed records/charges, unchanged collection start and selected retry.
+At its snapshot, **1/36** remained complete and the retry was active; 9,818
+conservative token charges include its 4,610-token reservation. The two setups,
+invocations and launch slots are now consumed. No new reference/scoring access
+occurred and no correctness result is available.
+
+The original shared four-hour clock was not reset: its wall deadline remains
+**2026-10-07 15:51:49 UTC** (21:21:49 Asia/Kolkata), subject to any earlier
+charged-time, token, resource or failure stop. Do not issue another restart,
+prepare again or alter frozen limits. Current state remains in `runtime-v1/status.json`.

@@ -670,3 +670,22 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   reviewed explicit runtime resume within the SAME160k/four-hour limits is
   justified. Original clock continues through gaps; do not borrow a new budget.
   Docker stays running, cloud/API$0, official test sealed, other phases stopped.
+- User explicitly requested restart after the timeout. Read-only actual
+  preflight `07019b9b…91481` verifies eligible runtime stop/exit1, all prior
+  settled charges, one preserved completed response, frozen inputs/AC and
+  remaining original budget. Resource snapshot: 24% memory free, 22,243.88MiB
+  swap used, no recorded thermal warning; active paging/cause is unproven.
+  The one permitted resume `5a5334ab23a446ce89b2b5e4dc36ac21` starts
+  2026-10-07 12:26:16 UTC: supervisor8362, owned AC guard8363, collector8369/
+  invocation `fe65838914fc4ec999a811a20251699a`. Snapshot is **running**, 1/36
+  complete and extended cell0 retry active with original seed2536005410.
+  Independent resume review `1a6a7f08…b6050` verifies source/prepared pins,
+  owned live processes/assertions, prior successful/failed bytes and charges,
+  unchanged clock and retry identity. Conservative token charges9,818 include
+  active4,610; second model setup completed. **All two launch/setup/invocation
+  slots are consumed**. Do not issue a third restart or reprepare, change frozen
+  files/limits/seeds, reset journals/clocks or reopen refs. Original global wall
+  deadline remains2026-10-07 15:51:49UTC; all earlier limits/failures still stop.
+  Current authority `qwen17-cap-bridge-v1/runtime-v1/status.json`; no score/ref
+  marker or correctness result at restart. Keep Mac open/onAC, Docker running,
+  roles/sealed outcomes/other stopped phases unchanged. Cloud/API spend$0.
