@@ -138,12 +138,14 @@ source freeze and an actual-input prelaunch audit must precede its first launch.
 No new reserve
 allocation, model inference, reference access or GPU training occurred in that
 preparation. All 256 reserve rows remain free; Docker stays running.
-The user has deferred generation until AC power is available. No generation
-worker is running, and the new runtime has not been prepared or launched.
 Runtime source/tests/protocol froze at `49cf7fd`; all 704 offline tests, Ruff
-and independent review pass. Preserve that source checkpoint. The next action
-after the user resumes is one runtime preparation and actual-input review,
-then the native AC-checked launch.
+and independent review pass. Preserve that source checkpoint. The user resumed
+with AC power; the [audited background launch](qwen17-cap-bridge-runtime-launch.md)
+is now collecting. One initial launch, one shared-model setup and one collector
+are active. The first response completed; its 4k counterpart is running at the
+checkpoint. No new reference access or scoring occurred. Use runtime-v1/status.json
+for current progress; do not launch or prepare again. Keep the Mac open/on AC
+and Docker running.
 
 ## 1. The question
 

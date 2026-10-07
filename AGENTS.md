@@ -628,3 +628,29 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   prepare and independent actual-input audit must precede native AC-checked
   launch. Preserve frozen new runtime files and all old sources/artifacts.
   Docker remains running; 256 reserve rows remain unclaimed, cloud spend $0.
+- The user **resumed** the deferred 1.7B generation with AC power available.
+  [Cap background collection](docs/qwen17-cap-bridge-runtime-launch.md) is now
+  running, superseding the unprepared/deferred snapshot. Frozen `49cf7fd`
+  prepares runtime plan `41e9d161…da5ef`; actual prelaunch review `a4b9f5d2…07675`
+  checks 17 source/nine prepared/environment/asset pins, all 36 jobs/18 paired
+  inherited seeds/11 DEV groups, old 2,652 study files and 2,319 historical
+  protected originals. Required marker `1a0207f8…863dd` passes. One accepted
+  launch `89556e138c0f459ba358a4b6f353f3ac` starts 2026-10-07 11:51:49 UTC,
+  supervisor 3537, owned temporary AC guard 3538, collector 3543/invocation
+  `9291785f26de4121a3ba9c6dae5bc810`. A permission-review timeout created no
+  process or journal before the one permitted tool retry; it is not a generation
+  failure or extra launch. One shared-model setup charges 57.7933 seconds.
+  Independent launch verification `77b1101b…31313` checks owned live processes,
+  sleep/activity assertions, accounting and preservation at 0/36 active startup.
+  Subsequent gold-free first-response review `01940066…d2a3c` verifies 1/36
+  complete (2,394 tokens), second matched 4k job active, 7,004 conservative token
+  charges /844.4913 seconds including the active reservations, no failed attempts
+  or reference/score/gold marker. Snapshots only: live authority is
+  `qwen17-cap-bridge-v1/runtime-v1/status.json`. Do not reprepare/relaunch/edit
+  frozen source or reset clocks/journals. All 36 responses plus exited workers,
+  accounting/preservation and all 18 new-pair prefix checks gate exactly 11
+  selected TRAIN refs for new-output v7 scoring. Global 160k tokens/four hours,
+  first-failure stop, no auto-resume; only one reviewed explicit runtime resume
+  remains if eligible. Keep Mac open/on AC and Docker running. No extra reserve
+  allocation/training/cloud/API/sealed access; 256 reserve rows remain free,
+  other stopped phases remain stopped. No model improvement is established yet.

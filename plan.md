@@ -861,3 +861,15 @@ Implementation and verification status will be recorded here as work completes.
   or launch occurred. User-deferred generation stays unstarted. When the user
   resumes with AC available, prepare once, audit actual inputs and then launch
   the already authorized local comparison. Preserve source freeze and old roles.
+- 2026-10-07: user resumes with AC available. One runtime preparation from
+  frozen `49cf7fd` produces `41e9d161…da5ef`; independent actual-input review
+  `a4b9f5d2…07675` passes source/assets/job/order/environment/preservation gates.
+  Native launch `89556e13…53f3ac` starts at 11:51:49 UTC with supervisor3537,
+  collector3543 and temporary owned AC guard3538. A permission-review timeout
+  before execution left zero journals/processes; one allowed tool retry made
+  the single actual launch. Independent launch review `77b1101b…31313` passes.
+  First-response review `01940066…d2a3c` observes1/36complete,2,394 generated
+  tokens and the4k counterpart active;7,004 conservative token charges include
+  its reservation. No failed attempts or reference/scoring access. Leave the
+  worker to finish fixed36 under160k/four-hour limits and full prefix/endpoint
+  gates. Preserve all frozen files; no new reserve allocation or promotion.
