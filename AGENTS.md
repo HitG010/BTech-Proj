@@ -732,3 +732,29 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   the running checkpoint. Deadline2026-10-08 00:01:39UTC with earlier stops
   binding. Keep Mac open/onAC, Docker running; other phases/sealed roles stopped,
   reserve256 unchanged, cloud/API$0. No correctness/improvement result yet.
+- Cap [completion/results](docs/qwen17-cap-bridge-results.md) are **complete**,
+  superseding the running snapshots. Terminal2026-10-07 17:20:17UTC:30/30new,
+  36/36combined, zero new failures/retries, collector/finalizerexit0, all owned
+  processes absent and nine locks free. Report `11e61657…e1622`, scores
+  `38a91695…0ca47`, independent review `0172f489…fed89` verifies all36provenance,
+  source18/old17/9prepared/decision/85parent/2652oldstudy/2319protected originals,
+  exact18newprefixes and18old2k all-token-stream replays. Only fullendpoint,
+  exit/accounting/preservation/prefixes permitted exactly11TRAINrefs once for
+  new scoring; no further refs reopened by review. Child99,136tokens/
+  4,641.4133chargedseconds/4,655.2292collectionwall; combined127,171tokens/
+  7,262.9591chargedseconds, three total setups/invocations,38job reservations across
+  parent+child. Old2,814failed tokens and4,610unknown/600s remain charged; old
+  stopped statuses and runtime deviations preserved. All30newcalls completed
+  below600s (maximumbackend251.0471s/receipt251.3651s); longer deadline was not
+  reached and failure-cause/recovery causality remain unproven.
+  Primary equal11group accuracy36.36%→40.91%, gain+.0454545 (95%CI[0,.136364]),
+  tokens2430.59→4093.05, delta+1662.45, utility−.037668 (CI[−.094767,+.061647])
+  at unchangedlambda.05. One rescue/one question/zero harms; secondaryraw6/18
+  versus7/18. Keep2k default: no confirmed utility gain or whole-panel/fresh/
+  novelty claim. All original labels/protocols stay frozen. Future cached-score
+  error audit may separate eight accepted-but-wrong extended outputs from
+  three parser rejections before conditional math-training design; no new cap
+  search/routerfit/training/Kaggle/gen/refs authorized by this result itself.
+  Do not prepare/launch/generate/score/finalize again or reopen11refs. Current
+  authority completion-v1/status.json. Docker running, cloud/API$0, official
+  test sealed, reserve256 unchanged, other stopped phases remain stopped.

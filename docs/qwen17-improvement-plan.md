@@ -38,6 +38,15 @@ No frozen model, decoder, scorer or label should be changed in place.
 
 ## Conditional matched reasoning-cap bridge
 
+This step is now [complete and independently verified](qwen17-cap-bridge-results.md).
+One of 18 responses was rescued at 4k, with no harms. The primary 11-question
+accuracy gain is 4.55 percentage points, with 1,662.45 extra tokens and a
+−.037668 utility difference at lambda .05; its interval includes zero. Keep
+2k as the current operating point. No default 4k promotion or additional cap
+grid is justified.
+The historical preparation proposal below records the original design; the
+completed study and its explicit runtime deviations are in the results record.
+
 The next accuracy hypothesis is **2048 versus 4096 reasoning tokens**, with the
 same 512 answer cap and 2 closure tokens. Select the current 18 capped cells by
 their gold-free cap flag only, not by correctness. They are an enriched
@@ -62,6 +71,12 @@ there. A local comparison remains the default; free Kaggle training is now an
 available option. Preserve the old MPS endpoint and interpret runtime separately.
 
 ## When training becomes justified
+
+The completed extended arm still has eight accepted numeric outputs scored
+incorrect and three parser-rejected outputs. Use cached error/format diagnosis
+to distinguish these cases before freezing a training design. No new reference
+fetch, generation, adapter fit or Kaggle action follows automatically from
+this result. Training and fresh evaluation retain the boundaries below.
 
 If a matched cap test leaves repeatable mathematical errors, prepare a small
 supervised math LoRA experiment on free Kaggle hardware. Keep frozen base-model

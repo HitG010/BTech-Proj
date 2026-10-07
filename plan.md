@@ -912,3 +912,16 @@ Implementation and verification status will be recorded here as work completes.
   Latest running checkpoint23/30new,29/36combined,seventogo,no newfailures;
   extendedcell14 active. No newrefs/scoring yet. Worker continues towardfull36
   and strict prefix/endpoint scoring gates; do not rerun either completed prep.
+- 2026-10-07 terminal cap checkpoint: all30new/36combined completed and scored
+  at17:20:17UTC; zero new failures/retries, both processesexit0, no worker/locks
+  remain. Independent cached-only review `0172f489…fed89` passes all source,
+  record/seed/token prefix/replay/ledger/reference-gate/preservation checks and
+  independently reproduces primary/secondary means and pairedbootstrap.
+  Report `11e61657…e1622`; only11selected training refs opened by endpoint.
+  Child99,136tokens,combined127,171; oldfailed/unknown charges retained. Allnew
+  backend calls<252s, so extendeddeadline not reached; stall cause unproven.
+  4k rescues1response/0harms: primaryaccuracy+.0454545 andtokens+1662.45,
+  utility−.037668 atlambda.05 withCIcrossing0. Keep2k; close this cap recipe,
+  no broader superiority/novelty promotion. Next separately frozen cached
+  numeric-error/presentation diagnosis before conditional math-LoRA design;
+  no training/export/Kaggle action or new data/generation yet.

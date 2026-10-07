@@ -153,13 +153,17 @@ generation; do not restart again, reset the old clock or change frozen limits.
 Docker stays running.
 
 The user authorized the separate [30-job completion](qwen17-cap-bridge-completion-protocol.md).
-Its [audited background launch](qwen17-cap-bridge-completion-launch.md) is now
-active from frozen `dd4d733` after 720 offline tests. It preserves all old bytes
-and charges, with an explicit new eight-hour/1,800-second runtime allowance
-and the same model/sampler/caps/seeds. The latest checkpoint has 29/36 combined
-responses complete, seven pending, no new failure. Use completion-v1/status.json
-for live authority. Scoring requires all 36 and every engineering gate; do not
-launch again or alter either old or new clock.
+Its [audited completion](qwen17-cap-bridge-results.md) is now finished from
+frozen `dd4d733` after 720 offline tests. All 36 responses and scoring are
+complete, with zero new failures/retries and no worker remaining. All old bytes
+and charges are preserved. One extra response is correct at 4k, with no harms;
+primary accuracy gains 4.55 percentage points but token cost rises 1,662.45
+and utility falls .037668 at lambda .05. Both outcome/utility intervals include
+zero. Keep the 2k default; this enriched 11-question result does not establish
+fresh superiority.
+Independent review passes all endpoint, token replay and preservation checks.
+Do not generate/score/finalize again or reopen refs. Next is separately planned
+cached error diagnosis before any conditional training, not a larger cap grid.
 
 ## 1. The question
 
