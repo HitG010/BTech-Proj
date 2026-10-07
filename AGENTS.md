@@ -689,3 +689,20 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   Current authority `qwen17-cap-bridge-v1/runtime-v1/status.json`; no score/ref
   marker or correctness result at restart. Keep Mac open/onAC, Docker running,
   roles/sealed outcomes/other stopped phases unchanged. Cloud/API spend$0.
+- Cap resume is now **stopped**, superseding the active snapshot. Terminal
+  2026-10-07 12:56:04 UTC: `needs_attention`/`runtime`, monotonic operation
+  watchdog reached for extended cell3 (600s allowance+5s grace). Collector8369
+  exited−15; its active reservation has no published result/settlement. Completed
+  **6/36 (three per arm), 30 pending**; eight reservations include six complete,
+  one prior settled failure and one unresolved killed attempt. Preserve its full
+  4,610tokens/600s charge. Total28,035conservative tokens/2,621.5458chargedseconds,
+  wall3,855.0995s at stop. Both launches/invocations/setups consumed; no third
+  launch under this protocol, clock reset, source edits or deadline extension.
+  Three 4k outputs did complete in301.28/247.14/281.53s; cause of intermittent
+  watchdog stop remains unproven. Completed endpoint GPU samples are not peak
+  or total-memory accounting. No collection-end/score marker/sidecar or new refs.
+  Next read-only runtime/throughput diagnosis, then a separately prospective
+  frozen completion protocol for exact30pending jobs with unchanged study
+  identities/analysis, retaining both stops and all charges. Do not allocate new
+  questions or quietly extend old budget. Current status remains runtime-v1.
+  Docker running, cloud/API$0, official test sealed, other phases stopped.

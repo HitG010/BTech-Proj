@@ -142,12 +142,15 @@ Runtime source/tests/protocol froze at `49cf7fd`; all 704 offline tests, Ruff
 and independent review pass. Preserve that source checkpoint. The user resumed
 with AC power; the [audited background launch](qwen17-cap-bridge-runtime-launch.md)
 stopped after the first 4k attempt timed out, then used the user's explicitly
-requested single manual resume after a recorded preflight. The completed 2k
-response and failed attempt/charges are preserved. The retry is active with
-the original seed and limits; 1/36 responses are complete at the checkpoint.
-Both launch/setup/invocation slots are consumed. No new reference access or
-scoring occurred. Use runtime-v1/status.json for current authority; do not
-restart again, reset the clock or change frozen limits. Docker stays running.
+requested single manual resume after a recorded preflight. That resume finished
+five more responses, then stopped at a later 4k watchdog timeout: **6/36
+complete, 30 pending**, collector exited. Both launch/setup/invocation slots
+are consumed. All outputs and 28,035 conservative token charges are preserved;
+the killed attempt retains its full reservation. No new reference access or
+scoring occurred. Use runtime-v1/status.json for authority. Diagnose the
+intermittent stop and freeze a separate completion plan before further
+generation; do not restart again, reset the old clock or change frozen limits.
+Docker stays running.
 
 ## 1. The question
 

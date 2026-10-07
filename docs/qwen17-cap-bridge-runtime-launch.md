@@ -103,3 +103,32 @@ The original shared four-hour clock was not reset: its wall deadline remains
 **2026-10-07 15:51:49 UTC** (21:21:49 Asia/Kolkata), subject to any earlier
 charged-time, token, resource or failure stop. Do not issue another restart,
 prepare again or alter frozen limits. Current state remains in `runtime-v1/status.json`.
+
+## Second stop: restart allowance exhausted
+
+The resume stopped at **2026-10-07 12:56:04 UTC** with
+`needs_attention`/`runtime`: the monotonic operation watchdog exceeded the
+600-second job allowance plus its five-second grace. The active job was the
+extended 4k arm for cell 3. Collector PID 8369 exited with **−15** after the
+supervisor terminated it; no result or settlement was published for that job.
+
+Completed **6/36 responses**, three per arm; **30 remain**. There are eight
+attempt reservations: six completed, the earlier settled timeout and one
+unresolved killed attempt. Preserve its full **4,610-token/600-second** charge.
+Total conservative accounting is **28,035 tokens / 2,621.5458 charged seconds**;
+wall age at stop was 3,855.0995 seconds. All old successful/failed bytes and
+both exhausted launch/invocation/setup journals remain authoritative.
+
+The resume did finish three 4k responses in 301.28, 247.14 and 281.53 seconds.
+Endpoint memory samples across the completed resume outputs show approximately
+3.46 GB of live PyTorch MPS allocation and 4.87 GB of driver allocation; these are
+not peak or total unified-memory measurements. The intermittent watchdog stop
+has no established cause. Do not infer a fixed inability to complete every 4k
+job, a memory leak or Docker causality from these records.
+
+No collection-end, score marker or score sidecar exists. No new training
+reference was opened. There is no correctness result from this incomplete
+endpoint. The original protocol permits no third launch. Next is a read-only
+runtime/throughput diagnosis and a separately frozen prospective completion
+plan for the exact 30 pending jobs, preserving this stop and every prior charge.
+Do not silently expand deadlines, reset the old clock or allocate new questions.

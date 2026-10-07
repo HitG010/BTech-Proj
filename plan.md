@@ -892,3 +892,11 @@ Implementation and verification status will be recorded here as work completes.
   no third restart under this frozen protocol. Original15:51:49UTC wall deadline
   remains. Resource snapshot does not establish the timeout's cause; no fix or
   model improvement is claimed. Worker continues under unchanged limits.
+- 2026-10-07 status: resume stopped12:56:04UTC by the 600s+5s monotonic watchdog
+  on extendedcell3; collectorexit−15. Completed6/36,three eacharm,30pending. Eight
+  reservations=sixcompleted+earlierfailure+oneunknown killed attempt; its full
+  4,610token/600s charge stays. Total28,035tokens/2,621.5458chargedseconds,
+  originalwall3,855.0995s at stop. No refs/scoring. Three4k jobs completed in
+  247–301s before this intermittent stop; cause not established. All restart
+  slots consumed. Preserve records; next read-only diagnosis and separately
+  frozen exact30-job completion design, not another old-protocol restart/reset.
