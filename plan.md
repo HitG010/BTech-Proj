@@ -900,3 +900,15 @@ Implementation and verification status will be recorded here as work completes.
   247–301s before this intermittent stop; cause not established. All restart
   slots consumed. Preserve records; next read-only diagnosis and separately
   frozen exact30-job completion design, not another old-protocol restart/reset.
+- 2026-10-07: user authorizes exact30 pending completion. Read-only engineering
+  decision `1378ea0d…de86e` preserves six old successes/failed/unknown charges;
+  current resource observation does not prove the old stall's cause. New child
+  explicitly allows1800s perjob/eight-hour own clock, combined160k tokens, one
+  setup/invocation/launch and no retry. Same old catalog/seeds/caps/model/analysis.
+  Source `dd4d733` freezes after720tests/Ruff/review; actual prepare `a718942c…00836`
+  and independent prelaunch `3219dc06…bd598` pass original85byte/asset/source/job/
+  resource/role gates. Launch `80b176c8…278f96` begins16:01:39UTC, collector24819.
+  Startup review `4792c191…f68d4` confirms owned guards and preserved accounting.
+  Latest running checkpoint23/30new,29/36combined,seventogo,no newfailures;
+  extendedcell14 active. No newrefs/scoring yet. Worker continues towardfull36
+  and strict prefix/endpoint scoring gates; do not rerun either completed prep.

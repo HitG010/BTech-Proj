@@ -706,3 +706,29 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   identities/analysis, retaining both stops and all charges. Do not allocate new
   questions or quietly extend old budget. Current status remains runtime-v1.
   Docker running, cloud/API$0, official test sealed, other phases stopped.
+- User authorized exact30-job completion. The separate
+  [completion protocol](docs/qwen17-cap-bridge-completion-protocol.md) freezes
+  source/tests at **dd4d733** after all **720 offline tests**, Ruff and review.
+  Engineering decision `1378ea0d…de86e` records eight-hour own wall/charged and
+  1,800s job limits (old config's serialized600 retained as identity),900s setup,
+  one launch/invocation/setup, no retry. This is an explicit new runtime
+  deviation, not a reset of the stopped parent or an inference setting change.
+  Model/sampler/prompts/caps/seeds/all36catalog/analysis stay unchanged. Child
+  `qwen17-cap-bridge-v1/completion-v1/` prepared once: plan `a718942c…00836`.
+  Independent prelaunch `3219dc06…bd598` checks18new/17oldsource+9prepared,
+  decision/all85parent bytes, actual9assets, old2652+protected2319, exact30tail
+  15+15/max107580/combined135615/160k ceiling/nogold/free256. Required marker
+  `0674c4ba…5cb63`. One launch `80b176c8c32543e2b25637241e278f96` starts
+  2026-10-07 16:01:39UTC, supervisor24815/ownedguard24816/collector24819,
+  invocation `7878128d1b9a4fafb6a38e09312a15fc`. Independent startup verification
+  `4792c191…f68d4` observes0/30new,6/36combined and first extendedcell3 active
+  with seed1913063438, setup20.7484s, unchanged parent charges/owned assertions.
+  Later status observes **23/30new,29/36combined**, extendedcell14 active, no
+  new failure; snapshot only. Live authority **completion-v1/status.json**.
+  Do not prepare/launch again, edit frozen files, mutate parent bytes, reset
+  clocks or invoke old finalizer/scorer. Full36+exitedcollector/ledger/source/
+  parent preservation+all18prefixes gate exactly11TRAINrefs under NEWprivate
+  child endpoint; cached sidecars never reopen refs. No scoring/ref marker at
+  the running checkpoint. Deadline2026-10-08 00:01:39UTC with earlier stops
+  binding. Keep Mac open/onAC, Docker running; other phases/sealed roles stopped,
+  reserve256 unchanged, cloud/API$0. No correctness/improvement result yet.

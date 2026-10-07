@@ -152,6 +152,15 @@ intermittent stop and freeze a separate completion plan before further
 generation; do not restart again, reset the old clock or change frozen limits.
 Docker stays running.
 
+The user authorized the separate [30-job completion](qwen17-cap-bridge-completion-protocol.md).
+Its [audited background launch](qwen17-cap-bridge-completion-launch.md) is now
+active from frozen `dd4d733` after 720 offline tests. It preserves all old bytes
+and charges, with an explicit new eight-hour/1,800-second runtime allowance
+and the same model/sampler/caps/seeds. The latest checkpoint has 29/36 combined
+responses complete, seven pending, no new failure. Use completion-v1/status.json
+for live authority. Scoring requires all 36 and every engineering gate; do not
+launch again or alter either old or new clock.
+
 ## 1. The question
 
 Qwen3 models have two inference modes: **direct** (non-thinking; a short answer,
