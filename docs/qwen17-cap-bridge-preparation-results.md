@@ -17,9 +17,10 @@ Reasoning-prefix agreement in the new pairs is an engineering gate. Utility
 uses actual charged token differences.
 
 Response-only reservations total **129,096 tokens**. The proposed global limit
-is 160,000 tokens/four hours, including setup and failed attempts. The separate
-runtime executor is **unimplemented and locked**. It must be implemented,
-frozen and reviewed before inference. Only the complete 36-response endpoint,
+is 160,000 tokens/four hours, including setup and failed attempts. At this
+preparation checkpoint the runtime executor was unimplemented. The separate
+[runtime protocol](qwen17-cap-bridge-runtime-protocol.md) now implements it;
+source freeze and actual-input review must precede inference. Only the complete 36-response endpoint,
 exited worker and accounting/preservation gates may unlock the 11 selected
 training references under that new runtime protocol.
 
@@ -33,3 +34,11 @@ All **256 unclaimed reserve rows** remain free. Cloud/API spend is $0. Preserve
 the completed preparation and its source/test/protocol; do not prepare again.
 Docker stays running. This is an enriched development test, not fresh
 superiority confirmation or an established model improvement.
+
+The additive runtime source/tests/protocol are now frozen at **49cf7fd** after
+all **704 offline tests**, Ruff and independent review pass. The user deferred
+generation because AC power is unavailable. The runtime has not been prepared
+or launched; no model worker is running. After the user resumes, perform one
+runtime preparation, independently review its actual inputs and pass the
+native AC preflight before generation. Do not restart the completed cap-plan
+preparation described above.

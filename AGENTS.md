@@ -596,3 +596,35 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   paid cloud/API or sealed access. Docker stays running; all other stopped
   research phases remain stopped. Failed guard efficacy does not block this
   separately authorized development cap diagnostic or establish novelty.
+- User explicitly requests starting 1.7B generation. The additive
+  [cap runtime](docs/qwen17-cap-bridge-runtime-protocol.md) implements the
+  previous locked stage; write only `qwen17-cap-bridge-v1/runtime-v1/`.
+  Freeze its new script/test/protocol before one-time runtime prepare; actual
+  prepared-input independent review must precede native launch. Exactly 36
+  manual jobs, paired inherited seeds and balanced adjacent-arm order; one
+  shared loaded model with distinct immutable 2k/4k decoder configurations.
+  Global 160k tokens/four hours, setup/job 900/600 monotonic seconds, sampled
+  RSS 9 GiB, first-failure stop, at most two launches/invocations/setups with
+  one explicit runtime resume. No integrity/resource/budget/prefix-failure
+  resume or automatic retry. Prior unknown charges remain conservative.
+  All 36 completed responses, exited worker, accounting/preservation and all
+  18 NEW pair-prefix matches gate exactly 11 selected TRAIN references under
+  the new endpoint. Old 2k replay is descriptive only; never an old control.
+  Primary paired means/CIs weight 11 questions equally, secondary 18 cells;
+  lambda .05, Python Random seed 20261020, 2,000 question-bootstrap draws.
+  Valid cached score/report verification never reopens references. Native AC
+  preflight is required. The user explicitly deferred generation because AC
+  power is unavailable; do not launch or create a waiting generation worker.
+  No runtime preparation/launch at this implementation record. Keep Docker
+  running, roles/frozen originals unchanged, other stopped phases stopped.
+- Cap runtime source/tests/protocol now **freeze at `49cf7fd`**. All **704
+  offline tests**, Ruff and independent Sol review pass, including ten new
+  accounting/seed/order/prefix/reference/cache/group-bootstrap/shared-model
+  tests and a full 36-job fake collector. Actual read-only cap-plan integration
+  passed before freeze; no actual runtime prepare, model/reference or launch
+  occurred, and `qwen17-cap-bridge-v1/runtime-v1/` remains absent. The user
+  explicitly deferred generation because AC is unavailable. No generation or
+  waiting launch worker may start until the user resumes; then one runtime
+  prepare and independent actual-input audit must precede native AC-checked
+  launch. Preserve frozen new runtime files and all old sources/artifacts.
+  Docker remains running; 256 reserve rows remain unclaimed, cloud spend $0.

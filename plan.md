@@ -838,3 +838,26 @@ Implementation and verification status will be recorded here as work completes.
   LOCKED. Next implement and freeze its separate bounded runtime, independently
   review actual inputs, then perform the user-authorized matched development
   comparison. No model improvement or novelty is established at this checkpoint.
+- 2026-10-07: user requests 1.7B generation. Implement the separate additive
+  matched-cap runtime on the existing research branch. Preserve all old and
+  prep-only sources; 36 fixed manually catalogued jobs, paired original seeds,
+  balanced order, one shared loaded model with separate 2k/4k configurations.
+  Keep global160k/four-hour limits and strict all-pair prefix/reference gates.
+  Root review fixes plan-summary loading, implementation provenance, decoder
+  identity/order, resource-failure classification, full replay reporting and
+  live-vs-cached budget boundaries before freeze. Read-only actual cap inputs
+  pass without model/reference calls. Source/test/protocol freeze, one-time
+  runtime preparation and independent actual-input audit precede generation.
+  User subsequently deferred generation because AC is unavailable. Finish and
+  checkpoint offline tests only; no runtime prepare, generation/reference work
+  or waiting launch worker. Resume the generation task only when the user
+  requests it with AC available.
+- 2026-10-07: matched 1.7B runtime source/tests/protocol freeze at `49cf7fd`.
+  All704 offline tests (ten new), Ruff, diff checks and independent review pass.
+  Tests cover the full36-job fake collector plus paired seed/order, one shared
+  model with distinct configs, conservative unknown charges, strict reference
+  gate, cached no-reference reuse and independent group-bootstrap reproduction.
+  Real runtime-v1 is absent; no prepare/model/generation/scoring/reference work
+  or launch occurred. User-deferred generation stays unstarted. When the user
+  resumes with AC available, prepare once, audit actual inputs and then launch
+  the already authorized local comparison. Preserve source freeze and old roles.

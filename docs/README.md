@@ -132,10 +132,18 @@ preserve the completed run and do not score or launch again.
 
 The [1.7B cap bridge preparation](qwen17-cap-bridge-preparation-results.md) also
 passed independent review: 36 planned matched 2k/4k jobs on 11 existing
-development questions, 129,096 response-only token reservations. Generation is
-unimplemented and locked pending a separate frozen runtime. No new reserve
+development questions, 129,096 response-only token reservations. The separate
+[runtime](qwen17-cap-bridge-runtime-protocol.md) now implements generation;
+source freeze and an actual-input prelaunch audit must precede its first launch.
+No new reserve
 allocation, model inference, reference access or GPU training occurred in that
 preparation. All 256 reserve rows remain free; Docker stays running.
+The user has deferred generation until AC power is available. No generation
+worker is running, and the new runtime has not been prepared or launched.
+Runtime source/tests/protocol froze at `49cf7fd`; all 704 offline tests, Ruff
+and independent review pass. Preserve that source checkpoint. The next action
+after the user resumes is one runtime preparation and actual-input review,
+then the native AC-checked launch.
 
 ## 1. The question
 
