@@ -654,3 +654,19 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   remains if eligible. Keep Mac open/on AC and Docker running. No extra reserve
   allocation/training/cloud/API/sealed access; 256 reserve rows remain free,
   other stopped phases remain stopped. No model improvement is established yet.
+- Cap runtime is now **stopped**, superseding its running snapshots. Terminal
+  2026-10-07 12:06:04 UTC, `runtime-v1/status.json` and supervisor finish say
+  `needs_attention`/`runtime`: first 4k job reached the unchanged 600-second
+  deadline. Completed 1/36 (first 2k); two settled attempts, one failed, zero
+  unresolved; 5,208 charged tokens /844.7603 operation seconds /854.8098 wall
+  seconds at stop. Collector3543 exited1; no collection-end/score marker or new
+  reference access. Failed output contains 2,814 reasoning tokens/no answer;
+  its reasoning stage599.8453s versus control2,048tokens/160.3097s. Cause remains
+  undetermined; aggregate times cannot locate per-token slowdown. Collector
+  monotonic853.0726s is close to wall age, with no large sleep gap evident.
+  Preserve all inputs, completed/failed rows, charges and journals. No automatic
+  relaunch, reprepare, code/config edits, deadline extension or clock reset.
+  Next read-only throughput/resource diagnosis before deciding whether the one
+  reviewed explicit runtime resume within the SAME160k/four-hour limits is
+  justified. Original clock continues through gaps; do not borrow a new budget.
+  Docker stays running, cloud/API$0, official test sealed, other phases stopped.

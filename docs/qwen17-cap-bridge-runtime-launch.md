@@ -53,3 +53,25 @@ reserve allocation changed: 256 rows remain unclaimed. No training, paid
 cloud/API, official-test or other sealed outcome access occurred at launch.
 This is an enriched development cap diagnostic, not fresh superiority or
 novelty confirmation. Preserve the negative router results and all old studies.
+
+## Runtime stop
+
+The running snapshots above are superseded by terminal `needs_attention` at
+**2026-10-07 12:06:04 UTC**, failure kind `runtime`. The first 4k attempt reached
+its unchanged 600-second limit. It generated 2,814 reasoning tokens and no
+answer, with `termination: timeout`. The completed 2k response is preserved.
+Completion remains **1/36**; there are two settled attempts, one failed, no
+unresolved reservations and **5,208 charged tokens / 844.7603 operation seconds**.
+Wall age at stop is 854.8098 seconds; the collector exited with code one.
+
+The first control reasoning stage took 160.3097 seconds for 2,048 tokens; the
+extended stage took 599.8453 seconds for 2,814. These aggregate rates show a
+slowdown, but do not identify its cause or locate it within the token stream.
+Collector elapsed monotonic time was 853.0726 seconds, close to collection
+wall age; the records do not show a large sleep gap in this invocation.
+
+No collection-end or score marker exists. No new reference was opened and no
+correctness result is available. Preserve all successful/failed rows and
+charges. Do not automatically restart, change the frozen 600-second limit or
+reset the shared wall clock. Next is a read-only throughput/resource diagnosis
+before deciding whether the one eligible explicit runtime resume is justified.

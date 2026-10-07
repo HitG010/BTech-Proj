@@ -873,3 +873,11 @@ Implementation and verification status will be recorded here as work completes.
   its reservation. No failed attempts or reference/scoring access. Leave the
   worker to finish fixed36 under160k/four-hour limits and full prefix/endpoint
   gates. Preserve all frozen files; no new reserve allocation or promotion.
+- 2026-10-07 status check: cap worker stopped12:06:04UTC at1/36. First4k job
+  generated2,814reasoning tokens/no answer before600s timeout; collectorexit1,
+  first2k response preserved. Two settled attempts/onefailure/no unresolved,
+  5,208tokens/844.7603chargedseconds/854.8098wallseconds. No references/scoring.
+  Aggregate reasoning rates slowed versus2k, cause unproven; no large sleep
+  gap evident in wall/monotonic totals. Preserve first-failure stop and all
+  records. Read-only diagnosis precedes any eligible manual runtime resume;
+  do not automatically retry, change frozen deadlines or reset global budgets.

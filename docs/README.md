@@ -141,11 +141,13 @@ preparation. All 256 reserve rows remain free; Docker stays running.
 Runtime source/tests/protocol froze at `49cf7fd`; all 704 offline tests, Ruff
 and independent review pass. Preserve that source checkpoint. The user resumed
 with AC power; the [audited background launch](qwen17-cap-bridge-runtime-launch.md)
-is now collecting. One initial launch, one shared-model setup and one collector
-are active. The first response completed; its 4k counterpart is running at the
-checkpoint. No new reference access or scoring occurred. Use runtime-v1/status.json
-for current progress; do not launch or prepare again. Keep the Mac open/on AC
-and Docker running.
+has now stopped at `needs_attention`: 1/36 completed, with the first 4k attempt
+timing out at 600 seconds after 2,814 reasoning tokens and no answer. The worker
+exited. Both attempt records and 5,208 charged tokens are preserved; no new
+reference access or scoring occurred. Use runtime-v1/status.json for authority.
+Do not automatically restart or change frozen limits. Diagnose the slowdown
+before deciding on the remaining eligible explicit runtime resume. Docker stays
+running.
 
 ## 1. The question
 
