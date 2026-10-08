@@ -940,3 +940,12 @@ Implementation and verification status will be recorded here as work completes.
   TMLR's current survey exclusion is recorded; the preferred immediate paper is
   a scoped empirical study. Local execution remains the default, Docker stays
   running, official test stays sealed, reserve256 remains unclaimed.
+- 2026-10-09: started the focused plan with GPT-6.1-sol/xhigh specialist agents
+  and root orchestration. G0's exact algorithm comparison supports an empirical
+  adaptation, not a distinct-method priority claim. Added the threshold
+  specification, a bounded synthetic simulator/protocol, independent checks,
+  and an empirical manuscript outline with primary-paper overlap and scoped
+  claims. Review corrected covariance-removal means, the information-gain
+  target, and stopping-rule comparisons before source freeze. Only generated
+  synthetic data enter G1; real roles, references and completed studies remain
+  unchanged. Execution requires the frozen source and an actual-input review.

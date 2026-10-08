@@ -772,3 +772,19 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   Preserve all prior failed gates and completed studies. No collection, fitting,
   scoring, training, upload, or publication was performed by this change.
   Official test remains sealed, reserve256 unchanged, cloud/API spend $0.
+- G0/G1 preparation, 2026-10-09: on `codex/confidence-acquisition-plan`, the
+  [prior-art review](docs/g0-prior-art-review-2026-10-09.md) closes the method
+  priority claim as unsupported. Missing supplements and the L4 full paper
+  remain explicit retrieval limits. The [algorithm](docs/g0-threshold-algorithm-2026-10-09.md)
+  is an empirical adaptation with a finite-pool random-audit correction.
+  The [G1 protocol](docs/g1-synthetic-protocol-2026-10-09.md) permits only eight
+  synthetic settings, 30 paired seeds, seven controls/two removals, three
+  budgets, one 1,200-second invocation, and 512 MiB of artifacts. Source, tests,
+  protocol and independent reviewer must freeze before prepare/run. The new
+  output location is `artifacts/research/confidence-acquisition-g1-v1/`.
+  Preserve start/finish/trace records; do not retry or widen a failed screen.
+  G1 does not permit real-data allocation, generation, old scoring/refitting,
+  reference access or confirmation. The [empirical paper outline](docs/empirical-paper-outline-2026-10-09.md)
+  reuses published project reports only. No historical study is reopened.
+  Docker stays running, local execution only, official test sealed, reserve256
+  unchanged, and cloud/API experiment spend $0.

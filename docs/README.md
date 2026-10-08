@@ -1,5 +1,15 @@
 # Research map
 
+**G0/G1 work, 2026-10-09.** The
+[exact prior-art review](g0-prior-art-review-2026-10-09.md) does not support a
+new-method claim. The [algorithm specification](g0-threshold-algorithm-2026-10-09.md)
+defines an empirical acquisition adaptation. Its
+[bounded synthetic protocol](g1-synthetic-protocol-2026-10-09.md) and
+[independent review](g1-independent-review-2026-10-09.md) govern the next CPU
+study. The [empirical manuscript outline](empirical-paper-outline-2026-10-09.md)
+contains a draft abstract, evidence table, and explicit comparison with the
+closest empirical papers. No real-data collection follows from this preparation.
+
 **Planning update, 2026-10-08.** The new branch
 `codex/confidence-acquisition-plan` starts at `ee88d64`. Its
 [focused plan](novelty-plan-2026-10-08.md) asks whether targeted response
