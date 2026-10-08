@@ -1,5 +1,15 @@
 # Research map
 
+**Planning update, 2026-10-08.** The new branch
+`codex/confidence-acquisition-plan` starts at `ee88d64`. Its
+[focused plan](novelty-plan-2026-10-08.md) asks whether targeted response
+collection can reduce the cost of learning a confidence threshold. Read the
+[literature assessment](novelty-literature-2026-10-08.md),
+[current evidence map](research-evidence-map-2026-10-08.md), and
+[publication plan](publication-plan-2026-10-08.md) with it. This is planning
+only. No new role, fit, generation, reference access, or publication has started.
+Historical status snapshots below remain an audit trail.
+
 Start here if you are new to this repository. This page is an index: it says what
 the project asks, which study answered which question, where each result lives,
 and how the code is laid out. It adds no results of its own. Every number below is

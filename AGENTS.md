@@ -758,3 +758,17 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   Do not prepare/launch/generate/score/finalize again or reopen11refs. Current
   authority completion-v1/status.json. Docker running, cloud/API$0, official
   test sealed, reserve256 unchanged, other stopped phases remain stopped.
+- Planning update, 2026-10-08: the active planning branch is
+  `codex/confidence-acquisition-plan`, created from `ee88d64` on
+  `codex/research-data-efficiency`. Read the additive
+  [focused plan](docs/novelty-plan-2026-10-08.md),
+  [literature assessment](docs/novelty-literature-2026-10-08.md),
+  [evidence map](docs/research-evidence-map-2026-10-08.md), and
+  [publication plan](docs/publication-plan-2026-10-08.md). The question is whether
+  targeted thinking samples reduce the cost of learning a fixed confidence
+  threshold. This is a researched proposal, not a new result or execution
+  protocol. G0 algorithm distinction and G1 synthetic work are pending. The
+  proposed 128-question pilot selects no IDs and opens no role or reference.
+  Preserve all prior failed gates and completed studies. No collection, fitting,
+  scoring, training, upload, or publication was performed by this change.
+  Official test remains sealed, reserve256 unchanged, cloud/API spend $0.

@@ -925,3 +925,18 @@ Implementation and verification status will be recorded here as work completes.
   no broader superiority/novelty promotion. Next separately frozen cached
   numeric-error/presentation diagnosis before conditional math-LoRA design;
   no training/export/Kaggle action or new data/generation yet.
+- 2026-10-08: user requested detailed novelty research and a plan on a new branch.
+  Created `codex/confidence-acquisition-plan` from `ee88d64`. The
+  [focused plan](docs/novelty-plan-2026-10-08.md) studies targeted thinking-response
+  acquisition for a fixed confidence threshold. It changes the research question;
+  all failed historical gates and frozen studies remain unchanged. Added a
+  21-item primary-source literature assessment, current evidence map, and
+  empirical/review/artifact publication plan. G0 exact algorithm comparison and
+  G1 synthetic work remain pending. A conditional 64-training/64-validation
+  pilot has 320 proposed responses and a 557,440 response-token ceiling, within
+  a proposed 650k/12h global envelope. No allocation, fitting, generation,
+  reference access, upload, or publication occurred. Documentation links and
+  budget/learning-curve arithmetic were checked; no experiment suite was rerun.
+  TMLR's current survey exclusion is recorded; the preferred immediate paper is
+  a scoped empirical study. Local execution remains the default, Docker stays
+  running, official test stays sealed, reserve256 remains unclaimed.
