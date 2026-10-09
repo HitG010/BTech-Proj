@@ -959,3 +959,15 @@ Implementation and verification status will be recorded here as work completes.
   manuscript outline support the next empirical writing slice. Real roles,
   references, sealed outcomes and completed studies remain unchanged; all
   experiment data were synthetic. Executor/reviewer exited; cloud/API spend0.
+- 2026-10-09 manuscript: drafted the complete empirical paper in
+  [papers/thinking-selection](papers/thinking-selection/README.md), covering
+  completed real-solver studies. It includes five main tables, an operational
+  accounting table, methods, limitations, source identities, and 17 verified
+  primary-source bibliography entries. GPT-6.1-sol/xhigh agents independently
+  reviewed methods/results and literature. Corrections preserve the original
+  comparator, independent-half boundaries, sparse identification, cap selection,
+  cost units, and failed criteria. The synthetic G1 result is separate. No raw
+  outcome/reference access, fitting, generation, scoring, statistical reanalysis,
+  figure export, or tests occurred. Author identity/declarations, venue format,
+  and a public artifact release remain pending. Local links and bibliography
+  keys were checked; all frozen experiment files remain unchanged.

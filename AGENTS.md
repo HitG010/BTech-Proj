@@ -808,3 +808,18 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   No real allocation/generation/fitting/scoring/reference access occurred.
   Official test sealed, confirmations and acquisition scaling unstarted,
   reserve256 unchanged, Docker not stopped, cloud/API experiment spend $0.
+- Empirical manuscript, 2026-10-09: the complete prose draft is
+  [papers/thinking-selection/manuscript.md](papers/thinking-selection/manuscript.md)
+  on `codex/confidence-acquisition-plan`. Read its
+  [entry point](papers/thinking-selection/README.md), evidence ledger, and
+  verified BibTeX before editing. It reports completed real-solver studies;
+  G1 remains separate. Independent GPT-6.1-sol/xhigh methods and literature
+  reviews found no remaining numerical/endpoint mismatch after corrections.
+  This is editorial review, not a new human scoring audit or confirmation.
+  Drafting opened no raw outcomes/references and ran no generation, fitting,
+  scoring, statistical reanalysis, figure export, or tests. Frozen study files
+  remain unchanged. Author names/affiliations/declarations and venue formatting
+  remain pending; no submission or public artifact release occurred. Preserve
+  failed criteria, conditional intervals, sparse identification, scorer labels,
+  and development reuse limits. Any future cached figure export or error audit
+  needs its separately frozen additive plan. No experiment restart is implied.

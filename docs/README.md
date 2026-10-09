@@ -1,5 +1,17 @@
 # Research map
 
+**Paper draft, 2026-10-09.** The full
+[empirical manuscript](../papers/thinking-selection/manuscript.md) now reports
+the completed real-solver studies, with methods, results, five main tables,
+limitations, and reproducibility appendices. Its
+[supporting files](../papers/thinking-selection/README.md) include a verified
+bibliography and claim-to-source evidence ledger. Separate methods and literature
+reviews corrected endpoint, cohort-selection, and cost descriptions. This is a
+draft for author review; names, affiliations, declarations, and venue formatting
+remain. No new experiment, scoring, reference access, statistical analysis, or
+test run was performed. The synthetic G1 result remains separate. Historical
+status snapshots below remain an audit trail.
+
 **Current result, 2026-10-09.** The
 [G1 synthetic study](g1-synthetic-results-2026-10-09.md) is complete and
 independently verified. All four practical comparison screens fail. Close this
