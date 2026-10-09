@@ -949,3 +949,13 @@ Implementation and verification status will be recorded here as work completes.
   target, and stopping-rule comparisons before source freeze. Only generated
   synthetic data enter G1; real roles, references and completed studies remain
   unchanged. Execution requires the frozen source and an actual-input review.
+- 2026-10-09 G1 terminal: source `0042134`, 68 focused tests/Ruff, preparation
+  `7b0b8734…2074c`, actual-input review `0de15c03…6f8e4`, one invocation.
+  Full 8×30×9×3 endpoint completed in 337.17 seconds, zero retries, exit0.
+  Summary `61b26d22…ff22c` reports all four practical comparison screens failed.
+  Independent review `4a8ca4ab…d63b6` passes all new source/output pins,
+  201,606 purchase records, 6,480 metric rows and 64 contrasts. Close this
+  recipe and its G2 promotion; no wider grid or retuning. The evidence and
+  manuscript outline support the next empirical writing slice. Real roles,
+  references, sealed outcomes and completed studies remain unchanged; all
+  experiment data were synthetic. Executor/reviewer exited; cloud/API spend0.

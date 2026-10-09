@@ -1,5 +1,14 @@
 # Research map
 
+**Current result, 2026-10-09.** The
+[G1 synthetic study](g1-synthetic-results-2026-10-09.md) is complete and
+independently verified. All four practical comparison screens fail. Close this
+acquisition recipe; do not start its proposed real-data pilot or enlarge its
+grid. The next publication work follows the
+[empirical manuscript outline](empirical-paper-outline-2026-10-09.md).
+The source froze at `0042134` after 68 focused tests. No real-data study or
+reference was reopened.
+
 **G0/G1 work, 2026-10-09.** The
 [exact prior-art review](g0-prior-art-review-2026-10-09.md) does not support a
 new-method claim. The [algorithm specification](g0-threshold-algorithm-2026-10-09.md)

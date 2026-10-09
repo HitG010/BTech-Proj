@@ -788,3 +788,23 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   reuses published project reports only. No historical study is reopened.
   Docker stays running, local execution only, official test sealed, reserve256
   unchanged, and cloud/API experiment spend $0.
+- G1 [synthetic results](docs/g1-synthetic-results-2026-10-09.md) are complete,
+  superseding the preceding preparation boundary. Source/protocol/reviewer
+  froze at `0042134` after 68 focused tests (41 independent) and Ruff. Plan
+  `7b0b8734…2074c`, one invocation `92a803e0…495a7`, terminal
+  `5347c269…13928`, summary `61b26d22…ff22c`. All 240 setting/seed cells,
+  2,160 trajectories and 6,480 checkpoints completed in 337.17 seconds,
+  zero retries, executor exit0. Status `complete_gate_failures`: all four
+  primary AULC contrasts fail. Candidate-minus-uniform/IG means are
+  −.002423/+.002488 for high noise and −.015927/−.009114 for negative
+  correctness–length association; required +.005 and 20/30 positive seeds
+  were not reached. Independent review `4a8ca4ab…d63b6` passes seven source/
+  242 output pins, all 201,606 purchases, 158,766 adaptive decisions, 6,480
+  rows and 64 contrasts, without acquisition rerun. Reviewer exit0; no worker
+  remains. Preserve all frozen source/tests/protocol and new synthetic outputs.
+  Do not prepare/run again, retune, enlarge the grid or promote this recipe to
+  G2. Next is empirical manuscript drafting and separately frozen cached-report
+  export/error audit. Synthetic lengths are not model-generated tokens.
+  No real allocation/generation/fitting/scoring/reference access occurred.
+  Official test sealed, confirmations and acquisition scaling unstarted,
+  reserve256 unchanged, Docker not stopped, cloud/API experiment spend $0.
