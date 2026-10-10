@@ -1,0 +1,25 @@
+{
+  "schema": "thinking-selection-frozen-figure-export-v1",
+  "prepared_date": "2026-10-11",
+  "source_commit": "d1287e65ebf0fcea2ae2ad54f7e5ae47a9795d16",
+  "source_sha256": {
+    "papers/thinking-selection/manuscript.md": "68b034470c513dd282be5e27f9e06e0f7838de823545fc35cd3667918bd795ca",
+    "papers/thinking-selection/revision-evidence-map.md": "c1958ff362957ae4258ddb93ab1cca93c69c34db5aba12bd4b4827ee39a50f56",
+    "papers/thinking-selection/revision-plan-2026-10-10.md": "5e2e033a4ad2d142778e1992cc3b5fa701d8459bbd525753034ec13eb2c7cb8b",
+    "docs/phase-2-repeat-panel.md": "70abb4b4ebb18424594016f763687705a94fa0af772a3876e53087cdcc11af95",
+    "docs/phase-2-repeat-results.md": "752cb259f6c5b30ee10f5b105e8380e5957f971e37dc6afc0d5571fe2464960a",
+    "docs/phase-2-router-feasibility-results.md": "136f45ff091f899fdd0c04d2fd5c8abb8bb4d1f3136c03fb64b6db5c9eef6531",
+    "docs/phase-2-clm-probe-results.md": "4f7bc48478adcf8d04448014e7cbf951b3ab116480116838bcacc12558b1780a",
+    "docs/opportunity-panel-results.md": "a45563ccb26df2084c3fd85a45bb9ae0f513a9b11d45ca23696343255cb95d2f"
+  },
+  "export_file_sha256": {
+    "papers/thinking-selection/figure-export-plan.md": "b790f8e11ee7f647d244daca31c9034fb8104b4cad21a42582bce7e758b4954b",
+    "papers/thinking-selection/figures/display-inputs.json": "bde1ec84e1f1e374c83b692678d0feaa8a724cb16241bed1b193133174acd864",
+    "papers/thinking-selection/figures/render_figures.py": "0464635cd72a2f4f4c85cccc2e9aab8c4eb1fcfd3bd42e4310799b733f520ad9",
+    "papers/thinking-selection/figures/render_pdf_preview.swift": "8ae51cac823667eade412299ae970d44bddd13d281bb8d83898f21ed00006e25"
+  },
+  "output_root": "papers/thinking-selection/figures/output",
+  "expected_outputs": 9,
+  "scientific_reanalysis": false,
+  "source_live_bytes_equal_checkpoint_at_preparation": true
+}

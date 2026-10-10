@@ -1,0 +1,230 @@
+{
+  "schema": "thinking-selection-report-display-v1",
+  "source_commit": "d1287e65ebf0fcea2ae2ad54f7e5ae47a9795d16",
+  "contract": {
+    "utility": "scorer-defined correctness - 0.05 * charged output tokens / 1000",
+    "tokens": "generated plus inserted output tokens; paid direct draft plus selected thinking",
+    "no_reestimation": true
+  },
+  "figures": [
+    {
+      "id": "figure-01-study-map",
+      "title": "Study and evidence map",
+      "subtitle": "Question groups define the evidence units; additional fits do not add questions.",
+      "caption": "Figure 1. Study and evidence map. The primary learner, later controls, and post-hoc same-question diagnostics reuse 50 question groups. The separate two-solver panel has 64 groups; the cap cohort contains 11 of those same questions. The fresh guard panel uses 228 questions disjoint from development and evaluates a policy contrast with a common cutoff refitted on all 128 development states and frozen before fresh collection. Dashed arrows show design influence, not independent replication or pooled evidence. Boxes are not proportional to sample size.",
+      "source": {
+        "path": "papers/thinking-selection/manuscript.md",
+        "section": "Table 1; Sections 3.3-3.4; Box 1; Sections 5.2-5.4",
+        "precision": "integer counts as reported",
+        "comparator": "each block retains its own comparison",
+        "role": "primary / reused exploratory / post-hoc / separate diagnostic / selected intervention / fresh diagnostic"
+      },
+      "blocks": [
+        {
+          "id": "repeat",
+          "title": "50 questions | Qwen3-1.7B",
+          "subtitle": "800 responses; eight draws per mode",
+          "sections": [
+            {
+              "title": "PRIMARY LEARNER",
+              "body": "Held-out questions; opposite draw halves\nCombined Ridge vs training-selected baseline"
+            },
+            {
+              "title": "LATER CONTROLS - SAME DATA",
+              "body": "CPU, compact neural, and released CLM\nReused development; compare with confidence"
+            },
+            {
+              "title": "POST-HOC - SAME QUESTIONS",
+              "body": "Gain variation and transfer across halves\nDifferent target from unseen-question selection"
+            }
+          ]
+        },
+        {
+          "id": "diagnostic",
+          "title": "64 separate questions | Two solvers",
+          "subtitle": "512 responses; two draws per mode and solver",
+          "body": "Qwen3-1.7B and Qwen3-0.6B\nIncludes the later reused 0.6B pilot"
+        },
+        {
+          "id": "cap",
+          "title": "11-question cap subset",
+          "subtitle": "Selected from the 64",
+          "body": "18 matched pairs\n36 new responses\n2k vs 4k reasoning allowance\nSelected development cohort"
+        },
+        {
+          "id": "fresh",
+          "title": "228 fresh questions",
+          "subtitle": "Cutoff refit on 128 development states",
+          "body": "228 direct + one thinking response\nOnly one action changes\nOnly the policy difference\nis identified"
+        }
+      ],
+      "arrows": [
+        {
+          "from": "repeat",
+          "to": "diagnostic",
+          "label": "Design\ninfluence"
+        },
+        {
+          "from": "diagnostic",
+          "to": "cap",
+          "label": "Select subset"
+        },
+        {
+          "from": "diagnostic",
+          "to": "fresh",
+          "label": "Refit and freeze"
+        }
+      ],
+      "footer": "Same-question diagnostics do not establish useful selection on unseen questions."
+    },
+    {
+      "id": "figure-02-utility-contrasts",
+      "title": "Recorded utility contrasts",
+      "subtitle": "Average of A4 to B4 and B4 to A4; the same 50 question groups in both panels.",
+      "caption": "Figure 2. Recorded averaged four-draw utility contrasts on the same 50 questions. Panel A compares the original combined Ridge learner with a baseline selected within training from accept, escalate, and confidence. Panel B compares three families selected within training with the four-draw confidence policy; the other individual policy results remain in Table 3. Bars are the recorded conditional 90% whole-question bootstrap intervals with fits and actions fixed. They omit refitting and research-selection uncertainty and do not provide joint coverage. Different comparators and reused data prevent a pooled effect or common causal interpretation. All displayed progression screens failed.",
+      "xlim": [
+        "-0.06",
+        "0.02"
+      ],
+      "unit": "utility difference at lambda=0.05; fractions, not percentage points",
+      "interval": "recorded conditional 90% whole-question bootstrap; fixed fits/actions",
+      "panels": [
+        {
+          "title": "A  Original primary comparison",
+          "comparator": "Training-selected accept / escalate / confidence baseline",
+          "rows": [
+            {
+              "label": "Combined Ridge",
+              "mean": "-0.016204",
+              "low": "-0.033276",
+              "high": "-0.000635",
+              "source": {
+                "path": "docs/phase-2-repeat-panel.md",
+                "section": "Terminal result, sentence beginning The predeclared four-draw average",
+                "precision": "six decimals, as reported",
+                "comparator": "combined minus training-selected simple baseline",
+                "role": "primary"
+              }
+            }
+          ]
+        },
+        {
+          "title": "B  Later exploratory controls",
+          "comparator": "Four-draw confidence policy; each family selected within training",
+          "rows": [
+            {
+              "label": "CPU family",
+              "mean": "-0.014287",
+              "low": "-0.025680",
+              "high": "-0.004425",
+              "source": {
+                "path": "docs/phase-2-router-feasibility-results.md",
+                "section": "Main four-draw comparison: CPU family selected within training folds",
+                "precision": "six decimals, as reported",
+                "comparator": "selected CPU minus confidence",
+                "role": "exploratory reuse"
+              }
+            },
+            {
+              "label": "Compact neural family",
+              "mean": "-0.033817",
+              "low": "-0.052515",
+              "high": "-0.017266",
+              "source": {
+                "path": "docs/phase-2-router-feasibility-results.md",
+                "section": "Main four-draw comparison: Neural family selected within training folds",
+                "precision": "six decimals, as reported",
+                "comparator": "selected compact neural minus confidence",
+                "role": "exploratory reuse"
+              }
+            },
+            {
+              "label": "CLM / raw encoder family",
+              "mean": "-0.028893",
+              "low": "-0.049575",
+              "high": "-0.010922",
+              "source": {
+                "path": "docs/phase-2-clm-probe-results.md",
+                "section": "Scope and main independent-half comparison: Training-selected family",
+                "precision": "six decimals; averaged interval unaffected by per-condition seed deviation",
+                "comparator": "selected CLM/raw minus confidence",
+                "role": "exploratory reuse"
+              }
+            }
+          ]
+        }
+      ],
+      "footer": "Conditional intervals; no refitting uncertainty or joint coverage. All displayed screens failed."
+    },
+    {
+      "id": "figure-03-two-solver-diagnostic",
+      "title": "Two-solver diagnostic: accuracy and output cost",
+      "subtitle": "64 shared question groups; 128 paired states per solver; two draws per mode.",
+      "caption": "Figure 3. Two-solver diagnostic, averaged across the two draw directions. Every policy point uses 128 paired states in the same 64 question groups. Accuracy and token values are transcribed point estimates; no uncertainty interval is inferred for these marks. Escalation pays for the direct draft plus thinking, including inserted closure tokens. The labels 4/64 and 24/64 count questions with positive realized utility gain in at least one of two draws at lambda=.05. These counts depend on the draw count and do not identify positive expected gain. Output tokens are not equal compute units across solver sizes; no cross-size latency or energy advantage is established.",
+      "xlim": [
+        "0",
+        "1850"
+      ],
+      "ylim": [
+        "55",
+        "95"
+      ],
+      "xunit": "charged output tokens / state",
+      "yunit": "scored accuracy (%)",
+      "source": {
+        "path": "docs/opportunity-panel-results.md",
+        "section": "Fixed policy results: policy table and positive-gain table",
+        "precision": "accuracy three decimals; tokens two decimals; integer opportunity counts",
+        "comparator": "accept direct / always escalate / confidence within each solver",
+        "role": "separate diagnostic"
+      },
+      "panels": [
+        {
+          "solver": "Qwen3-1.7B",
+          "positive_questions": "4",
+          "question_count": "64",
+          "points": [
+            {
+              "policy": "Accept direct",
+              "accuracy": "84.375",
+              "tokens": "228.01"
+            },
+            {
+              "policy": "Always escalate",
+              "accuracy": "87.500",
+              "tokens": "1586.79"
+            },
+            {
+              "policy": "Confidence",
+              "accuracy": "83.594",
+              "tokens": "682.56"
+            }
+          ]
+        },
+        {
+          "solver": "Qwen3-0.6B",
+          "positive_questions": "24",
+          "question_count": "64",
+          "points": [
+            {
+              "policy": "Accept direct",
+              "accuracy": "61.719",
+              "tokens": "209.80"
+            },
+            {
+              "policy": "Always escalate",
+              "accuracy": "80.469",
+              "tokens": "1409.52"
+            },
+            {
+              "policy": "Confidence",
+              "accuracy": "81.250",
+              "tokens": "1062.52"
+            }
+          ]
+        }
+      ],
+      "footer": "Escalation includes the paid direct draft. Tokens are not equal compute across solver sizes."
+    }
+  ]
+}
