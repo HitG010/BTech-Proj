@@ -1017,3 +1017,13 @@ Implementation and verification status will be recorded here as work completes.
   whitespace checks pass. No raw/cache/reference access, experiments, fitting,
   scoring, statistical analysis, export or implementation tests. R3 is next;
   R3–R6 remain pending, author/submission details deferred.
+- 2026-10-10 R3 complete: updated manuscript Methods/captions/follow-up and
+  Limitations to explain conditional intervals, omitted refits and shared
+  training dependence, different draft states, sparse bootstrap support and
+  the retrospective observed-mask ≤1/228 ceiling. Clarified the policy refit,
+  draw-dependent opportunity counts, CLM feature-addition limit, and output/
+  encoder/collection costs. Targeted GPT-6.1-sol/xhigh methods review passes.
+  Tables 1–5/A1 and Box 1 rows remain unchanged; local links and whitespace
+  checks pass. No raw/cache/reference access, experiments, statistical
+  reanalysis, new interval/power calculation, figure export, or implementation
+  tests. R4 scope/prior-work and follow-up organization is next; R4–R6 pending.

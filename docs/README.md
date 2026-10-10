@@ -1,5 +1,14 @@
 # Research map
 
+**R3 complete, 2026-10-10.** The
+[working manuscript](../papers/thinking-selection/manuscript.md) now clarifies
+conditional uncertainty, shared training, the sparse refit/interval/observed-mask
+bound, draw-dependent opportunity counts, CLM scope, and cost distinctions.
+A targeted methods review passed. Original table and Box 1 rows are unchanged;
+no new statistics or experiments were run. The
+[revision response](../papers/thinking-selection/revision-response.md) records
+the changes. Next is R4 scope/prior-work revision.
+
 **R2 complete, 2026-10-10.** The
 [v0.2 working manuscript](../papers/thinking-selection/manuscript.md) now centers
 on observed rescues, limited post-hoc question structure, and failed selection

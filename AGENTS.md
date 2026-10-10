@@ -873,3 +873,15 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   or implementation tests. R3 interpretation repairs are next; R3–R6 pending.
   This supersedes the preceding v0.1-current snapshots. Author/submission
   details remain deferred; v0.1 remains recoverable at `1695a1f`.
+- R3 interpretation repairs complete, 2026-10-10: see the updated
+  [manuscript](papers/thinking-selection/manuscript.md) and
+  [revision response](papers/thinking-selection/revision-response.md).
+  Methods/captions distinguish fixed-fit uncertainty, omitted training variation,
+  overlapping folds and reused halves. Sparse text distinguishes the refitted
+  policy, explains why empirical resampling cannot generate unseen rescues,
+  and includes the retrospective observed-mask bound ≤1/228<.01 with no
+  population/power claim. Opportunity counts, CLM feature limits and cost units
+  are clarified. Targeted methods review passed; Tables 1–5/A1 and Box 1 rows
+  are unchanged. No raw/cache/reference access, new statistics, experiments,
+  export or implementation tests. R4 scope/prior-work revision is next;
+  R4–R6 pending, author/submission details deferred.

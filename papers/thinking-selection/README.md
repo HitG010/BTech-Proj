@@ -10,8 +10,17 @@ of Small Qwen3 Models.
 The draft contains an abstract, introduction, related work, methods, results,
 discussion, limitations, conclusion, references, and reproducibility appendices.
 It includes five main tables, one accounting table, and a post-hoc diagnostic box.
-R1–R2 are complete. Interpretation repairs, scope/prior-work edits, figures,
-and final review remain R3–R6 work. This is a working draft, not a submitted paper.
+R1–R3 are complete. Scope/prior-work edits, figures, and final review remain
+R4–R6 work. This is a working draft, not a submitted paper.
+
+## R3 interpretation repairs, 10 October 2026
+
+Methods and captions now state the limits of fixed-fit intervals and shared
+training. The fresh guard section distinguishes the refit, explains the sparse
+bootstrap, and includes the observed-mask ceiling with its limits. Opportunity
+counts, CLM comparisons, and policy/collection costs are clarified. The methods
+review passed; all prior table and Box 1 rows are unchanged. See the
+[revision response](revision-response.md). R4 is next.
 
 ## R2 central revision, 10 October 2026
 
@@ -44,7 +53,7 @@ or sealed roles, or ran experiments or statistical analyses.
 
 - [Revision plan](revision-plan-2026-10-10.md): six ordered passes for v0.2,
   exact evidence additions, interpretation repairs, figure specifications, and
-  final review criteria. R1–R2 are complete; R3–R6 remain pending.
+  final review criteria. R1–R3 are complete; R4–R6 remain pending.
 - [Revision response](revision-response.md): completed text changes, targeted
   review outcomes, and unresolved concerns assigned to later passes.
 - [Revision claim-to-source map](revision-evidence-map.md): numbered claims,
@@ -82,10 +91,9 @@ This was an editorial and provenance review, not a new human scoring audit.
 ## Remaining author work
 
 1. Supply author names, affiliations, contributions, funding, and conflicts.
-2. Complete R3 interpretation repairs and R4 scope/prior-work edits. The central
-   argument and post-hoc box are revised; the sparse bootstrap and finite-panel
-   bound still need their planned explanation. Broader claims need broader
-   evidence under a separate protocol.
+2. Complete R4 scope/prior-work edits and the remaining figure/final-review
+   passes. The central argument, diagnostic box, and interpretation repairs
+   are complete. Broader claims need broader evidence under a separate protocol.
 3. Choose a venue and apply its current format and disclosure requirements.
    This draft is venue-neutral.
 4. Decide which verified cached-report figures would help. Freeze an additive

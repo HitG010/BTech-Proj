@@ -1,6 +1,6 @@
 # Plan: revise the paper using existing evidence
 
-Date: 10 October 2026. Status: **R1–R2 complete; R3–R6 pending**.
+Date: 10 October 2026. Status: **R1–R3 complete; R4–R6 pending**.
 Base: manuscript v0.1 at `1695a1f`; critical review at `79a6cdd`.
 Branch: `codex/confidence-acquisition-plan`.
 
@@ -49,7 +49,7 @@ R6 reviews the resulting paper. Each pass produces a concrete deliverable.
 |---|---|---|---|
 | R1. Fix the claim — complete | Build a claim-to-source table from the records below. Mark primary, post-hoc, exploratory, and fresh evidence. | [Revision evidence map](revision-evidence-map.md) | Source links and central number/comparator/qualifier checks passed; no experiment reproduction. |
 | R2. Rebuild the central argument — complete | Rewrite the abstract, Introduction, repeat Results, and Conclusion. Add the repeat-diagnosis box. | [v0.2 working manuscript](manuscript.md), [revision response](revision-response.md) | Targeted methods/argument reviews passed; failed primary gates retained; original outcome/accounting table rows unchanged. |
-| R3. Repair interpretation | Clarify halves, bootstrap scope, sparse policy refit, event support, opportunity counts, and control limits. | Updated Methods, captions, and follow-up sections | All interpretation requirements in Section 5 are met beside the relevant result. |
+| R3. Repair interpretation — complete | Clarify halves, bootstrap scope, sparse policy refit, event support, opportunity counts, and control limits. | [Updated manuscript](manuscript.md), [revision response](revision-response.md) | Targeted methods review passed; captions/prose clarified; all prior table/Box 1 rows unchanged. |
 | R4. Tighten scope and prior work | Update the DART comparison. Shorten cap/parser history. Move operational detail to appendices. | Coherent main paper plus appendices | Main text has one argument. No unsupported first, causal, population, or deployment claim remains. |
 | R5. Prepare displays | Freeze source/transcription/render specifications, then create three figures from reported values. | `figure-export-plan.md`, display inputs, SVG/PDF/PNG files | Inputs and output paths are fixed before export; no effect or interval is re-estimated; captions preserve endpoints. |
 | R6. Review and close | Check methods and contribution separately. Record a response to each reviewer concern. | `revision-response.md`, `revision-review.md`, final v0.2 | Each concern is addressed or explicitly remains unresolved. Final scientific decision is recorded. |
@@ -222,8 +222,8 @@ can succeed as a clear report even if its novelty remains limited.
 
 ## 9. Preservation and current status
 
-Git retains v0.1 at `1695a1f` and the review at `79a6cdd`. Future execution will
-update `manuscript.md` to v0.2 and record changes in `revision-response.md`.
+Git retains v0.1 at `1695a1f` and the review at `79a6cdd`. R2 created the v0.2
+working draft; later passes update it and record changes in `revision-response.md`.
 There is no need for a new branch for this documentation-only revision.
 
 This plan reads tracked documents only. It opens no raw outcomes, score caches,
@@ -232,7 +232,7 @@ and runs no generation, fitting, scoring, statistical reanalysis, figure export,
 or tests. Existing experiment protocols and outputs remain fixed. The waived
 human scoring audit stays waived. Closed G1 and reused-panel searches stay closed.
 
-**Progress, 10 October 2026:** R1–R2 are complete. The
+**Progress, 10 October 2026:** R1–R3 are complete. The
 [claim-to-source map](revision-evidence-map.md) defines 19 research/synthesis
 claims, ten method records, seven literature-context records, four numerical
 registers, and the sparse arithmetic deductions. R2 rewrites the central
@@ -241,6 +241,11 @@ discussion and conclusion. The [revision response](revision-response.md)
 records changes and the remaining concerns. Separate methods/argument reviews
 passed; original outcome/accounting table rows are unchanged.
 
-**Next executable task:** R3, interpretation repairs in Methods, captions, and
-the follow-up sections. R3–R6 have not started. The completed writing passes do
+R3 clarifies conditional uncertainty and shared training, the sparse refit,
+bootstrap support and observed-mask ceiling, draw-dependent opportunity counts,
+CLM feature limits, and cost units. A targeted methods review passed. All prior
+table and Box 1 rows remain unchanged; no new statistics were computed.
+
+**Next executable task:** R4, scope/prior-work revision and shorter supporting
+follow-up sections. R4–R6 have not started. The completed writing passes do
 not establish publication novelty or submission readiness.

@@ -2,7 +2,7 @@
 
 **Authors:** [Author names and affiliations to be supplied]
 
-**Draft:** 0.2 working draft, 10 October 2026 — R2 central argument revised; R3–R6 pending
+**Draft:** 0.2 working draft, 10 October 2026 — R2–R3 revised; R4–R6 pending
 
 ## Abstract
 
@@ -68,6 +68,8 @@ G=Y_T-Y_D-\lambda C_T/1000.
 
 The direct cost cancels in \(G\), but remains in total policy utility. A rescue means that a scored incorrect draft is replaced by a scored correct response. A harm is the reverse. Positive utility gain is a cost-dependent event. It is not a general label that a question “needs thinking.”
 
+The value \(\lambda=.05\) is the frozen cost preference for these studies. Utility counts generated and inserted output tokens used by a policy. It excludes input processing, router encoding, energy, and complete latency. Collection-ledger charges in Appendix A also include failed attempts and unresolved reservations; they measure a different expenditure.
+
 The router can use the question, the permitted features of the observed direct draft, and fixed model information. It cannot use the future thinking text, thinking correctness, thinking length, or reference answer. Confidence is the mean direct-answer token log probability after temperature and sampling filters. It is a ranking feature, not a calibrated probability of correctness. Lower confidence can trigger escalation. Raw model confidence is retained as a separate measurement and does not replace the primary feature.
 
 ### 3.2. Data, solvers, and scoring
@@ -84,7 +86,7 @@ For the repeat, two-solver, sparse, and cap studies, selected training reference
 
 Table 1 separates unique questions, responses, and the use of each panel. A fit is not a new dataset. A repeated draw is not a new independent question. The paper's organizing research questions were formulated retrospectively; the individual studies' recorded grids, endpoints, and progression criteria were specified before their respective execution.
 
-**Table 1. Evidence blocks and their scope.**
+**Table 1. Evidence blocks and their scope.** The control studies reuse the repeat panel; their fit counts do not add independent questions. The cap questions are a subset of the two-solver panel. The fresh guard contrast uses a separately fitted and frozen policy.
 
 | Block | Questions and responses | Evaluation or use | Main limit |
 |---|---|---|---|
@@ -101,7 +103,11 @@ In the repeat panel, each question has eight independently seeded responses in e
 
 For \(k\in\{1,2,4\}\), the learner fits on the first \(k\) draws of training questions from one half. It is evaluated on all four draws of held-out questions from the opposite half. We report both A→B and B→A. Five outer folds each contain ten questions. Four inner question folds select settings using only the allowed training-half outcomes.
 
+All outcomes for an outer evaluation question are excluded from its model fitting and tuning. The opposite halves check sensitivity to different realizations of training and evaluation draws. Both directions reuse the same question groups and exchange their draw roles. They are not independent study replications, and no matched comparison establishes an advantage from the half-split design itself.
+
 A separate reproducibility diagnostic predicts each question's opposite-half mean gain from its own source-half mean. Its comparator uses the mean gain of the other 49 questions in that source half. We average the reduction in mean squared error across both directions. This diagnostic concerns repeated question-level signal; it is distinct from router utility on held-out questions.
+
+Direct drafts change across draws. Thus the same-question diagnostics concern repeated outcomes for a question, rather than repeated thinking outcomes conditioned on one identical draft. Neither these diagnostics nor the k=1/2/4 comparisons isolate the causal effect of acquiring more repeated labels.
 
 The predeclared learner is combined Ridge regression on 387 question features and four draft features. The question block consists of 384 MiniLM coordinates and three lexical features. The draft block consists of confidence, log answer length, parser validity, and truncation. Standardization is fitted within training folds. The original Ridge penalty grid is \(\{1,10,100\}\). The learner escalates when predicted incremental gain is positive. Question-only and draft-only variants are diagnostics.
 
@@ -109,11 +115,13 @@ The original simple comparator is selected within training from always accept, a
 
 ### 3.5. Uncertainty and progression
 
-Repeat and router-control intervals use 2,000 whole-question bootstrap resamples and two-sided 90% intervals under each study's frozen seed. Actions and fitted policies remain fixed. The intervals omit uncertainty from refitting, research selection, and multiple comparisons. The fresh sparse and cap studies retain their original 95% interval convention.
+Repeat and router-control intervals use 2,000 whole-question bootstrap resamples and two-sided 90% intervals under each study's frozen seed. Actions and fitted policies remain fixed. These are resampling summaries of the recorded question-level policy differences. They omit variation from refitting, threshold selection, new training draws, optimization seeds, and the research path. They provide no simultaneous coverage across the displayed comparisons. The fresh sparse and cap studies retain their original 95% interval convention.
+
+Outer-fold models share training questions. Resampling whole evaluation questions preserves their repeated-outcome groups, but does not reproduce the dependence created by overlapping training sets. Nested selection controls which labels enter each specified fit. It does not remove later research reuse. Consequently, an interval below zero does not by itself establish inferiority of the learning algorithm across future training sets. Sparse-event limitations require an additional qualification in Section 5.3.
 
 The primary repeat study requires all five criteria in Table 2. CPU, MiniLM, and CLM screens require average utility gain of at least .01, positive means in both directions, and a positive averaged mean after deleting each question in turn. The two-solver diagnostic requires at least ten positive-gain questions, plus confidence gain of at least .01 and positive points in both directions. Its positive-gain count differs from the repeat study's count of any correctness difference. Sparse validation requires gain of at least .01 and a positive lower 95% interval bound.
 
-These later screens cannot replace a failed primary endpoint. We report all original decisions. A favorable secondary result does not promote a different candidate after outcomes.
+The progression criteria are related decisions on the same outcomes, rather than independent tests of one mechanism. Later screens cannot replace a failed primary endpoint. We report all original decisions. A favorable secondary result does not promote a different candidate after outcomes.
 
 ## 4. Repeated supervision and representation controls
 
@@ -123,7 +131,7 @@ Across the 400 paired states, direct accuracy is 89.5% and standalone thinking a
 
 The combined learner's averaged four-draw difference against the training-selected simple comparator is −0.016204, with a conditional 90% interval of [−0.033276, −0.000635]. Four of five progression criteria fail.
 
-**Table 2. Original repeat-study criteria.** The interval for reproducibility measures squared utility units. Other gain rows measure utility.
+**Table 2. Original repeat-study criteria.** The interval for reproducibility measures squared utility units. Other gain rows measure utility. Intervals are conditional 90% summaries on the same 50 questions. Learner utility is compared with the simple baseline selected within training, not an assumed confidence policy in every condition.
 
 | Criterion | Recorded result | Decision |
 |---|---|---|
@@ -135,7 +143,7 @@ The combined learner's averaged four-draw difference against the training-select
 
 The smaller training conditions also vary across directions. With one draw, differences are −.02016 and +.00641. With two draws, they are −.02812 and +.02257. These conditional point estimates do not establish a monotonic learning curve or show that repeated supervision is generally harmful.
 
-**Box 1. Post-hoc question structure and bounded scorer sensitivity.** These separately reported diagnostics reuse the completed repeat panel. They do not replace Table 2 or change its decisions.
+**Box 1. Post-hoc question structure and bounded scorer sensitivity.** These separately reported diagnostics reuse the completed repeat panel and its recorded labels. The intervals are conditional whole-question summaries. The scorer sensitivity is a point bound, not an interval. These diagnostics do not replace Table 2 or change its decisions.
 
 | Diagnostic | Recorded result | Interpretation limit |
 |---|---|---|
@@ -164,6 +172,8 @@ The compact neural study crosses two representations with four objectives. The r
 
 The objectives are gain mean-squared error, regret-weighted forward cross entropy, a bidirectional contrastive loss, and ordinary binary cross entropy. Full-batch Adam runs for 100 epochs at learning rate .01 and weight decay .001, with one fixed optimization seed. The grid contains 600 head fits and 150 PCA fits. This is a compact objective comparison, not an unrestricted architecture search.
 
+The losses target different quantities. We compare the utility of their selected actions; their scores are not interchangeable calibrated probabilities. The shared head controls this particular architecture and optimization recipe.
+
 Neither training-selected family improves on confidence (Table 3). All eight neural family point differences are negative, although some individual intervals include zero. Draft encoding retains the final 256 tokens; 111 of 400 drafts are truncated. Mean-vector fusion, compression, truncation, and one optimization seed constrain the result.
 
 ### 4.3. Released CLM with a matched encoder control
@@ -172,7 +182,9 @@ We separately evaluate released CLM heads on pinned 4-bit Qwen3-8B last-token re
 
 The comparison includes zero-shot released scores, scalar gain calibration, and a PCA8/Ridge control on the same encoder representations. The learned families do not add draft statistics. They use the same permitted training data and grouped selection rules. A matched backbone controls the encoder identity; differing head capacity, training history, and feature dimensions prevent isolation of a contrastive-pretraining effect.
 
-**Table 3. Average across A4→B4 and B4→A4 on the same 50 questions.** Tokens include the paid direct draft. Differences are against the four-draw confidence policy. All listed learned/transfer screens fail.
+The CLM state and learned families exclude confidence and auxiliary draft statistics. This tests the specified representation-transfer recipes. It does not test whether adding CLM features to confidence improves selection.
+
+**Table 3. Average across A4→B4 and B4→A4 on the same 50 questions.** Tokens include the paid direct draft and any inserted closure. Differences are against the four-draw confidence policy, distinct from the secondary full8 policy. Intervals keep fits and actions fixed and do not provide joint coverage or refitting uncertainty. All listed learned/transfer screens fail.
 
 | Policy | Accuracy | Tokens/state | Utility difference | Conditional 90% interval |
 |---|---:|---:|---:|---|
@@ -186,7 +198,7 @@ The comparison includes zero-shot released scores, scalar gain calibration, and 
 
 Calibrated CLM minus the raw encoder control is −.010645, with interval [−.018190, −.004292]. Both remain below confidence. Zero-shot CLM chooses thinking for 380 of 400 drafts. Its higher accuracy therefore comes with near-always-escalating cost. The interval for its utility difference includes zero; this is not proof of a population disadvantage.
 
-The encoder processes all 400 states without truncation at the specified cap. Mean state encoding time is 1.427 seconds and the 95th percentile is 2.244 seconds. Generated-token utility does not charge this work. Full-precision equivalence, pretraining overlap, and live solver/router co-residence remain untested. The finding concerns this quantized transfer recipe.
+The encoder processes all 400 states without truncation at the specified cap. Mean state encoding time is 1.427 seconds and the 95th percentile is 2.244 seconds. Output-token utility does not charge this work. These separate encoder measurements are not end-to-end router/solver latency. Full-precision equivalence, pretraining overlap, and live solver/router co-residence remain untested. The finding concerns this quantized transfer recipe.
 
 ## 5. Solver dependence and prospective follow-up
 
@@ -194,7 +206,7 @@ The encoder processes all 400 states without truncation at the specified cap. Me
 
 The separate diagnostic uses the same 64 questions for both solvers, with two draws per mode. Confidence thresholds are selected on other question folds and the opposite draw. Table 4 reports average outcomes across the two directions.
 
-**Table 4. Two-solver diagnostic.** Each solver has 128 scored paired states. Question groups, rather than the 128 states, are the units of uncertainty. Always escalate includes direct plus thinking cost.
+**Table 4. Two-solver diagnostic.** Each solver has 128 scored paired states grouped in the same 64 questions. Values average the two directions; reported contrasts use conditional 90% question-bootstrap intervals with actions fixed. They omit threshold-refit uncertainty. Always escalate includes direct plus thinking cost. Tokens from the two solver sizes are not equal compute units.
 
 | Solver | Policy | Accuracy | Tokens/state | Utility |
 |---|---|---:|---:|---:|
@@ -205,7 +217,9 @@ The separate diagnostic uses the same 64 questions for both solvers, with two dr
 | Qwen3-0.6B | Always escalate | 80.469% | 1,409.52 | .734211 |
 | Qwen3-0.6B | Confidence | 81.250% | 1,062.52 | .759374 |
 
-Qwen3-0.6B has 24 questions with positive gain in at least one draw. Confidence-minus-direct utility is +.152677, with conditional 90% interval [+.085535, +.220375]. Qwen3-1.7B has four such questions. Its confidence-minus-direct difference is −.030540, with interval [−.056066, −.006071]. The smaller solver passes the diagnostic's availability and confidence screens; the larger solver fails both.
+Qwen3-0.6B has 24 questions with positive realized gain in at least one of its two draws. Confidence-minus-direct utility is +.152677, with conditional 90% interval [+.085535, +.220375]. Qwen3-1.7B has four such questions. Its confidence-minus-direct difference is −.030540, with interval [−.056066, −.006071]. The smaller solver passes the diagnostic's availability and confidence screens; the larger solver fails both.
+
+The positive-gain count depends on the number of sampled draws. It does not count questions known to have positive expected gain. Counts from this two-draw panel and the eight-draw repeat panel cannot be treated as directly comparable intrinsic opportunity rates.
 
 The comparison establishes different observed opportunity patterns in these settings. It does not establish a general model-size law or a tested population interaction. It also limits a broad endorsement of confidence: confidence helps on one solver/panel combination and harms point utility on another.
 
@@ -217,7 +231,7 @@ On the reused 0.6B panel, a fixed Ridge candidate uses confidence, log(1 + answe
 
 The parser-aware control escalates when confidence calls for thinking or the frozen parser rejects the direct draft. It adds three escalations on three questions, all scored rescues. Accuracy rises from 81.250% to 83.594%, tokens from 1,062.52 to 1,081.41, and utility by .022493. The fixed-action 90% interval is [+.007453, +.044905].
 
-This is sparse development evidence. It does not promote the failed Ridge learner or establish a new router. The subsequent fresh experiment freezes a separate plain-confidence cutoff fitted on all 128 development states. Both prospective policies share that cutoff, −.07951707680497253. This refit has two changed training states, rather than the earlier cross-fitted control's three.
+This is sparse development evidence. The interval keeps the original confidence actions fixed and omits refitting and research-selection uncertainty. It does not promote the failed Ridge learner or establish a new router. The subsequent fresh experiment freezes a separate plain-confidence cutoff fitted on all 128 development states. Both prospective policies share that cutoff, −.07951707680497253. This refit has two changed training states, rather than the earlier cross-fitted control's three. The fresh study therefore tests the newly frozen policy contrast; it is not an exact replication of the earlier cross-fitted control.
 
 ### 5.3. Fresh sparse evaluation identifies only the policy difference
 
@@ -229,9 +243,20 @@ The fresh panel contains 228 disjoint questions. Let \(a_0\) denote the frozen p
 
 When the actions agree, their difference is exactly zero. Therefore the fixed policy contrast can be evaluated by generating thinking only for changed states. The endpoint requires every direct response and every activated thinking response. This design does not identify either policy's absolute accuracy or utility.
 
-Only one of 228 states changes action. Its extra thinking response uses 1,423 tokens, is rejected by numeric-v7, and is scored incorrect. There is no scored accuracy increment. The mean utility difference is −.000312061, with a 95% question-bootstrap interval of [−.000936184, 0].
+Only one of 228 states changes action. Its extra thinking response uses 1,423 tokens, is rejected by numeric-v7, and is scored incorrect. There is no scored accuracy increment. The mean utility difference is −.000312061, with a 95% question-bootstrap interval of [−.000936184, 0]. The observed contributions are 227 zeros and one negative value. Resampling them cannot create an unobserved rescue. Thus the interval's upper endpoint of zero does not exclude positive population benefit from rare rescue events absent from this panel.
 
-The follow-up does not confirm the development benefit. One event also cannot establish a general disadvantage for parser-aware routing. Most shared-action outcomes and 227 references were deliberately not observed. Reporting absolute policy accuracy for this panel would exceed what the design identifies.
+An elementary retrospective bound clarifies the role of the observed activation count. On changed states, \(Y_D=0\), \(Y_T\le1\), and thinking cost is nonnegative. Therefore
+
+\[
+\Delta U_i=z_i(Y_{T,i}-.05C_{T,i}/1000)\le z_i,
+\qquad
+\overline{\Delta U}\le\frac{1}{228}<.01
+\quad\text{for the observed eligibility mask}.
+\]
+
+Even a rescue on the single activated call could not meet the .01 point-gain criterion on this panel, before charging thinking cost. This is a finite-panel bound with the mask held fixed. It does not estimate future activation rates, population gain, or statistical power. It leaves the completed endpoint and failed screen unchanged.
+
+The frozen follow-up contrast supplies one activation without a scored rescue. One event cannot establish a general disadvantage for parser-aware routing. Most shared-action outcomes and 227 references were deliberately not observed. Reporting absolute policy accuracy for this panel would exceed what the design identifies.
 
 ### 5.4. A matched reasoning-cap intervention
 
@@ -239,7 +264,7 @@ The cap study selects 18 cells on 11 development questions using prior forced-cl
 
 Primary means weight the 11 questions equally after averaging selected draws within each question. They describe the enriched cohort. Table 5 reports thinking-call costs; it does not add a new direct draft. Common direct cost cancels from the cap difference.
 
-**Table 5. Matched cap result on 11 selected question groups.** Intervals are paired 95% question-bootstrap intervals.
+**Table 5. Matched cap result on 11 selected question groups.** Intervals are paired 95% question-bootstrap summaries conditional on the selected cohort and recorded responses. Each question has equal weight after averaging its selected cells. Costs are for thinking calls; common direct cost cancels. The intervals do not cover cohort-selection uncertainty or general-task performance.
 
 | Outcome | 2k reasoning | 4k reasoning | Difference and interval |
 |---|---:|---:|---|
@@ -279,17 +304,17 @@ Neither study can replace the repeat learner's failed endpoint. Their contributi
 
 Frozen scoring makes comparisons interpretable across stages. Gold-free presentation checks can identify compatibility issues, but cannot decide mathematical correctness. Replacing primary labels after inspecting outcomes would define a different study. We therefore retain original labels and separate syntax sensitivity from the policy results.
 
-Generated-token utility also has a limited meaning. It includes the direct draft and extra thinking where required, but does not price input processing, encoder work, energy, or complete latency. Training acquisition, the full generated cache, and deployment cost are distinct. The measured CLM encoding overhead reinforces the need to report them separately.
+Output-token utility expresses the frozen preference at λ=.05. It charges generated and inserted tokens for the direct draft and extra thinking where required. It does not price input processing, encoder work, energy, or complete latency. Training acquisition, collection-ledger charges, and deployment cost are distinct. The measured CLM encoding overhead reinforces the need to report them separately. The tables retain accuracy and token counts so that the utility result is tied to its stated preference.
 
 ## 7. Limitations
 
 The study uses one mathematical dataset and two small solver sizes from one family. All panels use eligible upstream training questions. Question-role checks protect project splits but cannot rule out pretraining exposure. We do not claim cross-task generalization.
 
-The principal learner and representation results reuse 50 questions. Later study designs were informed by earlier results. Nested fitting protects the specified fit, but does not remove that research exposure. The reported bootstrap intervals keep fitted policies fixed and do not account for all selection, refitting, or multiplicity. The organizing paper-level hypotheses were not a single prospective registration.
+The principal learner and representation results reuse 50 questions. Later study designs were informed by earlier results. Nested fitting protects the specified fit, but does not remove that research exposure. The bootstrap keeps fits and actions fixed, omits new training and optimization realizations, and does not reproduce overlapping-fold training dependence. It does not provide joint coverage across comparisons. The organizing paper-level hypotheses were not a single prospective registration.
 
-Only one optimization seed is used in the compact neural study. Some drafts are truncated. The released CLM test is quantized and uses a particular state format, calibration, and small raw-feature control. Its pretraining overlap and full-precision equivalence are unknown.
+Only one optimization seed is used in the compact neural study. Some drafts are truncated. The released CLM test is quantized and uses a particular state format, calibration, and small raw-feature control. Its pretraining overlap and full-precision equivalence are unknown. The comparison does not test adding CLM features to confidence.
 
-The parser follow-up has one changed event. The cap study has 11 selected groups and one rescue. These observations cannot settle broad hypotheses about parser guards or reasoning budgets. Human scoring was waived, so scorer mistakes remain a limit even where extraction is accepted.
+The refitted parser follow-up has one changed event. Its empirical bootstrap cannot represent unseen rescue events, and its finite-panel ceiling does not bound population benefit. The cap study has 11 selected groups and one rescue. These observations cannot settle broad hypotheses about parser guards or reasoning budgets. Human scoring was waived, so scorer mistakes remain a limit even where extraction is accepted.
 
 Finally, runtime recoveries and local resource contention prevent causal speed claims. No complete co-resident deployment benchmark, external-method superiority test, or sealed confirmation is reported.
 
