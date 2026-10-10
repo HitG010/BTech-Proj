@@ -2,7 +2,7 @@
 
 **Authors:** [Author names and affiliations to be supplied]
 
-**Draft:** 0.2 working draft, 11 October 2026 — R2–R5 revised; R6 pending
+**Draft:** 0.2, 11 October 2026 — R1–R6 complete; scoped empirical report for author review
 
 ## Abstract
 

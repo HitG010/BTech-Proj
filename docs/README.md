@@ -1,5 +1,13 @@
 # Research map
 
+**R6 complete, 2026-10-11.** The [final paper review](../papers/thinking-selection/revision-review.md)
+selects **Scoped empirical draft is coherent**. All six revision passes are
+complete, with a source-linked disposition for every root and specialist
+concern. The underlying evidence limits and modest novelty remain explicit.
+R6 changes review/status records only; scientific text, tables, and figures
+are preserved. Next is author scientific review when resumed. No new study,
+submission, or public release is implied.
+
 **R5 complete, 2026-10-11.** Three [manuscript figures](../papers/thinking-selection/figures/README.md)
 now show study roles, recorded utility contrasts, and the two-solver diagnostic.
 The source/input/renderer freeze `655094d` preceded all nine PDF/SVG/PNG outputs.

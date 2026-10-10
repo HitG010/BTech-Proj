@@ -2,7 +2,7 @@
 
 ## Read the paper
 
-[Manuscript, version 0.2 working draft](manuscript.md)
+[Manuscript, version 0.2](manuscript.md)
 
 **Title:** Confidence and Learned Thinking Selection on GSM8K: A Controlled Study
 of Small Qwen3 Models.
@@ -10,8 +10,21 @@ of Small Qwen3 Models.
 The draft contains an abstract, introduction, related work, methods, results,
 discussion, limitations, conclusion, references, and reproducibility appendices.
 It includes four main tables, appendix accounting and cap tables, and a post-hoc
-diagnostic box, plus three figures in PDF/SVG/PNG. R1–R5 are complete. Final
-review remains R6 work. This is a working draft, not a submitted paper.
+diagnostic box, plus three figures in PDF/SVG/PNG. R1–R6 are complete. The
+scoped empirical report is ready for author review; it has not been submitted.
+
+## R6 final decision, 11 October 2026
+
+**Scoped empirical draft is coherent.** Read the [final scientific review](revision-review.md)
+and [complete concern responses](revision-response.md). The paper now states one
+limited, traceable finding. The underlying limits remain: reused questions,
+conditional uncertainty, unidentified failure mechanism, sparse follow-ups,
+and no faithful external-system comparison. Broader novelty remains modest.
+
+The next step is author scientific review when resumed. No new experiment,
+submission, or public release follows from this decision. R6 preserves all
+scientific prose, tables, figures, and captions from `0689433`; only the draft
+status line and review/progress records change.
 
 ## R5 figures, 11 October 2026
 
@@ -74,11 +87,13 @@ or sealed roles, or ran experiments or statistical analyses.
 
 - [Revision plan](revision-plan-2026-10-10.md): six ordered passes for v0.2,
   exact evidence additions, interpretation repairs, figure specifications, and
-  final review criteria. R1–R5 are complete; R6 remains pending.
+  final review criteria. R1–R6 are complete.
 - [Figure export plan](figure-export-plan.md) and [display package](figures/README.md):
   frozen source/input/render specification, nine outputs, and artifact review.
-- [Revision response](revision-response.md): completed text changes, targeted
-  review outcomes, and unresolved concerns assigned to later passes.
+- [Revision response](revision-response.md): completed changes and the final
+  source-linked disposition of root and specialist concerns.
+- [Final review](revision-review.md): scientific decision, separate methods and
+  contribution memos, acceptance checks, and remaining research questions.
 - [Revision claim-to-source map](revision-evidence-map.md): numbered claims,
   reported values, comparators, units, evidence roles, source sections, and
   required limits. Source/section links and central claims were reviewed.
@@ -115,9 +130,9 @@ This was an editorial and provenance review, not a new human scoring audit.
 ## Remaining author work
 
 1. Supply author names, affiliations, contributions, funding, and conflicts.
-2. Complete R6 final review. The central argument, interpretation,
-   prior-work comparison, and supporting-section revision are complete. Broader
-   claims need broader evidence under a separate protocol.
+2. Review the completed v0.2 claim and decide whether to retain this scoped
+   empirical report. All six revision passes are complete. A stronger claim
+   needs a separately assessed question and prospective evidence plan.
 3. Choose a venue and apply its current format and disclosure requirements.
    This draft is venue-neutral.
 4. Review the completed R5 figures for the eventual venue. Any display change

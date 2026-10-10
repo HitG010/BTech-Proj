@@ -914,3 +914,18 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   additive pinned version. R6 final methods/contribution review is next.
   Author/venue/public-release details remain deferred; no novelty or acceptance
   claim follows from figure export.
+
+- R6 final review complete, 2026-10-11: use the
+  [final scientific review](papers/thinking-selection/revision-review.md) and
+  [source-linked response](papers/thinking-selection/revision-response.md).
+  Selected status: **Scoped empirical draft is coherent**. All R1–R6 passes
+  are complete; reporting issues are addressed and remaining evidence gaps
+  are explicit. Novelty remains modest; no algorithm confirmation or likely
+  acceptance is established. R6 preserves scientific manuscript text/tables/
+  figures/captions from `0689433`, changing only the draft status and review
+  records. Source/figure pins and local document links are checked without
+  raw/cache/reference/sealed access, new fits/scoring/generation/statistics,
+  rerendering or implementation tests. Next is author scientific review when
+  resumed; author/venue/release details remain deferred. Stronger claims need
+  a separate scientific-question/design/resource review. No new allocation,
+  collection, reopening of closed searches, submission or public release follows.

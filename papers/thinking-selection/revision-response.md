@@ -1,11 +1,12 @@
 # Manuscript revision response
 
-Date: 10 October 2026. Working manuscript: v0.2.
+Started: 10 October 2026. Completed: 11 October 2026. Manuscript: v0.2.
 Original manuscript: v0.1 at `1695a1f`; reviewed baseline at `79a6cdd`.
 Claim map: R1, `cac52c1`.
 
 This record tracks the [revision plan](revision-plan-2026-10-10.md).
-It distinguishes completed writing changes from pending revision passes.
+All six revision passes are complete. This record distinguishes reporting
+repairs from evidence limitations that remain unresolved.
 It is not a new study result or a statement of submission readiness.
 
 ## R1. Claim-to-source map — complete
@@ -140,27 +141,48 @@ This is a display export. It uses no raw project outcome, score cache, reference
 sealed role, new fitting/scoring/generation, statistical reanalysis, or test run.
 R6 remains the final scientific assessment.
 
+## R6. Final scientific review — complete
+
+The [final review](revision-review.md) selects **Scoped empirical draft is
+coherent**. The revised paper has one traceable local claim. No substantive
+reporting correction is required by the final review. The contribution remains
+modest; this decision does not establish general novelty, algorithm superiority,
+submission readiness, or likely acceptance.
+
+R6 changes the manuscript status line only. Scientific prose, numerical tables,
+Box 1, figures, and exact frozen captions remain unchanged from `0689433`.
+Author review is the next step when resumed. A stronger claim needs a separately
+assessed scientific question and prospective resource/precision plan.
+
 ## Response to the critical-review concerns
 
-Concern numbers refer to Section 4 of the
-[critical review](critical-review-2026-10-10.md). “Addressed in R2–R4” means a
-text change was made; the final scientific assessment remains R6.
+Concern numbers 1–9 refer to Section 4 of the
+[critical review](critical-review-2026-10-10.md). S1–S6 record the additional
+points in the specialist memos. **Addressed** means that the reporting issue is
+repaired. A disclosed evidence gap remains a gap. Source IDs resolve through
+the [claim-to-source map](revision-evidence-map.md) and its linked reports.
 
-| Concern | Response so far | Manuscript location | Status / next pass |
-|---|---|---|---|
-| 1. Procedures replace a clear contribution | Replaced the contribution list with scoped findings and a common research question. | Abstract; Introduction; Conclusion | Addressed in R2; contribution sufficiency assessed again in R6. |
-| 2. Small, repeatedly reused evidence | Makes reuse explicit in the argument, Methods, and table captions; conditions learned-policy inference on the recorded fits. | Introduction; Sections 3.3–3.5; Tables 1–3 | Addressed in R2/R3; the small-data research limit remains. |
-| 3. Added value of response halves | Explains shared question groups, changing drafts, and the distinction from a fixed-state or independent-study replication. | Introduction; Section 3.4; Box 1 | Addressed in R2/R3; no design-advantage test claimed. |
-| 4. Fixed-fit uncertainty | Adds omitted training/refit/optimization variability, overlapping-fold dependence, and lack of joint coverage beside the method and captions. | Section 3.5; captions; Limitations | Addressed in R3; full-training uncertainty remains unmeasured. |
-| 5. Sparse follow-up and refit | Distinguishes the refitted rule, explains bootstrap support, and derives the observed-mask ceiling without changing the screen. | Sections 5.2–5.3; Limitations | Addressed in R3; population benefit and absolute policy metrics remain unresolved. |
-| 6. Underused repeat diagnostics | Adds the existing signed variance, both transfer directions, and flagged-case point bounds beside the failed primary tests. | Box 1 and following paragraphs | Addressed in R2; no new calculation. |
-| 7. Restricted controls | Retains recipe limits and makes CLM's omitted confidence/feature-addition contrast explicit. | Sections 4.2–4.3; Limitations | Addressed in R3/R4; faithful external-method comparison remains absent. |
-| 8. Utility versus complete cost | Separates policy tokens, omitted acquisition charges, encoder observations, and ledger costs; retains cross-size compute limit. | Sections 3.1, 4.1, 4.3, 5.1, 6.4; Appendix A | Addressed in R2/R3; full deployment cost remains unmeasured. |
-| 9. Cap and follow-up narrative | Shortens supporting results and moves implementation/pilot/cap detail to appendices while retaining directions, failures, and limits in the main text. | Section 5; Appendices A.3/C | Addressed in R4; final coherence assessed in R6. |
+| Concern | Action | Final manuscript location | Evidence source | Final disposition and remaining limit |
+|---|---|---|---|---|
+| 1. Procedures replace a contribution | States the coexistence of rescues, limited repeat structure, and failed held-out selection. | Abstract; Sections 1, 4.1, 6.1, 8 | C00–C06; repeat results; contribution review | Reporting addressed. Useful local finding; general novelty remains modest. |
+| 2. Small, repeatedly reused evidence | Names the 50 question groups and the exploratory reuse; limits results to tested recipes. | Sections 3.3–3.5, 6.1, 7; Figure 1 | C01, C07–C11; M02 | Reporting addressed. Sample size, generalization, and research reuse remain limits. |
+| 3. Added value of response halves | Separates question exclusion, changing response realizations, and same-question diagnostics. | Section 3.4; Box 1 | C03–C05; M02 | Reporting addressed. No matched design-advantage test or causal repeated-label learning curve exists. |
+| 4. Fixed-fit uncertainty | Lists omitted refit, threshold, optimization, research-selection, shared-training and joint-coverage uncertainty. | Section 3.5; captions; Section 7 | M10; source-specific protocols | Reporting addressed. Full learning-procedure uncertainty remains unmeasured. |
+| 5. Sparse follow-up and refit | Explains all-data cutoff refit, 227 zeros/one negative value, and observed-mask-only ceiling. | Sections 5.2–5.3; Appendix C.1 | C14–C17; D01–D02; sparse preparation/results | Reporting addressed. Population gain, future activation, and absolute policy metrics remain unidentified. |
+| 6. Underused repeat diagnostics | Adds signed variance, both transfer directions, acquisition-cost omission, and flagged-case bounds beside primary failures. | Table 2; Box 1; following paragraphs | C03–C06; N1; repeat diagnosis | Addressed. Post-hoc estimates do not reverse the primary gate or show unseen-question transfer. |
+| 7. Restricted controls | Keeps recipe limits, CLM's omitted confidence features, and the absent faithful external comparison explicit. | Sections 2, 4.2–4.3, 7; Appendix A.3 | C07–C11; M03–M05; L01–L06 | Reporting addressed. No feature-addition, full-precision, or strongest-system conclusion is supported. |
+| 8. Utility versus complete cost | Separates the frozen token preference, label acquisition, encoding, collection ledger, and deployment cost. | Sections 3.1, 4.1, 4.3, 5.1, 6.4; Appendix A | M01; C05, C11; A01 | Reporting addressed. Full latency, energy, and cross-size compute are unmeasured. |
+| 9. Cap/follow-up narrative | Gives separate questions; keeps directions and limits visible; moves full supporting detail to Appendix C. | Sections 5–6; Appendix C; Figure 1 | C12–C18; N3–N4 | Addressed. One-event guard and selected 11-group cap cannot confirm a common failure mechanism. |
+| S1. Fixed-draft noise and acquisition benefit | States that drafts change and same-question transfer omits acquisition expenditure. | Sections 3.4, 4.1, 6.1 | C05; M02; methods memo | Reporting addressed. Conditional noise for one fixed draft and cost-matched acquisition benefit are not identified. |
+| S2. Scorer bounds and human scoring | Restricts robustness to flagged cases with actions/costs fixed; retains scorer-based correctness and waived audit. | Sections 3.2, 4.1, 6.4, 7 | C06; M07–M09 | Reporting addressed. Unflagged errors, mathematical validity, and refitted effects remain unresolved. |
+| S3. Objective and representation comparisons | Distinguishes action utility from calibrated probability and matched backbone from matched head/pretraining. | Sections 2.2, 4.2–4.3; Appendix A.3 | C08–C10; M04–M05; L06 | Reporting addressed. Losses target different quantities; compression/fusion/seed/quantization limits remain. |
+| S4. Draw-dependent opportunity counts | Defines positive realized gain in either of two draws; rejects expected-gain and size-law interpretations. | Section 5.1; Table 4; Figure 3 | C12; N3; methods memo | Reporting addressed. Population size interaction and the cause of between-panel differences were not tested. |
+| S5. Prior-work overlap and priority | Leads with DART/Chen/Garg/Yang; corrects retrieval history and retains the local claim. | Section 2; Introduction; Conclusion | L01–L07; R4 source addendum; contribution memo | Reporting addressed. Targeted literature review is not exhaustive; no method priority or external superiority is established. |
+| S6. Figures and provenance versus evidence | Uses frozen reported values and identifies roles, comparators, overlap, and uncertainty. | Figures 1–3; Data and code availability | R5 plan, inputs, export receipt, artifact review | Addressed. Artifact verification is not empirical replication; public release remains pending. |
 
-The full DART comparison and dated retrieval addendum are complete in R4.
-No external-method experiment was added. R5 figure specification/export is
-complete. Final methods and contribution assessment remains R6.
+The final methods and contribution assessments are linked in
+[revision-review.md](revision-review.md). All nine root concerns and specialist
+points have a recorded disposition. No new experiment is used to close them.
 
 ## Execution boundary
 
@@ -171,4 +193,7 @@ fitting, scoring, statistical reanalysis, figure export, or implementation test
 is used in R2–R4. Documentary checks compare wording, links, and retained
 tables. R5 separately runs the frozen report-only renderer and artifact QA;
 its boundary is recorded above. It performs no scientific re-estimation.
-Author identity and submission details remain deferred.
+R6 reads tracked records and checks document/figure identities; it does not
+re-estimate statistics, rerender figures, or run implementation tests. Original
+source reports and frozen figure outputs remain unchanged. Author identity and
+submission details remain deferred.
