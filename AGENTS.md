@@ -861,3 +861,15 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   next; R2–R6 remain pending. Manuscript v0.1 and all frozen study files remain
   unchanged. No raw outcomes/cache/references, experiments, statistical
   reanalysis, figure export, or tests were accessed/run for R1.
+- R2 central revision complete, 2026-10-10: the
+  [manuscript](papers/thinking-selection/manuscript.md) is now v0.2 working draft.
+  Abstract/Introduction/repeat Results/discussion/Conclusion share the scoped
+  rescues–same-question structure–held-out selection argument. Box 1 adds
+  existing post-hoc diagnostics and flagged-case bounds without reversing failed
+  primary criteria. Read [revision-response.md](papers/thinking-selection/revision-response.md)
+  for completed changes and nine concern statuses. Separate GPT-6.1-sol/xhigh
+  methods/argument reviews passed; original Tables 1–5/A1 are unchanged.
+  No raw/cache/reference access, experiment, statistical analysis, figure export
+  or implementation tests. R3 interpretation repairs are next; R3–R6 pending.
+  This supersedes the preceding v0.1-current snapshots. Author/submission
+  details remain deferred; v0.1 remains recoverable at `1695a1f`.

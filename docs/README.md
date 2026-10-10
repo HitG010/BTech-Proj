@@ -1,5 +1,14 @@
 # Research map
 
+**R2 complete, 2026-10-10.** The
+[v0.2 working manuscript](../papers/thinking-selection/manuscript.md) now centers
+on observed rescues, limited post-hoc question structure, and failed selection
+by the specified learners on held-out questions. Box 1 adds existing diagnostic
+results with the failed primary gates preserved. Targeted methods/argument
+reviews passed; original outcome/accounting tables are unchanged. See the
+[revision response](../papers/thinking-selection/revision-response.md).
+Next is R3 interpretation repair. No new experiment or statistical analysis ran.
+
 **Claim map complete, 2026-10-10.**
 [Revision pass R1](../papers/thinking-selection/revision-evidence-map.md) maps
 19 research/synthesis claims and supporting method/literature records to tracked

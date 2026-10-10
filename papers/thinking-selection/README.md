@@ -2,15 +2,25 @@
 
 ## Read the paper
 
-[Manuscript, version 0.1](manuscript.md)
+[Manuscript, version 0.2 working draft](manuscript.md)
 
 **Title:** Confidence and Learned Thinking Selection on GSM8K: A Controlled Study
 of Small Qwen3 Models.
 
 The draft contains an abstract, introduction, related work, methods, results,
 discussion, limitations, conclusion, references, and reproducibility appendices.
-It includes five main tables and one accounting table.
-It is a complete prose draft for author review, not a submitted paper.
+It includes five main tables, one accounting table, and a post-hoc diagnostic box.
+R1–R2 are complete. Interpretation repairs, scope/prior-work edits, figures,
+and final review remain R3–R6 work. This is a working draft, not a submitted paper.
+
+## R2 central revision, 10 October 2026
+
+The abstract, Introduction, main repeat result, discussion, and Conclusion now
+separate observed rescues, limited same-question structure, and unsuccessful
+held-out-question selection. Box 1 adds existing variance/transfer diagnostics
+and flagged-case scorer bounds, with their limits. The failed primary criteria
+remain visible. Two targeted reviews passed; original table rows are unchanged.
+See the [revision response](revision-response.md) for changes and pending work.
 
 ## Critical review, 10 October 2026
 
@@ -25,15 +35,18 @@ and failed learned selection on held-out questions. The sparse follow-up needs
 an explicit rare-event interval limit. Full DART v4 also narrows the post-draft
 novelty claim. These are reviewer judgments, not new experiment results.
 
-Manuscript v0.1 remains unchanged. Author details and submission formatting are
-deferred. The review did not reopen raw outcomes, score caches, references, or
-sealed roles, and did not run experiments or statistical analyses.
+The critical review preserved v0.1; the subsequent R2 writing pass creates the
+current v0.2 working draft. Author details and submission formatting are
+deferred. Neither pass reopened raw outcomes, score caches, training references,
+or sealed roles, or ran experiments or statistical analyses.
 
 ## Supporting files
 
 - [Revision plan](revision-plan-2026-10-10.md): six ordered passes for v0.2,
   exact evidence additions, interpretation repairs, figure specifications, and
-  final review criteria. R1 is complete; R2–R6 remain pending.
+  final review criteria. R1–R2 are complete; R3–R6 remain pending.
+- [Revision response](revision-response.md): completed text changes, targeted
+  review outcomes, and unresolved concerns assigned to later passes.
 - [Revision claim-to-source map](revision-evidence-map.md): numbered claims,
   reported values, comparators, units, evidence roles, source sections, and
   required limits. Source/section links and central claims were reviewed.
@@ -69,10 +82,10 @@ This was an editorial and provenance review, not a new human scoring audit.
 ## Remaining author work
 
 1. Supply author names, affiliations, contributions, funding, and conflicts.
-2. Revise the scientific argument using the completed critical review.
-   Add the existing post-hoc repeat diagnostics with their limits, distinguish
-   primary from exploratory findings, and clarify the fresh sparse contrast.
-   Broader claims need broader evidence under a separate protocol.
+2. Complete R3 interpretation repairs and R4 scope/prior-work edits. The central
+   argument and post-hoc box are revised; the sparse bootstrap and finite-panel
+   bound still need their planned explanation. Broader claims need broader
+   evidence under a separate protocol.
 3. Choose a venue and apply its current format and disclosure requirements.
    This draft is venue-neutral.
 4. Decide which verified cached-report figures would help. Freeze an additive

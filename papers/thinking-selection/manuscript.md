@@ -2,33 +2,37 @@
 
 **Authors:** [Author names and affiliations to be supplied]
 
-**Draft:** 0.1, 9 October 2026
+**Draft:** 0.2 working draft, 10 October 2026 — R2 central argument revised; R3–R6 pending
 
 ## Abstract
 
-Hybrid language models can answer directly or spend more tokens on a thinking response. Higher average thinking accuracy does not establish when this extra cost is useful. We study that decision after a direct draft has already been generated. On GSM8K, we compare confidence with repeated supervision, small learned routers, representation controls, and a released contrastive decision model. A fixed utility charges both the direct draft and any additional thinking call. On 50 questions with 800 responses, the predeclared learner failed four of five progression criteria. Its average utility difference across independent response halves was −0.016204 against a baseline selected within training. Bounded capacity, objective, and quantized representation controls also failed their screens. A separate 64-question diagnostic found positive confidence-minus-direct utility for Qwen3-0.6B (+0.152677) and negative utility for Qwen3-1.7B (−0.030540). A parser-aware development control led to a fresh evaluation on 228 questions. Only one action changed, with no scored accuracy gain. A matched reasoning-cap intervention on 11 selected questions produced one rescue but lower point utility. These results show that the tested supervision and representation recipes did not provide a dependable improvement over the specified simple controls. They also show why a favorable development comparison needs a separate, correctly scoped follow-up. The evidence is limited to one arithmetic task, two solver sizes in one family, reused development panels, and sparse follow-up events. We retain the failed criteria, frozen scoring rules, conditional uncertainty, and runtime deviations.
+When do repeated thinking outcomes support useful selection on new questions? We study this question on GSM8K with small Qwen3 models. After one paid direct draft, a policy accepts the draft or requests a fresh thinking solve. Utility charges both calls when thinking is selected. On 50 questions with 800 responses, thinking produces 30 scored rescues and 10 harms across 400 paired states. The predeclared learner nevertheless fails four of five progression criteria. Its average utility difference is −0.016204 against a simple baseline selected within training. The conditional 90% interval is [−0.033276, −0.000635]. Separate post-hoc diagnostics suggest between-question gain variation and report positive same-question transfer point estimates, although one transfer interval crosses zero. These diagnostics neither reverse the failed primary reproducibility test nor establish useful selection on unseen questions. Bounded capacity, objective, and quantized representation controls also fail their screens. The flagged presentation cases alone cannot reverse the primary fixed-policy point comparison. A separate two-solver diagnostic and sparse parser-guard and cap follow-ups have narrower outcomes and limited supporting events. The main finding is the coexistence of observed thinking opportunities, limited repeat-structure evidence, and unsuccessful held-out-question selection by the tested learners. This is evidence about specified recipes on reused panels. Conditional uncertainty, one task, one model family, and scorer-based correctness limit its interpretation.
 
 **Keywords:** adaptive reasoning; model routing; repeated supervision; confidence; evaluation; computational cost
 
 ## 1. Introduction
 
-Additional reasoning can improve a language model's average accuracy. A system must still decide when to pay for it. That decision depends on the answer already available, the expected effect of another response, and its cost. A model that is likely to be wrong does not necessarily benefit from the next computation. A correct draft can also be replaced by an incorrect thinking response.
+An extra thinking response can correct a direct answer, repeat its error, or replace a correct answer with an incorrect one. A useful selector must predict whether the added response is worth its cost from information available before that response.
+
+Three levels of evidence bear on this decision. Observed rescues show that an extra call sometimes corrects a draft. Repeated outcomes on the same questions can reveal question-level variation in gain. A learned policy must then use permitted features to select actions on questions excluded from fitting. Success at one level does not establish success at the next.
 
 We study a specific decision. A small Qwen3 model first produces a direct draft. A router then accepts that draft or requests a fresh thinking solve from the same model. The thinking call receives the question; it does not continue or revise the observed draft. The direct cost has already been incurred. This contract makes escalation more expensive than using a thinking response alone.
 
-We use GSM8K, a dataset of mathematical word problems introduced by [Cobbe et al. (2021)](https://arxiv.org/abs/2110.14168v2), and the thinking and non-thinking modes of [Qwen3 (Yang et al., 2025)](https://arxiv.org/abs/2505.09388v1). Our objective is to determine whether the tested supervision and representation choices improve selection beyond inexpensive controls. We do not introduce a new routing algorithm.
+We use GSM8K, a dataset of mathematical word problems introduced by [Cobbe et al. (2021)](https://arxiv.org/abs/2110.14168v2), and the thinking and non-thinking modes of [Qwen3 (Yang et al., 2025)](https://arxiv.org/abs/2505.09388v1). Our question is: **what do observed rescues and repeated question-level outcomes tell us about the specified selectors' performance on held-out questions?** We compare these evidence levels under one fixed decision and cost contract.
 
-The study has three connected parts. First, a repeated-response panel measures whether supervision transfers across independent response draws and questions excluded from fitting. Second, bounded controls test feature capacity, compact neural objectives, and a quantized released representation. Third, a separate two-solver diagnostic and two follow-ups examine whether favorable development observations support further use.
+The central study collects eight responses per mode on 50 Qwen3-1.7B questions. Question folds exclude evaluation questions from fitting and tuning. Two disjoint response halves supply different realizations of training and evaluation outcomes. Separate same-question diagnostics examine gains across those halves. The halves reuse question groups, and each draw has a different direct draft. They do not supply two independent study replications or repeated thinking outcomes for one identical draft state.
 
-The sequence contains several negative findings. The primary repeated-supervision learner fails its original criteria. Later controls do not repair that result. Confidence is the stronger reference on the repeat panel, but it does not improve utility for the larger solver on the separate diagnostic panel. A parser-aware rule improves a development comparison on three questions, yet its separately frozen fresh contrast changes only one action without a scored rescue. Longer reasoning gives one rescue on an enriched cohort, with added cost and no established utility benefit.
+The original learner fails its criteria, including the primary reproducibility criterion. Later post-hoc estimates suggest some between-question gain variation and positive same-question transfer points. One transfer interval includes zero. These observations concern labels from already measured questions and omit their acquisition cost. At the same time, the tested learner does not improve selection on held-out questions. Later bounded controls also fail their screens on this reused panel.
 
-These observations motivate three empirical contributions:
+The paper reports three scoped findings:
 
-1. A controlled account of repeated supervision and representation choices under a fixed decision and cost contract.
-2. A separation of development findings, independent response draws, and prospective follow-up with different identified outcomes.
-3. An auditable record of scoring, costs, stopped research decisions, and operational deviations.
+1. Observed rescues and limited post-hoc repeat structure coexist with a negative primary learned-policy comparison. The repeat diagnostics do not establish a successful router or reverse the failed primary tests.
+2. The bounded capacity, compact objective, and released-representation recipes do not establish an improvement over confidence. These results restrict those recipes under the recorded training conditions.
+3. The flagged presentation cases cannot reverse the primary fixed-policy point contrast. This narrows one possible scorer explanation while leaving unflagged errors and refitted policies unresolved.
 
-The scientific scope is narrow. Prior work already studies contrastive routing, limited supervision, noisy routing ceilings, and the difference between failure risk and action value. Our added evidence is the combination of this post-draft contract, evaluation across independent response halves, matched controls, and explicitly limited follow-up. The paper does not claim general router failure, a new acquisition method, or superiority over untested external systems.
+Supporting studies test different questions. A separate 64-question diagnostic finds different opportunity and confidence-utility patterns for Qwen3-0.6B and Qwen3-1.7B. A parser guard motivated by development results is refitted and frozen before a 228-question test; only one fresh action changes, with no scored rescue. A cap intervention on 11 selected development questions produces one rescue and lower point utility. These are scope checks with distinct endpoints, rather than replications of the central learner comparison.
+
+Prior work already studies repeated supervision, contrastive and post-draft routing, stochastic ceilings, and the difference between failure risk and action value. Our contribution is a local empirical account of the three evidence levels under this protocol. The studies do not identify why the learners fail or establish a new general principle. Their preserved criteria and records support inspection of that limited finding.
 
 ## 2. Related work
 
@@ -113,9 +117,9 @@ These later screens cannot replace a failed primary endpoint. We report all orig
 
 ## 4. Repeated supervision and representation controls
 
-### 4.1. The primary learner does not pass
+### 4.1. Observed rescues and a failed primary learner
 
-Across the 400 paired states, direct accuracy is 89.5% and standalone thinking accuracy is 94.5%. There are 30 rescues, 10 harms, 348 pairs where both responses are correct, and 12 where both are wrong. Thus thinking improves average accuracy on this panel. Its usefulness for selective escalation remains a separate question.
+Across the 400 paired states, direct accuracy is 89.5% and standalone thinking accuracy is 94.5%. There are 30 rescues, 10 harms, 348 pairs where both responses are correct, and 12 where both are wrong. These counts establish realized opportunities on the 50 measured questions. A selector must still predict useful actions without observing the future thinking outcome.
 
 The combined learner's averaged four-draw difference against the training-selected simple comparator is −0.016204, with a conditional 90% interval of [−0.033276, −0.000635]. Four of five progression criteria fail.
 
@@ -130,6 +134,23 @@ The combined learner's averaged four-draw difference against the training-select
 | At least ten informative questions with a correctness difference | 14 of 50 | Pass |
 
 The smaller training conditions also vary across directions. With one draw, differences are −.02016 and +.00641. With two draws, they are −.02812 and +.02257. These conditional point estimates do not establish a monotonic learning curve or show that repeated supervision is generally harmful.
+
+**Box 1. Post-hoc question structure and bounded scorer sensitivity.** These separately reported diagnostics reuse the completed repeat panel. They do not replace Table 2 or change its decisions.
+
+| Diagnostic | Recorded result | Interpretation limit |
+|---|---|---|
+| Signed between-question gain variance | .03233 utility²; conditional 90% interval [.00541, .06530] | Suggests between-question variation under approximately IID/exchangeable within-question draws. It is a different statistic from the failed primary MSE test. |
+| Same-question action selection using A, evaluated on B | Gain over accepting direct +.04413; 90% interval [.00563, .08845] | Uses prior labels of those same questions; label-acquisition expenditure is omitted. |
+| Same-question action selection using B, evaluated on A | Gain over accepting direct +.01572; 90% interval [−.02019, .05908] | The interval crosses zero. Different directional point estimates do not establish a statistically tested directional difference. |
+| Fixed-policy sensitivity to five flagged presentation cases | Averaged four-draw learner-minus-baseline point difference stays −.016204 | Keeps actions and costs fixed. It does not cover unflagged scorer errors or refitted policies. |
+
+The variance estimate subtracts estimated within-question sampling variation from variation in question means and is deliberately left unclipped. Its interpretation depends on the stated draw assumptions. The same-question comparisons use four draws to select an action and evaluate it on the opposite half. Acquiring the labels in A and B used 322,882 and 321,508 tokens, respectively. Those costs are absent from the reported transfer gains. The comparisons therefore provide neither net acquisition utility nor performance on unseen questions.
+
+The scorer bound asks whether any subset of five flagged rejected outputs becoming correct could reverse the primary comparison. Both policies choose the same final mode on those affected draws, so the primary point difference is unchanged. Including a sixth unmarked-terminal case can only worsen that difference. These are fixed-policy point bounds, not confidence intervals or general validation of mathematical scoring. The [completed diagnosis](../../docs/phase-2-repeat-results.md#separate-post-hocdevelopment-explanation) and [syntax-bound record](../../docs/phase-2-repeat-results.md#gold-free-parser-triage-and-bounded-sensitivity) supply these results.
+
+Taken together, the observations suggest some structure on measured questions while the primary learner fails on held-out questions. The data do not establish that the permitted features can recover that structure, or identify the reason for the gap. The failed primary reproducibility criterion remains part of this conclusion.
+
+#### Secondary full-eight behavior
 
 The full-eight results help describe the failure. Combined Ridge escalates on 174 of 400 states, with five positive-gain decisions and 169 nonpositive decisions. The latter include seven harms. Confidence escalates on 58 states, with 16 positive-gain decisions and 42 nonpositive decisions, including four harms. Combined Ridge misses 25 positive opportunities; confidence misses 14. These are descriptive counts on the reused panel.
 
@@ -232,9 +253,13 @@ The cap result has two further limits. The cohort was selected by prior forced-c
 
 ## 6. Discussion
 
-### 6.1. Opportunity is necessary but does not establish learnable value
+### 6.1. Repeated structure and learned selection
 
-The repeat panel contains rescues and higher standalone thinking accuracy. The learned policies still fail. With 40 unique outer-training questions, the original 391-feature combined representation has many more coordinates than independent training groups. Repeated rows add response information while reusing those groups. This is a plausible constraint on learning, but the present studies do not identify it as the cause.
+The main observation joins three different results: scored rescues, limited post-hoc evidence of repeated question structure, and unsuccessful selection by the tested learners on held-out questions. A positive variance estimate and same-question transfer points concern the measured question distributions. A deployable learner must infer an action from permitted features on other questions. The present results leave that step unresolved.
+
+This interpretation retains the failed primary reproducibility test. The post-hoc diagnostics measure different quantities and have their own assumptions. They cannot rescue the primary decision or prove that useful feature-level signal was available to the learner.
+
+With 40 unique outer-training questions, the original 391-feature combined representation has many more coordinates than independent training groups. Repeated rows add response information while reusing those groups. This is a plausible constraint on learning, but the present studies do not identify it as the cause.
 
 The capacity controls matter because they test a simple response to that concern. Stronger regularization, PCA compression, and confidence corrections also fail their bounded screens. The representation controls similarly show that this compact objective change and this released transfer recipe do not supply a demonstrated improvement. The combined evidence narrows these recipes. It does not exhaust larger datasets, other features, other fusion methods, or other model families.
 
@@ -270,9 +295,9 @@ Finally, runtime recoveries and local resource contention prevent causal speed c
 
 ## 8. Conclusion
 
-Under the tested paid-direct-draft contract, the predeclared repeated-supervision learner and bounded representation controls did not establish an improvement over their simple comparators. A separate diagnostic showed that thinking opportunities and confidence utility differ across the two tested solver settings. Sparse fresh validation and a matched cap intervention did not establish useful follow-up gains.
+On the studied GSM8K/Qwen3-1.7B panel, scored rescues and limited post-hoc evidence of repeated question-level structure coexist with failed learned selection on held-out questions. The primary learner and later bounded controls do not establish utility gains over their specified simple comparators. Same-question transfer omits acquisition cost, one directional interval crosses zero, and the primary reproducibility criterion remains failed. The flagged presentation cases alone cannot reverse the primary fixed-policy point comparison.
 
-The supported conclusion concerns these recipes and endpoints. It motivates strong inexpensive controls, separation of questions from response draws, fixed scorer identities, complete cost accounting, and prospective tests matched to the claim. The completed evidence does not justify scaling a failed learner or treating hindsight opportunity as a deployed routing benefit.
+The separate two-solver diagnostic, fresh guard contrast, and selected cap intervention have different targets. They constrain transfer of the development observations without confirming a common failure mechanism. This evidence supports a scoped account of the tested recipes and their limits. A broader claim requires prospective evidence that separates repeated question structure from useful feature-based selection across new training and evaluation conditions.
 
 ## Data and code availability
 
@@ -337,6 +362,7 @@ This table links each evidence block to the project records used to draft the pa
 |---|---|
 | Repeat contract and original criteria | [Repeat protocol](../../docs/phase-2-repeat-panel.md) |
 | Table 2 and repeat behavior | [Repeat results](../../docs/phase-2-repeat-results.md) |
+| Box 1: post-hoc structure and fixed-policy scorer bounds | [Repeat diagnosis and syntax sensitivity](../../docs/phase-2-repeat-results.md) |
 | Capacity and compact neural controls | [Feasibility results](../../docs/phase-2-router-feasibility-results.md) |
 | Released CLM and matched encoder | [CLM results](../../docs/phase-2-clm-probe-results.md) |
 | Table 4 and solver diagnostics | [Two-solver results](../../docs/opportunity-panel-results.md) |
@@ -345,6 +371,7 @@ This table links each evidence block to the project records used to draft the pa
 | Fresh policy contrast | [Sparse results](../../docs/sparse-validation-results.md) |
 | Table 5 and matched token streams | [Cap results](../../docs/qwen17-cap-bridge-results.md) |
 | Extended evidence and extraction audit | [Evidence ledger](evidence-ledger.md) |
+| Revision claim IDs, units, comparators, and limits | [Revision evidence map](revision-evidence-map.md) |
 
 The later synthetic acquisition study is a separate feasibility result. It is not pooled with the real-solver evidence in this manuscript.
 

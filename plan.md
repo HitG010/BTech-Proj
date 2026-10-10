@@ -1005,3 +1005,15 @@ Implementation and verification status will be recorded here as work completes.
   directional-difference test claimed. No raw/cache/reference access, experiments,
   statistical reanalysis, figure export, or tests. Manuscript remains v0.1;
   R2 central text revision is next; R2–R6 pending.
+- 2026-10-10 R2 complete: revised the
+  [v0.2 working manuscript](papers/thinking-selection/manuscript.md) abstract,
+  Introduction, repeat Results, discussion and Conclusion around the mapped
+  three-level claim. Added Box 1 with existing signed variance, both same-question
+  transfer directions, acquisition-cost omissions and fixed-policy parser bounds.
+  Primary failure remains explicit. Started the
+  [revision response](papers/thinking-selection/revision-response.md) with all
+  nine reviewer concerns and their remaining work. Separate GPT-6.1-sol/xhigh
+  methods/argument reviews pass. Tables 1–5 and A1 are unchanged; local links and
+  whitespace checks pass. No raw/cache/reference access, experiments, fitting,
+  scoring, statistical analysis, export or implementation tests. R3 is next;
+  R3–R6 remain pending, author/submission details deferred.
