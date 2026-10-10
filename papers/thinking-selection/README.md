@@ -12,6 +12,23 @@ discussion, limitations, conclusion, references, and reproducibility appendices.
 It includes five main tables and one accounting table.
 It is a complete prose draft for author review, not a submitted paper.
 
+## Critical review, 10 October 2026
+
+Read the [critical scientific review](critical-review-2026-10-10.md), with
+separate [methods](reviewer-methods-2026-10-10.md) and
+[contribution](reviewer-contribution-2026-10-10.md) critiques.
+
+**Decision:** revise the scientific argument with existing evidence before
+considering new collection. The draft is not ready for submission. Its central
+claim needs to distinguish observed rescues, repeated question-specific signal,
+and failed learned selection on held-out questions. The sparse follow-up needs
+an explicit rare-event interval limit. Full DART v4 also narrows the post-draft
+novelty claim. These are reviewer judgments, not new experiment results.
+
+Manuscript v0.1 remains unchanged. Author details and submission formatting are
+deferred. The review did not reopen raw outcomes, score caches, references, or
+sealed roles, and did not run experiments or statistical analyses.
+
 ## Supporting files
 
 - [Evidence ledger](evidence-ledger.md): facts, comparators, units, source links,
@@ -46,9 +63,10 @@ This was an editorial and provenance review, not a new human scoring audit.
 ## Remaining author work
 
 1. Supply author names, affiliations, contributions, funding, and conflicts.
-2. Review the scientific argument against the closest empirical papers.
-   The evidence supports a narrow GSM8K/Qwen3 paper; broader claims need broader
-   evidence under a separate protocol.
+2. Revise the scientific argument using the completed critical review.
+   Add the existing post-hoc repeat diagnostics with their limits, distinguish
+   primary from exploratory findings, and clarify the fresh sparse contrast.
+   Broader claims need broader evidence under a separate protocol.
 3. Choose a venue and apply its current format and disclosure requirements.
    This draft is venue-neutral.
 4. Decide which verified cached-report figures would help. Freeze an additive

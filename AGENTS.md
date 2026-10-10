@@ -823,3 +823,19 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   failed criteria, conditional intervals, sparse identification, scorer labels,
   and development reuse limits. Any future cached figure export or error audit
   needs its separately frozen additive plan. No experiment restart is implied.
+- Critical paper review, 2026-10-10: read
+  [the root review](papers/thinking-selection/critical-review-2026-10-10.md) and
+  its linked independent methods/contribution memos. Recommendation: revise with
+  existing evidence before new collection; manuscript v0.1 is unchanged and
+  author/submission details are deferred. The proposed narrative distinguishes
+  observed rescues, post-hoc same-question structure, and failed held-out-question
+  selection. Preserve failed primary reproducibility and all other gates; the
+  diagnostic box cannot reverse them. The fresh sparse bootstrap cannot produce
+  unseen rescues; its upper endpoint zero is not a population no-benefit bound.
+  The refitted prospective cutoff is not the original cross-fitted policy.
+  The review's mean-gain ceiling 1/228 applies only to the observed eligibility
+  mask, before costs, not a population bound. Full DART v4 is now read, superseding
+  the abstract-only retrieval limit for this review. No raw outcomes/references,
+  score caches, sealed roles, experiments, statistical reanalysis or tests were
+  accessed/run. No new allocation, fitting or generation follows from the review.
+  Any figure export or broader follow-up still needs its separate frozen plan.

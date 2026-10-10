@@ -1,5 +1,15 @@
 # Research map
 
+**Critical paper review, 2026-10-10.** The
+[scientific review](../papers/thinking-selection/critical-review-2026-10-10.md)
+recommends revision with existing evidence before any new collection. The main
+gap is a clear contribution beyond the closest papers. Add the recorded
+post-hoc repeat diagnostics; explain the sparse bootstrap's unobserved-event
+limit; separate each study's claim. Full DART v4 narrows post-draft novelty.
+The manuscript is unchanged. No raw outcomes, references, or sealed roles were
+opened and no experiments or statistical analyses were run. Author details and
+submission formatting are deferred.
+
 **Paper draft, 2026-10-09.** The full
 [empirical manuscript](../papers/thinking-selection/manuscript.md) now reports
 the completed real-solver studies, with methods, results, five main tables,

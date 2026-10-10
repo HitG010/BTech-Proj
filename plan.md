@@ -971,3 +971,16 @@ Implementation and verification status will be recorded here as work completes.
   figure export, or tests occurred. Author identity/declarations, venue format,
   and a public artifact release remain pending. Local links and bibliography
   keys were checked; all frozen experiment files remain unchanged.
+- 2026-10-10 critical review: completed separate GPT-6.1-sol/xhigh methods and
+  contribution critiques plus the root
+  [scientific review](papers/thinking-selection/critical-review-2026-10-10.md).
+  The recommendation is revision with existing evidence, before new experiments.
+  Central weaknesses are limited incremental insight, reused 50-question
+  evidence, conditional intervals, and sparse follow-up interpretation.
+  Existing same-question transfer/variance and fixed-policy parser bounds can
+  strengthen a scoped narrative without reversing any failed primary gate.
+  Full DART v4 now supports a closer operational comparison. The report derives
+  a finite-panel bound from the recorded sparse contract/count; it estimates no
+  new effect or interval. No raw outcome/reference access, fitting, scoring,
+  generation, statistical reanalysis, or tests occurred. Manuscript v0.1 and
+  frozen studies remain unchanged. Author details and formatting are deferred.
