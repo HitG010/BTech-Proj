@@ -984,3 +984,12 @@ Implementation and verification status will be recorded here as work completes.
   new effect or interval. No raw outcome/reference access, fitting, scoring,
   generation, statistical reanalysis, or tests occurred. Manuscript v0.1 and
   frozen studies remain unchanged. Author details and formatting are deferred.
+- 2026-10-10 revision planning: added the
+  [v0.2 revision plan](papers/thinking-selection/revision-plan-2026-10-10.md).
+  Six ordered passes specify the claim map, central narrative, interpretation
+  repairs, scope/prior work, separately frozen figure export, and final methods/
+  contribution review. The planned diagnostic box preserves failed primary
+  criteria; sparse interpretation includes refit and rare-event limits. The
+  plan defines three displays from reported aggregates and a concern-response
+  record. No manuscript revision, raw/reference access, new analysis, export,
+  fitting, generation, scoring, or tests occurred. R1 claim mapping is next.

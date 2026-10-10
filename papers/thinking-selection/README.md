@@ -31,6 +31,9 @@ sealed roles, and did not run experiments or statistical analyses.
 
 ## Supporting files
 
+- [Revision plan](revision-plan-2026-10-10.md): six ordered passes for v0.2,
+  exact evidence additions, interpretation repairs, figure specifications, and
+  final review criteria. Planned; manuscript revision has not started.
 - [Evidence ledger](evidence-ledger.md): facts, comparators, units, source links,
   protocol identities, and details that the tracked documents do not supply.
 - [Bibliography](references.bib): 17 verified primary-source entries, including

@@ -1,5 +1,12 @@
 # Research map
 
+**Revision plan, 2026-10-10.** The
+[v0.2 plan](../papers/thinking-selection/revision-plan-2026-10-10.md) specifies
+six passes: claim map, central argument, interpretation repairs, scope/prior
+work, frozen display export, and final review. Next is the claim map using
+tracked reports. No revision, export, analysis, or experiment has started from
+this plan. Author and submission details remain deferred.
+
 **Critical paper review, 2026-10-10.** The
 [scientific review](../papers/thinking-selection/critical-review-2026-10-10.md)
 recommends revision with existing evidence before any new collection. The main

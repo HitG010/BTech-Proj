@@ -839,3 +839,13 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   score caches, sealed roles, experiments, statistical reanalysis or tests were
   accessed/run. No new allocation, fitting or generation follows from the review.
   Any figure export or broader follow-up still needs its separate frozen plan.
+- Revision plan, 2026-10-10: the user requested a plan, now recorded in
+  [revision-plan-2026-10-10.md](papers/thinking-selection/revision-plan-2026-10-10.md).
+  R1–R6 are planned, not executed. Next is a tracked-report claim map, followed
+  by v0.2 text revision. Add existing post-hoc variance/transfer and flagged-case
+  bounds with the original failed gate; repair sparse bootstrap/refit language;
+  update DART overlap; preserve conditional inference and cost distinctions.
+  R5 requires a separate pinned display specification before rendering, using
+  reported values only. No raw outcomes, score caches, references or sealed
+  access, refitting, rebootstrap, generation or tests are part of this plan.
+  Manuscript v0.1 remains unchanged. Author/submission details remain deferred.
