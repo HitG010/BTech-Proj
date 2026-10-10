@@ -2,7 +2,7 @@
 
 **Authors:** [Author names and affiliations to be supplied]
 
-**Draft:** 0.2 working draft, 10 October 2026 — R2–R3 revised; R4–R6 pending
+**Draft:** 0.2 working draft, 11 October 2026 — R2–R4 revised; R5–R6 pending
 
 ## Abstract
 
@@ -36,19 +36,25 @@ Prior work already studies repeated supervision, contrastive and post-draft rout
 
 ## 2. Related work
 
-### 2.1. Routing and adaptive reasoning
+### 2.1. Closest empirical overlap
+
+[DART (Lee et al., 2026, v4)](https://arxiv.org/html/2606.23181v4) already routes after observing direct drafts. Its default rule accepts agreement between two drafts and requests fresh thinking on disagreement, with an entropy-based budget. It also reports supervised-router failures; its main evaluations use single runs. Our study fixes one paid draft, a thinking allowance, and output-token utility, then evaluates learners across repeated response halves and held-out questions. These differences define our experiment. They do not establish priority for post-draft routing. We have no faithful DART comparison.
+
+[Chen (2026, v3)](https://arxiv.org/html/2607.03436v3) separates stochastic single-commit ceilings from hindsight unions and audits coupling and scorer choices. Its Appendix C also evaluates a learned policy on held-out questions using repeated archived outcomes, with historical exposure acknowledged. Our draft-conditioned decision and response-half comparisons supply a different local setting; repeated outcomes and held-out fitting are already present in that work.
+
+[Garg and Sagtani (2026)](https://arxiv.org/html/2605.07395v1) examine judging, truncation, formatting, and router collapse, including random-feature, shuffled-label, and balanced-objective checks. Our flagged-case bounds address one restricted scorer explanation. They do not reproduce that mechanism analysis or exclude other scorer errors.
+
+[Yang et al. (2026)](https://arxiv.org/html/2608.14927v1) hold the solver fixed and distinguish failure-risk prediction from collaboration payoff, including post-answer probes and router comparisons. They use one deterministic outcome per problem/protocol pair. Our stochastic response halves address a different sampling condition, with less task and model-family breadth. The distinction between failure risk and useful escalation is established prior work.
+
+The added evidence here is the measured coexistence of rescues, limited post-hoc question-level structure, and failed selection by specified learners under one contract. We do not infer a new general principle from those familiar distinctions. The absence of a faithful external-method comparison also limits conclusions about the strongest available selectors.
+
+### 2.2. Routing methods and representations
 
 [RouterDC (Chen et al., 2024)](https://proceedings.neurips.cc/paper_files/paper/2024/hash/7a641b8ec86162fc875fb9f6456a542f-Abstract-Conference.html) learns query/model and query/query contrastive objectives. Its open-ended supervision averages sampled responses. Repeated solver labels and contrastive routing therefore precede this study. [Cost-Spectrum Contrastive Routing (Shirkavand et al., 2025)](https://arxiv.org/abs/2508.12491v3) adds cost-sensitive selection in a shared representation space. [SEMIROUTER (Wang et al., 2026)](https://aclanthology.org/2026.eacl-long.228/) studies sparse supervision and adaptation to changing model pools.
 
-Adaptive reasoning methods also change the decision space. [Thinkless (Fang et al., 2025)](https://arxiv.org/abs/2505.13379v2) uses reinforcement learning to select reasoning behavior. [DART (Lee et al., 2026)](https://arxiv.org/abs/2606.23181v4) uses agreement between two direct drafts and predicts a reasoning budget when they disagree. [BEST-Route (Ding et al., 2025)](https://arxiv.org/abs/2506.22716v1) selects a model and an inference sample count. Our main comparison fixes one paid direct draft and two subsequent actions. The controls in this paper do not reproduce these full systems.
+Other adaptive methods change the decision space. [Thinkless (Fang et al., 2025)](https://arxiv.org/abs/2505.13379v2) uses reinforcement learning to select reasoning behavior. [BEST-Route (Ding et al., 2025)](https://arxiv.org/abs/2506.22716v1) selects a model and an inference sample count. Our controls do not reproduce these full systems.
 
-Our compact representation uses the released [all-MiniLM-L6-v2 model](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2), which already has contrastive sentence-level training. The objective study changes a small routing head; it does not compare contrastive pretraining with its absence. The separate released-CLM diagnostic uses state/action heads documented in the [official CLM release](https://huggingface.co/Contrastive-LM/CLM-v0.1-8B). We cite that system as an author release and implementation. We do not assign it an unverified proceedings publication.
-
-### 2.2. What routing evaluations identify
-
-The closest empirical work limits several possible novelty claims. [Chen (2026)](https://arxiv.org/html/2607.03436v3) distinguishes stochastic routing ceilings from hindsight unions and examines coupling and scorer choices. [Garg and Sagtani (2026)](https://arxiv.org/html/2605.07395) study judging, truncation, formatting, and routing collapse. [Yang et al. (2026)](https://arxiv.org/html/2608.14927) hold a solver fixed and distinguish failure-risk prediction from the payoff of a collaboration protocol.
-
-We share these concerns. Our comparison supplies evidence under a different operational contract and a specified repeated-draw evaluation. Later follow-ups have narrow targets: one estimates a policy difference from changed actions, and one estimates a cap effect on a selected cohort. These designs do not turn reused data into confirmation. Their value is to state what each comparison identifies and retain its result when progression fails.
+Our compact representation uses the released [all-MiniLM-L6-v2 model](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2), which already has contrastive sentence-level training. The objective study changes a small routing head; it does not compare contrastive pretraining with its absence. The released-CLM diagnostic uses state/action heads documented in the [official CLM release](https://huggingface.co/Contrastive-LM/CLM-v0.1-8B). We cite it as an author release and implementation; no proceedings publication was verified.
 
 ## 3. Decision contract and evaluation
 
@@ -166,11 +172,7 @@ The full-eight confidence policy reaches 92.50% accuracy at 466.88 tokens per st
 
 ### 4.2. Bounded capacity and objective controls
 
-The capacity study tests stronger regularization, compressed question features, and conservative corrections to confidence. Its fixed grid contains 1,035 Ridge fits and 75 PCA fits across the two four-draw directions and secondary full-eight condition. All preprocessing and configuration selection remain within training questions.
-
-The compact neural study crosses two representations with four objectives. The representations are the question vector and a normalized mean of separate question and direct-draft vectors. Training-only PCA produces eight coordinates. Four draft statistics are added. Every objective uses the same 120-parameter head: an affine 12→8 projection and two learned eight-dimensional action prototypes, with normalized cosine scores.
-
-The objectives are gain mean-squared error, regret-weighted forward cross entropy, a bidirectional contrastive loss, and ordinary binary cross entropy. Full-batch Adam runs for 100 epochs at learning rate .01 and weight decay .001, with one fixed optimization seed. The grid contains 600 head fits and 150 PCA fits. This is a compact objective comparison, not an unrestricted architecture search.
+The capacity study tests stronger regularization, compressed question features, and conservative corrections to confidence. The compact study crosses question-only or question/draft representations with four objectives: gain regression, regret-weighted cross entropy, bidirectional contrastive loss, and binary cross entropy. All four compact objectives use the same small head and training-only selection. [Appendix A.3](#a3-control-implementation-and-encoder-timing) retains the architecture, optimization settings, and fit counts.
 
 The losses target different quantities. We compare the utility of their selected actions; their scores are not interchangeable calibrated probabilities. The shared head controls this particular architecture and optimization recipe.
 
@@ -198,9 +200,11 @@ The CLM state and learned families exclude confidence and auxiliary draft statis
 
 Calibrated CLM minus the raw encoder control is −.010645, with interval [−.018190, −.004292]. Both remain below confidence. Zero-shot CLM chooses thinking for 380 of 400 drafts. Its higher accuracy therefore comes with near-always-escalating cost. The interval for its utility difference includes zero; this is not proof of a population disadvantage.
 
-The encoder processes all 400 states without truncation at the specified cap. Mean state encoding time is 1.427 seconds and the 95th percentile is 2.244 seconds. Output-token utility does not charge this work. These separate encoder measurements are not end-to-end router/solver latency. Full-precision equivalence, pretraining overlap, and live solver/router co-residence remain untested. The finding concerns this quantized transfer recipe.
+Output-token utility excludes CLM encoder work. Separate encoding measurements are in [Appendix A.3](#a3-control-implementation-and-encoder-timing). Full-precision equivalence, pretraining overlap, and live solver/router co-residence remain untested. The finding concerns this quantized transfer recipe.
 
-## 5. Solver dependence and prospective follow-up
+## 5. Limits of transfer
+
+These supporting studies test different targets. The two-solver diagnostic examines realized opportunities. The parser follow-up tests a refitted policy change. The cap intervention tests a larger allowance on selected development questions. None replicates the primary learned-policy comparison.
 
 ### 5.1. Opportunities differ across the two tested solver sizes
 
@@ -225,13 +229,11 @@ The comparison establishes different observed opportunity patterns in these sett
 
 Accepting the larger model's direct draft also has higher point accuracy and fewer generated tokens than the smaller model's confidence policy. These token counts are useful context, but tokens from different model sizes are not equal units of compute. No live cross-size latency or energy advantage is established.
 
-### 5.2. A small learned pilot and a sparse favorable control
+### 5.2. Development evidence and the refitted guard
 
-On the reused 0.6B panel, a fixed Ridge candidate uses confidence, log(1 + answer-token count), and v7 parser rejection. It uses training-only standardization, penalty α=10, and escalation at predicted gain greater than zero. There is no inner parameter search. Its average utility difference is +.003516 against the frozen confidence decisions, with conditional 90% interval [−.031959, +.037163]. Its two directional means are positive, and it beats a matched confidence-only Ridge learner. It fails the required .01 margin and loses to the parser-aware confidence control. Two of four criteria fail.
+On the reused 0.6B panel, the three-feature Ridge pilot fails two of four criteria. Its utility difference against confidence is +.003516, with conditional 90% interval [−.031959, +.037163]. A control that also escalates parser-rejected drafts adds three escalations, all scored rescues, for +.022493 utility [+.007453, +.044905]. These fixed-action intervals omit refitting and research-selection uncertainty. The favorable control does not promote the failed learner.
 
-The parser-aware control escalates when confidence calls for thinking or the frozen parser rejects the direct draft. It adds three escalations on three questions, all scored rescues. Accuracy rises from 81.250% to 83.594%, tokens from 1,062.52 to 1,081.41, and utility by .022493. The fixed-action 90% interval is [+.007453, +.044905].
-
-This is sparse development evidence. The interval keeps the original confidence actions fixed and omits refitting and research-selection uncertainty. It does not promote the failed Ridge learner or establish a new router. The subsequent fresh experiment freezes a separate plain-confidence cutoff fitted on all 128 development states. Both prospective policies share that cutoff, −.07951707680497253. This refit has two changed training states, rather than the earlier cross-fitted control's three. The fresh study therefore tests the newly frozen policy contrast; it is not an exact replication of the earlier cross-fitted control.
+The fresh study uses a separate plain-confidence cutoff refitted on all 128 development states. Both prospective policies share that frozen cutoff. The refit changes two training actions, compared with three under the earlier cross-fitted control. Thus the fresh contrast tests the newly frozen rule, with no exact replication of the earlier fitted policy. [Appendix C.1](#c1-development-pilot-and-guard-refit) retains the pilot settings, full control metrics, and cutoff.
 
 ### 5.3. Fresh sparse evaluation identifies only the policy difference
 
@@ -260,21 +262,7 @@ The frozen follow-up contrast supplies one activation without a scored rescue. O
 
 ### 5.4. A matched reasoning-cap intervention
 
-The cap study selects 18 cells on 11 development questions using prior forced-closure metadata. It collects matched 2,048- and 4,096-token reasoning allowances, with the same question, solver, seed, and answer allowance. All 18 paired reasoning prefixes match. Every new 2k control also exactly replays its corresponding cached token streams.
-
-Primary means weight the 11 questions equally after averaging selected draws within each question. They describe the enriched cohort. Table 5 reports thinking-call costs; it does not add a new direct draft. Common direct cost cancels from the cap difference.
-
-**Table 5. Matched cap result on 11 selected question groups.** Intervals are paired 95% question-bootstrap summaries conditional on the selected cohort and recorded responses. Each question has equal weight after averaging its selected cells. Costs are for thinking calls; common direct cost cancels. The intervals do not cover cohort-selection uncertainty or general-task performance.
-
-| Outcome | 2k reasoning | 4k reasoning | Difference and interval |
-|---|---:|---:|---|
-| Scored accuracy | 36.36% | 40.91% | +4.55 percentage points [0, +13.64] |
-| Thinking-call tokens | 2,430.59 | 4,093.05 | +1,662.45 [1,225.67, 1,996.95] |
-| Thinking-call utility | .242107 | .204439 | −.037668 [−.094767, +.061647] |
-
-There is one rescue and no harms. The secondary cell-weighted count is 6/18 correct at 2k and 7/18 at 4k. It is not the primary question-weighted accuracy. The extra allowance gives lower point utility and does not support changing the default at the frozen cost preference. Its interval includes zero.
-
-The cap result has two further limits. The cohort was selected by prior forced-closure metadata in the development panel, independently of correctness. It supplies no whole-panel or fresh-task accuracy estimate. In addition, eight accepted extended outputs are scored incorrect and three are parser-rejected. These categories distinguish extraction status; they do not provide a mathematical error taxonomy.
+The cap intervention compares 2,048 with 4,096 reasoning tokens in 18 matched pairs on 11 development questions selected by prior forced-closure metadata. With equal question weights, it produces one rescue, no harms, and +4.55 percentage points of scored accuracy. Extra thinking-call cost is +1,662.45 tokens; utility is lower by .037668, with paired conditional 95% interval [−.094767, +.061647]. The interval includes zero. This selected-cohort result does not support changing the default at λ=.05 or establish a general cap effect. [Appendix C.2, Table C1](#c2-matched-cap-results) retains the full table, matching checks, and weighting and scorer limits.
 
 ## 6. Discussion
 
@@ -288,13 +276,13 @@ With 40 unique outer-training questions, the original 391-feature combined repre
 
 The capacity controls matter because they test a simple response to that concern. Stronger regularization, PCA compression, and confidence corrections also fail their bounded screens. The representation controls similarly show that this compact objective change and this released transfer recipe do not supply a demonstrated improvement. The combined evidence narrows these recipes. It does not exhaust larger datasets, other features, other fusion methods, or other model families.
 
-### 6.2. Confidence is a required control, not a universal solution
+### 6.2. Confidence as a reference policy
 
 Confidence is inexpensive and competitive on the repeat panel. It remains a necessary reference for the studied routers. The separate 1.7B diagnostic nevertheless gives lower confidence utility than direct acceptance. Thus the evidence does not justify recommending confidence routing in every setting.
 
 The smaller solver has more observed opportunities, but this does not automatically yield a successful learned improvement over its confidence baseline. The three-feature pilot illustrates this distinction. A system-level choice must also consider the stronger direct solver, with full compute and latency accounting rather than only token counts.
 
-### 6.3. Follow-up must retain its own estimand
+### 6.3. Each follow-up estimates a different quantity
 
 The parser control and cap study answer different questions. The fresh guard test measures the incremental effect of one frozen policy modification. It deliberately leaves shared-action outcomes unmeasured. The cap intervention measures the effect of a larger allowance on previously selected cells. It has tighter token-stream matching but a narrow cohort.
 
@@ -379,6 +367,16 @@ The cap completion used a larger permitted deadline, but every new call complete
 
 A CLM reporting deviation affected the bootstrap seed for 75 per-condition intervals. An additive sidecar provides the planned-seed versions. Point results, actions, selection, screens, and the averaged intervals used in Table 3 are unchanged. The original report and correction are both retained.
 
+### A.3. Control implementation and encoder timing
+
+The capacity study tests stronger regularization, compressed question features, and conservative corrections to confidence. Its fixed grid contains 1,035 Ridge fits and 75 PCA fits across the two four-draw directions and secondary full-eight condition. All preprocessing and configuration selection remain within training questions.
+
+The compact neural study crosses two representations with four objectives. The representations are the question vector and a normalized mean of separate question and direct-draft vectors. Training-only PCA produces eight coordinates. Four draft statistics are added. Every objective uses the same 120-parameter head: an affine 12→8 projection and two learned eight-dimensional action prototypes, with normalized cosine scores.
+
+The objectives are gain mean-squared error, regret-weighted forward cross entropy, a bidirectional contrastive loss, and ordinary binary cross entropy. Full-batch Adam runs for 100 epochs at learning rate .01 and weight decay .001, with one fixed optimization seed. The grid contains 600 head fits and 150 PCA fits. This is a compact objective comparison, not an unrestricted architecture search.
+
+The released CLM encoder processes all 400 states without truncation at the specified cap. Mean state encoding time is 1.427 seconds and the 95th percentile is 2.244 seconds. Output-token utility does not charge this work. These separate encoder measurements are not end-to-end router/solver latency. Full-precision equivalence, pretraining overlap, and live solver/router co-residence remain untested. The finding concerns this quantized transfer recipe.
+
 ## Appendix B. Claim-to-source map
 
 This table links each evidence block to the project records used to draft the paper. It is a provenance map, not a new analysis.
@@ -394,11 +392,39 @@ This table links each evidence block to the project records used to draft the pa
 | 0.6B candidate and parser control | [Pilot results](../../docs/qwen06-router-pilot-results.md) |
 | Prospective cutoff and question roles | [Sparse preparation](../../docs/sparse-validation-preparation-results.md) |
 | Fresh policy contrast | [Sparse results](../../docs/sparse-validation-results.md) |
-| Table 5 and matched token streams | [Cap results](../../docs/qwen17-cap-bridge-results.md) |
+| Section 5.4, Table C1, and matched token streams | [Cap results](../../docs/qwen17-cap-bridge-results.md) |
 | Extended evidence and extraction audit | [Evidence ledger](evidence-ledger.md) |
 | Revision claim IDs, units, comparators, and limits | [Revision evidence map](revision-evidence-map.md) |
 
 The later synthetic acquisition study is a separate feasibility result. It is not pooled with the real-solver evidence in this manuscript.
+
+## Appendix C. Supporting follow-up details
+
+### C.1. Development pilot and guard refit
+
+On the reused 0.6B panel, a fixed Ridge candidate uses confidence, log(1 + answer-token count), and v7 parser rejection. It uses training-only standardization, penalty α=10, and escalation at predicted gain greater than zero. There is no inner parameter search. Its average utility difference is +.003516 against the frozen confidence decisions, with conditional 90% interval [−.031959, +.037163]. Its two directional means are positive, and it beats a matched confidence-only Ridge learner. It fails the required .01 margin and loses to the parser-aware confidence control. Two of four criteria fail.
+
+The parser-aware control escalates when confidence calls for thinking or the frozen parser rejects the direct draft. It adds three escalations on three questions, all scored rescues. Accuracy rises from 81.250% to 83.594%, tokens from 1,062.52 to 1,081.41, and utility by .022493. The fixed-action 90% interval is [+.007453, +.044905].
+
+This is sparse development evidence. The interval keeps the original confidence actions fixed and omits refitting and research-selection uncertainty. It does not promote the failed Ridge learner or establish a new router. The subsequent fresh experiment freezes a separate plain-confidence cutoff fitted on all 128 development states. Both prospective policies share that cutoff, −.07951707680497253. This refit has two changed training states, rather than the earlier cross-fitted control's three. The fresh study therefore tests the newly frozen policy contrast; it is not an exact replication of the earlier cross-fitted control.
+
+### C.2. Matched cap results
+
+The cap study selects 18 cells on 11 development questions using prior forced-closure metadata. It collects matched 2,048- and 4,096-token reasoning allowances, with the same question, solver, seed, and answer allowance. All 18 paired reasoning prefixes match. Every new 2k control also exactly replays its corresponding cached token streams.
+
+Primary means weight the 11 questions equally after averaging selected draws within each question. They describe the enriched cohort. Table C1 reports thinking-call costs; it does not add a new direct draft. Common direct cost cancels from the cap difference.
+
+**Table C1. Matched cap result on 11 selected question groups.** Intervals are paired 95% question-bootstrap summaries conditional on the selected cohort and recorded responses. Each question has equal weight after averaging its selected cells. Costs are for thinking calls; common direct cost cancels. The intervals do not cover cohort-selection uncertainty or general-task performance.
+
+| Outcome | 2k reasoning | 4k reasoning | Difference and interval |
+|---|---:|---:|---|
+| Scored accuracy | 36.36% | 40.91% | +4.55 percentage points [0, +13.64] |
+| Thinking-call tokens | 2,430.59 | 4,093.05 | +1,662.45 [1,225.67, 1,996.95] |
+| Thinking-call utility | .242107 | .204439 | −.037668 [−.094767, +.061647] |
+
+There is one rescue and no harms. The secondary cell-weighted count is 6/18 correct at 2k and 7/18 at 4k. It is not the primary question-weighted accuracy. The extra allowance gives lower point utility and does not support changing the default at the frozen cost preference. Its interval includes zero.
+
+The cap result has two further limits. The cohort was selected by prior forced-closure metadata in the development panel, independently of correctness. It supplies no whole-panel or fresh-task accuracy estimate. In addition, eight accepted extended outputs are scored incorrect and three are parser-rejected. These categories distinguish extraction status; they do not provide a mathematical error taxonomy.
 
 ## References
 

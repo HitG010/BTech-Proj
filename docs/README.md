@@ -1,5 +1,14 @@
 # Research map
 
+**R4 complete, 2026-10-11.** The
+[working manuscript](../papers/thinking-selection/manuscript.md) now leads
+with the closest empirical prior work and states the direct DART overlap.
+Supporting pilot/cap details and control settings move to appendices; all
+numerical table rows and Box 1 are preserved. Methods and literature reviews
+passed. The [revision response](../papers/thinking-selection/revision-response.md) records
+the changes. Next is R5: freeze the separate figure-export specification.
+No experiment or statistical reanalysis was run.
+
 **R3 complete, 2026-10-10.** The
 [working manuscript](../papers/thinking-selection/manuscript.md) now clarifies
 conditional uncertainty, shared training, the sparse refit/interval/observed-mask

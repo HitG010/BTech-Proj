@@ -85,10 +85,39 @@ Tables 1–5, Table A1, and Box 1 retain all their prior rows. Captions and pros
 changed. Local file/section links and whitespace checks pass. No implementation
 tests, raw-data analysis, or interval calculations were run.
 
+## R4. Scope, prior work, and supporting detail — complete
+
+Completed 11 October 2026; primary-source recheck began 10 October.
+
+| Location | Change | Evidence boundary |
+|---|---|---|
+| Section 2.1 | Leads with DART, Chen, Garg and Sagtani, and Yang et al.; gives the concrete design overlap and the local distinction. | L02–L05; no post-draft/repeated-supervision priority, new general principle, or faithful external-system comparison. |
+| Section 2.2 | Keeps router/representation context after the closest empirical work. | L01, L06–L07; existing citations and CLM release status retained. |
+| Literature notes, BibTeX, and claim map | Adds a dated full-text retrieval correction and updates DART's source note. | DART v4 checked directly; older abstract-only record retained as history. No external numerical results reproduced. |
+| Section 4.2 and Appendix A.3 | Moves architecture, optimization, and fit counts to the appendix; keeps objectives, results, and recipe limits in the main text. | C07–C10, M05–M07; compact heads remain distinct from CPU Ridge controls. |
+| Section 4.3 and Appendix A.3 | Moves separate CLM timing detail beside implementation settings. | C11; encoder identity named, output-token utility still excludes this work, no live deployment timing claim. |
+| Sections 5.2–5.3 and Appendix C.1 | Shortens development pilot history; keeps failed criteria, favorable sparse control, refit, and fresh-result interpretation visible. | C14–C17, D01–D02; Section 5.3 unchanged, no broader sparse-event inference. |
+| Section 5.4 and Appendix C.2 | Keeps one rescue, added cost, lower point utility, interval, and cohort limit in the main text; moves the full cap table to Table C1. | C18, N4; original Table 5 rows/caption retained under the new label. |
+
+### Review and preservation
+
+The source check used the four cited primary full texts and the earlier
+contribution review. The targeted methods check identified two relocation
+ambiguities: the shared head applies to the compact objectives, and the timing
+paragraph concerns CLM. Both are corrected. Separate GPT-6.1-sol/xhigh methods
+and literature/contribution reviews pass R4. Their sign-off is limited to this
+revision; R6 remains the final scientific assessment.
+
+Document comparison preserves all outcome/accounting table rows and Box 1.
+Table 5 is now Table C1; only its label and the Appendix B location pointer
+change. The full sparse interpretation in Section 5.3 remains unchanged.
+Local links, section anchors, and whitespace are checked before the checkpoint.
+This pass does not decide publication novelty or replace the final R6 review.
+
 ## Response to the critical-review concerns
 
 Concern numbers refer to Section 4 of the
-[critical review](critical-review-2026-10-10.md). “Addressed in R2/R3” means a
+[critical review](critical-review-2026-10-10.md). “Addressed in R2–R4” means a
 text change was made; the final scientific assessment remains R6.
 
 | Concern | Response so far | Manuscript location | Status / next pass |
@@ -99,17 +128,18 @@ text change was made; the final scientific assessment remains R6.
 | 4. Fixed-fit uncertainty | Adds omitted training/refit/optimization variability, overlapping-fold dependence, and lack of joint coverage beside the method and captions. | Section 3.5; captions; Limitations | Addressed in R3; full-training uncertainty remains unmeasured. |
 | 5. Sparse follow-up and refit | Distinguishes the refitted rule, explains bootstrap support, and derives the observed-mask ceiling without changing the screen. | Sections 5.2–5.3; Limitations | Addressed in R3; population benefit and absolute policy metrics remain unresolved. |
 | 6. Underused repeat diagnostics | Adds the existing signed variance, both transfer directions, and flagged-case point bounds beside the failed primary tests. | Box 1 and following paragraphs | Addressed in R2; no new calculation. |
-| 7. Restricted controls | Retains recipe limits and makes CLM's omitted confidence/feature-addition contrast explicit. | Sections 4.2–4.3; Limitations | R3 interpretation addressed; R4 prior-work comparison remains. |
+| 7. Restricted controls | Retains recipe limits and makes CLM's omitted confidence/feature-addition contrast explicit. | Sections 4.2–4.3; Limitations | Addressed in R3/R4; faithful external-method comparison remains absent. |
 | 8. Utility versus complete cost | Separates policy tokens, omitted acquisition charges, encoder observations, and ledger costs; retains cross-size compute limit. | Sections 3.1, 4.1, 4.3, 5.1, 6.4; Appendix A | Addressed in R2/R3; full deployment cost remains unmeasured. |
-| 9. Cap and follow-up narrative | States that supporting studies answer separate questions and do not replicate the central learner comparison. | Introduction; Conclusion | R4 must shorten/reorganize follow-up detail and appendices. |
+| 9. Cap and follow-up narrative | Shortens supporting results and moves implementation/pilot/cap detail to appendices while retaining directions, failures, and limits in the main text. | Section 5; Appendices A.3/C | Addressed in R4; final coherence assessed in R6. |
 
-The full DART comparison and dated retrieval addendum remain R4 work. No new
-literature claim was introduced during R2–R3. Figure specification/export remains
+The full DART comparison and dated retrieval addendum are complete in R4.
+No external-method experiment was added. Figure specification/export remains
 R5. Final methods and contribution assessment remains R6.
 
 ## Execution boundary
 
-R2–R3 use the completed claim map and tracked result records. No raw response,
+R2–R4 use the completed claim map and tracked result records. R4 also checks
+the cited primary literature. No raw project response,
 score cache, training reference, sealed outcome, model asset, generation,
 fitting, scoring, statistical reanalysis, figure export, or implementation test
 is used. Documentary checks compare wording, links, and retained tables.

@@ -1027,3 +1027,17 @@ Implementation and verification status will be recorded here as work completes.
   checks pass. No raw/cache/reference access, experiments, statistical
   reanalysis, new interval/power calculation, figure export, or implementation
   tests. R4 scope/prior-work and follow-up organization is next; R4–R6 pending.
+
+- R4 scope/prior-work revision complete, 2026-10-11: the
+  [manuscript](papers/thinking-selection/manuscript.md) leads with the closest
+  empirical overlap and explicitly retains the absent faithful external-method
+  comparison. The dated DART full-text addendum updates the literature notes,
+  BibTeX and claim map. Appendix A.3 retains control settings/CLM timing;
+  Appendix C retains development pilot details and original cap table rows,
+  now Table C1. Main text preserves failed criteria, outcome directions and
+  inference limits; sparse Section 5.3 and Box 1 are unchanged. Targeted methods
+  feedback corrected two relocation ambiguities; methods and literature reviews
+  passed R4. No raw project/cache/reference
+  or sealed access, experiments, new statistics, export or implementation tests.
+  R5 is next: freeze source/display inputs and render specification before any
+  figure export. R5–R6 pending; author/submission details remain deferred.

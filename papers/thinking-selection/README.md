@@ -9,9 +9,20 @@ of Small Qwen3 Models.
 
 The draft contains an abstract, introduction, related work, methods, results,
 discussion, limitations, conclusion, references, and reproducibility appendices.
-It includes five main tables, one accounting table, and a post-hoc diagnostic box.
-R1–R3 are complete. Scope/prior-work edits, figures, and final review remain
-R4–R6 work. This is a working draft, not a submitted paper.
+It includes four main tables, appendix accounting and cap tables, and a post-hoc
+diagnostic box. R1–R4 are complete. Figures and final review remain R5–R6 work. This is a working draft, not a submitted paper.
+
+## R4 scope and prior work, 11 October 2026
+
+The closest empirical papers now lead Related work. The revised comparison
+states DART's direct overlap and retains the local GSM8K/Qwen3 contribution.
+The [literature addendum](related-work-notes.md#r4-full-text-addendum--10-october-2026)
+closes the earlier DART retrieval limit. Control settings and CLM timing move
+to Appendix A.3; pilot history and the full cap table move to Appendix C.
+Their outcomes and limits remain in the main text. Separate methods and
+literature/contribution reviews passed. All numerical table rows and Box 1
+are preserved. See the [revision response](revision-response.md).
+Next is R5, starting with a separately frozen figure-export specification.
 
 ## R3 interpretation repairs, 10 October 2026
 
@@ -53,7 +64,7 @@ or sealed roles, or ran experiments or statistical analyses.
 
 - [Revision plan](revision-plan-2026-10-10.md): six ordered passes for v0.2,
   exact evidence additions, interpretation repairs, figure specifications, and
-  final review criteria. R1–R3 are complete; R4–R6 remain pending.
+  final review criteria. R1–R4 are complete; R5–R6 remain pending.
 - [Revision response](revision-response.md): completed text changes, targeted
   review outcomes, and unresolved concerns assigned to later passes.
 - [Revision claim-to-source map](revision-evidence-map.md): numbered claims,
@@ -91,9 +102,9 @@ This was an editorial and provenance review, not a new human scoring audit.
 ## Remaining author work
 
 1. Supply author names, affiliations, contributions, funding, and conflicts.
-2. Complete R4 scope/prior-work edits and the remaining figure/final-review
-   passes. The central argument, diagnostic box, and interpretation repairs
-   are complete. Broader claims need broader evidence under a separate protocol.
+2. Complete R5 figures and R6 final review. The central argument, interpretation,
+   prior-work comparison, and supporting-section revision are complete. Broader
+   claims need broader evidence under a separate protocol.
 3. Choose a venue and apply its current format and disclosure requirements.
    This draft is venue-neutral.
 4. Decide which verified cached-report figures would help. Freeze an additive

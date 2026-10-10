@@ -276,7 +276,7 @@ R1 adds no new literature search or external benchmark comparison.
 | ID / permitted context | Source record | Required limit and revision use |
 |---|---|---|
 | **L01. Repeated solver supervision and contrastive routing have prior work.** | RouterDC, CSCR, SEMIROUTER entries in the related-work notes and bibliography. | No priority for these components. No faithful reproduction or superiority result here. |
-| **L02. Post-draft accept-or-think routing already exists.** | DART v4 full-text check, Sections 2.2/4.2/E.1, in the contribution review. | Explain our one-draft/fixed-budget setting; do not call post-draft routing new. Add a dated correction to the old abstract-only retrieval limit. |
+| **L02. Post-draft accept-or-think routing already exists.** | DART v4 full-text check, Sections 2.2/4.2/E.1, in the contribution review. | R4 states our one-draft/fixed-budget setting and absence of a faithful DART comparison. The [dated addendum](related-work-notes.md#r4-full-text-addendum--10-october-2026) supersedes the old abstract-only retrieval limit; no post-draft priority claim. |
 | **L03. Stochastic ceilings and hindsight unions differ.** | Chen v3, Sections III–VI/Appendix C, in both source reviews. | No new oracle theorem; no hindsight score as deployable ceiling. |
 | **L04. Scoring artifacts and router collapse are established evaluation concerns.** | Garg and Sagtani, Sections 3/5/8, in the source reviews. | C06 excludes reversal by flagged cases only. Do not imply our diagnostics reproduce their mechanism tests. |
 | **L05. Failure risk and protocol value are already distinguished.** | Yang et al., Sections 2–5, in the source reviews. | Our stochastic outcome evidence is local; the general distinction is not the new claim. |

@@ -1,6 +1,6 @@
 # Verified literature notes for the empirical manuscript
 
-Primary-source check: 2026-10-09. These notes support drafting from the existing
+Initial primary-source check: 2026-10-09; R4 addendum: 2026-10-10. These notes support drafting from the existing
 [outline](../../docs/empirical-paper-outline-2026-10-09.md). They introduce no
 experiment, dataset, model download, or external outcome analysis. Literature
 claims below describe the cited authors' designs; their numerical results were
@@ -172,6 +172,26 @@ interpretations; the older “How Much of the Routing Gap Is Real?” title is n
 a separate work. L17's complete title includes *Cost-Aware Protocol Routing
 Across Reasoning Tasks*. Both versions and author order were checked against
 the corresponding arXiv records.
+
+## R4 full-text addendum — 10 October 2026
+
+The [contribution review](reviewer-contribution-2026-10-10.md) and R4 recheck
+accessed [DART v4 full text](https://arxiv.org/html/2606.23181v4), Sections
+2.2–2.3, 4.2, and E.1. This supersedes L11's dated abstract-only retrieval
+limit. Its observed-draft/fresh-thinking decision and supervised-router
+underperformance overlap directly with this paper. Section 2.1 now states
+our narrower contract and the absent faithful comparator. The older retrieval
+record above is retained as history.
+
+R4 also rechecked [Chen v3, Appendix C](https://arxiv.org/html/2607.03436v3),
+[Garg and Sagtani v1, Sections 3/5/8](https://arxiv.org/html/2605.07395v1), and
+[Yang et al. v1, Sections 2–5](https://arxiv.org/html/2608.14927v1).
+The revised text acknowledges Chen's held-out archived-policy evaluation,
+Garg and Sagtani's mechanism controls, and Yang et al.'s post-answer probes
+and deterministic outcomes. These are verified design overlaps. Our local
+empirical contribution is an author interpretation, not a priority finding.
+No external results were reproduced and no new citation was added. CLM blog
+and acquisition-supplement retrieval limits remain unchanged.
 
 ## Unsupported extensions to avoid
 
