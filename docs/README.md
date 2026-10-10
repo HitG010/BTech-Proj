@@ -1,5 +1,14 @@
 # Research map
 
+**Claim map complete, 2026-10-10.**
+[Revision pass R1](../papers/thinking-selection/revision-evidence-map.md) maps
+19 research/synthesis claims and supporting method/literature records to tracked
+sources. It separates the failed primary reproducibility test from post-hoc
+structure, distinguishes comparators and endpoints, and records sparse/cap
+limits. Document checks and a separate methods review found no blocking mismatch.
+The manuscript is unchanged. Next is R2, the central text revision. No raw
+outcomes, references, experiments, statistical analyses, or tests were accessed/run.
+
 **Revision plan, 2026-10-10.** The
 [v0.2 plan](../papers/thinking-selection/revision-plan-2026-10-10.md) specifies
 six passes: claim map, central argument, interpretation repairs, scope/prior

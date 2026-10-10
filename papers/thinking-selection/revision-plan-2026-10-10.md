@@ -1,6 +1,6 @@
 # Plan: revise the paper using existing evidence
 
-Date: 10 October 2026. Status: **planned; revision has not started**.
+Date: 10 October 2026. Status: **R1 complete; R2–R6 pending**.
 Base: manuscript v0.1 at `1695a1f`; critical review at `79a6cdd`.
 Branch: `codex/confidence-acquisition-plan`.
 
@@ -47,7 +47,7 @@ R6 reviews the resulting paper. Each pass produces a concrete deliverable.
 
 | Pass | Work | Deliverable | Completion check |
 |---|---|---|---|
-| R1. Fix the claim | Build a claim-to-source table from the records below. Mark primary, post-hoc, exploratory, and fresh evidence. | `revision-evidence-map.md` | Every numerical claim has a source, comparator, unit, evidence role, and limitation. |
+| R1. Fix the claim — complete | Build a claim-to-source table from the records below. Mark primary, post-hoc, exploratory, and fresh evidence. | [Revision evidence map](revision-evidence-map.md) | Source links and central number/comparator/qualifier checks passed; no experiment reproduction. |
 | R2. Rebuild the central argument | Rewrite the abstract, Introduction, repeat Results, and Conclusion. Add the repeat-diagnosis box. | First v0.2 text pass | The reader can distinguish observed opportunity, same-question structure, and held-out-question selection. The failed primary gate remains visible. |
 | R3. Repair interpretation | Clarify halves, bootstrap scope, sparse policy refit, event support, opportunity counts, and control limits. | Updated Methods, captions, and follow-up sections | All interpretation requirements in Section 5 are met beside the relevant result. |
 | R4. Tighten scope and prior work | Update the DART comparison. Shorten cap/parser history. Move operational detail to appendices. | Coherent main paper plus appendices | Main text has one argument. No unsupported first, causal, population, or deployment claim remains. |
@@ -232,5 +232,11 @@ and runs no generation, fitting, scoring, statistical reanalysis, figure export,
 or tests. Existing experiment protocols and outputs remain fixed. The waived
 human scoring audit stays waived. Closed G1 and reused-panel searches stay closed.
 
-**Next executable task:** R1, the claim-to-source map; then R2, the central text
-revision. Creating this plan does not mark those passes complete.
+**Progress, 10 October 2026:** R1 is complete. The
+[claim-to-source map](revision-evidence-map.md) defines 19 research/synthesis
+claims, ten method records, seven literature-context records, four numerical
+registers, and the sparse arithmetic deductions. Document links and central
+evidence were reviewed; the manuscript is unchanged.
+
+**Next executable task:** R2, the central text revision using the mapped claims.
+R2–R6 have not started. The completed map does not establish publication novelty.

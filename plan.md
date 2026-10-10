@@ -993,3 +993,15 @@ Implementation and verification status will be recorded here as work completes.
   plan defines three displays from reported aggregates and a concern-response
   record. No manuscript revision, raw/reference access, new analysis, export,
   fitting, generation, scoring, or tests occurred. R1 claim mapping is next.
+- 2026-10-10 R1 complete: created the
+  [revision claim-to-source map](papers/thinking-selection/revision-evidence-map.md)
+  with 19 research/synthesis claims, ten method records, seven literature-context
+  records, four numerical registers, accounting, and separate sparse deductions.
+  Each planned central claim has its source, comparator, units, role, and limit.
+  The tracked repeat protocol supplies the six-decimal primary interval; cap
+  percentage-point conversion is explicit. All local links/anchors resolve.
+  GPT-6.1-sol/xhigh methods review found no blocking mismatch; changed C05 from
+  “asymmetric” to different directional point estimates, with no formal
+  directional-difference test claimed. No raw/cache/reference access, experiments,
+  statistical reanalysis, figure export, or tests. Manuscript remains v0.1;
+  R2 central text revision is next; R2–R6 pending.

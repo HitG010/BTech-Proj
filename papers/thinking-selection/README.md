@@ -33,7 +33,10 @@ sealed roles, and did not run experiments or statistical analyses.
 
 - [Revision plan](revision-plan-2026-10-10.md): six ordered passes for v0.2,
   exact evidence additions, interpretation repairs, figure specifications, and
-  final review criteria. Planned; manuscript revision has not started.
+  final review criteria. R1 is complete; R2–R6 remain pending.
+- [Revision claim-to-source map](revision-evidence-map.md): numbered claims,
+  reported values, comparators, units, evidence roles, source sections, and
+  required limits. Source/section links and central claims were reviewed.
 - [Evidence ledger](evidence-ledger.md): facts, comparators, units, source links,
   protocol identities, and details that the tracked documents do not supply.
 - [Bibliography](references.bib): 17 verified primary-source entries, including

@@ -849,3 +849,15 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   reported values only. No raw outcomes, score caches, references or sealed
   access, refitting, rebootstrap, generation or tests are part of this plan.
   Manuscript v0.1 remains unchanged. Author/submission details remain deferred.
+- R1 claim mapping complete, 2026-10-10: use
+  [revision-evidence-map.md](papers/thinking-selection/revision-evidence-map.md)
+  for v0.2 claims C00–C18, numerical registers N1–N4, methods M01–M10,
+  literature context L01–L07, accounting and sparse deductions. Tracked sources
+  support the recorded values; preserve role/comparator/unit/interval limits.
+  Local source/section links pass, and a separate methods review found no
+  blocking mismatch. C05 says different directional point estimates; no formal
+  asymmetry test was performed. The map does not reverse the failed primary
+  reproducibility criterion or establish novelty. R2 central text revision is
+  next; R2–R6 remain pending. Manuscript v0.1 and all frozen study files remain
+  unchanged. No raw outcomes/cache/references, experiments, statistical
+  reanalysis, figure export, or tests were accessed/run for R1.
