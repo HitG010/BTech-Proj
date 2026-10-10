@@ -114,6 +114,32 @@ change. The full sparse interpretation in Section 5.3 remains unchanged.
 Local links, section anchors, and whitespace are checked before the checkpoint.
 This pass does not decide publication novelty or replace the final R6 review.
 
+## R5. Frozen report-to-figure export — complete
+
+The [display plan](figure-export-plan.md), inputs, and renderers froze at
+`655094d` before export, using source documents from `d1287e6`. The independent
+methods review passed the freeze. The single completed export creates three
+figures, each in PDF, SVG, and PNG. [Figure files and provenance](figures/README.md)
+include exact input precision, source locations, comparator/interval metadata,
+source/renderer/output hashes, and the final artifact review.
+
+| Figure and location | What it shows | Limits retained |
+|---|---|---|
+| 1, after Table 1 | Study roles, repeated/control reuse, separate diagnostic, cap subset, fresh refitted guard. | Design influence does not mean independent replication; no pooled sample count. |
+| 2, after Table 3 | Original learner contrast and three later training-selected families. | Separate comparators; same 50 groups; conditional 90% intervals; no new effect, refit uncertainty, or joint coverage. Other individual policies remain in Table 3. |
+| 3, after Table 4 interpretation | All six two-solver accuracy/token points and 4/64 versus 24/64 opportunity counts. | Point estimates only; draw-dependent realized gain; escalation pays both calls; cross-size tokens are not equal compute. |
+
+All original numerical table rows, Box 1, and sparse Section 5.3 are unchanged.
+The figure captions are exact copies of the frozen input text. Root visual
+review inspected all PNGs and all PDF pages rendered independently through
+native PDFKit/Quartz. SVG text and all nine output hashes pass artifact checks.
+No correction or second export was required. See the
+[review record](figures/review.md) and [verification](figures/review-verification.json).
+
+This is a display export. It uses no raw project outcome, score cache, reference,
+sealed role, new fitting/scoring/generation, statistical reanalysis, or test run.
+R6 remains the final scientific assessment.
+
 ## Response to the critical-review concerns
 
 Concern numbers refer to Section 4 of the
@@ -133,8 +159,8 @@ text change was made; the final scientific assessment remains R6.
 | 9. Cap and follow-up narrative | Shortens supporting results and moves implementation/pilot/cap detail to appendices while retaining directions, failures, and limits in the main text. | Section 5; Appendices A.3/C | Addressed in R4; final coherence assessed in R6. |
 
 The full DART comparison and dated retrieval addendum are complete in R4.
-No external-method experiment was added. Figure specification/export remains
-R5. Final methods and contribution assessment remains R6.
+No external-method experiment was added. R5 figure specification/export is
+complete. Final methods and contribution assessment remains R6.
 
 ## Execution boundary
 
@@ -142,5 +168,7 @@ R2–R4 use the completed claim map and tracked result records. R4 also checks
 the cited primary literature. No raw project response,
 score cache, training reference, sealed outcome, model asset, generation,
 fitting, scoring, statistical reanalysis, figure export, or implementation test
-is used. Documentary checks compare wording, links, and retained tables.
+is used in R2–R4. Documentary checks compare wording, links, and retained
+tables. R5 separately runs the frozen report-only renderer and artifact QA;
+its boundary is recorded above. It performs no scientific re-estimation.
 Author identity and submission details remain deferred.

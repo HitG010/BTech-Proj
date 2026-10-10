@@ -10,7 +10,17 @@ of Small Qwen3 Models.
 The draft contains an abstract, introduction, related work, methods, results,
 discussion, limitations, conclusion, references, and reproducibility appendices.
 It includes four main tables, appendix accounting and cap tables, and a post-hoc
-diagnostic box. R1–R4 are complete. Figures and final review remain R5–R6 work. This is a working draft, not a submitted paper.
+diagnostic box, plus three figures in PDF/SVG/PNG. R1–R5 are complete. Final
+review remains R6 work. This is a working draft, not a submitted paper.
+
+## R5 figures, 11 October 2026
+
+[View the three figures and provenance](figures/README.md). The evidence map,
+utility contrasts, and two-solver diagnostic are embedded in the manuscript.
+The display plan, inputs, and renderers froze at `655094d` before export.
+All reported values and original numerical tables remain unchanged. Source,
+output-hash, and PNG/PDF visual checks pass; no statistic was re-estimated.
+Next is R6, the final methods and contribution review.
 
 ## R4 scope and prior work, 11 October 2026
 
@@ -64,7 +74,9 @@ or sealed roles, or ran experiments or statistical analyses.
 
 - [Revision plan](revision-plan-2026-10-10.md): six ordered passes for v0.2,
   exact evidence additions, interpretation repairs, figure specifications, and
-  final review criteria. R1–R4 are complete; R5–R6 remain pending.
+  final review criteria. R1–R5 are complete; R6 remains pending.
+- [Figure export plan](figure-export-plan.md) and [display package](figures/README.md):
+  frozen source/input/render specification, nine outputs, and artifact review.
 - [Revision response](revision-response.md): completed text changes, targeted
   review outcomes, and unresolved concerns assigned to later passes.
 - [Revision claim-to-source map](revision-evidence-map.md): numbered claims,
@@ -91,8 +103,9 @@ The manuscript makes no new-method priority or external-system superiority claim
 
 Tables were transcribed from tracked result documents. No raw result, score,
 reference, or sealed outcome was opened to write them. No model generation,
-fitting, scoring, statistical reanalysis, figure export, or test run was performed.
-The frozen experiment code and artifacts remain unchanged.
+fitting, scoring, statistical reanalysis, or test run was performed. R5 adds
+the separately frozen report-only figure export. The frozen experiment code
+and artifacts remain unchanged.
 
 Methods and literature were reviewed separately with GPT-6.1-sol at xhigh effort.
 Review corrected the cap-selection description, the sparse contrast's
@@ -102,13 +115,13 @@ This was an editorial and provenance review, not a new human scoring audit.
 ## Remaining author work
 
 1. Supply author names, affiliations, contributions, funding, and conflicts.
-2. Complete R5 figures and R6 final review. The central argument, interpretation,
+2. Complete R6 final review. The central argument, interpretation,
    prior-work comparison, and supporting-section revision are complete. Broader
    claims need broader evidence under a separate protocol.
 3. Choose a venue and apply its current format and disclosure requirements.
    This draft is venue-neutral.
-4. Decide which verified cached-report figures would help. Freeze an additive
-   export plan before creating them. Do not rerun closed experiments.
+4. Review the completed R5 figures for the eventual venue. Any display change
+   must follow the additive correction rule; do not rerun closed experiments.
 5. Prepare a public artifact manifest only after checking licenses and access
    boundaries. A public release is not yet available or promised.
 

@@ -899,3 +899,18 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   or sealed access, experiments, new statistics, export or implementation tests.
   R5 is next: freeze source/display inputs and render specification before any
   figure export. R5–R6 pending; author/submission details remain deferred.
+
+- R5 figure export complete, 2026-10-11: the separately frozen
+  [display plan](papers/thinking-selection/figure-export-plan.md), inputs and
+  renderers committed at `655094d` before the one completed report-only export.
+  Sources are pinned to R4 `d1287e6`; see the
+  [figure index](papers/thinking-selection/figures/README.md) for all nine
+  PDF/SVG/PNG outputs, source/output hashes and artifact review. Exact captions
+  are embedded in the manuscript; original numerical tables/Box 1/sparse text
+  are unchanged. Root PNG and independent PDFKit-rendered page inspection pass;
+  source/number/output-hash checks pass. No raw outcome/cache/reference/sealed
+  access, fit/scoring/generation, statistical reanalysis or implementation tests.
+  Preserve completed export and frozen specification; corrections need an
+  additive pinned version. R6 final methods/contribution review is next.
+  Author/venue/public-release details remain deferred; no novelty or acceptance
+  claim follows from figure export.

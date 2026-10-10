@@ -1,6 +1,6 @@
 # Plan: revise the paper using existing evidence
 
-Date: 10 October 2026. Updated: 11 October 2026. Status: **R1–R4 complete; R5–R6 pending**.
+Date: 10 October 2026. Updated: 11 October 2026. Status: **R1–R5 complete; R6 pending**.
 Base: manuscript v0.1 at `1695a1f`; critical review at `79a6cdd`.
 Branch: `codex/confidence-acquisition-plan`.
 
@@ -51,7 +51,7 @@ R6 reviews the resulting paper. Each pass produces a concrete deliverable.
 | R2. Rebuild the central argument — complete | Rewrite the abstract, Introduction, repeat Results, and Conclusion. Add the repeat-diagnosis box. | [v0.2 working manuscript](manuscript.md), [revision response](revision-response.md) | Targeted methods/argument reviews passed; failed primary gates retained; original outcome/accounting table rows unchanged. |
 | R3. Repair interpretation — complete | Clarify halves, bootstrap scope, sparse policy refit, event support, opportunity counts, and control limits. | [Updated manuscript](manuscript.md), [revision response](revision-response.md) | Targeted methods review passed; captions/prose clarified; all prior table/Box 1 rows unchanged. |
 | R4. Tighten scope and prior work — complete | Update the DART comparison. Shorten cap/parser history. Move operational detail to appendices. | [Revised main paper and appendices](manuscript.md), [revision response](revision-response.md) | Closest-source overlap checked; scoped claim retained; original table rows preserved; cap table moved to C1. |
-| R5. Prepare displays | Freeze source/transcription/render specifications, then create three figures from reported values. | `figure-export-plan.md`, display inputs, SVG/PDF/PNG files | Inputs and output paths are fixed before export; no effect or interval is re-estimated; captions preserve endpoints. |
+| R5. Prepare displays — complete | Freeze source/transcription/render specifications, then create three figures from reported values. | [Frozen plan](figure-export-plan.md), [figures and inputs](figures/README.md), [artifact review](figures/review.md) | Freeze `655094d` precedes the nine outputs; source/number/hash and PNG/PDF visual checks pass; no effect or interval re-estimated. |
 | R6. Review and close | Check methods and contribution separately. Record a response to each reviewer concern. | `revision-response.md`, `revision-review.md`, final v0.2 | Each concern is addressed or explicitly remains unresolved. Final scientific decision is recorded. |
 
 Root coordinates the work and edits the manuscript. If delegated, the methods
@@ -233,7 +233,7 @@ and run no generation, fitting, scoring, statistical reanalysis, or tests. Figur
 export remains a separate R5 action under its frozen specification. Existing experiment protocols and outputs remain fixed. The waived
 human scoring audit stays waived. Closed G1 and reused-panel searches stay closed.
 
-**Progress, 11 October 2026:** R1–R4 are complete. The
+**Progress, 11 October 2026:** R1–R5 are complete. The
 [claim-to-source map](revision-evidence-map.md) defines 19 research/synthesis
 claims, ten method records, seven literature-context records, four numerical
 registers, and the sparse arithmetic deductions. R2 rewrites the central
@@ -253,7 +253,12 @@ and CLM timing; Appendix C retains pilot details and the cap table, now C1.
 Unfavorable outcomes and key limits remain in the main text. Targeted methods
 and literature/contribution reviews pass R4.
 
-**Next executable task:** R5, freeze the separate display specification and
-source/display-input identities before figure export. R5–R6 have not started.
-The completed writing passes do not establish publication novelty or submission
-readiness.
+R5 froze the report-only export at `655094d`, then created three figures in
+PDF/SVG/PNG. Source, numerical-label, output-hash, and visual checks pass.
+Captions retain the study roles and inference limits. All existing numerical
+tables, Box 1, and sparse interpretation are preserved.
+
+**Next executable task:** R6, final methods and contribution review with a
+response to every major concern and an explicit scientific decision. R6 has
+not started. The completed writing/export passes do not establish publication
+novelty or submission readiness.

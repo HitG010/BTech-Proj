@@ -1,0 +1,53 @@
+{
+  "schema": "thinking-selection-r5-artifact-verification-v1",
+  "date": "2026-10-11",
+  "freeze_commit": "655094dc7b4a7cf8416ae1a9afa774854805c306",
+  "manifest_sha256": "cd0c7e48837e12f4fd04e31a23b4fb781104aabf6029f533ee817e19af694d93",
+  "source_hashes": 8,
+  "export_file_hashes": 4,
+  "output_hashes": 9,
+  "unchanged_original_table_blocks": 9,
+  "sparse_section_unchanged": true,
+  "exact_frozen_captions_inserted": 3,
+  "svg_visible_numeric_text_matches_inputs": true,
+  "svg_embedded_raster_images": 0,
+  "png_dimensions_pixels": {
+    "figure-01-study-map": [
+      2880,
+      1800
+    ],
+    "figure-02-utility-contrasts": [
+      2880,
+      1632
+    ],
+    "figure-03-two-solver-diagnostic": [
+      2880,
+      1560
+    ]
+  },
+  "pdf_pages_each": 1,
+  "pdf_preview_engine": "macOS PDFKit/Quartz via frozen Swift renderer",
+  "pdf_page_dimensions_points": [
+    [
+      864,
+      540
+    ],
+    [
+      864,
+      489.6
+    ],
+    [
+      864,
+      468
+    ]
+  ],
+  "root_visual_review": "all three exported PNGs and all three rendered PDF pages inspected; no clipping, collisions, missing glyphs or unreadable labels",
+  "statistics_reestimated": false,
+  "study_commands_run": false,
+  "implementation_tests_run": false,
+  "temporary_pdf_previews": {
+    "figure-01-study-map": "3a57d49bebfe1f04b7a471d3c5192feadff352a0710fab20a5bb2b0416ec7c9a",
+    "figure-02-utility-contrasts": "d76da9cb6c4d8d040bb89fc2c48c60462345724562416bd56241a49084ad7827",
+    "figure-03-two-solver-diagnostic": "6529a35538bc8d6a9b92369aeb0a411bd0329df1ad548bc0436d2a1e3637a3ae"
+  }
+}

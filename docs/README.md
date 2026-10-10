@@ -1,5 +1,12 @@
 # Research map
 
+**R5 complete, 2026-10-11.** Three [manuscript figures](../papers/thinking-selection/figures/README.md)
+now show study roles, recorded utility contrasts, and the two-solver diagnostic.
+The source/input/renderer freeze `655094d` preceded all nine PDF/SVG/PNG outputs.
+Reported values, original tables, and Box 1 remain unchanged. Source/hash checks
+and PNG/PDF visual inspection pass. No scientific statistic was re-estimated.
+Next is R6, the final methods and contribution review.
+
 **R4 complete, 2026-10-11.** The
 [working manuscript](../papers/thinking-selection/manuscript.md) now leads
 with the closest empirical prior work and states the direct DART overlap.

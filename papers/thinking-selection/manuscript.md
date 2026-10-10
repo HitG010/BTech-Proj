@@ -2,7 +2,7 @@
 
 **Authors:** [Author names and affiliations to be supplied]
 
-**Draft:** 0.2 working draft, 11 October 2026 — R2–R4 revised; R5–R6 pending
+**Draft:** 0.2 working draft, 11 October 2026 — R2–R5 revised; R6 pending
 
 ## Abstract
 
@@ -103,6 +103,12 @@ Table 1 separates unique questions, responses, and the use of each panel. A fit 
 | Fresh sparse parser-guard contrast | 228 disjoint questions; 228 direct and one activated thinking response | Policies frozen before fresh collection | Only the policy difference is identified |
 | Matched cap intervention | 11 selected questions from the 64-question panel; 18 pairs and 36 new responses | Same question/seed, 2k versus 4k reasoning allowance | Enriched development cohort |
 
+![Study and evidence map](figures/output/png/figure-01-study-map.png)
+
+**Figure 1. Study and evidence map. The primary learner, later controls, and post-hoc same-question diagnostics reuse 50 question groups. The separate two-solver panel has 64 groups; the cap cohort contains 11 of those same questions. The fresh guard panel uses 228 questions disjoint from development and evaluates a policy contrast with a common cutoff refitted on all 128 development states and frozen before fresh collection. Dashed arrows show design influence, not independent replication or pooled evidence. Boxes are not proportional to sample size.**
+
+[Figure 1 PDF](figures/output/pdf/figure-01-study-map.pdf) · [Figure 1 SVG](figures/output/svg/figure-01-study-map.svg)
+
 ### 3.4. Independent response halves and grouped selection
 
 In the repeat panel, each question has eight independently seeded responses in each mode. Direct and thinking seeds differ. Responses are paired by sample index for replay; we do not form all \(8\times8\) combinations. Half A contains indices 0–3 and half B contains indices 4–7.
@@ -198,6 +204,12 @@ The CLM state and learned families exclude confidence and auxiliary draft statis
 | Same encoder, PCA8/Ridge | 89.00% | 330.81 | −.022617 | [−.043758, −.004464] |
 | Training-selected CLM/raw family | 88.75% | 406.34 | −.028893 | [−.049575, −.010922] |
 
+![Recorded utility contrasts](figures/output/png/figure-02-utility-contrasts.png)
+
+**Figure 2. Recorded averaged four-draw utility contrasts on the same 50 questions. Panel A compares the original combined Ridge learner with a baseline selected within training from accept, escalate, and confidence. Panel B compares three families selected within training with the four-draw confidence policy; the other individual policy results remain in Table 3. Bars are the recorded conditional 90% whole-question bootstrap intervals with fits and actions fixed. They omit refitting and research-selection uncertainty and do not provide joint coverage. Different comparators and reused data prevent a pooled effect or common causal interpretation. All displayed progression screens failed.**
+
+[Figure 2 PDF](figures/output/pdf/figure-02-utility-contrasts.pdf) · [Figure 2 SVG](figures/output/svg/figure-02-utility-contrasts.svg)
+
 Calibrated CLM minus the raw encoder control is −.010645, with interval [−.018190, −.004292]. Both remain below confidence. Zero-shot CLM chooses thinking for 380 of 400 drafts. Its higher accuracy therefore comes with near-always-escalating cost. The interval for its utility difference includes zero; this is not proof of a population disadvantage.
 
 Output-token utility excludes CLM encoder work. Separate encoding measurements are in [Appendix A.3](#a3-control-implementation-and-encoder-timing). Full-precision equivalence, pretraining overlap, and live solver/router co-residence remain untested. The finding concerns this quantized transfer recipe.
@@ -228,6 +240,12 @@ The positive-gain count depends on the number of sampled draws. It does not coun
 The comparison establishes different observed opportunity patterns in these settings. It does not establish a general model-size law or a tested population interaction. It also limits a broad endorsement of confidence: confidence helps on one solver/panel combination and harms point utility on another.
 
 Accepting the larger model's direct draft also has higher point accuracy and fewer generated tokens than the smaller model's confidence policy. These token counts are useful context, but tokens from different model sizes are not equal units of compute. No live cross-size latency or energy advantage is established.
+
+![Two-solver diagnostic: accuracy and output cost](figures/output/png/figure-03-two-solver-diagnostic.png)
+
+**Figure 3. Two-solver diagnostic, averaged across the two draw directions. Every policy point uses 128 paired states in the same 64 question groups. Accuracy and token values are transcribed point estimates; no uncertainty interval is inferred for these marks. Escalation pays for the direct draft plus thinking, including inserted closure tokens. The labels 4/64 and 24/64 count questions with positive realized utility gain in at least one of two draws at lambda=.05. These counts depend on the draw count and do not identify positive expected gain. Output tokens are not equal compute units across solver sizes; no cross-size latency or energy advantage is established.**
+
+[Figure 3 PDF](figures/output/pdf/figure-03-two-solver-diagnostic.pdf) · [Figure 3 SVG](figures/output/svg/figure-03-two-solver-diagnostic.svg)
 
 ### 5.2. Development evidence and the refitted guard
 
@@ -314,7 +332,7 @@ The separate two-solver diagnostic, fresh guard contrast, and selected cap inter
 
 ## Data and code availability
 
-The project retains versioned source, protocols, aggregate reports, score sidecars, and independent verification records. This manuscript is drafted from the tracked result records listed in Appendix B. No new experiment, scoring, reference access, or statistical reanalysis was performed for the manuscript. A public artifact release and its licensing review are pending. Sealed allocations and protected material are not part of a promised release.
+The project retains versioned source, protocols, aggregate reports, score sidecars, and independent verification records. This manuscript is drafted from the tracked result records listed in Appendix B. No new experiment, scoring, reference access, or statistical reanalysis was performed for the manuscript. Figures 1–3 are report-only exports under a [frozen display plan](figure-export-plan.md); their [inputs and review](figures/README.md) retain source and output identities. No effect or interval was re-estimated for these figures. A public artifact release and its licensing review are pending. Sealed allocations and protected material are not part of a promised release.
 
 ## Author declarations
 

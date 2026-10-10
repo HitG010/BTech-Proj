@@ -1,0 +1,61 @@
+{
+  "schema": "thinking-selection-display-export-v1",
+  "completed_utc": "2026-10-10T20:41:04.602553+00:00",
+  "freeze_commit": "655094dc7b4a7cf8416ae1a9afa774854805c306",
+  "manifest_sha256": "cd0c7e48837e12f4fd04e31a23b4fb781104aabf6029f533ee817e19af694d93",
+  "source_commit": "d1287e65ebf0fcea2ae2ad54f7e5ae47a9795d16",
+  "python": "3.11.13 (main, Aug 14 2025, 16:05:31) [Clang 20.1.4 ]",
+  "matplotlib": "3.11.1",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "source_hashes_verified": true,
+  "export_hashes_verified": true,
+  "statistical_reestimation": false,
+  "outputs": [
+    {
+      "path": "papers/thinking-selection/figures/output/pdf/figure-01-study-map.pdf",
+      "sha256": "b031a9e4dfe68579aea047f766694d363caa9159a68ccc2440db2a1746da4366",
+      "bytes": 35124
+    },
+    {
+      "path": "papers/thinking-selection/figures/output/svg/figure-01-study-map.svg",
+      "sha256": "d4ed808fd44635663720066c394b1365a72fe5be43b816c7e4dff064b175a345",
+      "bytes": 12256
+    },
+    {
+      "path": "papers/thinking-selection/figures/output/png/figure-01-study-map.png",
+      "sha256": "8892b0db96ca4656ab6c65eae66259277d051d23a6c9144c17b29fae66ba8f10",
+      "bytes": 295319
+    },
+    {
+      "path": "papers/thinking-selection/figures/output/pdf/figure-02-utility-contrasts.pdf",
+      "sha256": "098c771b5ea84cb01a8aea698451cf4e728d5d4bc6c6bbadfa804f838b724a7f",
+      "bytes": 33783
+    },
+    {
+      "path": "papers/thinking-selection/figures/output/svg/figure-02-utility-contrasts.svg",
+      "sha256": "41934d4ef4c736996c8ad0044425cd2f685127557f89aef75c983c2dce815ad6",
+      "bytes": 21518
+    },
+    {
+      "path": "papers/thinking-selection/figures/output/png/figure-02-utility-contrasts.png",
+      "sha256": "8292903dcbd8eb616c7e7c61588d2f83767b357855657ce744bb715981e18aeb",
+      "bytes": 185388
+    },
+    {
+      "path": "papers/thinking-selection/figures/output/pdf/figure-03-two-solver-diagnostic.pdf",
+      "sha256": "a05ade76798e27acd91f53ce4d2f600ac823f85b5e2971d33ee6a4261aa13b85",
+      "bytes": 30833
+    },
+    {
+      "path": "papers/thinking-selection/figures/output/svg/figure-03-two-solver-diagnostic.svg",
+      "sha256": "69d4daed86da77079a38b209583059c00dd9478d0a5ced7801ab41de1d5e0bb7",
+      "bytes": 23771
+    },
+    {
+      "path": "papers/thinking-selection/figures/output/png/figure-03-two-solver-diagnostic.png",
+      "sha256": "47c937fe326422df4a899d091b19fa80fbb997b9cd67c910f6edadc43ca0c923",
+      "bytes": 256459
+    }
+  ],
+  "visual_review": "pending; see separate review.md after inspection"
+}
