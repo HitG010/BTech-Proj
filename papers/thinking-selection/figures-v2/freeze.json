@@ -1,0 +1,15 @@
+{
+  "source_commit": "f2c5b6e",
+  "sha256": {
+    "papers/thinking-selection/figures-v2/plan.md": "63c252d9d8b5d01d552063e6dd70dfef0acad69010151a5bdb67f73b5c5258de",
+    "papers/thinking-selection/figures-v2/display-inputs.json": "f920d475a17eb262d40965e3faf23a04d9f7ac60a3022e23dca7c085bb6be60e",
+    "papers/thinking-selection/figures-v2/manuscript-v0.2.md": "c10a9ac9b24105060ae7de51b9d34efce652669fb5bee21c100b8ecd2be410be",
+    "papers/thinking-selection/figures-v2/render.py": "8593ceed25897afbc0747fada80453f3359e5f0ced563f4b9e38841409ed6811",
+    "papers/thinking-selection/figures/display-inputs.json": "bde1ec84e1f1e374c83b692678d0feaa8a724cb16241bed1b193133174acd864",
+    "docs/phase-2-repeat-panel.md": "70abb4b4ebb18424594016f763687705a94fa0af772a3876e53087cdcc11af95",
+    "docs/phase-2-repeat-results.md": "752cb259f6c5b30ee10f5b105e8380e5957f971e37dc6afc0d5571fe2464960a",
+    "docs/phase-2-router-feasibility-results.md": "136f45ff091f899fdd0c04d2fd5c8abb8bb4d1f3136c03fb64b6db5c9eef6531",
+    "docs/phase-2-clm-probe-results.md": "4f7bc48478adcf8d04448014e7cbf951b3ab116480116838bcacc12558b1780a",
+    "docs/opportunity-panel-results.md": "a45563ccb26df2084c3fd85a45bb9ae0f513a9b11d45ca23696343255cb95d2f"
+  }
+}
