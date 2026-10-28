@@ -1,0 +1,243 @@
+{
+  "schema": "thinking-selection-illustrative-display-v2",
+  "source_commit": "f2c5b6e",
+  "print_width_inches": 6.6,
+  "minimum_text_points": 10,
+  "figures": [
+    {
+      "id": "figure-01-decision",
+      "title": "What the selector decides",
+      "caption": "Figure 1. Decision and observed outcomes. A selector accepts a paid direct draft or requests a fresh thinking solve from the question alone. Escalation pays for both calls. The matrix shows the four scored outcome categories among all 400 direct/thinking pairs on the 50-question repeat panel. A pair matches sample indices; the two modes use different seeds. These are observed counts, not predictions or utility-gain labels. Every pair contributes once, and cell area does not encode its count.",
+      "pairs": 400,
+      "questions": 50,
+      "cells": [
+        {
+          "direct": "Correct",
+          "thinking": "Correct",
+          "count": 348,
+          "label": "Both correct"
+        },
+        {
+          "direct": "Correct",
+          "thinking": "Incorrect",
+          "count": 10,
+          "label": "Harms"
+        },
+        {
+          "direct": "Incorrect",
+          "thinking": "Correct",
+          "count": 30,
+          "label": "Rescues"
+        },
+        {
+          "direct": "Incorrect",
+          "thinking": "Incorrect",
+          "count": 12,
+          "label": "Both incorrect"
+        }
+      ],
+      "source": {
+        "path": "papers/thinking-selection/manuscript.md",
+        "sections": "3.1, 3.4, 4.1",
+        "cost": "U=Y_D+a(Y_T-Y_D)-.05(C_D+aC_T)/1000"
+      }
+    },
+    {
+      "id": "figure-02-design",
+      "title": "Questions and draws have different roles",
+      "caption": "Figure 2. Sampling and study roles. The primary panel contains 50 questions, eight independent draws per mode, and 800 responses, paired into 400 states by sample index. Each outer fold fits on 40 questions and evaluates on ten excluded questions. The diagram shows the four-draw A-to-B direction; B-to-A reverses the draw halves while retaining question separation. Direct drafts change across draws. Later controls and post-hoc diagnostics reuse these 50 questions. The separate 64-question panel supplies the 11-question cap subset and the development states used to refit the guard before its 228 fresh questions. The latter link indicates design influence, not shared questions or replication. Box sizes are schematic.",
+      "repeat": {
+        "id": "repeat",
+        "title": "50 questions | Qwen3-1.7B",
+        "subtitle": "800 responses; eight draws per mode",
+        "sections": [
+          {
+            "title": "PRIMARY LEARNER",
+            "body": "Held-out questions; opposite draw halves\nCombined Ridge vs training-selected baseline"
+          },
+          {
+            "title": "LATER CONTROLS - SAME DATA",
+            "body": "CPU, compact neural, and released CLM\nReused development; compare with confidence"
+          },
+          {
+            "title": "POST-HOC - SAME QUESTIONS",
+            "body": "Gain variation and transfer across halves\nDifferent target from unseen-question selection"
+          }
+        ]
+      },
+      "other_blocks": [
+        {
+          "id": "diagnostic",
+          "title": "64 separate questions | Two solvers",
+          "subtitle": "512 responses; two draws per mode and solver",
+          "body": "Qwen3-1.7B and Qwen3-0.6B\nIncludes the later reused 0.6B pilot"
+        },
+        {
+          "id": "cap",
+          "title": "11-question cap subset",
+          "subtitle": "Selected from the 64",
+          "body": "18 matched pairs\n36 new responses\n2k vs 4k reasoning allowance\nSelected development cohort"
+        },
+        {
+          "id": "fresh",
+          "title": "228 fresh questions",
+          "subtitle": "Cutoff refit on 128 development states",
+          "body": "228 direct + one thinking response\nOnly one action changes\nOnly the policy difference\nis identified"
+        }
+      ],
+      "folds": 5,
+      "training_questions": 40,
+      "evaluation_questions": 10,
+      "half_a": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "half_b": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "source": {
+        "path": "papers/thinking-selection/manuscript.md",
+        "sections": "Table 1; 3.3-3.4; 5.2-5.4"
+      }
+    },
+    {
+      "id": "figure-03-utility",
+      "title": "The tested learners miss their utility targets",
+      "caption": "Figure 3. Recorded four-draw utility differences on the same 50 questions. Panel A compares the primary learner with a baseline selected within training from accept, escalate, and confidence. Panel B compares later families selected within training with confidence. Dots and bars show the reported means and conditional 90% whole-question bootstrap intervals. Fits and actions stay fixed; intervals omit refitting and research-selection uncertainty and have no joint coverage. Negative values favor each stated comparator. Different comparators prevent a pooled effect. Exact values remain in Tables 2 and 3; all displayed screens failed.",
+      "panels": [
+        {
+          "title": "A  Original primary comparison",
+          "comparator": "Training-selected accept / escalate / confidence baseline",
+          "rows": [
+            {
+              "label": "Combined Ridge",
+              "mean": "-0.016204",
+              "low": "-0.033276",
+              "high": "-0.000635",
+              "source": {
+                "path": "docs/phase-2-repeat-panel.md",
+                "section": "Terminal result, sentence beginning The predeclared four-draw average",
+                "precision": "six decimals, as reported",
+                "comparator": "combined minus training-selected simple baseline",
+                "role": "primary"
+              }
+            }
+          ]
+        },
+        {
+          "title": "B  Later exploratory controls",
+          "comparator": "Four-draw confidence policy; each family selected within training",
+          "rows": [
+            {
+              "label": "CPU family",
+              "mean": "-0.014287",
+              "low": "-0.025680",
+              "high": "-0.004425",
+              "source": {
+                "path": "docs/phase-2-router-feasibility-results.md",
+                "section": "Main four-draw comparison: CPU family selected within training folds",
+                "precision": "six decimals, as reported",
+                "comparator": "selected CPU minus confidence",
+                "role": "exploratory reuse"
+              }
+            },
+            {
+              "label": "Compact neural family",
+              "mean": "-0.033817",
+              "low": "-0.052515",
+              "high": "-0.017266",
+              "source": {
+                "path": "docs/phase-2-router-feasibility-results.md",
+                "section": "Main four-draw comparison: Neural family selected within training folds",
+                "precision": "six decimals, as reported",
+                "comparator": "selected compact neural minus confidence",
+                "role": "exploratory reuse"
+              }
+            },
+            {
+              "label": "CLM / raw encoder family",
+              "mean": "-0.028893",
+              "low": "-0.049575",
+              "high": "-0.010922",
+              "source": {
+                "path": "docs/phase-2-clm-probe-results.md",
+                "section": "Scope and main independent-half comparison: Training-selected family",
+                "precision": "six decimals; averaged interval unaffected by per-condition seed deviation",
+                "comparator": "selected CLM/raw minus confidence",
+                "role": "exploratory reuse"
+              }
+            }
+          ]
+        }
+      ],
+      "xlim": [
+        "-0.06",
+        "0.02"
+      ],
+      "unit": "utility difference at lambda=0.05; fractions, not percentage points"
+    },
+    {
+      "id": "figure-04-diagnostic",
+      "title": "Policy accuracy and output cost",
+      "caption": "Figure 4. The separate two-solver diagnostic, averaged across draw directions. Rows align each policy's scored accuracy and charged output tokens for 128 paired states in the same 64 question groups. Marks show reported point estimates; no accuracy or token interval is inferred. Both calls are charged on escalation. The 4/64 and 24/64 counts identify questions with positive realized gain in at least one of two draws at lambda=.05, not positive expected-gain labels. Tokens are not equal compute units across solver sizes. No population model-size effect or latency advantage is established.",
+      "panels": [
+        {
+          "solver": "Qwen3-1.7B",
+          "positive_questions": "4",
+          "question_count": "64",
+          "points": [
+            {
+              "policy": "Accept direct",
+              "accuracy": "84.375",
+              "tokens": "228.01"
+            },
+            {
+              "policy": "Always escalate",
+              "accuracy": "87.500",
+              "tokens": "1586.79"
+            },
+            {
+              "policy": "Confidence",
+              "accuracy": "83.594",
+              "tokens": "682.56"
+            }
+          ]
+        },
+        {
+          "solver": "Qwen3-0.6B",
+          "positive_questions": "24",
+          "question_count": "64",
+          "points": [
+            {
+              "policy": "Accept direct",
+              "accuracy": "61.719",
+              "tokens": "209.80"
+            },
+            {
+              "policy": "Always escalate",
+              "accuracy": "80.469",
+              "tokens": "1409.52"
+            },
+            {
+              "policy": "Confidence",
+              "accuracy": "81.250",
+              "tokens": "1062.52"
+            }
+          ]
+        }
+      ],
+      "source": {
+        "path": "docs/opportunity-panel-results.md",
+        "section": "Fixed policy results: policy table and positive-gain table",
+        "precision": "accuracy three decimals; tokens two decimals; integer opportunity counts",
+        "comparator": "accept direct / always escalate / confidence within each solver",
+        "role": "separate diagnostic"
+      }
+    }
+  ]
+}
