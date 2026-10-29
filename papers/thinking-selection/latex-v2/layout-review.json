@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-28",
+  "manuscript_version": "0.3",
+  "pdf_pages": 24,
+  "build": "latexmk/pdfLaTeX/BibTeX, TeX Live 2026",
+  "final_latex_warnings": 0,
+  "bibtex_note": "Original undated MiniLM model card retains its empty-year warning.",
+  "fidelity": {
+    "prose_caption_list_blocks": 128,
+    "table_cells": 230,
+    "original_table_blocks_unchanged": 9,
+    "displayed_equations_unchanged": true,
+    "figures": 4,
+    "citations": 13,
+    "source_hashes": 19,
+    "figure_and_bibliography_copies_byte_identical": true
+  },
+  "critic_review": "Separate GPT-6.1-sol/xhigh critic inspected all25pages before final pagination correction and found no substantive legibility blocker.",
+  "root_final_review": "Removed only the forced AppendixA break. Final24pages: first17 PNGs byte-identical to critic-reviewed build; root inspected7reflowed pages. Four figures and Tables2/3 remain unchanged on pages4/7/12/14 and9/11.",
+  "remaining_editorial_limits": "Dense supporting studies, some repeated cautions, split research question, and float whitespace remain optional refinements.",
+  "normal_figure_font_points_at_print_width": 9.663564781675019,
+  "humanizer": {
+    "source": "https://github.com/blader/humanizer",
+    "version": "3.1.0",
+    "skill_sha256": "0612f1dfb1672b0ea9b97e139bf1f06cabe98d8b27424fe8ff01e1fb4cc99cad",
+    "use": "Plain scientific prose; facts and AI-assistance disclosure retained."
+  },
+  "outputs": {
+    "main.tex": "b4a61263be4a5dfcc9a229b9ebd73cebe4e7af0c5d7821e4d7ab09f32f20b223",
+    "references.bib": "dc8e6bd9fdfee4956ac2ea8c3ce442b8252526269c186e3298264e866d247fd4",
+    "output/pdf/main.pdf": "c4c2cea33a1aac5277aa9922ed439b3cae2fcab47f488489d17a419dd663e733"
+  },
+  "scope": "Document/figure QA only. No implementation tests, experiment, scoring, or statistical reestimation.",
+  "portable_build": "Passed after extracting the27-file archive into a separate temporary directory. Installed TeX packages plus bundled inputs suffice; no repository access or network required."
+}

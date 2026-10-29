@@ -1,0 +1,54 @@
+{
+  "freeze_commit": "41975edf2e049e0683eb80c79c476f5f7ef2ed4a",
+  "outputs": [
+    {
+      "path": "papers/thinking-selection/figures-v2/output/pdf/figure-01-decision.pdf",
+      "sha256": "d5d6c6988ec9196bea9e3d3cc20c065733fb0dbdc42de6e053c11469d3d3eaf7"
+    },
+    {
+      "path": "papers/thinking-selection/figures-v2/output/svg/figure-01-decision.svg",
+      "sha256": "5c3dd7e3f58cc89ef3e4c819dddbaf1d8a9c938d56fee4bd6314391aa3894052"
+    },
+    {
+      "path": "papers/thinking-selection/figures-v2/output/png/figure-01-decision.png",
+      "sha256": "a9d7590b8098bf0fc0830d4367ccad904dc43b4b68c6a34aa0c793fa40abe50b"
+    },
+    {
+      "path": "papers/thinking-selection/figures-v2/output/pdf/figure-02-design.pdf",
+      "sha256": "796ea2270e18f6f93fb9e3b3045538d0cd853ebcbce828a7ce81fe40158aaf89"
+    },
+    {
+      "path": "papers/thinking-selection/figures-v2/output/svg/figure-02-design.svg",
+      "sha256": "c8bc7eea6ceaa6f090c2d73300927b7c51f7694ee9776c897ea2faa81de6c976"
+    },
+    {
+      "path": "papers/thinking-selection/figures-v2/output/png/figure-02-design.png",
+      "sha256": "6f16cbecbaf91cd1ccdacaa00ab67ebeff3e8a47434162f4ff1fe52a333d5196"
+    },
+    {
+      "path": "papers/thinking-selection/figures-v2/output/pdf/figure-03-utility.pdf",
+      "sha256": "e9049273c5e84e323bf87c2cdb07af18e1015ebc98e64afe63f557083ce27995"
+    },
+    {
+      "path": "papers/thinking-selection/figures-v2/output/svg/figure-03-utility.svg",
+      "sha256": "034fae1791ef6a779a4925f12fe6430e0b863bc68b0de3a9d235afba93d08109"
+    },
+    {
+      "path": "papers/thinking-selection/figures-v2/output/png/figure-03-utility.png",
+      "sha256": "0e0b28a176e22d1b1f7fbe243f80aad98dc34d6b88038e5893babeb0db4b0368"
+    },
+    {
+      "path": "papers/thinking-selection/figures-v2/output/pdf/figure-04-diagnostic.pdf",
+      "sha256": "946849baa890574f29e92c7c953d063f56bb85d5a4866bab44df1f85cc934103"
+    },
+    {
+      "path": "papers/thinking-selection/figures-v2/output/svg/figure-04-diagnostic.svg",
+      "sha256": "6d49f7ba58edbdbbb91cb1f5d1ce2982a8f686107e453ab1789c3b5948c67a03"
+    },
+    {
+      "path": "papers/thinking-selection/figures-v2/output/png/figure-04-diagnostic.png",
+      "sha256": "19ab2ba7c0c8525f8f79f98819599adf8eb7ea39f3ba8c97fbba5ee2961c6ea8"
+    }
+  ],
+  "no_reestimation": true
+}

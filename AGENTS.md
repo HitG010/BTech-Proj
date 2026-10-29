@@ -929,3 +929,40 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   resumed; author/venue/release details remain deferred. Stronger claims need
   a separate scientific-question/design/resource review. No new allocation,
   collection, reopening of closed searches, submission or public release follows.
+
+- Author scientific assessment written, 2026-10-12: use the
+  [author review](papers/thinking-selection/author-scientific-review-2026-10-12.md).
+  It recommends retaining v0.2 as a scoped empirical report, with the central
+  claim, evidence limits, and likely objections explained. This is an AI-assisted
+  assessment; human author endorsement remains pending. No substantive manuscript
+  correction was identified. Manuscript/results/figures are unchanged. No fresh
+  literature search, raw/cache/reference/sealed access, statistical reanalysis,
+  experiment, export, or implementation test. Next is human author endorsement
+  or a specific scientific correction. Author/venue/submission details remain
+  deferred; no new collection or reopened search follows from this review.
+
+- Reviewer LaTeX package, 2026-10-27: use
+  [latex/README.md](papers/thinking-selection/latex/README.md) for editable
+  `main.tex`, compiled `output/pdf/main.pdf`, and the portable source ZIP.
+  The conversion preserves manuscript v0.2 scientific content and embeds
+  unchanged approved figure PDFs. New Appendix D identifies 13 bundled tracked
+  project records; the source manifest pins 18 input files. This is presentation
+  work, with no new results, literature review, experiment, statistical analysis,
+  raw/cache/reference/sealed access, or implementation tests. Author identity and
+  endorsement remain pending. No upload, submission, or public release occurred.
+  Keep scientific edits synchronized with the Markdown manuscript through a
+  separate reviewed change; do not treat this format export as new evidence.
+
+- Illustrative reviewer revision, 2026-10-28: current manuscript is v0.3;
+  use [latex-v2/README.md](papers/thinking-selection/latex-v2/README.md) and
+  [legibility response](papers/thinking-selection/legibility-response-2026-10-28.md).
+  Four figures use `figures-v2/output-r2/`; frozen specifications `41975ed` and
+  `9bcde19` precede their exports. Preserve first-v2 outputs, corrected outputs,
+  manifests, source snapshot, and receipts, as well as original R5 figures and
+  old LaTeX/PDF/ZIP. The separate critic accepted the 25-page build; root checked
+  the final layout-only reduction to24pages (first17 page PNGs identical).
+  Humanizer3.1.0 is installed/loaded for prose; do not remove scientific limits
+  or AI-assistance disclosure for style. All nine numerical table blocks and
+  displayed equations remain unchanged. No new scientific result, raw/cache/
+  reference/sealed access, experiment, statistical estimate, implementation
+  test, submission, or public release. Author identity/endorsement still pending.

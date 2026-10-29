@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-27",
+  "status": "layout-reviewed",
+  "manuscript_version": "0.2",
+  "pdf_pages": 22,
+  "build": "latexmk with pdfLaTeX and BibTeX; TeX Live 2026",
+  "final_latex_warnings": 0,
+  "bibtex_note": "One empty-year warning for the intentionally undated MiniLM model card. Original bibliography retained unchanged.",
+  "fidelity": {
+    "prose_caption_list_blocks": 123,
+    "table_cells": 230,
+    "original_table_blocks": 9,
+    "figures": 3,
+    "printed_bibliography_entries": 13,
+    "unchanged_source_hashes": 18,
+    "display_equations_preserved": true,
+    "bibliography_and_figure_copies_byte_identical": true
+  },
+  "visual_review": "All 22 pages rendered with macOS PDFKit and inspected as six contact sheets. Table 3 inspected at full rendered resolution. After its width adjustment, changed pages 10 and 11 were inspected again; other page PNG bytes were unchanged. No clipped text, overlapping columns, orphaned table caption, or missing glyph was observed.",
+  "outputs": {
+    "main.tex": "663a3a07e652f9c4d5460434a5a8e1f03d5d6684ec2e20214b6c810fdd498c20",
+    "references.bib": "dc8e6bd9fdfee4956ac2ea8c3ce442b8252526269c186e3298264e866d247fd4",
+    "output/pdf/main.pdf": "96943e378ea7f8fa2ccd8a33e92e343608b62e1f8371858b1a9e269e1a87efab"
+  },
+  "scope": "Document conversion only; no new experiments, statistical estimates, source scoring, or literature assessment.",
+  "portable_build": "Archive extracted into a separate temporary directory; latexmk completed using only the bundled source, bibliography, figures, and installed TeX packages."
+}

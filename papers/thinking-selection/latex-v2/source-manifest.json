@@ -1,0 +1,42 @@
+{
+  "manuscript_version": "0.3",
+  "source_commit": "9bcde19 (figure freeze; current manuscript pinned by hash)",
+  "layout_date": "2026-10-28",
+  "source_sha256": {
+    "papers/thinking-selection/manuscript.md": "6481c63b00aa99706fe26b87d54e47d995ac9e61a07c3ec4a62771b6fcef3f89",
+    "papers/thinking-selection/references.bib": "dc8e6bd9fdfee4956ac2ea8c3ce442b8252526269c186e3298264e866d247fd4",
+    "papers/thinking-selection/figures-v2/output-r2/pdf/figure-02-design.pdf": "c509dffd0db07b1c48a479779495c810eec96a99131349e043169efa7d9d6c24",
+    "papers/thinking-selection/figures-v2/output-r2/pdf/figure-03-utility.pdf": "e9049273c5e84e323bf87c2cdb07af18e1015ebc98e64afe63f557083ce27995",
+    "papers/thinking-selection/figures-v2/output-r2/pdf/figure-04-diagnostic.pdf": "e7ca226b521726e202b2ec48c1c801bb2d1a56abcbb2e7bccbde8e4085a1290e",
+    "papers/thinking-selection/figures-v2/output-r2/pdf/figure-01-decision.pdf": "d5d6c6988ec9196bea9e3d3cc20c065733fb0dbdc42de6e053c11469d3d3eaf7",
+    "docs/phase-2-repeat-results.md": "752cb259f6c5b30ee10f5b105e8380e5957f971e37dc6afc0d5571fe2464960a",
+    "papers/thinking-selection/figures-v2/plan.md": "63c252d9d8b5d01d552063e6dd70dfef0acad69010151a5bdb67f73b5c5258de",
+    "papers/thinking-selection/figures-v2/README.md": "31bb9fdb108138282b7713869fbb219fd2620bc937cbd82d7b4d2d121119950d",
+    "docs/phase-2-repeat-panel.md": "70abb4b4ebb18424594016f763687705a94fa0af772a3876e53087cdcc11af95",
+    "docs/phase-2-router-feasibility-results.md": "136f45ff091f899fdd0c04d2fd5c8abb8bb4d1f3136c03fb64b6db5c9eef6531",
+    "docs/phase-2-clm-probe-results.md": "4f7bc48478adcf8d04448014e7cbf951b3ab116480116838bcacc12558b1780a",
+    "docs/opportunity-panel-results.md": "a45563ccb26df2084c3fd85a45bb9ae0f513a9b11d45ca23696343255cb95d2f",
+    "docs/qwen06-router-pilot-results.md": "ea4b110e059a6eff40e2a1d41dfa4678a5df723a61726831bd75fdf7e2f1efd5",
+    "docs/sparse-validation-preparation-results.md": "4b64984a67803474b995f14f8f23778a45e64a4487d10f4610fd330f6b3e59df",
+    "docs/sparse-validation-results.md": "d6724e237fcb0ab80b347ce9bb5bacfaf4957977405894df39ade9ada6b91b17",
+    "docs/qwen17-cap-bridge-results.md": "e90be4a66048da6464af64538a8dd893d25774ac4068e245ba35bfdf397b60ac",
+    "papers/thinking-selection/evidence-ledger.md": "dbb7f4f216c429ed49d8515718b992962f20cfee59ecc58cd4462016f481919f",
+    "papers/thinking-selection/revision-evidence-map.md": "c1958ff362957ae4258ddb93ab1cca93c69c34db5aba12bd4b4827ee39a50f56"
+  },
+  "record_identifiers": {
+    "docs/phase-2-repeat-results.md": "S1",
+    "papers/thinking-selection/figures-v2/plan.md": "S2",
+    "papers/thinking-selection/figures-v2/README.md": "S3",
+    "docs/phase-2-repeat-panel.md": "S4",
+    "docs/phase-2-router-feasibility-results.md": "S5",
+    "docs/phase-2-clm-probe-results.md": "S6",
+    "docs/opportunity-panel-results.md": "S7",
+    "docs/qwen06-router-pilot-results.md": "S8",
+    "docs/sparse-validation-preparation-results.md": "S9",
+    "docs/sparse-validation-results.md": "S10",
+    "docs/qwen17-cap-bridge-results.md": "S11",
+    "papers/thinking-selection/evidence-ledger.md": "S12",
+    "papers/thinking-selection/revision-evidence-map.md": "S13"
+  },
+  "conversion": "Current v0.3 scientific wording, tables and figure captions retained. Markdown citations use BibTeX; local source links use record IDs. Figure download links and Markdown-only reference navigation omitted. Appendix D added for portable provenance. No new scientific result."
+}

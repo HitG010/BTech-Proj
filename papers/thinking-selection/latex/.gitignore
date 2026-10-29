@@ -1,0 +1,11 @@
+# Retain the compiled PDF; ignore local TeX intermediates.
+/output/pdf/*
+!/output/pdf/main.pdf
+/*.aux
+/*.bbl
+/*.blg
+/*.fdb_latexmk
+/*.fls
+/*.log
+/*.out
+/*.synctex.gz

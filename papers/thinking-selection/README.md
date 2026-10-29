@@ -2,7 +2,24 @@
 
 ## Read the paper
 
-[Manuscript, version 0.2](manuscript.md)
+[Manuscript, version 0.3](manuscript.md)
+
+**Current reviewer copy, 28 October 2026:** [PDF](latex-v2/output/pdf/main.pdf),
+[editable LaTeX](latex-v2/main.tex), and
+[portable source ZIP](thinking-selection-review-source-v2.zip).
+Four illustrative figures explain the decision, sample design, utility
+comparisons, and policy costs. The independent critic's substantive findings
+are addressed in the [legibility response](legibility-response-2026-10-28.md).
+Humanizer is installed and was used for plain scientific prose. Scientific
+results and limits are preserved. See [build instructions](latex-v2/README.md).
+
+**Reviewer LaTeX copy, 27 October 2026:** [editable source](latex/main.tex),
+[compiled PDF](latex/output/pdf/main.pdf), and
+[portable source ZIP](thinking-selection-review-source.zip).
+See [build and Overleaf instructions](latex/README.md). This is a single-column
+review layout with line numbers. Scientific wording, values, and figure captions
+retain v0.2; a source-record inventory is added for portability. Author details
+and endorsement remain pending. No new experiment or literature search was run.
 
 **Title:** Confidence and Learned Thinking Selection on GSM8K: A Controlled Study
 of Small Qwen3 Models.
@@ -10,8 +27,22 @@ of Small Qwen3 Models.
 The draft contains an abstract, introduction, related work, methods, results,
 discussion, limitations, conclusion, references, and reproducibility appendices.
 It includes four main tables, appendix accounting and cap tables, and a post-hoc
-diagnostic box, plus three figures in PDF/SVG/PNG. R1–R6 are complete. The
-scoped empirical report is ready for author review; it has not been submitted.
+diagnostic box, plus four figures in PDF/SVG/PNG. R1–R6 are complete. The
+scoped empirical report has an author-facing scientific assessment; human
+author endorsement remains pending. It has not been submitted.
+
+## Author scientific review, 12 October 2026
+
+Read the [author scientific review](author-scientific-review-2026-10-12.md).
+It recommends retaining v0.2 as a scoped empirical report and explains the
+claim, scientific strengths, evidence gaps, and responses to likely objections.
+No substantive manuscript correction was identified. Novelty remains modest.
+
+The written assessment is complete. The next step is human author endorsement
+of the scoped claim or a specific scientific correction. This AI-assisted
+review does not record endorsement on the authors' behalf. Manuscript text,
+results, and figures are unchanged. Author identities, venue, and submission
+details remain deferred.
 
 ## R6 final decision, 11 October 2026
 

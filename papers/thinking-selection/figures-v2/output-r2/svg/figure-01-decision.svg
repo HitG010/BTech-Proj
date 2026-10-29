@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="475.2pt" height="417.6pt" viewBox="0 0 475.2 417.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title>What the selector decides</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>What the selector decides</dc:title>
+    <dc:description>Figure 1. Decision and observed outcomes. A selector accepts a paid direct draft or requests a fresh thinking solve from the question alone. Escalation pays for both calls. The matrix shows the four scored outcome categories among all 400 direct/thinking pairs on the 50-question repeat panel. A pair matches sample indices; the two modes use different seeds. These are observed counts, not predictions or utility-gain labels. Every pair contributes once, and cell area does not encode its count.</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Report-only illustrative export v2</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 417.6 
+L 475.2 417.6 
+L 475.2 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 13.32 90.36 
+L 80.28 90.36 
+Q 84.6 90.36 84.6 86.04 
+L 84.6 44.28 
+Q 84.6 39.96 80.28 39.96 
+L 13.32 39.96 
+Q 9 39.96 9 44.28 
+L 9 86.04 
+Q 9 90.36 13.32 90.36 
+z
+" clip-path="url(#p2f9d70626e)" style="fill: #f4f7fa; stroke: #dce4ea; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 108.36 90.36 
+L 200.52 90.36 
+Q 204.84 90.36 204.84 86.04 
+L 204.84 44.28 
+Q 204.84 39.96 200.52 39.96 
+L 108.36 39.96 
+Q 104.04 39.96 104.04 44.28 
+L 104.04 86.04 
+Q 104.04 90.36 108.36 90.36 
+z
+" clip-path="url(#p2f9d70626e)" style="fill: #f4f7fa; stroke: #dce4ea; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 228.6 90.36 
+L 307.08 90.36 
+Q 311.4 90.36 311.4 86.04 
+L 311.4 44.28 
+Q 311.4 39.96 307.08 39.96 
+L 228.6 39.96 
+Q 224.28 39.96 224.28 44.28 
+L 224.28 86.04 
+Q 224.28 90.36 228.6 90.36 
+z
+" clip-path="url(#p2f9d70626e)" style="fill: #f4f7fa; stroke: #236b8e; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 86.957227 65.16 
+Q 94.320391 65.16 100.341915 65.16 
+" clip-path="url(#p2f9d70626e)" style="fill: none; stroke: #4a5968; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 95.541915 62.76 
+L 100.341915 65.16 
+L 95.541915 67.56 
+z
+" clip-path="url(#p2f9d70626e)" style="fill: #4a5968; stroke: #4a5968; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 207.197227 65.16 
+Q 214.560391 65.16 220.581915 65.16 
+" clip-path="url(#p2f9d70626e)" style="fill: none; stroke: #4a5968; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 215.781915 62.76 
+L 220.581915 65.16 
+L 215.781915 67.56 
+z
+" clip-path="url(#p2f9d70626e)" style="fill: #4a5968; stroke: #4a5968; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 351.72 65.16 
+L 456.84 65.16 
+Q 461.16 65.16 461.16 60.84 
+L 461.16 25.56 
+Q 461.16 21.24 456.84 21.24 
+L 351.72 21.24 
+Q 347.4 21.24 347.4 25.56 
+L 347.4 60.84 
+Q 347.4 65.16 351.72 65.16 
+z
+" clip-path="url(#p2f9d70626e)" style="fill: #eaf3f7; stroke: #236b8e; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 351.72 134.28 
+L 456.84 134.28 
+Q 461.16 134.28 461.16 129.96 
+L 461.16 83.16 
+Q 461.16 78.84 456.84 78.84 
+L 351.72 78.84 
+Q 347.4 78.84 347.4 83.16 
+L 347.4 129.96 
+Q 347.4 134.28 351.72 134.28 
+z
+" clip-path="url(#p2f9d70626e)" style="fill: #e7f3f0; stroke: #147d74; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 313.633389 55.471816 
+Q 329.396726 49.681203 343.900705 44.35321 
+" clip-path="url(#p2f9d70626e)" style="fill: none; stroke: #4a5968; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 338.567528 43.755527 
+L 343.900705 44.35321 
+L 340.222652 48.261142 
+z
+" clip-path="url(#p2f9d70626e)" style="fill: #4a5968; stroke: #4a5968; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 313.338384 78.984053 
+Q 329.398282 91.438667 344.397989 103.071093 
+" clip-path="url(#p2f9d70626e)" style="fill: none; stroke: #4a5968; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 342.07571 98.233013 
+L 344.397989 103.071093 
+L 339.134157 102.026068 
+z
+" clip-path="url(#p2f9d70626e)" style="fill: #4a5968; stroke: #4a5968; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 124.2 297.72 
+L 277.56 297.72 
+Q 281.88 297.72 281.88 293.4 
+L 281.88 237.24 
+Q 281.88 232.92 277.56 232.92 
+L 124.2 232.92 
+Q 119.88 232.92 119.88 237.24 
+L 119.88 293.4 
+Q 119.88 297.72 124.2 297.72 
+z
+" clip-path="url(#p2f9d70626e)" style="fill: #edf2f6; stroke: #dce4ea; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 291.24 297.72 
+L 444.6 297.72 
+Q 448.92 297.72 448.92 293.4 
+L 448.92 237.24 
+Q 448.92 232.92 444.6 232.92 
+L 291.24 232.92 
+Q 286.92 232.92 286.92 237.24 
+L 286.92 293.4 
+Q 286.92 297.72 291.24 297.72 
+z
+" clip-path="url(#p2f9d70626e)" style="fill: #f9ede5; stroke: #dce4ea; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 124.2 369.72 
+L 277.56 369.72 
+Q 281.88 369.72 281.88 365.4 
+L 281.88 309.24 
+Q 281.88 304.92 277.56 304.92 
+L 124.2 304.92 
+Q 119.88 304.92 119.88 309.24 
+L 119.88 365.4 
+Q 119.88 369.72 124.2 369.72 
+z
+" clip-path="url(#p2f9d70626e)" style="fill: #e3f2ec; stroke: #dce4ea; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 291.24 369.72 
+L 444.6 369.72 
+Q 448.92 369.72 448.92 365.4 
+L 448.92 309.24 
+Q 448.92 304.92 444.6 304.92 
+L 291.24 304.92 
+Q 286.92 304.92 286.92 309.24 
+L 286.92 365.4 
+Q 286.92 369.72 291.24 369.72 
+z
+" clip-path="url(#p2f9d70626e)" style="fill: #edf2f6; stroke: #dce4ea; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b40" x="10.8" y="23.219375" transform="rotate(-0 10.8 23.219375)">What the selector decides</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #172b40" x="46.8" y="68.630156" transform="rotate(-0 46.8 68.630156)">Question</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40" transform="translate(120.515 62.388125)">Direct draft D</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40" transform="translate(117.779844 74.419375)">Pay direct cost</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #172b40" x="267.84" y="69.260938" transform="rotate(-0 267.84 69.260938)">Selector</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40" transform="translate(381.79875 39.305469)">Accept D</text>
+    <!-- Cost: $C_D$ -->
+    <g style="fill: #172b40" transform="translate(383.53 52.7)">
+     <text>
+      <tspan x="0" y="-0.578125" style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40">C</tspan>
+      <tspan x="6.982422" y="-0.578125" style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40">o</tspan>
+      <tspan x="13.100586" y="-0.578125" style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40">s</tspan>
+      <tspan x="18.310547" y="-0.578125" style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40">t</tspan>
+      <tspan x="22.231445" y="-0.578125" style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40">:</tspan>
+      <tspan x="25.600586" y="-0.578125" style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40"> </tspan>
+      <tspan x="28.779297" y="-0.578125" style="font-style: oblique; font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40">C</tspan>
+      <tspan x="35.761719" y="0.92187" style="font-style: oblique; font-size: 7px; font-family: 'DejaVu Sans'; fill: #172b40">D</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40" transform="translate(364.426875 96.319375)">Fresh thinking T</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40" transform="translate(369.751094 109.319375)">Question only</text>
+    <!-- Cost: $C_D+C_T$ -->
+    <g style="fill: #172b40" transform="translate(371.63 122.56)">
+     <text>
+      <tspan x="0" y="-0.578125" style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40">C</tspan>
+      <tspan x="6.982422" y="-0.578125" style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40">o</tspan>
+      <tspan x="13.100586" y="-0.578125" style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40">s</tspan>
+      <tspan x="18.310547" y="-0.578125" style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40">t</tspan>
+      <tspan x="22.231445" y="-0.578125" style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40">:</tspan>
+      <tspan x="25.600586" y="-0.578125" style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40"> </tspan>
+      <tspan x="43.373535" y="-0.578125" style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40">+</tspan>
+      <tspan x="28.779297" y="-0.578125" style="font-style: oblique; font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40">C</tspan>
+      <tspan x="53.700684" y="-0.578125" style="font-style: oblique; font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40">C</tspan>
+      <tspan x="35.761719" y="0.92187" style="font-style: oblique; font-size: 7px; font-family: 'DejaVu Sans'; fill: #172b40">D</tspan>
+      <tspan x="60.683105" y="0.92187" style="font-style: oblique; font-size: 7px; font-family: 'DejaVu Sans'; fill: #172b40">T</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #4a5968" transform="translate(10.8 119.379375)">Choose before seeing T.</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #4a5968" transform="translate(10.8 132.379375)">Thinking does not revise D.</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b40" x="10.8" y="170.35125" transform="rotate(-0 10.8 170.35125)">Recorded outcomes on the repeat panel</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #4a5968" x="10.8" y="193.559375" transform="rotate(-0 10.8 193.559375)">400 pairs from 50 questions; one D and one T per pair</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #172b40" x="201.6" y="224.480312" transform="rotate(-0 201.6 224.480312)">Thinking correct</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #172b40" x="368.64" y="224.480312" transform="rotate(-0 368.64 224.480312)">Thinking incorrect</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40" transform="translate(10.8 262.188125)">Direct</text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40" transform="translate(10.8 274.899844)">correct</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40" transform="translate(10.8 334.188125)">Direct</text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans'; fill: #172b40" transform="translate(10.8 347.188125)">incorrect</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 23px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b40" x="132.48" y="265.411641" transform="rotate(-0 132.48 265.411641)">348</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b40" x="132.48" y="286.340937" transform="rotate(-0 132.48 286.340937)">Both correct</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 23px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #b35a20" x="299.52" y="265.411641" transform="rotate(-0 299.52 265.411641)">10</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b40" x="299.52" y="286.171641" transform="rotate(-0 299.52 286.171641)">Harms</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 23px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #147d74" x="132.48" y="337.411641" transform="rotate(-0 132.48 337.411641)">30</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b40" x="132.48" y="358.171641" transform="rotate(-0 132.48 358.171641)">Rescues</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 23px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b40" x="299.52" y="337.575156" transform="rotate(-0 299.52 337.575156)">12</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172b40" x="299.52" y="358.340937" transform="rotate(-0 299.52 358.340937)">Both incorrect</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #4a5968" x="10.8" y="402.817969" transform="rotate(-0 10.8 402.817969)">Scorer-defined counts; cell areas are schematic.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p2f9d70626e">
+   <rect x="0" y="0" width="475.2" height="417.6"/>
+  </clipPath>
+ </defs>
+</svg>

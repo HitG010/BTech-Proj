@@ -1071,3 +1071,39 @@ Implementation and verification status will be recorded here as work completes.
   resumed; author/venue/release details remain deferred. Stronger claims need
   a separate scientific-question/design/resource review. No new allocation,
   collection, reopening of closed searches, submission or public release follows.
+
+- Author scientific assessment written, 2026-10-12: the
+  [author review](papers/thinking-selection/author-scientific-review-2026-10-12.md)
+  recommends retaining v0.2 as a scoped empirical report. It states the central
+  claim, scientific strengths, remaining evidence gaps, and defensible responses
+  to likely objections. No substantive manuscript correction was identified.
+  Human author endorsement remains pending; the AI-assisted assessment does
+  not supply it. The manuscript, tables, figures, and study files are unchanged.
+  No fresh literature search, raw/cache/reference/sealed access, statistical
+  reanalysis, experiment, export, or implementation test. Next is human author
+  endorsement or a specific scientific correction. Identity/venue/submission
+  details remain deferred; stronger novelty needs a separate design assessment.
+
+- Reviewer LaTeX package, 2026-10-27: converted manuscript v0.2 at `f2c5b6e`
+  into [editable LaTeX](papers/thinking-selection/latex/main.tex), a review PDF,
+  and a portable source ZIP. Added line numbers, BibTeX citations, and an
+  appendix identifying 13 bundled project records. Scientific prose, numerical
+  rows, equations, and figure captions are preserved. The bibliography and three
+  figure PDFs are unchanged copies. Existing author-review edits remain intact.
+  No raw/cache/reference/sealed access, experiment, new literature search,
+  statistical reanalysis, figure regeneration, or implementation test. Author
+  identity and endorsement remain pending; no submission or upload occurred.
+
+- Illustrative paper revision complete, 2026-10-28: manuscript v0.3 and the
+  [new reviewer package](papers/thinking-selection/latex-v2/README.md) include
+  four figures with readable print-size labels, an explicit decision/outcome
+  illustration, question/draw split, utility contrasts, and aligned policy costs.
+  The user-requested critic challenged prose, definitions, comparators, labels,
+  and pagination; the [response](papers/thinking-selection/legibility-response-2026-10-28.md)
+  records corrections and remaining optional density. The critic accepted the
+  25-page layout; root checked the final pagination-only 24-page version.
+  Humanizer 3.1.0 was installed and loaded. The two new display freezes are
+  `41975ed` and `9bcde19`; both exports and all original figures/PDFs are kept.
+  All nine numerical table blocks and displayed equations are unchanged.
+  No raw/cache/reference/sealed access, new experiment, statistical analysis,
+  implementation test, submission, or public release. Author endorsement pending.

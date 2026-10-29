@@ -1,5 +1,28 @@
 # Research map
 
+**Illustrative reviewer revision, 2026-10-28.** Manuscript v0.3 has four
+[new figures](../papers/thinking-selection/figures-v2/README.md), clearer
+opening prose and definitions, and a [current LaTeX/PDF package](../papers/thinking-selection/latex-v2/README.md).
+The [critic response](../papers/thinking-selection/legibility-response-2026-10-28.md)
+records the questions, corrections, and remaining optional density issues.
+All nine numerical tables and displayed equations are unchanged. Original
+figures and the older reviewer PDF are preserved. No new experiment or
+statistical analysis occurred; author endorsement remains pending.
+
+**Reviewer LaTeX package, 2026-10-27.** The empirical manuscript now has an
+[editable LaTeX source and build guide](../papers/thinking-selection/latex/README.md),
+a compiled review PDF, and a portable source ZIP. The export retains v0.2
+scientific content and the frozen figures. Author details and endorsement
+remain pending. No experiment, reanalysis, or new literature assessment occurred.
+
+**Author scientific assessment written, 2026-10-12.** The
+[author review](../papers/thinking-selection/author-scientific-review-2026-10-12.md)
+recommends retaining manuscript v0.2 as a scoped empirical report. It explains
+the useful claim, strengths, unresolved evidence limits, and likely objections.
+Human author endorsement remains pending. No substantive text correction was
+identified; manuscript, results, and figures are unchanged. Next is author
+endorsement or a specific scientific correction. No new experiment was run.
+
 **R6 complete, 2026-10-11.** The [final paper review](../papers/thinking-selection/revision-review.md)
 selects **Scoped empirical draft is coherent**. All six revision passes are
 complete, with a source-linked disposition for every root and specialist

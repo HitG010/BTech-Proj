@@ -2,19 +2,19 @@
 
 **Authors:** [Author names and affiliations to be supplied]
 
-**Draft:** 0.2, 11 October 2026 — R1–R6 complete; scoped empirical report for author review
+**Draft:** 0.3, 28 October 2026; illustrative figures and legibility revision; author endorsement pending
 
 ## Abstract
 
-When do repeated thinking outcomes support useful selection on new questions? We study this question on GSM8K with small Qwen3 models. After one paid direct draft, a policy accepts the draft or requests a fresh thinking solve. Utility charges both calls when thinking is selected. On 50 questions with 800 responses, thinking produces 30 scored rescues and 10 harms across 400 paired states. The predeclared learner nevertheless fails four of five progression criteria. Its average utility difference is −0.016204 against a simple baseline selected within training. The conditional 90% interval is [−0.033276, −0.000635]. Separate post-hoc diagnostics suggest between-question gain variation and report positive same-question transfer point estimates, although one transfer interval crosses zero. These diagnostics neither reverse the failed primary reproducibility test nor establish useful selection on unseen questions. Bounded capacity, objective, and quantized representation controls also fail their screens. The flagged presentation cases alone cannot reverse the primary fixed-policy point comparison. A separate two-solver diagnostic and sparse parser-guard and cap follow-ups have narrower outcomes and limited supporting events. The main finding is the coexistence of observed thinking opportunities, limited repeat-structure evidence, and unsuccessful held-out-question selection by the tested learners. This is evidence about specified recipes on reused panels. Conditional uncertainty, one task, one model family, and scorer-based correctness limit its interpretation.
+Thinking sometimes rescues a direct answer, but the tested learners do not establish better selection on held-out questions. We study this gap on GSM8K with small Qwen3 models. After one paid direct draft, a selector accepts that draft or buys a fresh thinking solve. Utility charges both calls when thinking is selected. On 50 questions with 800 responses, we observe 30 scored rescues and 10 harms across 400 direct/thinking pairs. The primary learner fails four of five predeclared progression criteria. Its average utility difference against a simple baseline selected within training is −0.016204, with a conditional 90% interval of [−0.033276, −0.000635]. Post-hoc diagnostics suggest some question-level gain variation. Same-question transfer has positive point estimates in both directions, but one interval crosses zero and the primary reproducibility criterion still fails. Later capacity, objective, and quantized representation controls also fail their criteria on the reused panel. Separate two-solver, parser-guard, and cap studies address narrower questions with limited supporting events. The results describe the tested recipes; they do not identify why selection fails. One task, one model family, scorer-based correctness, and uncertainty conditional on fitted policies limit generalization.
 
 **Keywords:** adaptive reasoning; model routing; repeated supervision; confidence; evaluation; computational cost
 
 ## 1. Introduction
 
-An extra thinking response can correct a direct answer, repeat its error, or replace a correct answer with an incorrect one. A useful selector must predict whether the added response is worth its cost from information available before that response.
+An extra thinking response can correct a direct answer, repeat its error, or turn a correct answer into a wrong one. A selector must decide whether the expected benefit justifies the extra cost, using information available before the call.
 
-Three levels of evidence bear on this decision. Observed rescues show that an extra call sometimes corrects a draft. Repeated outcomes on the same questions can reveal question-level variation in gain. A learned policy must then use permitted features to select actions on questions excluded from fitting. Success at one level does not establish success at the next.
+We distinguish three levels of evidence for this decision. Observed rescues show that an extra call sometimes corrects a draft. Repeated outcomes on the same questions can reveal question-level variation in gain. A learned policy must then use permitted features to select actions on questions excluded from fitting. Success at one level does not establish success at the next.
 
 We study a specific decision. A small Qwen3 model first produces a direct draft. A router then accepts that draft or requests a fresh thinking solve from the same model. The thinking call receives the question; it does not continue or revise the observed draft. The direct cost has already been incurred. This contract makes escalation more expensive than using a thinking response alone.
 
@@ -54,7 +54,7 @@ The added evidence here is the measured coexistence of rescues, limited post-hoc
 
 Other adaptive methods change the decision space. [Thinkless (Fang et al., 2025)](https://arxiv.org/abs/2505.13379v2) uses reinforcement learning to select reasoning behavior. [BEST-Route (Ding et al., 2025)](https://arxiv.org/abs/2506.22716v1) selects a model and an inference sample count. Our controls do not reproduce these full systems.
 
-Our compact representation uses the released [all-MiniLM-L6-v2 model](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2), which already has contrastive sentence-level training. The objective study changes a small routing head; it does not compare contrastive pretraining with its absence. The released-CLM diagnostic uses state/action heads documented in the [official CLM release](https://huggingface.co/Contrastive-LM/CLM-v0.1-8B). We cite it as an author release and implementation; no proceedings publication was verified.
+Our compact representation uses the released [all-MiniLM-L6-v2 model](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2), which already has contrastive sentence-level training. The objective study changes a small routing head; it does not compare contrastive pretraining with its absence. The released Contrastive Language Models (CLM) diagnostic uses state/action heads documented in the [official CLM release](https://huggingface.co/Contrastive-LM/CLM-v0.1-8B). We cite it as an author release and implementation; no proceedings publication was verified.
 
 ## 3. Decision contract and evaluation
 
@@ -78,6 +78,14 @@ The value \(\lambda=.05\) is the frozen cost preference for these studies. Utili
 
 The router can use the question, the permitted features of the observed direct draft, and fixed model information. It cannot use the future thinking text, thinking correctness, thinking length, or reference answer. Confidence is the mean direct-answer token log probability after temperature and sampling filters. It is a ranking feature, not a calibrated probability of correctness. Lower confidence can trigger escalation. Raw model confidence is retained as a separate measurement and does not replace the primary feature.
 
+Figure 1 shows the decision before thinking is observed and the recorded outcomes available after collection. A rescue changes scored correctness; its value to a policy also depends on the extra cost.
+
+![What the selector decides](figures-v2/output-r2/png/figure-01-decision.png)
+
+**Figure 1. Decision and observed outcomes. A selector accepts a paid direct draft or requests a fresh thinking solve from the question alone. Escalation pays for both calls. The matrix shows the four scored outcome categories among all 400 direct/thinking pairs on the 50-question repeat panel. A pair matches sample indices; the two modes use different seeds. These are observed counts, not predictions or utility-gain labels. Every pair contributes once, and cell area does not encode its count.**
+
+[Figure 1 PDF](figures-v2/output-r2/pdf/figure-01-decision.pdf) · [Figure 1 SVG](figures-v2/output-r2/svg/figure-01-decision.svg)
+
 ### 3.2. Data, solvers, and scoring
 
 All reported new question panels come from eligible GSM8K upstream training rows. Roles are frozen and checked for identity and normalized-prompt overlap. The project's official-test allocation is sealed. Neither reserved confirmation study contributes results to this paper. Question separation in these experiments does not establish separation from model pretraining.
@@ -90,7 +98,7 @@ For the repeat, two-solver, sparse, and cap studies, selected training reference
 
 ### 3.3. Evidence units and chronology
 
-Table 1 separates unique questions, responses, and the use of each panel. A fit is not a new dataset. A repeated draw is not a new independent question. The paper's organizing research questions were formulated retrospectively; the individual studies' recorded grids, endpoints, and progression criteria were specified before their respective execution.
+A paired state contains one direct response and one fresh thinking response for the same question and sample index. The two modes use different seeds. Table 1 separates unique questions, responses, and the use of each panel. A fit is not a new dataset. A repeated draw is not a new independent question. The paper's organizing research questions were formulated retrospectively; the individual studies' recorded grids, endpoints, and progression criteria were specified before their respective execution.
 
 **Table 1. Evidence blocks and their scope.** The control studies reuse the repeat panel; their fit counts do not add independent questions. The cap questions are a subset of the two-solver panel. The fresh guard contrast uses a separately fitted and frozen policy.
 
@@ -103,11 +111,13 @@ Table 1 separates unique questions, responses, and the use of each panel. A fit 
 | Fresh sparse parser-guard contrast | 228 disjoint questions; 228 direct and one activated thinking response | Policies frozen before fresh collection | Only the policy difference is identified |
 | Matched cap intervention | 11 selected questions from the 64-question panel; 18 pairs and 36 new responses | Same question/seed, 2k versus 4k reasoning allowance | Enriched development cohort |
 
-![Study and evidence map](figures/output/png/figure-01-study-map.png)
+Figure 2 separates the question split from the draw split and shows which later studies reuse questions.
 
-**Figure 1. Study and evidence map. The primary learner, later controls, and post-hoc same-question diagnostics reuse 50 question groups. The separate two-solver panel has 64 groups; the cap cohort contains 11 of those same questions. The fresh guard panel uses 228 questions disjoint from development and evaluates a policy contrast with a common cutoff refitted on all 128 development states and frozen before fresh collection. Dashed arrows show design influence, not independent replication or pooled evidence. Boxes are not proportional to sample size.**
+![Questions and draws have different roles](figures-v2/output-r2/png/figure-02-design.png)
 
-[Figure 1 PDF](figures/output/pdf/figure-01-study-map.pdf) · [Figure 1 SVG](figures/output/svg/figure-01-study-map.svg)
+**Figure 2. Sampling and study roles. The primary panel contains 50 questions, eight independent draws per mode, and 800 responses, paired into 400 states by sample index. Each outer fold fits on 40 questions and evaluates on ten excluded questions. The diagram shows the four-draw A-to-B direction; B-to-A reverses the draw halves while retaining question separation. Direct drafts change across draws. Later controls and post-hoc diagnostics reuse these 50 questions. The separate 64-question panel supplies the 11-question cap subset and the development states used to refit the guard before its 228 fresh questions. The latter link indicates design influence, not shared questions or replication. Box sizes are schematic.**
+
+[Figure 2 PDF](figures-v2/output-r2/pdf/figure-02-design.pdf) · [Figure 2 SVG](figures-v2/output-r2/svg/figure-02-design.svg)
 
 ### 3.4. Independent response halves and grouped selection
 
@@ -117,13 +127,13 @@ For \(k\in\{1,2,4\}\), the learner fits on the first \(k\) draws of training que
 
 All outcomes for an outer evaluation question are excluded from its model fitting and tuning. The opposite halves check sensitivity to different realizations of training and evaluation draws. Both directions reuse the same question groups and exchange their draw roles. They are not independent study replications, and no matched comparison establishes an advantage from the half-split design itself.
 
-A separate reproducibility diagnostic predicts each question's opposite-half mean gain from its own source-half mean. Its comparator uses the mean gain of the other 49 questions in that source half. We average the reduction in mean squared error across both directions. This diagnostic concerns repeated question-level signal; it is distinct from router utility on held-out questions.
+The predeclared reproducibility diagnostic tests how well each question's source-half mean gain predicts its opposite-half mean gain. Here, reproducibility refers to this mean-squared-error test, not an independent replication of the study. Its comparator uses the mean gain of the other 49 questions in that source half. We average the reduction in mean squared error across both directions. This diagnostic concerns repeated question-level signal; it is distinct from router utility on held-out questions.
 
 Direct drafts change across draws. Thus the same-question diagnostics concern repeated outcomes for a question, rather than repeated thinking outcomes conditioned on one identical draft. Neither these diagnostics nor the k=1/2/4 comparisons isolate the causal effect of acquiring more repeated labels.
 
 The predeclared learner is combined Ridge regression on 387 question features and four draft features. The question block consists of 384 MiniLM coordinates and three lexical features. The draft block consists of confidence, log answer length, parser validity, and truncation. Standardization is fitted within training folds. The original Ridge penalty grid is \(\{1,10,100\}\). The learner escalates when predicted incremental gain is positive. Question-only and draft-only variants are diagnostics.
 
-The original simple comparator is selected within training from always accept, always escalate, and a confidence threshold. This differs from later controls, which compare directly with confidence. A secondary full-eight analysis trains on all eight draws of training questions and tests on all eight draws of held-out questions. It has no independent same-question eight-draw replica.
+The original simple comparator is selected within training from always accept, always escalate, and a confidence threshold. This differs from later controls, which compare directly with confidence. For later model families, “training-selected” means that the permitted training data choose the model settings used for evaluation; held-out-question labels do not enter that choice. A secondary full-eight analysis trains on all eight draws of training questions and tests on all eight draws of held-out questions. It has no independent same-question eight-draw replica.
 
 ### 3.5. Uncertainty and progression
 
@@ -131,7 +141,7 @@ Repeat and router-control intervals use 2,000 whole-question bootstrap resamples
 
 Outer-fold models share training questions. Resampling whole evaluation questions preserves their repeated-outcome groups, but does not reproduce the dependence created by overlapping training sets. Nested selection controls which labels enter each specified fit. It does not remove later research reuse. Consequently, an interval below zero does not by itself establish inferiority of the learning algorithm across future training sets. Sparse-event limitations require an additional qualification in Section 5.3.
 
-The primary repeat study requires all five criteria in Table 2. CPU, MiniLM, and CLM screens require average utility gain of at least .01, positive means in both directions, and a positive averaged mean after deleting each question in turn. The two-solver diagnostic requires at least ten positive-gain questions, plus confidence gain of at least .01 and positive points in both directions. Its positive-gain count differs from the repeat study's count of any correctness difference. Sparse validation requires gain of at least .01 and a positive lower 95% interval bound.
+A progression screen is a set of predeclared criteria for deciding whether to continue a research direction. The primary repeat study requires all five criteria in Table 2. CPU, MiniLM, and CLM screens require average utility gain of at least .01, positive means in both directions, and a positive averaged mean after deleting each question in turn. The two-solver diagnostic requires at least ten positive-gain questions, plus confidence gain of at least .01 and positive points in both directions. Its positive-gain count differs from the repeat study's count of any correctness difference. Sparse validation requires gain of at least .01 and a positive lower 95% interval bound.
 
 The progression criteria are related decisions on the same outcomes, rather than independent tests of one mechanism. Later screens cannot replace a failed primary endpoint. We report all original decisions. A favorable secondary result does not promote a different candidate after outcomes.
 
@@ -204,11 +214,13 @@ The CLM state and learned families exclude confidence and auxiliary draft statis
 | Same encoder, PCA8/Ridge | 89.00% | 330.81 | −.022617 | [−.043758, −.004464] |
 | Training-selected CLM/raw family | 88.75% | 406.34 | −.028893 | [−.049575, −.010922] |
 
-![Recorded utility contrasts](figures/output/png/figure-02-utility-contrasts.png)
+Figure 3 shows the negative recorded utility differences for the primary learner and later controls, with their different comparators kept in separate panels.
 
-**Figure 2. Recorded averaged four-draw utility contrasts on the same 50 questions. Panel A compares the original combined Ridge learner with a baseline selected within training from accept, escalate, and confidence. Panel B compares three families selected within training with the four-draw confidence policy; the other individual policy results remain in Table 3. Bars are the recorded conditional 90% whole-question bootstrap intervals with fits and actions fixed. They omit refitting and research-selection uncertainty and do not provide joint coverage. Different comparators and reused data prevent a pooled effect or common causal interpretation. All displayed progression screens failed.**
+![The tested learners miss their utility targets](figures-v2/output-r2/png/figure-03-utility.png)
 
-[Figure 2 PDF](figures/output/pdf/figure-02-utility-contrasts.pdf) · [Figure 2 SVG](figures/output/svg/figure-02-utility-contrasts.svg)
+**Figure 3. Recorded four-draw utility differences on the same 50 questions. Panel A compares the primary learner with a baseline selected within training from accept, escalate, and confidence. Panel B compares later families selected within training with confidence. Dots and bars show the reported means and conditional 90% whole-question bootstrap intervals. Fits and actions stay fixed; intervals omit refitting and research-selection uncertainty and have no joint coverage. Negative values favor each stated comparator. Different comparators prevent a pooled effect. Exact values remain in Tables 2 and 3; all displayed screens failed.**
+
+[Figure 3 PDF](figures-v2/output-r2/pdf/figure-03-utility.pdf) · [Figure 3 SVG](figures-v2/output-r2/svg/figure-03-utility.svg)
 
 Calibrated CLM minus the raw encoder control is −.010645, with interval [−.018190, −.004292]. Both remain below confidence. Zero-shot CLM chooses thinking for 380 of 400 drafts. Its higher accuracy therefore comes with near-always-escalating cost. The interval for its utility difference includes zero; this is not proof of a population disadvantage.
 
@@ -216,7 +228,7 @@ Output-token utility excludes CLM encoder work. Separate encoding measurements a
 
 ## 5. Limits of transfer
 
-These supporting studies test different targets. The two-solver diagnostic examines realized opportunities. The parser follow-up tests a refitted policy change. The cap intervention tests a larger allowance on selected development questions. None replicates the primary learned-policy comparison.
+The supporting studies examine three different targets: observed opportunities across two solvers, a refitted parser-guard policy, and a larger thinking allowance on selected development questions. Their findings limit how far the main result can be extended. The two-solver comparison is in Section 5.1; Sections 5.2–5.4 give the guard and cap results, including the sparse-outcome limits. None replicates the primary learner comparison.
 
 ### 5.1. Opportunities differ across the two tested solver sizes
 
@@ -241,11 +253,13 @@ The comparison establishes different observed opportunity patterns in these sett
 
 Accepting the larger model's direct draft also has higher point accuracy and fewer generated tokens than the smaller model's confidence policy. These token counts are useful context, but tokens from different model sizes are not equal units of compute. No live cross-size latency or energy advantage is established.
 
-![Two-solver diagnostic: accuracy and output cost](figures/output/png/figure-03-two-solver-diagnostic.png)
+Figure 4 aligns accuracy and output cost by policy. The observed confidence-versus-direct pattern differs between the two solver settings.
 
-**Figure 3. Two-solver diagnostic, averaged across the two draw directions. Every policy point uses 128 paired states in the same 64 question groups. Accuracy and token values are transcribed point estimates; no uncertainty interval is inferred for these marks. Escalation pays for the direct draft plus thinking, including inserted closure tokens. The labels 4/64 and 24/64 count questions with positive realized utility gain in at least one of two draws at lambda=.05. These counts depend on the draw count and do not identify positive expected gain. Output tokens are not equal compute units across solver sizes; no cross-size latency or energy advantage is established.**
+![Policy accuracy and output cost](figures-v2/output-r2/png/figure-04-diagnostic.png)
 
-[Figure 3 PDF](figures/output/pdf/figure-03-two-solver-diagnostic.pdf) · [Figure 3 SVG](figures/output/svg/figure-03-two-solver-diagnostic.svg)
+**Figure 4. The separate two-solver diagnostic, averaged across draw directions. Rows align each policy's scored accuracy and charged output tokens for 128 paired states in the same 64 question groups. Marks show reported point estimates; no accuracy or token interval is inferred. Both calls are charged on escalation. The 4/64 and 24/64 counts identify questions with positive realized gain in at least one of two draws at lambda=.05, not positive expected-gain labels. Tokens are not equal compute units across solver sizes. No population model-size effect or latency advantage is established.**
+
+[Figure 4 PDF](figures-v2/output-r2/pdf/figure-04-diagnostic.pdf) · [Figure 4 SVG](figures-v2/output-r2/svg/figure-04-diagnostic.svg)
 
 ### 5.2. Development evidence and the refitted guard
 
@@ -326,13 +340,13 @@ Finally, runtime recoveries and local resource contention prevent causal speed c
 
 ## 8. Conclusion
 
-On the studied GSM8K/Qwen3-1.7B panel, scored rescues and limited post-hoc evidence of repeated question-level structure coexist with failed learned selection on held-out questions. The primary learner and later bounded controls do not establish utility gains over their specified simple comparators. Same-question transfer omits acquisition cost, one directional interval crosses zero, and the primary reproducibility criterion remains failed. The flagged presentation cases alone cannot reverse the primary fixed-policy point comparison.
+On the studied GSM8K/Qwen3-1.7B panel, thinking sometimes rescues a direct answer, yet the primary learner and later bounded controls do not establish utility gains over their specified simple comparators on held-out questions. Post-hoc diagnostics suggest limited repeated question-level structure. Same-question transfer omits acquisition cost, one directional interval crosses zero, and the primary reproducibility criterion remains failed. The flagged presentation cases alone cannot reverse the primary fixed-policy point comparison.
 
-The separate two-solver diagnostic, fresh guard contrast, and selected cap intervention have different targets. They constrain transfer of the development observations without confirming a common failure mechanism. This evidence supports a scoped account of the tested recipes and their limits. A broader claim requires prospective evidence that separates repeated question structure from useful feature-based selection across new training and evaluation conditions.
+The two-solver diagnostic, fresh guard contrast, and selected cap intervention address different targets and identify no common failure mechanism. A broader claim requires prospective evidence that separates repeated question structure from useful feature-based selection across new training and evaluation conditions.
 
 ## Data and code availability
 
-The project retains versioned source, protocols, aggregate reports, score sidecars, and independent verification records. This manuscript is drafted from the tracked result records listed in Appendix B. No new experiment, scoring, reference access, or statistical reanalysis was performed for the manuscript. Figures 1–3 are report-only exports under a [frozen display plan](figure-export-plan.md); their [inputs and review](figures/README.md) retain source and output identities. No effect or interval was re-estimated for these figures. A public artifact release and its licensing review are pending. Sealed allocations and protected material are not part of a promised release.
+The project retains versioned source, protocols, aggregate reports, score sidecars, and independent verification records. This manuscript is drafted from the tracked result records listed in Appendix B. No new experiment, scoring, reference access, or statistical reanalysis was performed for the manuscript. Figures 1–4 use the reported results under a separate [display revision plan](figures-v2/plan.md). The [display record](figures-v2/README.md) retains source and output identities and the original figures remain preserved. No effect or interval was re-estimated for these figures. A public artifact release and its licensing review are pending. Sealed allocations and protected material are not part of a promised release.
 
 ## Author declarations
 
