@@ -1,5 +1,11 @@
 # Research map
 
+**Phase 1 cascade reframing, 2026-10-29.** Manuscript v0.4 recasts the
+accept-or-think decision as a same-model cascade, with eight new sources at
+abstract level (full texts were blocked by the session network policy). Tables,
+Box 1, figures, and appendices are unchanged; the LaTeX copy is still v0.3. See the
+[reframing record](../papers/thinking-selection/cascade-reframing-2026-10-29.md).
+
 **Project review and publication plan, 2026-10-29.** The
 [review](project-review-and-publication-plan-2026-10-29.md) compares all five
 branches, summarizes the overall work, ranks the manuscript's publication gaps

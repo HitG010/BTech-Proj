@@ -212,3 +212,30 @@ and acquisition-supplement retrieval limits remain unchanged.
 
 No existing study source, outcome, scorer, reference, protocol, executor, or
 model asset was changed or reopened. No tests were run for this writing task.
+
+## Cascade reframing addendum — 29 October 2026
+
+Manuscript v0.4 reframes the decision as a same-model cascade. It adds eight
+sources: `jitkrittum2023cascade`, `gupta2024lmcascades`,
+`lewislim2026confidencegated`, `chen2023frugalgpt`, `yue2024motcascade`,
+`aggarwal2024automix`, `fanconi2025cascaded`, and `he2025selfroute`. Section
+2 is reorganized into cascades and deferral rules, adaptive thinking in hybrid
+models, and routing evaluation and representations.
+
+**Retrieval limit.** The session network policy blocked arxiv.org,
+openreview.net, proceedings.neurips.cc, and proceedings.iclr.cc. The new
+sources were checked through abstracts, official listings, and secondary
+summaries from web search only. No new full text was read, and the manuscript
+describes these works only at abstract level. The
+[reframing record](cascade-reframing-2026-10-29.md#4-retrieval-limits-and-what-to-read-before-submission)
+lists what to confirm in each full text before submission.
+
+**Closest new overlap.** Lewis-Lim et al. already study confidence-gated
+chain of thought, with training-free confidence measures, random and oracle
+references, and dataset- and model-dependent results. The confidence rule in
+this paper is not new. The remaining distinction is learned post-hoc deferral
+with repeated draws, held-out question folds, and a cost charging both calls.
+
+**Avoid.** Do not claim that framing thinking escalation as a cascade is new,
+that the cascade analysis explains the failure (it was not tested), or that
+token-level quantile deferral would fail (it was not evaluated).

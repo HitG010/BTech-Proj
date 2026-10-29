@@ -978,3 +978,14 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   reframe, cached CPU analyses, optional human audit, short workshop/arXiv
   paper; optional powered vLLM/Kaggle confirmation for TMLR. Proposal only:
   no experiment, reference/sealed access, branch change or submission occurred.
+- Phase 1 cascade reframing, 2026-10-29: manuscript is now v0.4; read the
+  [reframing record](papers/thinking-selection/cascade-reframing-2026-10-29.md).
+  New title, abstract, introduction, related work (cascades, adaptive thinking,
+  routing evaluation), Section 3.1 cascade mapping, discussion, limitations and
+  conclusion. Eight new BibTeX sources were verified at abstract level only:
+  arxiv.org/openreview/NeurIPS/ICLR proceedings were blocked by the session
+  network policy, so read full texts before submission. Lewis-Lim et al.
+  (arXiv:2510.21007) already study confidence-gated thinking; do not claim the
+  cascade framing or confidence rule as new. Tables, Box 1, figures, equations
+  and appendices are byte-identical to v0.3; latex-v2 still reflects v0.3.
+  No experiment, fitting, scoring, statistic, raw/cache/reference/sealed access.

@@ -311,6 +311,11 @@ including unfavorable ones.
 
 ### Phase 1: Reframe around cascade deferral (3–5 days)
 
+Status 2026-10-29: steps 5–6 done in manuscript v0.4; step 4 done at
+abstract level only, because full texts were blocked. See the
+[reframing record](../papers/thinking-selection/cascade-reframing-2026-10-29.md).
+
+
 4. Read Jitkrittum et al. 2023 and Gupta et al. 2024 in full. Then verify and
    read the other candidates in Section 6.1, and add only what you have read.
 5. Restate the contribution in one sentence. For example: *in hybrid

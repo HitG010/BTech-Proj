@@ -2,9 +2,16 @@
 
 ## Read the paper
 
-[Manuscript, version 0.3](manuscript.md)
+[Manuscript, version 0.4](manuscript.md)
 
-**Current reviewer copy, 28 October 2026:** [PDF](latex-v2/output/pdf/main.pdf),
+**Cascade reframing, 29 October 2026:** v0.4 recasts the accept-or-think
+decision as a same-model cascade, with a new title, abstract, introduction,
+related work (cascades first), and discussion. Eight sources were added at
+abstract level; their full texts could not be retrieved in this session.
+All tables, Box 1, figures, and appendices are unchanged. The PDF/LaTeX copy
+below still reflects v0.3. See the [reframing record](cascade-reframing-2026-10-29.md).
+
+**Reviewer copy of v0.3, 28 October 2026:** [PDF](latex-v2/output/pdf/main.pdf),
 [editable LaTeX](latex-v2/main.tex), and
 [portable source ZIP](thinking-selection-review-source-v2.zip).
 Four illustrative figures explain the decision, sample design, utility
@@ -21,8 +28,10 @@ review layout with line numbers. Scientific wording, values, and figure captions
 retain v0.2; a source-record inventory is added for portability. Author details
 and endorsement remain pending. No new experiment or literature search was run.
 
-**Title:** Confidence and Learned Thinking Selection on GSM8K: A Controlled Study
-of Small Qwen3 Models.
+**Title (v0.4):** Learned Deferral Did Not Beat Confidence When Escalating to
+Thinking: A Same-Model Cascade Study of Small Qwen3 Models on GSM8K. The v0.3
+title was *Confidence and Learned Thinking Selection on GSM8K: A Controlled
+Study of Small Qwen3 Models*.
 
 The draft contains an abstract, introduction, related work, methods, results,
 discussion, limitations, conclusion, references, and reproducibility appendices.
