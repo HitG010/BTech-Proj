@@ -1,5 +1,11 @@
 # Research map
 
+**Confidence–gain shape audit prepared, 2026-10-29.** The
+[protocol](confidence-gain-shape-protocol.md) asks whether lower direct confidence
+goes with higher deferral gain on the repeat and two-solver panels. Script and 19
+synthetic tests pass; it is post-hoc and descriptive and has **not run** on the
+cached panels, which exist only on the machine holding `artifacts/`.
+
 **Phase 1 cascade reframing, 2026-10-29.** Manuscript v0.4 recasts the
 accept-or-think decision as a same-model cascade, with eight new sources at
 abstract level (full texts were blocked by the session network policy). Tables,

@@ -989,3 +989,12 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   cascade framing or confidence rule as new. Tables, Box 1, figures, equations
   and appendices are byte-identical to v0.3; latex-v2 still reflects v0.3.
   No experiment, fitting, scoring, statistic, raw/cache/reference/sealed access.
+- Confidence–gain shape audit, 2026-10-29: read the
+  [protocol](docs/confidence-gain-shape-protocol.md). It checks whether lower
+  direct confidence goes with higher deferral gain (bins, Spearman pooled/
+  between/within, escalation curve) on the repeat panel and both two-solver
+  solvers. Post-hoc, descriptive, reading rule fixed in the protocol. Script
+  `scripts/audit_confidence_gain_shape.py` reuses guarded cached loaders and
+  writes only `confidence-gain-shape-v1/`; 19 synthetic tests and Ruff pass.
+  NOT yet executed: run `prepare` then `execute` once on the machine holding
+  `artifacts/`; do not restart a completed audit. No scoring/reference access.

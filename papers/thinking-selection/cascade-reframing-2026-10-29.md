@@ -126,6 +126,9 @@ frozen plan, per project practice. None was run here.
    intervals. A threshold rule can approach the optimal rule only if lower
    confidence means higher expected gain. This directly tests the premise of
    Section 3.1.
+   *Status 2026-10-29:* protocol, script, and 19 synthetic tests are ready
+   ([protocol](../../docs/confidence-gain-shape-protocol.md)); execution needs the
+   machine holding `artifacts/` and has not run.
 2. **Token-level quantile deferral (Gupta et al.).** Recompute per-token log
    probabilities for the cached direct drafts by teacher forcing. Records hold
    decoded text, not token IDs, so check that re-tokenization reproduces

@@ -329,6 +329,12 @@ abstract level only, because full texts were blocked. See the
 
 ### Phase 2: Cached-data analyses, no new generation (4–7 days, CPU)
 
+Status 2026-10-29: the confidence–gain shape check (from the Phase 1
+reframing record) is implemented and tested on synthetic data; see its
+[protocol](confidence-gain-shape-protocol.md). It has not run on real data,
+because the cached panels exist only on the machine holding `artifacts/`.
+
+
 7. Draw accuracy-versus-tokens curves for all repeat-panel and two-solver
    policies, with always-direct, always-think, cost-matched random and the
    hindsight oracle. Keep λ = .05 as the primary point.
