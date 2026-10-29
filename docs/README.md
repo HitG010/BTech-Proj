@@ -1,5 +1,12 @@
 # Research map
 
+**Project review and publication plan, 2026-10-29.** The
+[review](project-review-and-publication-plan-2026-10-29.md) compares all five
+branches, summarizes the overall work, ranks the manuscript's publication gaps
+(chiefly missing cascade-deferral prior work, small near-ceiling evidence, no
+accuracy-cost curves, missing standard baselines) and proposes a step-by-step
+plan. It is a proposal; no experiment or study artifact changed.
+
 **Illustrative reviewer revision, 2026-10-28.** Manuscript v0.3 has four
 [new figures](../papers/thinking-selection/figures-v2/README.md), clearer
 opening prose and definitions, and a [current LaTeX/PDF package](../papers/thinking-selection/latex-v2/README.md).

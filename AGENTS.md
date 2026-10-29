@@ -966,3 +966,15 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   displayed equations remain unchanged. No new scientific result, raw/cache/
   reference/sealed access, experiment, statistical estimate, implementation
   test, submission, or public release. Author identity/endorsement still pending.
+
+- Project review and publication plan, 2026-10-29: read
+  [the review](docs/project-review-and-publication-plan-2026-10-29.md).
+  Current branch is the superset of all others except unmerged
+  `research/pilot-v2` reports/configs/`analysis.py`. The manuscript is an
+  empirical negative-results paper, not a survey. Main gaps: missing
+  cascade-deferral prior work (Jitkrittum et al. 2023; Gupta et al. 2024),
+  50-question near-ceiling evidence, single lambda without accuracy-cost
+  curves, missing token-level/agreement baselines, audit-style prose. Plan:
+  reframe, cached CPU analyses, optional human audit, short workshop/arXiv
+  paper; optional powered vLLM/Kaggle confirmation for TMLR. Proposal only:
+  no experiment, reference/sealed access, branch change or submission occurred.
