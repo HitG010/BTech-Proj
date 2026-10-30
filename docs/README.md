@@ -1,10 +1,11 @@
 # Research map
 
-**Confidence–gain shape audit prepared, 2026-10-29.** The
-[protocol](confidence-gain-shape-protocol.md) asks whether lower direct confidence
-goes with higher deferral gain on the repeat and two-solver panels. Script and 19
-synthetic tests pass; it is post-hoc and descriptive and has **not run** on the
-cached panels, which exist only on the machine holding `artifacts/`.
+**Confidence–gain shape audit complete, 2026-10-30.** The
+[results](confidence-gain-shape-results.md) show that lower direct confidence goes
+with higher deferral gain for Qwen3-0.6B (reading: consistent) but not in general
+for Qwen3-1.7B (repeat panel inconclusive, lowest tail only; two-solver panel
+inconsistent, no helpful threshold). Post-hoc and descriptive; bin totals reproduce
+the published counts.
 
 **Phase 1 cascade reframing, 2026-10-29.** Manuscript v0.4 recasts the
 accept-or-think decision as a same-model cascade, with eight new sources at

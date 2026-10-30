@@ -1009,3 +1009,18 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   report/score/record digests, terminal states and exit codes, and records the
   collection-versus-audit environment difference instead of requiring equality.
   See the protocol's runtime-environment deviation section. Still not executed.
+- Confidence–gain shape audit **complete**, 2026-10-30: read the
+  [results](docs/confidence-gain-shape-results.md) and the user-run
+  [report](docs/confidence-gain-shape-report.md). Readings: repeat 1.7B
+  inconclusive (pooled Spearman +.1553 [−.0021,+.2975]; only lowest-confidence
+  bin has positive gain, 17/30 rescues; top bin holds 8/12 both-wrong), two-solver
+  0.6B consistent (−.1931 [−.3572,−.0251], monotone bins, best in-sample
+  threshold 71.8% of oracle), two-solver 1.7B inconsistent (+.3439
+  [+.1612,+.4994], best in-sample threshold escalates nothing). Positive 1.7B
+  correlations largely reflect longer thinking after low-confidence drafts.
+  Only `platform` differed from collection. Post-hoc/descriptive; do not rerun
+  `execute`. Manuscript integration awaits the author's decision.
+- History rewrite, 2026-10-30: at the user's request, the five commits after
+  `15f5b3c` were rewritten to remove Claude trailers and author identity (trees
+  and dates unchanged) and force-pushed; old hashes `fe067c3`, `aa36f21`,
+  `62e56b7`, `94f65cb`, `83e72b9` are superseded.
