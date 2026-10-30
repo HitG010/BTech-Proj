@@ -1024,3 +1024,10 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   `15f5b3c` were rewritten to remove Claude trailers and author identity (trees
   and dates unchanged) and force-pushed; old hashes `fe067c3`, `aa36f21`,
   `62e56b7`, `94f65cb`, `83e72b9` are superseded.
+- Manuscript v0.5, 2026-10-30: Section 5.2 and Table 5 report the post-hoc
+  confidence–gain audit; abstract, introduction finding 3, Sections 3.1/3.5/
+  6.1/6.2, limitations, conclusion, data availability, Appendix A seed list and
+  Appendix B are updated. Former Sections 5.2–5.4 are now 5.3–5.5 and all
+  cross-references follow. Table 5 cells match the generated report by script;
+  all earlier tables, Box 1, figures, captions and equations are unchanged.
+  latex-v2 still reflects v0.3.

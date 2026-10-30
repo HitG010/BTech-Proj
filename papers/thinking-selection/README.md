@@ -2,7 +2,14 @@
 
 ## Read the paper
 
-[Manuscript, version 0.4](manuscript.md)
+[Manuscript, version 0.5](manuscript.md)
+
+**Confidence–gain audit added, 30 October 2026:** v0.5 adds Section 5.2 and
+Table 5, a post-hoc descriptive check of whether lower confidence means higher
+deferral gain (yes for Qwen3-0.6B, not in general for Qwen3-1.7B). Discussion,
+limitations, conclusion, Appendix A seeds and Appendix B are updated; later
+Section 5 subsections are renumbered 5.3–5.5. All earlier tables, Box 1, figures,
+and equations are unchanged. See the [results record](../../docs/confidence-gain-shape-results.md).
 
 **Cascade reframing, 29 October 2026:** v0.4 recasts the accept-or-think
 decision as a same-model cascade, with a new title, abstract, introduction,

@@ -81,3 +81,10 @@ panel are small. Neither the "label noise" analogy nor any causal mechanism is
 tested; the both-wrong pattern also differs between the two 1.7B panels
 (highest-confidence bin on the repeat panel, lowest bins on the two-solver
 panel).
+
+## Manuscript integration
+
+At the author's request, manuscript v0.5 (30 October 2026) reports this audit
+as Section 5.2 and Table 5, with updates to Sections 3.1, 3.5, 6.1, 6.2, the
+limitations, conclusion, abstract, and Appendices A and B. Every Table 5 cell
+was checked by script against the generated report.

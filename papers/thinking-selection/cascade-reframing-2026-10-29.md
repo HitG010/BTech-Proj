@@ -129,7 +129,7 @@ frozen plan, per project practice. None was run here.
    *Status 2026-10-30:* done ([results](../../docs/confidence-gain-shape-results.md)).
    The premise holds for Qwen3-0.6B but not for Qwen3-1.7B: only the lowest
    confidence tail benefits on the repeat panel, and no threshold helps on the
-   two-solver panel. Manuscript integration is pending author decision.
+   two-solver panel. Added to the manuscript as Section 5.2 and Table 5 (v0.5).
 2. **Token-level quantile deferral (Gupta et al.).** Recompute per-token log
    probabilities for the cached direct drafts by teacher forcing. Records hold
    decoded text, not token IDs, so check that re-tokenization reproduces

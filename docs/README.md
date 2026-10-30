@@ -5,7 +5,7 @@
 with higher deferral gain for Qwen3-0.6B (reading: consistent) but not in general
 for Qwen3-1.7B (repeat panel inconclusive, lowest tail only; two-solver panel
 inconsistent, no helpful threshold). Post-hoc and descriptive; bin totals reproduce
-the published counts.
+the published counts. Manuscript v0.5 reports it as Section 5.2 and Table 5.
 
 **Phase 1 cascade reframing, 2026-10-29.** Manuscript v0.4 recasts the
 accept-or-think decision as a same-model cascade, with eight new sources at
