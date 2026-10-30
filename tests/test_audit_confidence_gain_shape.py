@@ -145,3 +145,26 @@ def test_markdown_renders_all_panels_with_missing_values():
     report = {"statistics": {name: stats for name in audit.PANELS}}
     text = audit.markdown(report)
     assert all(f"## {name}" in text for name in audit.PANELS) and "n/a" in text
+
+
+def test_environment_difference_lists_changed_and_missing_fields():
+    frozen = {"python": "3.11.13", "platform": "macOS-26.0", "mps_fallback": "0"}
+    current = {"python": "3.11.13", "platform": "macOS-26.1", "machine": "arm64"}
+    assert audit.environment_difference(frozen, current) == ["machine", "mps_fallback", "platform"]
+    assert audit.environment_difference(frozen, dict(frozen)) == []
+
+
+def test_markdown_reports_runtime_environment_deviation():
+    stats = audit.gain_shape(*threshold_panel(True), spec=SMALL)
+    report = {"statistics": {name: stats for name in audit.PANELS},
+              "runtime_environment_deviation": ["platform"]}
+    assert "differing from collection: platform" in audit.markdown(report)
+
+
+def test_study_inventory_hashes_every_file(tmp_path):
+    (tmp_path / "a").mkdir()
+    (tmp_path / "a" / "x.json").write_text("{}")
+    (tmp_path / "y.txt").write_text("y")
+    inventory = audit.study_inventory(tmp_path)
+    assert set(inventory) == {"a/x.json", "y.txt"}
+    assert inventory["y.txt"] == audit.file_hash(tmp_path / "y.txt")

@@ -998,3 +998,14 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   writes only `confidence-gain-shape-v1/`; 19 synthetic tests and Ruff pass.
   NOT yet executed: run `prepare` then `execute` once on the machine holding
   `artifacts/`; do not restart a completed audit. No scoring/reference access.
+- Commit preference, 2026-10-30: the user asked that commits carry **no Claude
+  or AI attribution trailers** (no `Co-Authored-By: Claude…`, no
+  `Claude-Session:` line). Follow this for every future commit.
+- Confidence–gain audit loader fix, 2026-10-30: the first Mac `prepare` failed
+  before writing anything with `Completion plan, source, or environment
+  changed` from the two-solver collector's runtime-environment guard (pinned
+  sources were unchanged; repeat loader passed). The audit's two-solver loader
+  now requires byte identity of all pinned sources, parent files, plan/protocol/
+  report/score/record digests, terminal states and exit codes, and records the
+  collection-versus-audit environment difference instead of requiring equality.
+  See the protocol's runtime-environment deviation section. Still not executed.

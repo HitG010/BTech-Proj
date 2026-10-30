@@ -184,13 +184,74 @@ def repeat_inputs():
     return arrays, {"panel": panel["identity"], "study": str(probe.STUDY)}
 
 
+def environment_difference(frozen, current):
+    return sorted(key for key in set(frozen) | set(current) if frozen.get(key) != current.get(key))
+
+
+def study_inventory(study):
+    return {str(path.relative_to(study)): file_hash(path)
+            for path in sorted(study.rglob("*")) if path.is_file()}
+
+
+def two_solver_endpoint():
+    """Byte-identity checks of the closed endpoint; never scores or opens references.
+
+    The collector's own readers also require the live runtime environment to equal
+    the collection environment. That guard protects generation, not cached reads,
+    so this audit records the difference instead of requiring equality.
+    """
+    from scripts import opportunity_panel_collect as original
+    from scripts import opportunity_panel_completion as completion
+    original.safe_paths()
+    study, child = original.STUDY, completion.CHILD
+    protocol = verified(study / "protocol.json")
+    plan = verified(child / "plan.json")
+    for path, sha in protocol["source_file_sha256"].items():
+        if file_hash(path) != sha:
+            raise ValueError(f"Two-solver frozen source changed: {path}")
+    if (plan["source_file_sha256"] != completion.sources()
+            or plan["parent_protocol_sha256"] != digest(protocol)
+            or plan["parent_inventory_sha256"] != digest(plan["parent_inventory"])):
+        raise ValueError("Two-solver completion plan or sources changed")
+    for relative, sha in plan["parent_inventory"].items():
+        if file_hash(study / relative) != sha:
+            raise ValueError(f"Two-solver parent original changed: {relative}")
+    if set(completion.parent_inventory()) != set(plan["parent_inventory"]):
+        raise ValueError("New file appeared outside the two-solver completion child")
+    status, terminal, report, scores, review = (verified(child / name) for name in (
+        "status.json", "supervisor-finish.json", "report.json", "scores.numeric-v7.json",
+        "completion-review-verification.json"))
+    if (not (child / "collection-end.json").is_file()
+            or terminal["state"] != "complete" or status["state"] != "complete"
+            or verified(child / "invocation-process.json")["exit_code"] != 0
+            or verified(child / "finalize-process.json")["exit_code"] != 0
+            or terminal["report_sha256"] != digest(report)
+            or status["report_sha256"] != digest(report)
+            or report["plan_sha256"] != digest(plan)
+            or report["parent_protocol_sha256"] != digest(protocol)
+            or report["scores_sha256"] != digest(scores)
+            or scores["protocol_sha256"] != digest(plan)
+            or scores["scoring_implementation_sha256"] != protocol["scoring_implementation_sha256"]
+            or scores["scoring_version"] != "numeric-v7" or len(scores["scores"]) != 512):
+        raise ValueError("Two-solver closed endpoint identity changed")
+    grouped = completion.combined_records(plan, protocol)
+    if scores["records_sha256"] != digest(grouped):
+        raise ValueError("Two-solver cached records changed")
+    current = original.stable_environment()
+    identity = {"study": str(study), "protocol_sha256": digest(protocol),
+        "completion_plan_sha256": digest(plan), "report_sha256": digest(report),
+        "scores_sha256": digest(scores), "records_sha256": digest(grouped),
+        "review_sha256": digest(review),
+        "review_mentions_report_sha256": digest(report) in json.dumps(review),
+        "study_inventory_sha256": digest(study_inventory(study)),
+        "runtime_environment": {"collection": protocol["environment"], "audit": current,
+            "differing_fields": environment_difference(protocol["environment"], current)}}
+    return grouped, report, scores, identity
+
+
 def two_solver_inputs():
-    from scripts import qwen06_router_pilot as pilot
     from scripts.opportunity_panel_analysis import SOLVERS, paired_rows
-    _, _, grouped, report, _ = pilot.closed_inputs()
-    scores = verified(pilot.STUDY / "completion-v1/scores.numeric-v7.json")
-    if digest(scores) != report["scores_sha256"]:
-        raise ValueError("Cached two-solver scores changed")
+    grouped, report, scores, identity = two_solver_endpoint()
     rows = paired_rows(grouped, scores)
     ids = report["statistics"]["question_ids"]
     index = {qid: i for i, qid in enumerate(ids)}
@@ -208,9 +269,6 @@ def two_solver_inputs():
             for key in arrays:
                 arrays[key][i, j] = row[key]
         panels["two_solver_" + solver.replace("-", "_")] = arrays
-    identity = {"report_sha256": digest(report), "scores_sha256": digest(scores),
-                "study_inventory_sha256": digest(pilot.study_inventory()),
-                "study": str(pilot.STUDY)}
     return panels, identity
 
 
@@ -264,6 +322,11 @@ def markdown(report):
     lines = ["# Confidence–gain shape audit", "",
              "Post-hoc, descriptive, reused development data. See "
              "`docs/confidence-gain-shape-protocol.md`.", ""]
+    deviation = report.get("runtime_environment_deviation")
+    if deviation is not None:
+        lines += ["Two-solver runtime environment fields differing from collection: "
+                  f"{', '.join(deviation) or 'none'}. Cached bytes were verified by hash; "
+                  "no generation or scoring occurred.", ""]
     for name in PANELS:
         r = report["statistics"][name]
         t, e = r["trend"], r["escalation"]
@@ -310,15 +373,17 @@ def execute():
     if identity != plan["inputs"]:
         raise ValueError("Frozen audit inputs changed")
     statistics = {name: gain_shape(**panels[name]) for name in PANELS}
-    from scripts import qwen06_router_pilot as pilot
     from scripts.verify_phase2_repeat import verify
     preservation = verify(Path(identity["repeat"]["study"]))
-    if digest(pilot.study_inventory()) != identity["two_solver"]["study_inventory_sha256"]:
+    two_solver = identity["two_solver"]
+    if digest(study_inventory(Path(two_solver["study"]))) != two_solver["study_inventory_sha256"]:
         raise ValueError("Two-solver study files changed")
     report = {"plan_sha256": digest(plan), "spec": SPEC, "inputs": identity,
               "statistics": statistics,
               "repeat_protected_originals_verified": preservation["protected_originals_verified"],
               "two_solver_inventory_unchanged": True,
+              "runtime_environment_deviation":
+                  identity["two_solver"]["runtime_environment"]["differing_fields"],
               "no_fit_inference_generation_references": True, "cloud_spend_usd": 0.0}
     write_new(OUTPUT / "report.json", report)
     with (OUTPUT / "report.md").open("x") as stream:

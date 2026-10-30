@@ -20,10 +20,37 @@ defeat the thinking stage or make it longer, which lowers the gain.
 | Panel | Solver | Shape | Loader |
 |---|---|---|---|
 | Repeat panel | Qwen3-1.7B | 50 questions × 8 draws | `scripts.repeat_cpu_feasibility.load_panel` on the completed repeat study |
-| Two-solver panel | Qwen3-0.6B | 64 questions × 2 draws | `scripts.qwen06_router_pilot.closed_inputs` and `scripts.opportunity_panel_analysis.paired_rows` |
+| Two-solver panel | Qwen3-0.6B | 64 questions × 2 draws | Byte-identity checks of the closed completion endpoint (below), then `scripts.opportunity_panel_analysis.paired_rows` |
 | Two-solver panel | Qwen3-1.7B | 64 questions × 2 draws | Same as above |
 
 Both loaders verify the completed endpoints and use cached numeric-v7 labels.
+
+### Runtime-environment deviation for the two-solver panel
+
+The two-solver collector's own readers (`read_protocol`, `read_plan`) refuse to
+load unless the live Python version, `platform.platform()` string, package
+versions, and `PYTORCH_ENABLE_MPS_FALLBACK` value equal those recorded at
+collection. On 2026-10-30 the first `prepare` attempt on the Mac stopped there
+with `Completion plan, source, or environment changed`, before any audit file
+was written. None of the pinned source files had changed since the freeze, and
+the repeat-panel loader, which checks package versions, had already passed, so
+a platform, Python-patch, or MPS-fallback difference is the likely cause.
+
+That guard protects generation from resuming in a different environment. This
+audit generates and scores nothing, so it replaces the guard with byte-identity
+checks of everything it reads:
+
+- every source hash pinned by the two-solver protocol and completion plan;
+- every parent-study file hash in the completion plan, and no new parent files;
+- protocol, completion plan, report, score sidecar, and combined-record digests,
+  linked as in the completed endpoint;
+- terminal `complete` states, `collection-end.json`, and zero exit codes for
+  the collector and finalizer;
+- the digest of the independent completion review (its schema is not assumed;
+  whether it references the report digest is recorded).
+
+The plan and report record the collection and audit runtime environments and
+the list of differing fields. The repeat-panel loader is unchanged.
 The audit never calls a scorer, fetches a reference answer, fits a model,
 chooses a threshold, encodes text, generates a response, or edits a completed
 study file. It writes only to
