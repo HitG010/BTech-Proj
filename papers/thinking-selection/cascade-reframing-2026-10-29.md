@@ -131,10 +131,11 @@ frozen plan, per project practice. None was run here.
    confidence tail benefits on the repeat panel, and no threshold helps on the
    two-solver panel. Added to the manuscript as Section 5.2 and Table 5 (v0.5).
 2. **Token-level quantile deferral (Gupta et al.).** Recompute per-token log
-   probabilities for the cached direct drafts by teacher forcing. Records hold
-   decoded text, not token IDs, so check that re-tokenization reproduces
-   `answer_tokens`. Evaluate quantile thresholds and one learned rule on the
-   same folds and halves.
+   probabilities for the cached direct drafts by teacher forcing. Evaluate
+   quantile thresholds and one learned rule on the same folds and halves.
+   *Correction 2026-10-30:* records do store `answer_token_ids`, so no
+   re-tokenization is needed. *Status:* protocol, script, and tests are ready
+   ([protocol](../../docs/token-deferral-protocol.md)); not yet run.
 3. **Where does confidence spend escalations?** Among low-confidence drafts,
    count rescues versus both-wrong pairs. This is the label-noise analogue in
    Section 6.1.

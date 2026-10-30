@@ -330,7 +330,10 @@ abstract level only, because full texts were blocked. See the
 ### Phase 2: Cached-data analyses, no new generation (4–7 days, CPU)
 
 Status 2026-10-30: the confidence–gain shape check is complete; see its
-[results](confidence-gain-shape-results.md). Steps 7–11 remain.
+[results](confidence-gain-shape-results.md). The token-level deferral check
+(step 9) is implemented and tested; see its [protocol](token-deferral-protocol.md).
+It needs the Mac to run. The records store token IDs, so the re-tokenization
+caveat in step 9 and Section 6.4 does not apply.
 
 
 7. Draw accuracy-versus-tokens curves for all repeat-panel and two-solver

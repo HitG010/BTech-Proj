@@ -1,5 +1,11 @@
 # Research map
 
+**Token-level deferral check prepared, 2026-10-30.** The
+[protocol](token-deferral-protocol.md) tests whether a learned deferral rule on
+token-level log-probability quantiles (a Gupta et al. 2024 adaptation) beats the frozen
+confidence policy on the repeat panel. Extraction is label-blind teacher forcing with a
+fidelity gate; the primary rule and screen are fixed. Tests pass; it has **not run**.
+
 **Confidence–gain shape audit complete, 2026-10-30.** The
 [results](confidence-gain-shape-results.md) show that lower direct confidence goes
 with higher deferral gain for Qwen3-0.6B (reading: consistent) but not in general

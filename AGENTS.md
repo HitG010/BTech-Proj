@@ -1031,3 +1031,15 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   cross-references follow. Table 5 cells match the generated report by script;
   all earlier tables, Box 1, figures, captions and equations are unchanged.
   latex-v2 still reflects v0.3.
+- Token-level deferral check prepared, 2026-10-30: read the
+  [protocol](docs/token-deferral-protocol.md). `scripts/audit_token_deferral.py`
+  has `prepare`, `extract` (label-blind teacher forcing of the 400 repeat
+  direct drafts through the rebuilt collection backend, which must match the
+  recorded backend metadata; fidelity gate on prompt/answer token counts,
+  decoded text and recomputed pre-warper mean within .02 of recorded) and
+  `execute` (reproduces historical confidence actions exactly, then compares a
+  primary learned token-quantile error score plus two secondary rules on the
+  frozen folds/halves; screen mean ≥.01, both directions and leave-one-out
+  positive; seed 20261030). Records store `answer_token_ids`; no
+  re-tokenization. Writes only `token-deferral-v1/`. Not yet run; do not
+  restart completed steps.
