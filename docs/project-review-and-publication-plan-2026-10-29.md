@@ -331,8 +331,8 @@ abstract level only, because full texts were blocked. See the
 
 Status 2026-10-30: the confidence–gain shape check is complete; see its
 [results](confidence-gain-shape-results.md). The token-level deferral check
-(step 9) is implemented and tested; see its [protocol](token-deferral-protocol.md).
-It needs the Mac to run. The records store token IDs, so the re-tokenization
+(step 9) is complete; see its [results](token-deferral-results.md): all three
+token-level rules fail. The records store token IDs, so the re-tokenization
 caveat in step 9 and Section 6.4 does not apply.
 
 

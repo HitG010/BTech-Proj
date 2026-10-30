@@ -1,10 +1,10 @@
 # Research map
 
-**Token-level deferral check prepared, 2026-10-30.** The
-[protocol](token-deferral-protocol.md) tests whether a learned deferral rule on
-token-level log-probability quantiles (a Gupta et al. 2024 adaptation) beats the frozen
-confidence policy on the repeat panel. Extraction is label-blind teacher forcing with a
-fidelity gate; the primary rule and screen are fixed. Tests pass; it has **not run**.
+**Token-level deferral check complete, 2026-10-30.** The
+[results](token-deferral-results.md) show that all three token-level rules (a Gupta
+et al. 2024 adaptation) lose utility to the frozen confidence policy on the repeat
+panel; the primary learned error score is −.037093 [−.061320, −.012740]. Extraction
+fidelity passed and the comparator reproduced Table 3 exactly. Post-hoc, exploratory.
 
 **Confidence–gain shape audit complete, 2026-10-30.** The
 [results](confidence-gain-shape-results.md) show that lower direct confidence goes

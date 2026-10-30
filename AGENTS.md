@@ -1043,3 +1043,13 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   positive; seed 20261030). Records store `answer_token_ids`; no
   re-tokenization. Writes only `token-deferral-v1/`. Not yet run; do not
   restart completed steps.
+- Token-level deferral check **complete**, 2026-10-30: read the
+  [results](docs/token-deferral-results.md) and user-run
+  [report](docs/token-deferral-report.md). Fidelity passed (max |Δ raw mean|
+  .001055); historical decisions reproduced, confidence 92.75%/628.47 = Table 3.
+  All rules fail: primary learned error score −.037093 [−.061320,−.012740],
+  minimum-token threshold −.010236 [−.027213,+.005476], token gain Ridge
+  −.020237 [−.035444,−.007115]. Low quantiles rank errors slightly better
+  in-sample (q25 positive-gain AUROC .7613 vs confidence .7050) without held-out
+  utility gain. Recorded mean confidence is ~uncorrelated with length (−.0267).
+  Post-hoc; do not rerun extract/execute. Manuscript integration awaits the author.
