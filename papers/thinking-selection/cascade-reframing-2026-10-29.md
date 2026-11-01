@@ -141,10 +141,16 @@ frozen plan, per project practice. None was run here.
 3. **Where does confidence spend escalations?** Among low-confidence drafts,
    count rescues versus both-wrong pairs. This is the label-noise analogue in
    Section 6.1.
+   *Status 2026-11-01:* the confidence–gain audit's bins report these counts
+   (Table 5), and the deferral-curve audit reports the composition of every
+   policy's escalations ([protocol](../../docs/deferral-curves-protocol.md)).
 4. **Deferral curves.** Accuracy versus tokens for all rules, with
    always-direct, always-think, cost-matched random, and the hindsight oracle
    (97.0% accuracy from Figure 1's counts, (348 + 10 + 30)/400; it is not a
    deployable rule).
+   *Status 2026-11-01:* prepared with a λ sweep, refit-inclusive intervals, and
+   an agreement baseline ([protocol](../../docs/deferral-curves-protocol.md));
+   not yet executed.
 
 ## 6. What did not change
 

@@ -335,6 +335,12 @@ Status 2026-10-30: the confidence–gain shape check is complete; see its
 token-level rules fail. The records store token IDs, so the re-tokenization
 caveat in step 9 and Section 6.4 does not apply.
 
+Status 2026-11-01: steps 7, 8, and 10 are prepared as one frozen CPU audit; see
+the [protocol](deferral-curves-protocol.md). It draws accuracy–cost curves with
+a λ sweep, adds refit-inclusive intervals (question bootstrap and fold
+repartition), and tests a two-draft agreement baseline charged for both
+drafts. Not yet executed. Step 11 is drafted for the author's decision in the
+[September appendix draft](../papers/thinking-selection/september-studies-appendix-draft.md).
 
 7. Draw accuracy-versus-tokens curves for all repeat-panel and two-solver
    policies, with always-direct, always-think, cost-matched random and the

@@ -1,5 +1,14 @@
 # Research map
 
+**Phase 2 deferral curves, refit uncertainty, and agreement prepared, 2026-11-01.**
+One frozen CPU [protocol](deferral-curves-protocol.md) covers accuracy–cost
+curves with a λ sweep, refit-inclusive intervals for five recorded endpoints,
+and a simulated two-draft agreement baseline on the repeat and two-solver panels.
+It reproduces every historical decision before computing anything. Not yet
+executed; run `prepare` then `execute` once on the machine holding `artifacts/`.
+The September studies are summarized for the author in an
+[appendix draft](../papers/thinking-selection/september-studies-appendix-draft.md).
+
 **Token-level deferral check complete, 2026-10-30.** The
 [results](token-deferral-results.md) show that all three token-level rules (a Gupta
 et al. 2024 adaptation) lose utility to the frozen confidence policy on the repeat

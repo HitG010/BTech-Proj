@@ -1061,3 +1061,17 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   4.4 values match the report by script; all other tables, Box 1, figures,
   captions and equations are unchanged. Figure 3 predates the check (stated in
   text). latex-v2 still reflects v0.3.
+- Phase 2 deferral-curve audit prepared, 2026-11-01: read the
+  [protocol](docs/deferral-curves-protocol.md). `scripts/audit_deferral_curves.py`
+  covers review items 7, 8 and 10 on cached data: accuracy–cost curves with
+  references, cost-matched random, oracle and a refitted λ sweep; refit-inclusive
+  intervals (2,000 question resamples, copies keep their fold, grouped inner
+  splits; 200 fold repartitions) for the repeat primary, combined-minus-confidence,
+  confidence-minus-accept and both two-solver confidence endpoints; and a
+  two-draft agreement baseline charged for both drafts (primary screen on the
+  repeat panel, two-solver secondary). It reproduces all historical repeat
+  decisions and two-solver actions before analysis; seeds 20261101–20261105.
+  21 synthetic tests and Ruff pass. Writes only `deferral-curves-v1/`. Not yet
+  run: `prepare` then `execute` once; do not restart a completed execute.
+  Item 11 is a draft only:
+  `papers/thinking-selection/september-studies-appendix-draft.md`.
