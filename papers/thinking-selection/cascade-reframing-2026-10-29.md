@@ -136,7 +136,8 @@ frozen plan, per project practice. None was run here.
    *Correction 2026-10-30:* records do store `answer_token_ids`, so no
    re-tokenization is needed. *Status 2026-10-30:* done
    ([results](../../docs/token-deferral-results.md)); all three rules fail their
-   screen, the primary learned score most clearly. Manuscript integration pending.
+   screen, the primary learned score most clearly. Added to the manuscript as
+   Section 4.4 and Table 3 rows (v0.6).
 3. **Where does confidence spend escalations?** Among low-confidence drafts,
    count rescues versus both-wrong pairs. This is the label-noise analogue in
    Section 6.1.

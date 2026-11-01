@@ -1053,3 +1053,11 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   in-sample (q25 positive-gain AUROC .7613 vs confidence .7050) without held-out
   utility gain. Recorded mean confidence is ~uncorrelated with length (−.0267).
   Post-hoc; do not rerun extract/execute. Manuscript integration awaits the author.
+- Manuscript v0.6, 2026-11-01: Section 4.4 and three new Table 3 rows report
+  the token-level deferral check; the abstract, introduction (now four failed
+  improvements), Section 2.1 and closing, Table 1 control row, Section 3.5
+  screens, Section 6.1, limitations, conclusion, data availability, Appendix A
+  seeds and Appendix B no longer call the recipe untested. New rows and Section
+  4.4 values match the report by script; all other tables, Box 1, figures,
+  captions and equations are unchanged. Figure 3 predates the check (stated in
+  text). latex-v2 still reflects v0.3.

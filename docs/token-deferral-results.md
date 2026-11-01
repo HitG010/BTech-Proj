@@ -73,3 +73,12 @@ full text was not available when the protocol was written. The panel is the
 same reused 50 questions, the analysis is post-hoc, and intervals hold fitted
 actions fixed. A failure here is evidence against this recipe on this panel,
 not against token-level features with more training data or other models.
+
+## Manuscript integration
+
+At the author's request, manuscript v0.6 (1 November 2026) reports this check as
+Section 4.4 and three rows of Table 3, and removes the statements that token-level
+deferral was untested from the abstract, introduction, related work, discussion,
+limitations, and conclusion. Table 1, Section 3.5, and Appendices A and B are
+updated. Table 3's new rows and every Section 4.4 value were checked by script
+against the generated report. Figure 3 predates the check and does not show it.

@@ -5,6 +5,7 @@
 et al. 2024 adaptation) lose utility to the frozen confidence policy on the repeat
 panel; the primary learned error score is −.037093 [−.061320, −.012740]. Extraction
 fidelity passed and the comparator reproduced Table 3 exactly. Post-hoc, exploratory.
+Manuscript v0.6 reports it as Section 4.4 and three Table 3 rows.
 
 **Confidence–gain shape audit complete, 2026-10-30.** The
 [results](confidence-gain-shape-results.md) show that lower direct confidence goes

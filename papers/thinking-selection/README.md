@@ -2,7 +2,14 @@
 
 ## Read the paper
 
-[Manuscript, version 0.5](manuscript.md)
+[Manuscript, version 0.6](manuscript.md)
+
+**Token-level deferral added, 1 November 2026:** v0.6 adds Section 4.4 and three
+Table 3 rows for an adapted token-level deferral check (all three rules fail), and
+updates the abstract, introduction, related work, Table 1, Section 3.5, discussion,
+limitations, conclusion and Appendices A and B, which had called the recipe untested.
+Other tables, Box 1, figures and equations are unchanged. See the
+[results record](../../docs/token-deferral-results.md).
 
 **Confidence–gain audit added, 30 October 2026:** v0.5 adds Section 5.2 and
 Table 5, a post-hoc descriptive check of whether lower confidence means higher
