@@ -167,3 +167,17 @@ rules without selecting a λ. The refit bootstrap duplicates questions, which
 shrinks effects and makes the interval approximate. Agreement is simulated from
 cached independent drafts and is an adaptation, not DART. Tokens from the two
 solver sizes are not equal compute units.
+
+## Manuscript integration
+
+At the author's request, manuscript v0.7 (2 November 2026) reports this
+analysis as Section 4.5 with a new Table 5 (fixed-action and refit-inclusive
+intervals) and an agreement row in Table 3; the confidence–gain table is
+renumbered Table 6. The abstract, introduction findings, related work, Sections
+3.1, 3.5, 4.1, and 5.1, the discussion, limitations, conclusion, data
+availability, and Appendices A and B now state that the primary learner trails
+confidence at every tested λ, that its refit-inclusive interval includes zero,
+and that only the 0.6B confidence gain stays clear of zero. Table 5 and the
+agreement row were checked by script against the generated report. Earlier
+tables, Box 1, figures, figure captions, and equations are unchanged. The
+September studies are now Appendix D.

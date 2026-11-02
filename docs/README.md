@@ -8,9 +8,9 @@ cost-matched random, 17.6% of the oracle gain); the primary learner trails it at
 every λ from 0 to .3. Refitting widens intervals 1.1–1.9×, so three fixed-action
 intervals that excluded zero now include it; only the 0.6B confidence benefit
 stays clearly positive. Two-draft agreement nearly ties confidence (−.0035) but
-fails its screen, so Phase 2 nominates no new candidate. Post-hoc. The September
-studies are summarized in an
-[appendix draft](../papers/thinking-selection/september-studies-appendix-draft.md).
+fails its screen, so Phase 2 nominates no new candidate. Post-hoc. Manuscript
+v0.7 reports it as Section 4.5 and Table 5, and adds the September studies as
+Appendix D.
 
 **Token-level deferral check complete, 2026-10-30.** The
 [results](token-deferral-results.md) show that all three token-level rules (a Gupta

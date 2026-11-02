@@ -1089,3 +1089,15 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   [−.021222,+.011806]; second draft costs .011); two-solver secondary also fail.
   Decision gate: no Phase 5 candidate. Post-hoc; do not rerun `execute`; do not
   edit its pinned protocol/script/test. Manuscript integration awaits the author.
+- Manuscript v0.7, 2026-11-02: Section 4.5 and new Table 5 report the cost
+  curves, λ sweep, refit-inclusive intervals and simulated two-draft agreement;
+  Table 3 gains an agreement row; the confidence–gain table is renumbered Table 6;
+  the September studies are Appendix D (pointer in Section 3.3). Abstract,
+  findings, related work, Sections 3.1/3.5/4.1/5.1, discussion, limitations,
+  conclusion, data availability and Appendices A/B now say the primary learner
+  trails confidence at every tested λ but its refit interval includes zero (a
+  missing gain, not a demonstrated loss), and only the 0.6B confidence gain stays
+  clear of zero. Table 5 and the agreement row match the report by script; all
+  other tables, Box 1, figures, figure captions and equations are unchanged
+  (Table 4 caption gains one clause). latex-v2 still reflects v0.3. Phase 2 is
+  complete.

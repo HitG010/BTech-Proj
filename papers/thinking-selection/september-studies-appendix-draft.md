@@ -2,7 +2,8 @@
 
 Prepared 1 November 2026 for Phase 2, item 11 of the
 [project review](../../docs/project-review-and-publication-plan-2026-10-29.md).
-This is a **draft for the author's decision**, not yet part of the manuscript.
+This was a draft for the author's decision. *Status 2026-11-02:* added to
+manuscript v0.7 as Appendix D, with a pointer in Section 3.3.
 It summarizes completed September studies from their tracked records only. No
 artifact, score cache, or reference answer was opened, and no number was
 recomputed except the utilities marked as derived below.

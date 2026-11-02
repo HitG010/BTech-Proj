@@ -152,6 +152,7 @@ frozen plan, per project practice. None was run here.
    Confidence is the best tested rule but captures only 17.6% of the oracle
    gain on the repeat panel; the primary learner trails it at every λ; refit
    intervals include zero for three of five endpoints; agreement fails.
+   Added to the manuscript as Section 4.5 and Table 5 (v0.7).
 
 ## 6. What did not change
 

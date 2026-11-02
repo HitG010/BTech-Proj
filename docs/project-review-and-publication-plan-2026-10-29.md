@@ -348,6 +348,8 @@ every λ; refit-inclusive intervals include zero for three of five endpoints
 (the 0.6B confidence benefit remains positive); agreement fails its screen.
 Decision gate: no Phase 2 baseline beat confidence, so no candidate is
 nominated for Phase 5.
+Manuscript v0.7 (2 November 2026) integrates steps 7, 8, 10, and 11 as Section
+4.5, Table 5, one Table 3 row, and Appendix D. Phase 2 is complete.
 
 7. Draw accuracy-versus-tokens curves for all repeat-panel and two-solver
    policies, with always-direct, always-think, cost-matched random and the

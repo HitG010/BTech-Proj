@@ -2,7 +2,17 @@
 
 ## Read the paper
 
-[Manuscript, version 0.6](manuscript.md)
+[Manuscript, version 0.7](manuscript.md)
+
+**Cost curves, refit intervals, and agreement added, 2 November 2026:** v0.7 adds
+Section 4.5 and a new Table 5. The primary learner trails confidence at every tested
+cost preference; intervals that include refitting widen 1.1–1.9 times, so its
+interval and the 1.7B confidence loss now include zero, while the 0.6B confidence
+gain stays positive. A simulated two-draft agreement rule (new Table 3 row) nearly
+ties confidence but fails its screen. The confidence–gain table is renumbered
+Table 6, and the September development studies are Appendix D. Claims that relied
+on fixed-action intervals are softened throughout. Earlier tables, Box 1, figures
+and equations are unchanged. See the [results record](../../docs/deferral-curves-results.md).
 
 **Token-level deferral added, 1 November 2026:** v0.6 adds Section 4.4 and three
 Table 3 rows for an adapted token-level deferral check (all three rules fail), and
