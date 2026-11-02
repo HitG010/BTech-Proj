@@ -376,6 +376,11 @@ Phase 5. Do not claim it as a result.
 
 ### Phase 4: Write and release the short paper, milestone A (5–8 days)
 
+Status 2026-11-02: step 13 is drafted in
+[`papers/thinking-selection/short/`](../papers/thinking-selection/short/README.md)
+(8-page PDF, new frozen accuracy–cost figure). Steps 14–16 need the authors;
+see the [checklist](../papers/thinking-selection/short/submission-checklist.md).
+
 13. Write a 6–8 page version in your own words: introduction and claim,
     setup, curves and main table, why (opportunity rate, oracle gap,
     0.6B vs 1.7B), related work, limitations. Move the guard, cap and CLM

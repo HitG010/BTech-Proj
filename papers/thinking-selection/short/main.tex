@@ -1,0 +1,192 @@
+% Short paper (workshop length). Scientific source: ../manuscript.md v0.7 and the
+% tracked result records it cites. Build: latexmk -pdf -interaction=nonstopmode
+% -halt-on-error -outdir=output main.tex
+\documentclass[10pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype,amsmath,amssymb}
+\usepackage{graphicx,booktabs,array,caption}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xurl}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[colorlinks=true,linkcolor=MidnightBlue,citecolor=MidnightBlue,urlcolor=MidnightBlue]{hyperref}
+\captionsetup{font=small,labelfont=bf}
+\setlength{\tabcolsep}{4pt}
+\newcommand{\lam}{\lambda}
+\hypersetup{pdftitle={Learned Deferral Did Not Beat Confidence in a Same-Model Thinking Cascade}}
+
+\title{Learned Deferral Did Not Beat Confidence\\in a Same-Model Thinking Cascade}
+\author{Author names and affiliations to be supplied}
+\date{Draft, 2 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A hybrid reasoning model can answer directly and, when the draft looks unreliable, pay for a fresh thinking solve from the same weights. This is a two-stage cascade governed by a deferral rule. We ask whether learned post-hoc deferral rules beat the simple rule of deferring on low confidence, for small Qwen3 models on GSM8K, with a utility that charges both calls. On 50 questions with eight independent draws per mode, thinking rescues 30 of 400 direct drafts and harms 10. Yet neither the predeclared learner nor any of nine later variants (capacity and objective changes, released contrastive representations, and token-level uncertainty) nor a simulated two-draft agreement rule improves on confidence for held-out questions. The predeclared learner has lower utility than confidence at every cost preference we tested. When refitting variation is included, its interval includes zero, so the evidence shows a missing gain rather than a demonstrated loss. Confidence itself captures only 18\% of the hindsight oracle's gain. It clearly helps Qwen3-0.6B but not Qwen3-1.7B, and lower confidence predicts higher deferral gain only for the smaller model. The panels are small and were reused across analyses; we report every predeclared criterion, including those that failed.
+\end{abstract}
+
+\section{Introduction}
+
+Hybrid reasoning models such as Qwen3 \citep{qwen2025qwen3} offer a direct mode and a thinking mode in one set of weights. Thinking is usually more accurate but costs several times as many output tokens. A natural policy is to answer directly first and to think only when the direct draft looks unreliable. In the language of model cascades, the direct mode is the first stage, the thinking mode is the second, and a deferral rule decides when to call the second stage \citep{chen2023frugalgpt,jitkrittum2023cascade}. Unlike most language-model cascades, both stages here are the same model.
+
+Cascade theory gives a reason to expect a simple confidence rule to be hard to beat. \citet{jitkrittum2023cascade} characterize the optimal deferral rule and show that learned post-hoc rules improve on confidence mainly when the second model is a specialist, when labels are noisy, or when the distribution shifts. \citet{gupta2024lmcascades} find that sequence-level uncertainty in generative cascades is length-biased and that learned deferral on token-level uncertainty quantiles helps. For deciding when to reason, \citet{lewislim2026confidencegated} find that training-free confidence measures beat random gating but that no single measure works everywhere.
+
+We test whether learned post-hoc deferral improves on confidence in this same-model cascade, under a fixed contract. A small Qwen3 model first writes a direct draft. A rule then accepts the draft or requests a fresh thinking solve of the same question; the thinking call does not see the draft. Because the draft is already paid for, escalation charges both calls. We collect eight independent responses per mode for each of 50 GSM8K questions \citep{cobbe2021gsm8k}, fit rules on some questions, and evaluate them on others.
+
+Our findings are as follows.
+\begin{itemize}
+\item \textbf{Observed opportunities did not become better deferral.} Thinking rescues 30 of 400 drafts, yet the predeclared learner fails four of its five progression criteria on held-out questions, and nine later learned variants and a two-draft agreement rule also fail to improve on confidence (Table~\ref{tab:main}).
+\item \textbf{The comparison is not specific to one cost.} Refitted at ten cost preferences, the predeclared learner has lower utility than confidence at every one, and most learned rules lie below random escalation at equal cost (Figure~\ref{fig:curves}).
+\item \textbf{The gap is a missing gain, not a demonstrated loss.} Intervals that hold fitted actions fixed exclude zero, but intervals that include refitting variation do not (Table~\ref{tab:refit}).
+\item \textbf{Whether deferral pays depends on the solver.} Confidence deferral adds $+0.153$ utility for Qwen3-0.6B, robust to refitting, but does not help Qwen3-1.7B. Lower confidence predicts higher gain only for the smaller model.
+\end{itemize}
+Confidence-gated thinking, deferral after observed drafts, repeated supervision, and learned routing all precede this work (Section~\ref{sec:related}). Our contribution is a measured case: learned deferral evaluated with repeated draws and held-out questions, with refit-inclusive uncertainty, read against the cascade analysis that predicts when learned deferral should help.
+
+\section{Setup}
+\label{sec:setup}
+
+\paragraph{Decision and utility.} Let $D$ be a completed direct response and $T$ a fresh thinking response, with scored correctness $Y_D,Y_T\in\{0,1\}$ and charged output tokens $C_D,C_T$ (including inserted closure tokens). Action $a=1$ requests thinking and $a=0$ accepts the draft. The utility and the gain from deferring are
+\begin{equation}
+U(a)=Y_D+a(Y_T-Y_D)-\lam(C_D+aC_T)/1000,\qquad G=Y_T-Y_D-\lam C_T/1000,
+\end{equation}
+with $\lam=0.05$ fixed before the studies. Because $U$ is linear in $a$, a rule that knew $\mathbb{E}[G\mid x,D]$ would defer exactly when it is positive, which parallels the optimal deferral rule of \citet{jitkrittum2023cascade}. A confidence rule defers when the draft's mean post-sampling token log probability falls below a threshold. It can approach the optimal rule only if lower confidence means higher expected gain. A learned post-hoc rule instead estimates $G$ from permitted features: the question and the observed draft, but never the thinking output, its length, or the reference answer.
+
+\paragraph{Data and solvers.} All questions are GSM8K training rows assigned to frozen roles; the official test split stays sealed. The main repeat panel uses Qwen3-1.7B with 2,048 reasoning tokens and 512 answer tokens, sampled with the recommended settings. A separate two-solver panel of 64 questions adds Qwen3-0.6B, with two draws per mode and solver. Correctness comes from a frozen numeric answer scorer (numeric-v7); rejected or truncated outputs count as wrong, and no human scoring audit was performed. Reference answers were opened only after each study's full set of responses was complete.
+
+\paragraph{Evaluation.} Each repeat-panel question has eight independently seeded responses per mode, paired by sample index into 400 states. Half A holds draws 0--3 and half B draws 4--7. Five outer folds of ten questions keep every evaluation question out of fitting and tuning. A rule trains on one half of the training questions and is evaluated on the other half of the held-out questions, in both directions (A$\to$B and B$\to$A); we report the average. Four inner question folds choose settings. Intervals use 2,000 whole-question bootstrap resamples (90\%) with fitted actions held fixed, unless stated otherwise.
+
+\paragraph{Rules.} The predeclared learner is Ridge regression of $G$ on 387 question features (MiniLM embeddings \citep{sentencetransformersAllMiniLML6v2} and three lexical counts) and four draft features (confidence, log length, parser validity, truncation); it defers when predicted gain is positive. Its comparator is the best of accept, escalate, and confidence, chosen within training. Later bounded studies, each with its own frozen grid and screen, tested stronger regularization and compression, compact contrastive and cross-entropy objectives, released contrastive-language-model (CLM) heads \citep{kwok2026clm} with a matched-encoder control, token-level uncertainty quantiles adapted from \citet{gupta2024lmcascades}, and a two-draft agreement rule adapted from DART \citep{lee2026dart}. Each later rule had to beat confidence by at least $+0.01$ utility, with positive means in both directions and positive leave-one-question-out averages. Appendix~\ref{app:rules} gives the details.
+
+\section{Results}
+
+\subsection{No tested rule beats confidence}
+
+Table~\ref{tab:main} lists every rule on the repeat panel at $\lam=0.05$. Direct accuracy is 89.5\% and thinking accuracy 94.5\%. Of the 400 paired states, 30 are rescues, 10 are harms, 348 have both responses correct, and 12 have both wrong.
+
+The predeclared learner's utility difference against its training-selected comparator is $-0.016$ (90\% interval $[-0.033, -0.001]$), and four of its five progression criteria fail. Against confidence it is lower by $0.044$. Every later variant also has lower point utility than confidence, and every screen fails. The closest rules are two-draft agreement ($-0.003$), which escalates only 8.5\% of states, and a threshold on the lowest token log probability ($-0.010$).
+
+\begin{table}[t]
+\centering
+\caption{Repeat panel, Qwen3-1.7B, $\lam=0.05$, averaged over both draw directions (400 states). Tokens include the paid draft. Differences are against confidence, with 90\% whole-question intervals holding fitted actions fixed. Lift is accuracy minus random escalation at the same token cost, in percentage points. $^\dagger$Derived from the reported accuracy and tokens.}
+\label{tab:main}
+\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Rule & Accuracy & Tokens & Utility vs.\ confidence [90\%] & Lift \\
+\midrule
+Always direct & 89.50\% & 221.14 & $-0.012$ $[-0.034, +0.007]$ & 0.00 \\
+Always think & 94.50\% & 1,610.97 & $-0.032$ & 0.00 \\
+Hindsight oracle (not deployable) & 97.00\% & 342.02 & $+0.057$ & $+7.07$ \\
+\textbf{Confidence} & \textbf{92.75\%} & \textbf{628.47} & reference & $\mathbf{+1.78}$ \\
+\midrule
+Predeclared learner (combined Ridge) & 89.00\% & 757.13 & $-0.044$ $[-0.064, -0.025]$ & $-2.43$ \\
+Regularized/compressed (CPU family) & 90.75\% & 514.22 & $-0.014$ $[-0.026, -0.004]$ & $+0.20$ \\
+Compact neural objectives & 89.25\% & 604.82 & $-0.034$ $[-0.053, -0.017]$ & $-1.63$ \\
+Released CLM, zero-shot & 94.75\% & 1,550.53 & $-0.026$ $[-0.059, +0.017]$ & $+0.47$ \\
+Released CLM, calibrated & 88.50\% & 443.71 & $-0.033$ $[-0.054, -0.015]$ & $-1.80$ \\
+Same encoder, PCA8/Ridge & 89.00\% & 330.81 & $-0.023$ $[-0.044, -0.004]$ & $-0.89$ \\
+CLM/raw learned family & 88.75\% & 406.34 & $-0.029$ $[-0.050, -0.011]$ & $-1.42$ \\
+Token-level learned error score & 88.75\% & 570.33 & $-0.037$ $[-0.061, -0.013]$ & $-2.01$ \\
+Minimum-token threshold & 91.00\% & 483.20 & $-0.010$ $[-0.027, +0.005]$ & $+0.56$ \\
+Token-level gain Ridge & 90.00\% & 483.21 & $-0.020$ $[-0.035, -0.007]$ & $-0.44$ \\
+Two-draft agreement (simulated) & 92.25\% & 597.69 & $-0.003$ $[-0.021, +0.012]$ & $+1.40^\dagger$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{The result holds across costs}
+
+Figure~\ref{fig:curves}A places each rule on accuracy and cost. Random escalation at a fixed rate traces the dashed line between always direct and always think. Confidence lies 1.78 points above that line at $\lam=0.05$, while the predeclared learner lies 2.43 points below it. We refitted the original rules at ten values of $\lam$ from 0 to 0.3. The predeclared learner has lower utility than confidence at all ten (by 0.006 to 0.054) and lower than its training-selected comparator at all ten. Among the later variants, only the minimum-token threshold, zero-shot CLM, and the CPU family lie above the random line, each by less than 0.6 points. The single cost preference of the original studies therefore does not explain the result.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/output/pdf/figure-1-accuracy-cost.pdf}
+\caption{Accuracy and output cost of the tested deferral rules. In each panel, the dashed line is random escalation at equal cost between always accepting the draft and always thinking, and the square is the hindsight oracle. Lines trace rules refitted at ten cost preferences from $\lam=0$ to $0.3$; large dots mark $\lam=0.05$. Panels use different axes. Values are post-hoc, on reused development panels, and carry no intervals.}
+\label{fig:curves}
+\end{figure}
+
+\subsection{With refitting, the gap is a missing gain}
+
+Fixed-action intervals treat each fitted rule as given. To include the variation from fitting, we resampled whole questions 2,000 times and refitted the rules on each resample. Each copy of a question kept its original fold, and inner folds were formed over distinct questions, so no question appeared in both training and evaluation. Separately, 200 random repartitions of the questions into folds isolate the effect of fold assignment.
+
+\begin{table}[t]
+\centering
+\caption{Fixed-action and refit-inclusive 90\% intervals for utility contrasts at $\lam=0.05$. Copied questions in the refit bootstrap reduce the number of distinct training questions, so those intervals are approximate. The last column gives the 5th--95th percentiles over 200 fold repartitions.}
+\label{tab:refit}
+\small
+\begin{tabular}{@{}lrlll@{}}
+\toprule
+Contrast & Point & Fixed actions & With refitting & Fold repartitions \\
+\midrule
+Learner $-$ training-selected comparator & $-0.016$ & $[-0.033, -0.001]$ & $[-0.042, +0.021]$ & $[-0.036, -0.005]$ \\
+Learner $-$ confidence & $-0.044$ & $[-0.064, -0.025]$ & $[-0.058, +0.008]$ & $[-0.051, -0.029]$ \\
+Confidence $-$ accept (1.7B, repeat panel) & $+0.012$ & $[-0.007, +0.034]$ & $[-0.027, +0.028]$ & $[+0.003, +0.015]$ \\
+Confidence $-$ accept (0.6B, two-solver) & $+0.153$ & $[+0.086, +0.220]$ & $[+0.068, +0.220]$ & $[+0.131, +0.168]$ \\
+Confidence $-$ accept (1.7B, two-solver) & $-0.031$ & $[-0.056, -0.006]$ & $[-0.051, +0.010]$ & $[-0.037, -0.016]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Refitting widens the intervals by 1.1 to 1.9 times (Table~\ref{tab:refit}). The intervals for the learner's gap to both comparators now include zero, as does the 1.7B confidence loss on the two-solver panel. The fold assignment does not drive the signs: every repartition range stays on the side of its point estimate. We conclude that the learned rules did not deliver the predeclared gain of at least $+0.01$; the data do not show that they are worse than confidence.
+
+\subsection{Deferral pays for the smaller solver only}
+
+On the two-solver panel (Figure~\ref{fig:curves}B--C), Qwen3-0.6B's direct accuracy is 61.7\% and its thinking accuracy 80.5\%. Confidence deferral reaches 81.25\% at 1,063 tokens per state, 6.2 points above random escalation, and gains $+0.153$ utility over accepting the draft. This gain stays clear of zero with refitting and is positive at every $\lam$ up to 0.2. For Qwen3-1.7B, direct accuracy is 84.4\% and thinking 87.5\%. Confidence deferral is 1.8 points below random escalation at equal cost and has lower utility than accepting the draft at every $\lam$ tested. On the repeat panel, its gain over accepting the 1.7B draft ($+0.012$) is not distinguishable from zero. The two-draft agreement rule also fails on this panel: it trails confidence by 0.028 for Qwen3-0.6B, and for Qwen3-1.7B it trails accepting the draft by 0.023.
+
+\section{Why confidence was hard to beat}
+
+\paragraph{Few opportunities, many costly mistakes.} At $\lam=0.05$ the average thinking call costs about 0.07 utility, so more than about one escalation in fourteen must be a rescue before harms are counted. The hindsight oracle escalates exactly the 30 rescues (7.5\% of states) and reaches 97.0\% at 342 tokens. Confidence escalates 100 states: 17 rescues, 4 harms, 4 pairs in which both responses are wrong, and 75 pairs in which both were already correct. It therefore captures 17.6\% of the oracle's gain. The predeclared learner escalates 162 states but rescues only 4.
+
+\paragraph{Where the rescues sit.} A post-hoc audit grouped states into five confidence bins. For Qwen3-0.6B, mean gain falls at every step from the lowest-confidence bin to the highest, and the two lowest bins hold 23 of 32 rescues: confidence is the right ranking. For Qwen3-1.7B on the repeat panel, only the lowest-confidence fifth has positive mean gain ($+0.081$, interval $[-0.016, +0.176]$), and 13 of the 30 rescues sit in higher bins, outnumbered by states whose only gain is the thinking cost. The highest-confidence bin holds 8 of the 12 pairs in which both responses are wrong; these drafts are confidently wrong and thinking does not fix them. On the 1.7B two-solver panel, no confidence threshold improves on accepting the draft even in-sample. A learned rule would need features that find the remaining rescues among many already-correct drafts, from 40 training questions per fold and 391 features. None of the tested rules did.
+
+\paragraph{The cascade conditions for learned deferral were absent.} The settings in which \citet{jitkrittum2023cascade} expect post-hoc rules to beat confidence are a specialist second stage, label noise, and distribution shift. Here the second stage is the same model, more accurate on average (94.5\% against 89.5\%) and not specialized on an identifiable subset. Training and evaluation questions come from the same pool, so there is no designed shift. The closest analogue of label noise, pairs in which both responses fail, sits mostly where a low-confidence rule would not escalate on the repeat panel. The length bias that motivates token-level deferral is also weak here: our length-normalized confidence is nearly uncorrelated with answer length (Spearman $-0.027$). Low token quantiles rank errors slightly better in-sample (positive-gain AUROC 0.761 against 0.705) without improving held-out decisions. This reading is consistent with the failures but was not tested directly.
+
+\paragraph{Agreement is priced out.} Two-draft agreement nearly matches confidence while escalating a third as often. If the second draft were free, it would lead confidence by 0.008; at $\lam=0.05$ its cost, about 0.011 utility per state, removes the advantage. Settings where a second draft is cheap relative to thinking were not tested.
+
+\section{Related work}
+\label{sec:related}
+
+\paragraph{Cascades and deferral.} FrugalGPT learns when to continue to a stronger model \citep{chen2023frugalgpt}; \citet{yue2024motcascade} defer on the consistency of sampled answers; AutoMix uses self-verification and a POMDP router \citep{aggarwal2024automix}; \citet{fanconi2025cascaded} place an accept-or-regenerate decision before human escalation. \citet{jitkrittum2023cascade} analyze when confidence-based deferral suffices, and \citet{gupta2024lmcascades} study token-level uncertainty for generative cascades. Our primary learner is a post-hoc rule in their sense, and our setting lacks the conditions they identify for learned rules to help.
+
+\paragraph{Adaptive thinking.} \citet{lewislim2026confidencegated} gate chain of thought on direct-answer confidence and find dataset- and model-dependent benefits, which matches our solver dependence; we add learned rules, repeated draws, held-out folds, and a cost that charges both calls. DART routes after observing two direct drafts \citep{lee2026dart}; our agreement rule simulates its first stage without budget probing and is not a faithful comparison. Self-Route \citep{he2025selfroute}, Thinkless \citep{fang2025thinkless}, and BEST-Route \citep{ding2025bestroute} choose modes or sample counts before generation.
+
+\paragraph{Routing evaluation and representations.} Recent audits caution that routing headroom need not be usable value \citep{chen2026routingoracle,garg2026unsolvability}, and that predicting failure differs from predicting which intervention pays \citep{yang2026failureprotocol}. RouterDC \citep{chen2024routerdc}, cost-aware contrastive routing \citep{shirkavand2025cscr}, and SEMIROUTER \citep{wang2026semirouter} precede our use of repeated labels and contrastive representations.
+
+\section{Limitations}
+
+The study uses one dataset on which the larger solver is near ceiling, and two small solvers from one family. The main learner and all later variants reuse the same 50 questions, and later analyses, including the cost curves, refit intervals, confidence bins, token-level rules, and agreement simulation, are post-hoc on those panels. The refit-inclusive intervals cover five contrasts and are approximate; the other intervals hold fitted actions fixed. Correctness is scorer-based, with no human audit. The token-level and agreement rules are adaptations, not reproductions, and we compare against no external system. Utility counts output tokens only, not input processing, encoder work, or latency. Two follow-up interventions, a parser guard tested on 228 fresh questions and a larger reasoning allowance on 11 selected questions, each produced at most one rescue (Appendix~\ref{app:followups}); they do not change these conclusions.
+
+\section{Conclusion}
+
+In a same-model cascade from a direct draft to a fresh thinking solve, observed rescues did not become better learned deferral. Confidence was the best deferral rule we tested on the main panel, yet it captured under a fifth of the hindsight gain, and it paid only for the smaller solver. The settings in which theory expects learned deferral to help were not clearly present. Tasks with more rescue opportunities, cheaper second stages, or real distribution shift are where a learned rule would have room to win, and a larger prospective study would be needed to show it.
+
+\paragraph{Declarations.} Author contributions, funding, and conflicts of interest will be supplied by the authors. AI assistance was used for drafting and research support; the authors are responsible for the claims and references. Cloud and API experiment spending was zero.
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\appendix
+\section{Rules and settings}
+\label{app:rules}
+
+\paragraph{Models and generation.} Qwen3-1.7B (revision 70d244cc) and Qwen3-0.6B (revision c1899de2), local float16 inference with batch size one. Direct sampling: temperature 0.7, top-p 0.8, top-k 20. Thinking sampling: temperature 0.6, top-p 0.95, top-k 20. Reasoning allowance 2,048 tokens, answer allowance 512 tokens; forced closure, when needed, is charged. The prompt asks for the numerical answer in \verb|\boxed{}|.
+
+\paragraph{Predeclared learner.} Combined Ridge on 391 features, penalty chosen from $\{1, 10, 100\}$ by inner question folds, with training-only standardization. The comparator is chosen within training from accept, escalate, and a confidence threshold. Training conditions use 1, 2, or 4 draws per training question; the four-draw average across directions is primary, and an eight-draw condition is secondary. The five criteria were a positive reproducibility test of question-level gain, positive gains in both four-draw directions, an average gain of at least $+0.01$ with a positive lower bound, no reversal in the eight-draw condition, and at least ten informative questions; only the last passed.
+
+\paragraph{Later variants.} \emph{CPU family:} Ridge penalties $\{10^2, 10^3, 10^4\}$, PCA compression to eight question components, and conservative confidence corrections, 1,035 Ridge fits in total. \emph{Compact neural:} two representations crossed with four objectives (gain regression, regret-weighted cross-entropy, bidirectional contrastive, binary cross-entropy) on a 120-parameter head, one optimization seed. \emph{CLM:} released heads on 4-bit Qwen3-8B last-token states, zero-shot and with scalar calibration, plus a PCA8/Ridge control on the same embeddings. \emph{Token-level:} nine quantiles of teacher-forced token log probabilities, their mean, and log length; a logistic error score (primary), a minimum-token threshold, and gain Ridge. \emph{Agreement:} each evaluation draft is paired with every other draw in its half; it is accepted if both parse to the same number and escalated otherwise; both drafts are charged. All later variants select settings on training questions and draws only.
+
+\section{Follow-up interventions}
+\label{app:followups}
+
+\paragraph{Parser guard on fresh questions.} On the 0.6B development panel, escalating drafts that the scorer rejects added three rescues. A guard frozen before a fresh 228-question test changed one action; that thinking response was also rejected, giving a utility difference of $-0.0003$. The design identifies only the policy difference, and one event cannot settle the question.
+
+\paragraph{Larger reasoning allowance.} On 11 development questions selected for forced reasoning closure, raising the allowance from 2,048 to 4,096 tokens produced one rescue and no harms ($+4.55$ accuracy points) but cost 1,662 more thinking tokens, for a utility change of $-0.038$ (95\% interval $[-0.095, +0.062]$).
+
+\section{Reproducibility}
+
+Every study froze its protocol, grid, endpoints, and criteria before execution and recorded source, input, and output hashes. Generation charged 644,519 tokens for the repeat panel, 384,552 for the two-solver panel, 43,448 for the fresh guard test, and 127,171 for the allowance study, on local hardware. Earlier development studies used an older scorer and different questions; they are summarized, with all criteria and records, in the accompanying technical report.
+
+\end{document}

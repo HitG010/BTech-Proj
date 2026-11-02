@@ -1101,3 +1101,14 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   other tables, Box 1, figures, figure captions and equations are unchanged
   (Table 4 caption gains one clause). latex-v2 still reflects v0.3. Phase 2 is
   complete.
+- Phase 4 short paper drafted, 2026-11-02: `papers/thinking-selection/short/`
+  holds `main.tex`, a note-free `references.bib` generated from the parent bib,
+  the 8-page `output/main.pdf` (about 5.5 pages of main text) and a standalone
+  `short-source.zip`. Figure 1 (accuracy–cost, three panels) was frozen as
+  plan+renderer at `b0b3cb9` and exported once at `3df080d` from the tracked
+  `docs/deferral-curves-report.md` (pinned hash); do not re-render; corrections
+  need a new versioned figure. Every number comes from manuscript v0.7 or its
+  tracked records; the agreement lift +1.40 is the only derived value. The long
+  manuscript stays the full report. TeX Live was installed in the cloud
+  container to build it. Authors, full-text citation checks, venue, feedback
+  and release decisions remain open (see `short/submission-checklist.md`).

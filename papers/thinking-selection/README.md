@@ -2,7 +2,14 @@
 
 ## Read the paper
 
-[Manuscript, version 0.7](manuscript.md)
+[Manuscript, version 0.7](manuscript.md) · [Short paper draft (8-page PDF)](short/output/main.pdf)
+
+**Short paper drafted, 2 November 2026:** [`short/`](short/README.md) holds a
+workshop-length rewrite with one new accuracy–cost figure (rendered once from a
+frozen display plan over the tracked report), a main results table, and a
+refit-interval table. The long manuscript stays the full technical report. See
+the [submission and release checklist](short/submission-checklist.md) for the
+author decisions still needed.
 
 **Cost curves, refit intervals, and agreement added, 2 November 2026:** v0.7 adds
 Section 4.5 and a new Table 5. The primary learner trails confidence at every tested

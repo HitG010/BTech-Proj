@@ -1,5 +1,12 @@
 # Research map
 
+**Phase 4 short paper drafted, 2026-11-02.** An 8-page workshop-length
+[draft](../papers/thinking-selection/short/README.md) (about 5.5 pages of main
+text) rewrites manuscript v0.7 around one accuracy–cost figure and two tables.
+The figure was rendered once from a frozen plan over the tracked report.
+Authors, full-text citation checks, venue, feedback, and release decisions are
+listed in the [checklist](../papers/thinking-selection/short/submission-checklist.md).
+
 **Phase 2 deferral curves, refit uncertainty, and agreement complete, 2026-11-02.**
 The [results](deferral-curves-results.md) and user-run
 [report](deferral-curves-report.md) reproduce every historical decision first.
