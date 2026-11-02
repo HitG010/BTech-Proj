@@ -148,9 +148,10 @@ frozen plan, per project practice. None was run here.
    always-direct, always-think, cost-matched random, and the hindsight oracle
    (97.0% accuracy from Figure 1's counts, (348 + 10 + 30)/400; it is not a
    deployable rule).
-   *Status 2026-11-01:* prepared with a λ sweep, refit-inclusive intervals, and
-   an agreement baseline ([protocol](../../docs/deferral-curves-protocol.md));
-   not yet executed.
+   *Status 2026-11-02:* done ([results](../../docs/deferral-curves-results.md)).
+   Confidence is the best tested rule but captures only 17.6% of the oracle
+   gain on the repeat panel; the primary learner trails it at every λ; refit
+   intervals include zero for three of five endpoints; agreement fails.
 
 ## 6. What did not change
 

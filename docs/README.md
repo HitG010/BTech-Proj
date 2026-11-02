@@ -1,12 +1,15 @@
 # Research map
 
-**Phase 2 deferral curves, refit uncertainty, and agreement prepared, 2026-11-01.**
-One frozen CPU [protocol](deferral-curves-protocol.md) covers accuracy–cost
-curves with a λ sweep, refit-inclusive intervals for five recorded endpoints,
-and a simulated two-draft agreement baseline on the repeat and two-solver panels.
-It reproduces every historical decision before computing anything. Not yet
-executed; run `prepare` then `execute` once on the machine holding `artifacts/`.
-The September studies are summarized for the author in an
+**Phase 2 deferral curves, refit uncertainty, and agreement complete, 2026-11-02.**
+The [results](deferral-curves-results.md) and user-run
+[report](deferral-curves-report.md) reproduce every historical decision first.
+Confidence is the best tested rule on the repeat panel (+1.78 points over
+cost-matched random, 17.6% of the oracle gain); the primary learner trails it at
+every λ from 0 to .3. Refitting widens intervals 1.1–1.9×, so three fixed-action
+intervals that excluded zero now include it; only the 0.6B confidence benefit
+stays clearly positive. Two-draft agreement nearly ties confidence (−.0035) but
+fails its screen, so Phase 2 nominates no new candidate. Post-hoc. The September
+studies are summarized in an
 [appendix draft](../papers/thinking-selection/september-studies-appendix-draft.md).
 
 **Token-level deferral check complete, 2026-10-30.** The

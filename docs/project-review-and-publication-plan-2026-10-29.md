@@ -339,8 +339,15 @@ Status 2026-11-01: steps 7, 8, and 10 are prepared as one frozen CPU audit; see
 the [protocol](deferral-curves-protocol.md). It draws accuracy–cost curves with
 a λ sweep, adds refit-inclusive intervals (question bootstrap and fold
 repartition), and tests a two-draft agreement baseline charged for both
-drafts. Not yet executed. Step 11 is drafted for the author's decision in the
+drafts. Step 11 is drafted for the author's decision in the
 [September appendix draft](../papers/thinking-selection/september-studies-appendix-draft.md).
+
+Status 2026-11-02: steps 7, 8, and 10 are complete; see the
+[results](deferral-curves-results.md). The primary learner trails confidence at
+every λ; refit-inclusive intervals include zero for three of five endpoints
+(the 0.6B confidence benefit remains positive); agreement fails its screen.
+Decision gate: no Phase 2 baseline beat confidence, so no candidate is
+nominated for Phase 5.
 
 7. Draw accuracy-versus-tokens curves for all repeat-panel and two-solver
    policies, with always-direct, always-think, cost-matched random and the

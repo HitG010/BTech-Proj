@@ -1075,3 +1075,17 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   run: `prepare` then `execute` once; do not restart a completed execute.
   Item 11 is a draft only:
   `papers/thinking-selection/september-studies-appendix-draft.md`.
+- Phase 2 deferral-curve audit **complete**, 2026-11-02: read the
+  [results](docs/deferral-curves-results.md) and user-run
+  [report](docs/deferral-curves-report.md). All historical decisions reproduced.
+  Repeat λ=.05: confidence 92.75%/628.47, lift over cost-matched random +.0178,
+  oracle share .176 (oracle 97.00%/342.02); combined −.0243 lift. Combined
+  trails confidence at all ten λ (−.006 to −.054) and the selected baseline at
+  all ten. Refit-inclusive 90% intervals (width ×1.13–1.93): primary
+  [−.042296,+.020701], combined−confidence [−.057621,+.007865], repeat
+  confidence−accept +.012133 [−.026994,+.027814], 0.6B +.152677
+  [+.068168,+.219945] (only sign-robust), 1.7B −.030540 [−.050563,+.009868];
+  fold repartitions keep every sign. Agreement fails primary screen (−.003461
+  [−.021222,+.011806]; second draft costs .011); two-solver secondary also fail.
+  Decision gate: no Phase 5 candidate. Post-hoc; do not rerun `execute`; do not
+  edit its pinned protocol/script/test. Manuscript integration awaits the author.
