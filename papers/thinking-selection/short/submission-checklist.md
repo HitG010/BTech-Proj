@@ -56,7 +56,7 @@ Decisions needed before anything is made public:
   contains local machine paths) to a history file before making the
   repository public. These were proposed in the project review and still
   need approval.
-- [ ] **Reproduce-from-cache command.** Add one script that, given the released
-  cache, rebuilds Tables 1–2 and Figure 1 without generation, scoring, or
-  reference access. The existing audits already reproduce the historical
-  decisions; this would package them for outside readers.
+- [ ] **Reproduce-from-cache command.** Written: `scripts/reproduce_paper.py`
+  ([guide](../../../docs/reproduce-from-cache.md)). Still to do: run `export`
+  then `check` on the Mac, confirm every value reproduces, and publish the
+  cache file with the release.

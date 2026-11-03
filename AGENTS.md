@@ -1112,3 +1112,16 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   manuscript stays the full report. TeX Live was installed in the cloud
   container to build it. Authors, full-text citation checks, venue, feedback
   and release decisions remain open (see `short/submission-checklist.md`).
+- Reproduce-from-cache script, 2026-11-03: `scripts/reproduce_paper.py`
+  ([guide](docs/reproduce-from-cache.md)). `export` (Mac only) loads the repeat
+  and two-solver studies via `audit_deferral_curves.repeat_inputs`/
+  `two_solver_inputs`, reads recorded k4 decisions of the nine control-family
+  Table 1 rows from the CPU, contrastive, CLM and token-deferral reports (each
+  checked against primary confidence decisions), and writes
+  `artifacts/research/data-efficiency-v1/paper-cache-v1/paper-cache.json`
+  (exclusive create; hashes only, no local paths/environment, no text,
+  references or sealed roles). `check` reruns `audit_deferral_curves.analyze`
+  on the cache and compares Table 1/2, Figure 1 manifest points and quoted text
+  values with embedded published constants; exits non-zero on mismatch;
+  `--skip-refit` skips the 2,000-resample bootstrap. 13 synthetic tests and
+  Ruff pass. Not yet run on real artifacts; cache not released.

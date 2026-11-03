@@ -35,6 +35,13 @@ hash; [`figures/output/manifest.json`](figures/output/manifest.json) records
 every plotted value and the output hashes. A correction needs a new, separately
 versioned figure.
 
+## Reproducing the numbers
+
+[`scripts/reproduce_paper.py`](../../../scripts/reproduce_paper.py) rebuilds
+Tables 1–2, the Figure 1 points, and the quoted values from one cache file and
+compares each with the published value; see the
+[guide](../../../docs/reproduce-from-cache.md).
+
 ## Before submission
 
 See the [submission and release checklist](submission-checklist.md). In short:
