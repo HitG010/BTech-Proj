@@ -40,7 +40,8 @@ versioned figure.
 [`scripts/reproduce_paper.py`](../../../scripts/reproduce_paper.py) rebuilds
 Tables 1–2, the Figure 1 points, and the quoted values from one cache file and
 compares each with the published value; see the
-[guide](../../../docs/reproduce-from-cache.md).
+[guide](../../../docs/reproduce-from-cache.md). Run on the real cache, all 195
+checks pass ([report](../../../docs/reproduction-report.md)).
 
 ## Before submission
 

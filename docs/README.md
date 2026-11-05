@@ -1,10 +1,11 @@
 # Research map
 
-**Reproduce-from-cache script written, 2026-11-03.** `scripts/reproduce_paper.py`
+**Paper reproduced from cache, 2026-11-05.** `scripts/reproduce_paper.py`
 exports one sub-megabyte cache from the verified studies (`export`, on the Mac)
 and rebuilds every short-paper table value, Figure 1 point, and quoted number
-from that cache alone (`check`), failing on any mismatch. See the
-[guide](reproduce-from-cache.md). Not yet run on the real artifacts.
+from that cache alone (`check`). On the real cache all 195 checks pass, with the
+refit bootstrap included; see the [report](reproduction-report.md) and
+[guide](reproduce-from-cache.md). The cache is not yet published.
 
 **Phase 4 short paper drafted, 2026-11-02.** An 8-page workshop-length
 [draft](../papers/thinking-selection/short/README.md) (about 5.5 pages of main

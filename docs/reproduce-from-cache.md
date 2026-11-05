@@ -75,7 +75,15 @@ the same cached data give the published numbers.
 
 ## Status
 
-Written and tested on synthetic data (13 tests). The real export and check
-have not been run yet; the cache is not yet released. See the
+**Reproduced, 5 November 2026.** `export` and the full `check` (refit bootstrap
+included, four processes) were run on the Mac. All 195 checks pass, none
+skipped: every Table 1 and Table 2 value, every Figure 1 point, and every quoted
+text value matches the published number. The report is
+[reproduction-report.md](reproduction-report.md); the cache has SHA-256
+`3da91b57c98612141f2962cc657d6c9e3e26b4b0592d52006a7dcfce92e73757`.
+
+The cache is not yet published. Keep `paper-cache.json` with the backup of
+`artifacts/`; it is the file to deposit once the release decisions in the
 [submission and release checklist](../papers/thinking-selection/short/submission-checklist.md)
-for the release decisions (what to publish, licenses, DOI).
+(what to publish, licenses, DOI) are made. A reader who downloads it can
+confirm it with the SHA-256 above before running `check`.

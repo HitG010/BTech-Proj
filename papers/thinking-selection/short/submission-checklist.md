@@ -56,7 +56,9 @@ Decisions needed before anything is made public:
   contains local machine paths) to a history file before making the
   repository public. These were proposed in the project review and still
   need approval.
-- [ ] **Reproduce-from-cache command.** Written: `scripts/reproduce_paper.py`
-  ([guide](../../../docs/reproduce-from-cache.md)). Still to do: run `export`
-  then `check` on the Mac, confirm every value reproduces, and publish the
-  cache file with the release.
+- [x] **Reproduce-from-cache command.** `scripts/reproduce_paper.py`
+  ([guide](../../../docs/reproduce-from-cache.md)) was run on the Mac: all 195
+  checks pass ([report](../../../docs/reproduction-report.md)).
+- [ ] **Publish the cache.** Deposit `paper-cache.json` (SHA-256
+  `3da91b57…92e73757`) with the release, cite its DOI in the data statement,
+  and keep a copy with the `artifacts/` backup.

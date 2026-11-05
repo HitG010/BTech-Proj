@@ -1125,3 +1125,10 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   values with embedded published constants; exits non-zero on mismatch;
   `--skip-refit` skips the 2,000-resample bootstrap. 13 synthetic tests and
   Ruff pass. Not yet run on real artifacts; cache not released.
+- Paper reproduction **passed**, 2026-11-05: the user ran `reproduce_paper
+  export` and the full `check` (refit included, four processes) on the Mac. All
+  195 checks pass, none skipped; report saved as
+  [docs/reproduction-report.md](docs/reproduction-report.md). Cache SHA-256
+  `3da91b57c98612141f2962cc657d6c9e3e26b4b0592d52006a7dcfce92e73757`, local at
+  `artifacts/research/data-efficiency-v1/paper-cache-v1/paper-cache.json`; do not
+  re-export over it. Not yet published (release decisions pending).
