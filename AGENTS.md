@@ -8,9 +8,10 @@ result from 3 October to 5 November now lives in
 ## Where things are
 
 - **Main line.** `codex/confidence-acquisition-plan`; `master` was
-  fast-forwarded to it on 5 November 2026 (at `b1003a0`). Older tips are tagged
-  `archive/*` ([docs/history](docs/history/README.md)). Only `archive/pilot-v2`
-  holds commits that are not in the main line.
+  fast-forwarded to it on 5 November 2026. These are the only two branches on
+  GitHub; the old ones were deleted after their tips were tagged `archive/*`
+  ([docs/history](docs/history/README.md)). Only `archive/pilot-v2` holds
+  commits that are not in the main line.
 - **Start here.** The [research map](docs/README.md) for results and reading
   order; the [paper folder](papers/thinking-selection/README.md) for manuscript
   v0.7 (long report) and the 8-page [short paper](papers/thinking-selection/short/README.md);

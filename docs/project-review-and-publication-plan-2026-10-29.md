@@ -109,7 +109,8 @@ agent log is
 [`docs/history/agents-log.md`](history/agents-log.md). The paper's human README
 is [`papers/thinking-selection/short/README.md`](../papers/thinking-selection/short/README.md).
 Steps 1 and 3 were pushed from the Mac the same day: the four `archive/*`
-tags are on GitHub and `master` was fast-forwarded to `b1003a0`
+tags are on GitHub, `master` was fast-forwarded, and the three old remote
+branches were deleted
 ([commands](history/README.md)). Step 5 (the `artifacts/` backup) can only be
 done on the Mac.
 

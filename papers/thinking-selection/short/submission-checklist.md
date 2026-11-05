@@ -57,7 +57,7 @@ Decisions needed before anything is made public:
   `docs/history/pilot-v2/`.
 - [x] **Push the archive tags and fast-forward `master`.** Done from the Mac
   on 5 November 2026 ([docs/history](../../../docs/history/README.md)).
-  Optional: delete the old remote branches, which the tags preserve.
+  The three old remote branches were then deleted; the tags preserve them.
 - [x] **Reproduce-from-cache command.** `scripts/reproduce_paper.py`
   ([guide](../../../docs/reproduce-from-cache.md)) was run on the Mac: all 195
   checks pass ([report](../../../docs/reproduction-report.md)).

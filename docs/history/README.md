@@ -20,9 +20,9 @@ stays reachable even if its branch is later deleted:
 | `archive/router-studies` | `15a4d2d` | Calibration, router studies 2–8, prepared 3,100-question confirmation |
 | `archive/research-data-efficiency` | `ee88d64` | Protocol bridge through the 1.7B cap study (1–7 October) |
 
-`master`, `research/router-studies`, and `codex/research-data-efficiency` are
-ancestors of `codex/confidence-acquisition-plan`, so their whole history is
-also in the main line. Only `research/pilot-v2` has commits that are not; its
+The old `master`, `research/router-studies`, and `codex/research-data-efficiency`
+were ancestors of `codex/confidence-acquisition-plan`, so their whole history is
+also in the main line. Only `research/pilot-v2` had commits that are not; its
 code and configurations are reachable through the tag:
 
 ```bash
@@ -32,7 +32,9 @@ git show archive/pilot-v2:src/reasoning_budget/analysis.py
 ## Pushing the tags and `master` (from the Mac)
 
 Done 5 November 2026: the four tags are on GitHub and `master` was
-fast-forwarded to `b1003a0`. The cloud session that did the clean-up could push
+fast-forwarded to `b1003a0`, then to `42ecef1`. The remote branches
+`research/pilot-v2`, `research/router-studies`, and
+`codex/research-data-efficiency` were then deleted; the tags keep their tips. The cloud session that did the clean-up could push
 only its own branch, so these commands were run from the Mac; they are kept as
 the record. To bring `master` up to date with later main-line commits, rerun
 the last command.
