@@ -51,13 +51,13 @@ Decisions needed before anything is made public:
   (Apache-2.0). Check both before choosing a data license.
 - [ ] **Archive and DOI.** For example a Zenodo record for the cached data,
   cited from the paper's data statement.
-- [x] **Repository clean-up.** Done 5 November 2026: old branch tips tagged
-  `archive/*`, `master` fast-forwarded to the main line, the agent log moved
-  to `docs/history/agents-log.md` with local paths replaced, and the pilot-v2
-  reports copied to `docs/history/pilot-v2/` (see
-  [docs/history](../../../docs/history/README.md)). Optional later: delete the
-  old remote branches, which the tags now preserve; make the main line the
-  default branch on GitHub if it is not already `master`.
+- [x] **Repository clean-up (files).** Done 5 November 2026: the agent log
+  moved to `docs/history/agents-log.md` with local paths replaced, `AGENTS.md`
+  rewritten as a short orientation, and the pilot-v2 reports copied to
+  `docs/history/pilot-v2/`.
+- [ ] **Push the archive tags and fast-forward `master`** from the Mac, with
+  the commands in [docs/history](../../../docs/history/README.md). Optional
+  afterwards: delete the old remote branches, which the tags preserve.
 - [x] **Reproduce-from-cache command.** `scripts/reproduce_paper.py`
   ([guide](../../../docs/reproduce-from-cache.md)) was run on the Mac: all 195
   checks pass ([report](../../../docs/reproduction-report.md)).
