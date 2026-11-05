@@ -7,10 +7,10 @@ result from 3 October to 5 November now lives in
 
 ## Where things are
 
-- **Main line.** `codex/confidence-acquisition-plan`. `master` is to be
-  fast-forwarded to it and the older tips tagged `archive/*`; the commands, run
-  from the Mac, are in [docs/history](docs/history/README.md). Only the
-  pilot-v2 tip holds commits that are not in the main line.
+- **Main line.** `codex/confidence-acquisition-plan`; `master` was
+  fast-forwarded to it on 5 November 2026 (at `b1003a0`). Older tips are tagged
+  `archive/*` ([docs/history](docs/history/README.md)). Only `archive/pilot-v2`
+  holds commits that are not in the main line.
 - **Start here.** The [research map](docs/README.md) for results and reading
   order; the [paper folder](papers/thinking-selection/README.md) for manuscript
   v0.7 (long report) and the 8-page [short paper](papers/thinking-selection/short/README.md);

@@ -10,7 +10,7 @@ Nothing here is current guidance; read the [research map](../README.md) first.
 
 ## Archived branch tips
 
-Before `master` is fast-forwarded, every older line of work is tagged so it
+Before `master` was fast-forwarded, every older line of work was tagged so it
 stays reachable even if its branch is later deleted:
 
 | Tag | Commit | What it holds |
@@ -31,8 +31,11 @@ git show archive/pilot-v2:src/reasoning_budget/analysis.py
 
 ## Pushing the tags and `master` (from the Mac)
 
-The cloud session that did the clean-up could push only its own branch, so
-these steps run from a checkout on the Mac. Each one is safe to repeat.
+Done 5 November 2026: the four tags are on GitHub and `master` was
+fast-forwarded to `b1003a0`. The cloud session that did the clean-up could push
+only its own branch, so these commands were run from the Mac; they are kept as
+the record. To bring `master` up to date with later main-line commits, rerun
+the last command.
 
 ```bash
 git fetch origin

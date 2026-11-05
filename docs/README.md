@@ -1,11 +1,10 @@
 # Research map
 
-**Repository clean-up, 2026-11-05.** The old branch tips are to be tagged
+**Repository clean-up, 2026-11-05.** The old branch tips are tagged
 `archive/master-2026-09-13`, `archive/pilot-v2`, `archive/router-studies`, and
-`archive/research-data-efficiency`, and `master` fast-forwarded to the main
-line, `codex/confidence-acquisition-plan`. The cloud session could not push
-tags or `master`, so the commands are in [history](history/README.md) to run
-from the Mac. The pilot-v2 reports, which were never
+`archive/research-data-efficiency`, and `master` was fast-forwarded to the main
+line, `codex/confidence-acquisition-plan` (pushed from the Mac; see
+[history](history/README.md)). The pilot-v2 reports, which were never
 merged, are copied to [history/pilot-v2](history/pilot-v2/README.md). The long
 agent log moved from the root `AGENTS.md` to
 [history/agents-log.md](history/agents-log.md); `AGENTS.md` is now a short
@@ -550,9 +549,8 @@ or use a GPU.
 
 ## 7. Open decisions and hazards
 
-- **Branches.** `codex/confidence-acquisition-plan` holds the whole main
-  line. Tagging the older tips `archive/*` and fast-forwarding `master` are
-  pending a push from the Mac ([history](history/README.md)). Generated artifacts stay
+- **Branches.** `master` and `codex/confidence-acquisition-plan` hold the
+  whole main line; older tips are tagged `archive/*` ([history](history/README.md)). Generated artifacts stay
   local and ignored by Git. Recheck branch and status before continuing work;
   the root [AGENTS.md](../AGENTS.md) gives the layout and standing rules, and
   [history/agents-log.md](history/agents-log.md) the dated handoff log.
