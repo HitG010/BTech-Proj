@@ -103,6 +103,15 @@ interchangeable with later studies.
 
 Recommended housekeeping (needs your approval; none of it is done here):
 
+Status 2026-11-05: steps 1–4 are done at the user's request. The tags are
+`archive/master-2026-09-13`, `archive/pilot-v2`, `archive/router-studies`, and
+`archive/research-data-efficiency`; the pilot-v2 documents are in
+[`docs/history/pilot-v2/`](history/pilot-v2/README.md); `master` was
+fast-forwarded; the agent log is
+[`docs/history/agents-log.md`](history/agents-log.md). The paper's human README
+is [`papers/thinking-selection/short/README.md`](../papers/thinking-selection/short/README.md).
+Step 5 (the `artifacts/` backup) can only be done on the Mac.
+
 1. Tag the old tips before any cleanup, for example `archive/pilot-v2` and
    `archive/router-studies`.
 2. Copy the three pilot-v2 documents into a history folder, such as

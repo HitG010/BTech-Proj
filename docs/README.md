@@ -1,5 +1,14 @@
 # Research map
 
+**Repository clean-up, 2026-11-05.** `master` now points at the main line,
+`codex/confidence-acquisition-plan`. The old branch tips are tagged
+`archive/master-2026-09-13`, `archive/pilot-v2`, `archive/router-studies`, and
+`archive/research-data-efficiency`. The pilot-v2 reports, which were never
+merged, are copied to [history/pilot-v2](history/pilot-v2/README.md). The long
+agent log moved from the root `AGENTS.md` to
+[history/agents-log.md](history/agents-log.md); `AGENTS.md` is now a short
+orientation with the standing rules. No study or result changed.
+
 **Paper reproduced from cache, 2026-11-05.** `scripts/reproduce_paper.py`
 exports one sub-megabyte cache from the verified studies (`export`, on the Mac)
 and rebuilds every short-paper table value, Figure 1 point, and quoted number
@@ -539,12 +548,12 @@ or use a GPU.
 
 ## 7. Open decisions and hazards
 
-- **Current worktrees.** This directory is on `codex/research-data-efficiency`,
-  descended from `research/router-studies`, and the sibling worktree remains on
-  `research/pilot-v2`. The prior handoff is checkpointed at `1b67fbc`, while
-  generated artifacts stay local and ignored by Git. Recheck branch and
-  status before continuing work; the root [AGENTS.md](../AGENTS.md) records the
-  layout and the active research handoff.
+- **Branches.** Since the 5 November clean-up, `master` and
+  `codex/confidence-acquisition-plan` hold the whole main line; older tips are
+  tagged `archive/*` ([history](history/README.md)). Generated artifacts stay
+  local and ignored by Git. Recheck branch and status before continuing work;
+  the root [AGENTS.md](../AGENTS.md) gives the layout and standing rules, and
+  [history/agents-log.md](history/agents-log.md) the dated handoff log.
 - **Protocol divergence.** Section 3 describes the historical lineages. The new
   protocol/scorer identities are implemented; their real generation bridge is
   complete with all engineering gates passed. Exact observed agreement on the

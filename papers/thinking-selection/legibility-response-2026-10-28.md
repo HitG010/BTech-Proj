@@ -40,7 +40,7 @@ finite-mask bound remain visible. A later venue-specific edit can address length
 ## Humanizer use
 
 Installed and loaded [blader/humanizer](https://github.com/blader/humanizer),
-version 3.1.0, under `/Users/hiteshgupta/.codex/skills/humanizer/`. It is available
+version 3.1.0, under `~/.codex/skills/humanizer/`. It is available
 for later turns. Its factual-text guidance was used to simplify the abstract,
 opening, definitions, transition, and conclusion. Scientific qualifiers,
 references, results, and the AI-assistance disclosure take precedence over
