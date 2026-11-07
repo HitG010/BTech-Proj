@@ -22,13 +22,15 @@ Author endorsement, venue, and release decisions are pending; see the
 | [full-text-check-2026-11-07.md](full-text-check-2026-11-07.md) | What the full texts of the cascade citations say, and what that changed |
 | [related-work-notes.md](related-work-notes.md) | Comparison with the closest prior work |
 | [evidence-ledger.md](evidence-ledger.md), [revision-evidence-map.md](revision-evidence-map.md) | Claim-to-source maps for the manuscript (frozen) |
-| [revision-plan-2026-10-10.md](revision-plan-2026-10-10.md), [figure-export-plan.md](figure-export-plan.md) | Revision passes and the frozen figure plan (pinned by the figure export) |
+| [revision-plan-2026-10-10.md](revision-plan-2026-10-10.md), [figure-export-plan.md](figure-export-plan.md) | Revision passes and the plan for the original figures (since removed) |
 | [figures-v2/](figures-v2/README.md) | Figures used by manuscript v0.8 (`output-r2/`) |
-| [figures/](figures/README.md) | Original R5 figures (superseded, preserved) |
-| [latex-v2/](latex-v2/README.md), [latex/](latex/README.md) | LaTeX reviewer copies of manuscript v0.3 and v0.2 (out of date) |
+| [latex-v2/](latex-v2/README.md) | LaTeX reviewer copy of manuscript v0.3 (out of date) |
 
 ## History
 
 Review memos, revision responses, the legibility critique, the
 September-studies appendix draft (now Appendix D), and the dated status log
-that used to fill this README are in [history/](history/README.md).
+that used to fill this README are in [history/](history/README.md). Older builds
+(the v0.2 LaTeX package, the original figures, the first v2 figures, and the source
+ZIPs) were removed on 7 November 2026 and
+[remain in Git history](../../docs/history/README.md#removed-builds).

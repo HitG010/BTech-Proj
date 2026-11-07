@@ -5,6 +5,9 @@ Superseded memos from the manuscript's revision cycle, moved here on 7 November
 files (for example `../revision-evidence-map.md` and `../revision-plan-2026-10-10.md`)
 keep their original links, which no longer resolve; the files are here under the same names.
 
+Superseded builds were deleted separately; see
+[removed builds](../../../docs/history/README.md#removed-builds).
+
 | File | What it is |
 |---|---|
 | [paper-readme-2026-11-07.md](paper-readme-2026-11-07.md) | The old paper README, with dated status entries 9 October – 2 November |

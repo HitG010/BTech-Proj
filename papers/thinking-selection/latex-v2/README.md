@@ -1,8 +1,10 @@
 # Illustrative reviewer LaTeX package
 
-Manuscript v0.3, 28 October 2026. This is the current 24-page internal review
-copy. Author information and endorsement remain pending. The older v0.2
-package and 22-page PDF remain in `../latex/`.
+Manuscript v0.3, 28 October 2026. This is a 24-page internal review copy and
+the latest LaTeX version of the long report, which has since moved on in
+`../manuscript.md`. Author information and endorsement remain pending. The older
+v0.2 package and 22-page PDF
+[remain in Git history](../../../docs/history/README.md#removed-builds).
 
 ## Build or edit
 
@@ -13,10 +15,10 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=output/pdf main.tex
 ```
 
 `make` runs the same command. Output: `output/pdf/main.pdf`.
-For Overleaf, upload `thinking-selection-review-source-v2.zip` as a new project,
-select `main.tex`, and use pdfLaTeX. The source bundle has all four vector
-figures, the bibliography, and the cited project documentation. It does not
-need this repository or an experiment environment to compile.
+For Overleaf, zip this folder, upload it as a new project, select `main.tex`, and
+use pdfLaTeX. The folder has all four vector figures, the bibliography, and the
+cited project documentation. It does not need the rest of this repository or an
+experiment environment to compile.
 
 ## What changed
 

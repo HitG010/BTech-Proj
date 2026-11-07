@@ -24,7 +24,10 @@ result from 3 October to 5 November now lives in
   [docs/history](docs/history/README.md); paper review memos are in
   [papers/thinking-selection/history](papers/thinking-selection/history/README.md).
   Moved 7 November 2026; frozen records that link to the old paths were left
-  unedited.
+  unedited. Superseded builds (`latex/`, `figures/`, `figures-v2/output/`, source
+  ZIPs) were deleted at the author's request and remain in Git history; this
+  overrides "preserve" instructions in the log
+  ([how to restore](docs/history/README.md#removed-builds)).
 - **Local only.** `artifacts/`, `.cache/`, `.python/`, and `.venv/` are ignored
   by Git and exist only on the author's Mac. They hold every raw response and
   score cache. `artifacts/legacy/router-studies-6999eb5/` is the detached

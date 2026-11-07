@@ -91,3 +91,28 @@ git push origin origin/codex/confidence-acquisition-plan:refs/heads/master
 
 The last push is fast-forward only: without `--force`, Git refuses it if
 `master` is not an ancestor of the main line.
+
+## Removed builds
+
+Deleted on 7 November 2026 at the author's request, to cut clutter before release.
+They were last present in commit `e162865`. This overrides the instructions in
+[agents-log.md](agents-log.md) to preserve these outputs. No code or test used them.
+
+| Removed from `papers/thinking-selection/` | What it was |
+|---|---|
+| `latex/` | LaTeX reviewer package and 22-page PDF of manuscript v0.2 |
+| `figures/` | Original R5 figures, renderer, and frozen export record |
+| `figures-v2/output/` | First v2 figures, superseded by `figures-v2/output-r2/` |
+| `thinking-selection-review-source.zip`, `thinking-selection-review-source-v2.zip` | Portable source bundles of manuscript v0.2 and v0.3 |
+
+Links to these in archived and frozen documents no longer resolve, and the records
+in `figures-v2/` (`freeze.json`, `export-record.json`, and their correction files)
+still name them. To get one back, for example:
+
+```bash
+git show e162865:papers/thinking-selection/latex/output/pdf/main.pdf > manuscript-v0.2.pdf
+```
+
+```bash
+mkdir restored && git archive e162865 papers/thinking-selection/figures | tar -x -C restored
+```
