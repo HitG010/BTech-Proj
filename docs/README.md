@@ -5,7 +5,7 @@ records. Rewritten 7 November 2026; the older map, with its dated status
 paragraphs, is in [history](history/research-map-2026-11-05.md).
 
 **Start here:** the [short paper](../papers/thinking-selection/short/README.md),
-the [full manuscript](../papers/thinking-selection/manuscript.md) (v0.7), and the
+the [full manuscript](../papers/thinking-selection/manuscript.md) (v0.8), and the
 [project review](project-review-and-publication-plan-2026-10-29.md), which
 explains the research arc and the publication plan.
 

@@ -228,7 +228,9 @@ sources were checked through abstracts, official listings, and secondary
 summaries from web search only. No new full text was read, and the manuscript
 describes these works only at abstract level. The
 [reframing record](cascade-reframing-2026-10-29.md#4-retrieval-limits-and-what-to-read-before-submission)
-lists what to confirm in each full text before submission.
+lists what to confirm in each full text before submission. **Update, 7 November
+2026:** the [full-text check](full-text-check-2026-11-07.md) has now been done and
+supersedes this limit for these sources.
 
 **Closest new overlap.** Lewis-Lim et al. already study confidence-gated
 chain of thought, with training-free confidence measures, random and oracle

@@ -14,7 +14,7 @@ result from 3 October to 5 November now lives in
   commits that are not in the main line.
 - **Start here.** The [research map](docs/README.md) for results and reading
   order; the [paper folder](papers/thinking-selection/README.md) for manuscript
-  v0.7 (long report) and the 8-page [short paper](papers/thinking-selection/short/README.md);
+  v0.8 (long report) and the 9-page [short paper](papers/thinking-selection/short/README.md);
   the [root README](README.md) for setup and commands.
 - **Code.** `src/reasoning_budget/` (package), `scripts/` (study and audit
   entry points), `tests/` (offline tests; run with `PYTHONPATH=.:src`),
@@ -43,8 +43,9 @@ result from 3 October to 5 November now lives in
   (SHA-256 `3da91b57…92e73757`) is local and unpublished; do not re-export over it.
 - Open items are author decisions, listed in the
   [submission checklist](papers/thinking-selection/short/submission-checklist.md):
-  authors and endorsement, full-text citation checks, feedback, venue, licences,
-  and publishing the cache.
+  authors and endorsement, feedback, venue, licences, and publishing the cache.
+  The [full-text citation check](papers/thinking-selection/full-text-check-2026-11-07.md)
+  is done (AI-assisted; the authors should still read the key sources).
 
 ## Standing rules
 

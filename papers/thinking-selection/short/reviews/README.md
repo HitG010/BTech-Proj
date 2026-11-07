@@ -33,7 +33,9 @@ The must-fix items, all text changes in `main.tex`:
    availability statement with licences; the technical report reference is
    safe for anonymous review. The AI-assistance sentence is unchanged.
 
-Not done: must-fix 8 (read the full texts of Jitkrittum et al., Gupta et al.,
-Lewis-Lim et al., and Fanconi and van der Schaar; the session network blocks
-arXiv). Section 4's cascade-conditions paragraph now says "on our reading".
+8. Citations checked against their full texts, done from the Mac the same day
+   because the cloud session could not reach arXiv. See the
+   [record](../../full-text-check-2026-11-07.md). Section 4's cascade paragraph
+   was rewritten and split, and the Lewis-Lim et al. description corrected.
+
 The should-fix items in both reports remain open.

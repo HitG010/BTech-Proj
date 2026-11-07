@@ -11,13 +11,13 @@ uploaded, submitted, or released.
   Decide whether the supervisor is a co-author.
 - [ ] **Endorsement.** Read every claim against the long report. The AI-assistance
   statement must stay.
-- [ ] **Read the full texts** of the sources that were checked only at abstract
-  level (blocked by the session network policy): Jitkrittum et al. 2023,
-  Gupta et al. 2024, Lewis-Lim et al. 2026, Fanconi and van der Schaar 2025,
-  and the one-line descriptions of Self-Route, AutoMix, Yue et al., and
-  FrugalGPT. What to confirm for each is listed in the
-  [reframing record](../cascade-reframing-2026-10-29.md#4-retrieval-limits-and-what-to-read-before-submission).
-  Section 4's reading of the Jitkrittum et al. conditions depends on the first.
+- [x] **Check the cascade citations against their full texts.** Done 7 November
+  2026 from the Mac ([record](../full-text-check-2026-11-07.md)). It changed how
+  Jitkrittum et al., Gupta et al., and Lewis-Lim et al. are described and rewrote
+  Section 4's cascade paragraph; no number changed.
+- [ ] **Authors read Jitkrittum et al., Gupta et al., and Lewis-Lim et al.
+  themselves.** The check above was AI-assisted and targeted, and Section 4's
+  reading depends on them.
 
 ## 2. Feedback (step 14)
 

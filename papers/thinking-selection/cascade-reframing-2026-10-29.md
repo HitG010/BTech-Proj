@@ -99,6 +99,10 @@ search-based observation, not a priority claim.
 
 ## 4. Retrieval limits and what to read before submission
 
+**Update, 7 November 2026:** this check is done. See the
+[full-text check](full-text-check-2026-11-07.md), which corrected several of the
+statements below.
+
 The session network policy blocked arxiv.org, openreview.net,
 proceedings.neurips.cc, and proceedings.iclr.cc. Every new source was
 therefore checked through abstracts, official listings, and secondary

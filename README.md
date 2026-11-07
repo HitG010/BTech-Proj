@@ -29,7 +29,7 @@ reported, including the failed ones. Nothing here claims a new method.
 ## The paper
 
 - Short paper (workshop length): [`papers/thinking-selection/short/`](papers/thinking-selection/short/README.md)
-- Full technical report (manuscript v0.7): [`papers/thinking-selection/manuscript.md`](papers/thinking-selection/manuscript.md)
+- Full technical report (manuscript v0.8): [`papers/thinking-selection/manuscript.md`](papers/thinking-selection/manuscript.md)
 - Research map, with every study and its record: [`docs/README.md`](docs/README.md)
 
 ## Reproducing the paper's numbers

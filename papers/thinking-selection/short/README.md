@@ -14,9 +14,10 @@ Draft, 2 November 2026; revised 7 November after two critic reviews
 
 ## Relation to the long report
 
-This is a rewrite, not an excerpt, of [manuscript v0.7](../manuscript.md), which
+This is a rewrite, not an excerpt, of [manuscript v0.8](../manuscript.md), which
 remains the complete technical report and thesis chapter. Every number in the
-short paper comes from v0.7 or the tracked result records it cites. Derived by
+short paper comes from v0.8 (whose numbers are unchanged from v0.7) or the tracked
+result records it cites. Derived by
 subtraction from those records: the agreement rule's lift over random (marked
 †, from [the results record](../../../docs/deferral-curves-results.md)), the
 three added Table 1 rows' differences against confidence (from the utilities
@@ -51,6 +52,6 @@ checks pass ([report](../../../docs/reproduction-report.md)).
 ## Before submission
 
 See the [submission and release checklist](submission-checklist.md). In short:
-authors and endorsement, the full texts of the cascade citations, the venue's
+authors and endorsement, the venue's
 template and anonymity rules, supervisor and peer feedback, and the release
 decisions.
