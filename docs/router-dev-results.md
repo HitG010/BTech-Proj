@@ -107,7 +107,7 @@ was not a separately frozen confirmation. The cached replay excludes CPU
 encoding/routing time; full DART SC-Budget and ReASC are not reproduced. The
 user waived the human scoring audit.
 
-The active next program is [data-efficient trace acquisition](research-roadmap.md),
+The active next program is [data-efficient trace acquisition](history/planning/research-roadmap.md),
 with protocol repair and a supervision-noise diagnosis before new methods or
 large experiments. Selective wrong-agreement verification remains an optional
 development question, with only 11 such cases in these data.

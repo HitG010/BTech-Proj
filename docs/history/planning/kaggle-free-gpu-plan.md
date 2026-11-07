@@ -31,7 +31,7 @@ T4x2 options, 12-hour CPU/GPU sessions and 20 GB saved working output. Check the
 actual device and quota before choosing a batch size or training budget. There
 is no reason to connect a paid Colab account for this project.
 
-The [readiness notebook](../notebooks/kaggle-free-gpu-readiness.ipynb) is ready
+The [readiness notebook](kaggle-free-gpu-readiness.ipynb) is ready
 for review. It records GPU names/memory, CUDA, Python and package versions;
 it performs no installs, model loading, data access or training. Its single code
 cell was syntax-checked locally. It has not been run on Kaggle and does not

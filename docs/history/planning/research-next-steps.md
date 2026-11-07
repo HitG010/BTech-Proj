@@ -5,7 +5,7 @@ experiment or an established novelty claim. Existing pilot records remain frozen
 
 ## What the results support
 
-The [verified pilot](pilot-results.md) measures Qwen3-1.7B under a specific
+The [verified pilot](../../pilot-results.md) measures Qwen3-1.7B under a specific
 generation and scoring protocol: direct accuracy is 63%, thinking accuracy is
 46%, and thinking uses approximately 6.6 times the generated tokens and 6.8 times
 the response time. The paired accuracy difference is -17 percentage points

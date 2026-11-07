@@ -36,8 +36,8 @@ small, restricted recipes on the same 50 groups. Failure can coexist with
 learnable signal that these recipes, training samples or features do not capture.
 The studies do not identify which explanation is correct. Use “did not establish
 an improvement under the recorded endpoint,” rather than implying that more
-supervision or a representation class is ineffective. [Repeat results](../../docs/phase-2-repeat-results.md),
-[feasibility results](../../docs/phase-2-router-feasibility-results.md).
+supervision or a representation class is ineffective. [Repeat results](../../../docs/phase-2-repeat-results.md),
+[feasibility results](../../../docs/phase-2-router-feasibility-results.md).
 
 ### 2. Opposite halves are a robustness check, not an established design advance
 
@@ -57,8 +57,8 @@ The separate same-question half diagnostic adds a different question: whether
 a question's estimated average gain carries across draws. It does not directly
 measure whether `E[G | question, observed draft]` is predictable on unseen
 questions. Direct drafts change across draws, so disagreement also does not
-isolate noise for one fixed decision state. [Repeat protocol](../../docs/phase-2-repeat-panel.md),
-[repeat diagnosis](../../docs/phase-2-repeat-results.md#separate-post-hocdevelopment-explanation).
+isolate noise for one fixed decision state. [Repeat protocol](../../../docs/phase-2-repeat-panel.md),
+[repeat diagnosis](../../../docs/phase-2-repeat-results.md#separate-post-hocdevelopment-explanation).
 
 ### 3. The sparse follow-up has little information about population benefit
 
@@ -73,13 +73,13 @@ observed zeros and the single negative contribution. It cannot introduce an
 unseen rescue. The upper endpoint of zero is consequently not proof that the
 population gain is nonpositive. Merely calling the interval conditional does
 not resolve this lack of event support. Preserve the recorded interval, but
-explain its empirical support explicitly. [Sparse results](../../docs/sparse-validation-results.md).
+explain its empirical support explicitly. [Sparse results](../../../docs/sparse-validation-results.md).
 
 The follow-up also tests a refitted policy, not literal transfer of the old
 cross-fitted actions. The all-128-state threshold has two changed training
 states; the earlier control had three. Call this a prospective diagnostic of
 the newly frozen guard contrast, rather than an exact replication of the three
-development rescues. [Sparse preparation](../../docs/sparse-validation-preparation-results.md).
+development rescues. [Sparse preparation](../../../docs/sparse-validation-preparation-results.md).
 
 ### 4. The intervals do not cover the whole learning claim
 
@@ -94,9 +94,9 @@ Nested selection is valuable protection for each specified fit. It does not
 erase the later use of these outcomes to choose new studies. The many negative
 point comparisons narrow the tested recipes; they do not prove that all nearby
 recipes lack value. A future algorithm-level claim needs prospective training
-replicates and an uncertainty plan that includes them. [Repeat protocol](../../docs/phase-2-repeat-panel.md),
-[control protocol](../../docs/phase-2-cpu-feasibility-protocol.md),
-[CLM protocol](../../docs/phase-2-clm-probe-protocol.md).
+replicates and an uncertainty plan that includes them. [Repeat protocol](../../../docs/phase-2-repeat-panel.md),
+[control protocol](../../../docs/phase-2-cpu-feasibility-protocol.md),
+[CLM protocol](../../../docs/phase-2-clm-probe-protocol.md).
 
 ### 5. The comparisons are fair for narrower questions than the headline suggests
 
@@ -115,8 +115,8 @@ The compact objective study matches head capacity and initialization more
 tightly. Even there, one fusion rule, one seed, compression and truncated drafts
 limit the scope. Different losses also target different quantities. Interpret
 their decision utility, not their scores as comparable calibrated probabilities.
-[MiniLM protocol](../../docs/phase-2-contrastive-protocol.md),
-[CLM protocol](../../docs/phase-2-clm-probe-protocol.md).
+[MiniLM protocol](../../../docs/phase-2-contrastive-protocol.md),
+[CLM protocol](../../../docs/phase-2-clm-probe-protocol.md).
 
 ### 6. Opportunity counts are sample-dependent
 
@@ -130,8 +130,8 @@ be compared as if they measured an intrinsic opportunity rate.
 The different 1.7B confidence results on the 50- and 64-question panels could
 reflect question composition, realized outcomes or threshold fitting. The paper
 does not separate those explanations. The shared two-solver comparison is the
-cleaner descriptive contrast. [Two-solver protocol](../../docs/opportunity-panel-protocol.md),
-[results](../../docs/opportunity-panel-results.md).
+cleaner descriptive contrast. [Two-solver protocol](../../../docs/opportunity-panel-protocol.md),
+[results](../../../docs/opportunity-panel-results.md).
 
 ### 7. Scoring and cap evidence need precise limits
 
@@ -144,8 +144,8 @@ prefixes. It identifies the recorded 4k-minus-2k contrast on the selected cohort
 One rescue and an interval crossing zero do not establish a useful general cap
 effect. The cohort was selected by forced-closure metadata, independently of
 correctness; it must not be described as selected mathematical failures.
-[Parser preflight](../../docs/parser-preflight.md),
-[cap results](../../docs/qwen17-cap-bridge-results.md).
+[Parser preflight](../../../docs/parser-preflight.md),
+[cap results](../../../docs/qwen17-cap-bridge-results.md).
 
 ### 8. Utility is an operating-point result, not a deployment result
 
@@ -154,8 +154,8 @@ comparisons. It is still one preference over correctness and output tokens.
 The paper provides no complete latency, energy or co-resident router/solver
 evaluation. Token counts across model sizes are not equal compute costs.
 No practical deployment recommendation follows from these tables alone.
-[CLM results](../../docs/phase-2-clm-probe-results.md),
-[two-solver results](../../docs/opportunity-panel-results.md).
+[CLM results](../../../docs/phase-2-clm-probe-results.md),
+[two-solver results](../../../docs/opportunity-panel-results.md).
 
 ## A useful arithmetic observation about the fresh panel
 
@@ -181,7 +181,7 @@ The original score, interval and failed endpoint remain unchanged.
 ## Existing evidence worth adding
 
 Use one short box titled “Post-hoc question structure and bounded sensitivity.”
-All values already appear in the [repeat result record](../../docs/phase-2-repeat-results.md).
+All values already appear in the [repeat result record](../../../docs/phase-2-repeat-results.md).
 
 | Existing finding | Why it helps | Required limit |
 |---|---|---|
@@ -226,7 +226,7 @@ Specify the minimum useful effect and precision before selecting a question
 count. The existing hypothetical SD `.16` calculations require 2,010 question
 groups for a `+.01` effect at 80% power; the small panels are diagnostics, and
 that scenario is not a measured variance for a new setting. There is no justified
-universal “smallest N” in the current reports. [Precision record](../../docs/local-clm-and-power-results.md#prospective-power-and-budget-results).
+universal “smallest N” in the current reports. [Precision record](../../../docs/local-clm-and-power-results.md#prospective-power-and-budget-results).
 
 If the desired claim instead concerns repeat usefulness, hold one observed
 direct draft fixed while collecting independently seeded thinking outcomes,

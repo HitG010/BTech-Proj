@@ -5,7 +5,7 @@ improvement or a novelty claim. It uses only saved responses and published work;
 no new generation, fitting, or GPU experiment was run for this note.
 
 **Update, 2026-09-23:** the proposed shared-correctness CPU test is complete.
-See [its development results](router-dev-results.md). It improved on refitted
+See [its development results](../../router-dev-results.md). It improved on refitted
 joint/gain-ridge models but did not beat tuned confidence routing.
 
 ## Decision
@@ -20,7 +20,7 @@ started. The official 500-question test set remains sealed.
 
 ## Why the current router needs work
 
-The [100-question continuation diagnostic](../artifacts/probe/continuation-v1/report.md)
+The [100-question continuation diagnostic](../../../artifacts/probe/continuation-v1/report.md)
 gave the joint router 88% accuracy at 728 generated tokens/question. The simpler
 gain-ridge router gave 89% at 877; tuned confidence continuation gave 86.5% at
 592. At the preselected preference `lambda=0.05` (five percentage points of
@@ -47,8 +47,8 @@ correct answer. In the pilot and validation development sets, only 11 wrong
 agreements occur in 200 questions combined. Any model for this event needs
 strong shrinkage and careful uncertainty reporting.
 
-Numbers above come from the checksummed [report](../artifacts/probe/continuation-v1/report.json)
-and source records named in its [protocol](../artifacts/probe/continuation-v1/protocol.json).
+Numbers above come from the checksummed [report](../../../artifacts/probe/continuation-v1/report.json)
+and source records named in its [protocol](../../../artifacts/probe/continuation-v1/protocol.json).
 The two orientations were never counted as independent questions for inference.
 
 ## First candidate: share the first-answer correctness estimate

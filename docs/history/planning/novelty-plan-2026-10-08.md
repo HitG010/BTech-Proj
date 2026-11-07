@@ -2,7 +2,7 @@
 
 **Execution update, 2026-10-09:** G0 found no supported distinct-method claim.
 The frozen G1 simulation completed and failed all four practical comparison
-screens. [Results and independent review](g1-synthetic-results-2026-10-09.md)
+screens. [Results and independent review](../../g1-synthetic-results-2026-10-09.md)
 close this recipe. Do not start its G2 pilot or expand the same search.
 Continue the [empirical manuscript](empirical-paper-outline-2026-10-09.md).
 The original proposal below is retained as the pre-execution planning record.
@@ -11,7 +11,7 @@ Date: 2026-10-08. Branch: `codex/confidence-acquisition-plan`.
 Base: `ee88d64` on `codex/research-data-efficiency`.
 Status: researched proposal. No new experiment, allocation, fit, or reference access has occurred.
 
-Read this with the [literature assessment](novelty-literature-2026-10-08.md),
+Read this with the [literature assessment](../../novelty-literature-2026-10-08.md),
 [evidence map](research-evidence-map-2026-10-08.md), and
 [publication plan](publication-plan-2026-10-08.md).
 

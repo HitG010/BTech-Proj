@@ -8,7 +8,7 @@ runtime failure, not a router result. No references were opened.
 
 ## Frozen preparation
 
-Source, tests and [protocol](opportunity-panel-protocol.md) froze at
+Source, tests and [protocol](../../opportunity-panel-protocol.md) froze at
 `a136f273b413fec0461aad29d16930194f037b7d`. All **623 offline tests** passed.
 Two Sol reviews checked the collector and the analysis. The actual native
 preparation then resolved both local tokenizers without loading model weights.
@@ -95,7 +95,7 @@ or unstarted. Acquisition and Jev/RL remain stopped.
 
 Recovery source/tests/runtime policy froze at **`efa72b2`**, after all **636
 offline tests** and independent Sol review passed. The
-[runtime policy](opportunity-panel-runtime-recovery.md) describes the unchanged
+[runtime policy](../../opportunity-panel-runtime-recovery.md) describes the unchanged
 study boundaries. The recovery plan is
 `614f5ea758f42995b3b5fe9c707364eb898afa371f6caa0ee770b732937392be`.
 An independent prelaunch audit verified all 22 immutable original study files,
@@ -156,7 +156,7 @@ identities. No extra questions or cloud spend occurred.
 ## Authorized completion child: running
 
 The user authorized completion of the missing 60 responses. The separate
-[completion protocol](opportunity-panel-completion.md) froze at **`b7c3b1e`**
+[completion protocol](../../opportunity-panel-completion.md) froze at **`b7c3b1e`**
 after all **643 offline tests** and independent Sol review passed. Plan identity:
 `387e139c492236c0e9719886e59d872f724242eac72af460ac969b42c4a71b1d`.
 Prelaunch verification `ef2e8882…e3b01` independently checked all **2,319 parent
@@ -199,6 +199,6 @@ budget failure and both old unresolved charges remain unchanged.
 Report `f3f0d33c…ac6fd`, independent endpoint verification `b67d4e0a…5dfcc`.
 The review checks all parent hashes, job/score/record identities and costs, and
 reproduces107metric payloads without refitting, scoring or opening references.
-See [results](opportunity-panel-results.md). Preserve all frozen records and do
+See [results](../../opportunity-panel-results.md). Preserve all frozen records and do
 not restart preparation/launch/collection/finalization. New data or policy work
 requires a prospective design; this diagnostic alone is not novelty evidence.

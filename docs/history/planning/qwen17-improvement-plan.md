@@ -15,7 +15,7 @@ measure model-size-dependent FLOPs, resident memory or live latency.
 
 ## What to improve first
 
-The [cached diagnosis](qwen17-performance-diagnosis.md) identifies three separate
+The [cached diagnosis](../../qwen17-performance-diagnosis.md) identifies three separate
 issues. First, thinking fixes only seven direct errors on four questions, while
 introducing three errors. Second, confidence escalates 34 times but catches
 only one rescue and two harms; another large router trained on four positive
@@ -38,7 +38,7 @@ No frozen model, decoder, scorer or label should be changed in place.
 
 ## Conditional matched reasoning-cap bridge
 
-This step is now [complete and independently verified](qwen17-cap-bridge-results.md).
+This step is now [complete and independently verified](../../qwen17-cap-bridge-results.md).
 One of 18 responses was rescued at 4k, with no harms. The primary 11-question
 accuracy gain is 4.55 percentage points, with 1,662.45 extra tokens and a
 −.037668 utility difference at lambda .05; its interval includes zero. Keep

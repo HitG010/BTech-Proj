@@ -31,7 +31,7 @@ unchanged limits. Do not relaunch, reset journals, alter pinned sources/assets,
 repeat preparation or add gold. Keep the Mac open/on AC and Docker running.
 No API/cloud, Kaggle upload or training is part of this run.
 
-The [1.7B cap bridge](qwen17-cap-bridge-protocol.md) is frozen as prep-only code.
+The [1.7B cap bridge](../../qwen17-cap-bridge-protocol.md) is frozen as prep-only code.
 Its ordered gate requires validation `complete` and report-bound independent
 review with `checks_passed: true`. Baseline efficacy need not pass that ordering
 gate. The bridge uses 36 new matched 2k/4k thinking jobs on 18 old cap-hit cells
@@ -43,11 +43,11 @@ evidence regardless of the validation outcome.
 ## Terminal checkpoint
 
 The launch snapshot above is superseded by the
-[completed validation result](sparse-validation-results.md). Terminal status
+[completed validation result](../../sparse-validation-results.md). Terminal status
 is `complete` at 2026-10-06 19:16:18 UTC: 228 direct plus one thinking response,
 zero failures/retries, 43,448 tokens. All workers exited. Independent completion
 review `9a8077b5…ff882` passed; the scientific screen failed. Do not resume,
 relaunch, rescore or reopen references.
 
-The separately ordered [1.7B preparation](qwen17-cap-bridge-preparation-results.md)
+The separately ordered [1.7B preparation](../../qwen17-cap-bridge-preparation-results.md)
 is now complete and verified. Its generation executor remains unimplemented.

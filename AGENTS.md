@@ -17,8 +17,14 @@ result from 3 October to 5 November now lives in
   v0.7 (long report) and the 8-page [short paper](papers/thinking-selection/short/README.md);
   the [root README](README.md) for setup and commands.
 - **Code.** `src/reasoning_budget/` (package), `scripts/` (study and audit
-  entry points), `tests/` (offline tests), `configs/`, `docs/` (protocols and
-  result records), `papers/`.
+  entry points), `tests/` (offline tests; run with `PYTHONPATH=.:src`),
+  `configs/`, `docs/` (protocols and result records), `papers/`.
+- **History.** Superseded plans, launch snapshots, the old root README, the
+  milestone log (`plan.md`), and the old research map are in
+  [docs/history](docs/history/README.md); paper review memos are in
+  [papers/thinking-selection/history](papers/thinking-selection/history/README.md).
+  Moved 7 November 2026; frozen records that link to the old paths were left
+  unedited.
 - **Local only.** `artifacts/`, `.cache/`, `.python/`, and `.venv/` are ignored
   by Git and exist only on the author's Mac. They hold every raw response and
   score cache. `artifacts/legacy/router-studies-6999eb5/` is the detached

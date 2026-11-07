@@ -152,7 +152,7 @@ reason to change the original screen.
 
 ### 6. Major: the most useful existing diagnostic evidence is underused
 
-The [completed repeat diagnosis](../../docs/phase-2-repeat-results.md) contains
+The [completed repeat diagnosis](../../../docs/phase-2-repeat-results.md) contains
 three results largely absent from the draft:
 
 - A signed between-question gain-variance estimate of .03233 utility squared, with a
@@ -268,7 +268,7 @@ and precision jointly. If the claim concerns retraining, a single fitted policy
 on a fresh test set is insufficient to measure that uncertainty.
 
 There is no defensible universal “small extra panel” at present. The existing
-[power sensitivity](../../docs/local-clm-and-power-results.md) needed about
+[power sensitivity](../../../docs/local-clm-and-power-results.md) needed about
 2,010 question groups for a +.01 effect at 80% power under the hypothetical
 SD=.16. That assumption is not an estimate for a new task or the sparse guard.
 The 256 unclaimed reserve questions do not guarantee adequate precision.

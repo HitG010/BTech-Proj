@@ -2,7 +2,7 @@
 
 Completed and verified 2026-09-18: all 500 responses and automatic router
 fitting/evaluation finished successfully. This study implements the next baseline step of
-the [research proposal](router-research-proposal.md), not the proposed novel
+the [research proposal](history/planning/router-research-proposal.md), not the proposed novel
 acquisition method.
 
 The user explicitly instructed us to ignore the scoring audit. That gate is

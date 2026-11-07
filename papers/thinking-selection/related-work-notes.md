@@ -1,7 +1,7 @@
 # Verified literature notes for the empirical manuscript
 
 Initial primary-source check: 2026-10-09; R4 addendum: 2026-10-10. These notes support drafting from the existing
-[outline](../../docs/empirical-paper-outline-2026-10-09.md). They introduce no
+[outline](../../docs/history/planning/empirical-paper-outline-2026-10-09.md). They introduce no
 experiment, dataset, model download, or external outcome analysis. Literature
 claims below describe the cited authors' designs; their numerical results were
 not reproduced. This is a targeted comparison, with no systematic-review or
@@ -175,7 +175,7 @@ the corresponding arXiv records.
 
 ## R4 full-text addendum — 10 October 2026
 
-The [contribution review](reviewer-contribution-2026-10-10.md) and R4 recheck
+The [contribution review](history/reviewer-contribution-2026-10-10.md) and R4 recheck
 accessed [DART v4 full text](https://arxiv.org/html/2606.23181v4), Sections
 2.2–2.3, 4.2, and E.1. This supersedes L11's dated abstract-only retrieval
 limit. Its observed-draft/fresh-thinking decision and supervised-router

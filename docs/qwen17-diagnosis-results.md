@@ -52,7 +52,7 @@ compute cost.
 
 If a matched cap test leaves repeatable capability errors, the user-approved
 free Kaggle option can support a separately specified math LoRA study. The
-[hardware notebook](../notebooks/kaggle-free-gpu-readiness.ipynb) is ready but
+[hardware notebook](history/planning/kaggle-free-gpu-readiness.ipynb) is ready but
 unexecuted. No upload, login, training or model download has occurred. Base-model
 and adapter identities, training exclusions and fresh evaluation must remain
-separate. See the [ordered improvement plan](qwen17-improvement-plan.md).
+separate. See the [ordered improvement plan](history/planning/qwen17-improvement-plan.md).

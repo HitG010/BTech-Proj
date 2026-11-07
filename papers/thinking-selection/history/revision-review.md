@@ -53,10 +53,10 @@ records each concern, action, source, location, and remaining limit.
 | Revision condition | Assessment | Location or evidence |
 |---|---|---|
 | One scoped claim across the paper | Met. Rescues, limited repeat structure, and failed held-out selection are distinguished. | Abstract; Sections 1, 4.1, 6.1, and 8. |
-| Numerical/source traceability | Met for the reported manuscript. Claims and method details resolve to tracked records; reported precision is retained. This is not a fresh reproduction of the experiments. | [Claim map](revision-evidence-map.md), [evidence ledger](evidence-ledger.md), Appendix B. |
+| Numerical/source traceability | Met for the reported manuscript. Claims and method details resolve to tracked records; reported precision is retained. This is not a fresh reproduction of the experiments. | [Claim map](../revision-evidence-map.md), [evidence ledger](../evidence-ledger.md), Appendix B. |
 | Primary failures beside post-hoc diagnostics | Met. All five original decisions remain; four fail. Box 1 has its own role and assumptions. | Table 2 and Box 1. |
 | Sparse inference limits | Met. Refit, one-event support, absent absolute policy metrics, and observed-mask-only bound are explicit. | Sections 5.2–5.3; Appendix C.1. |
-| Figure roles, units, comparators, and intervals | Met. No pooled estimate or inferred error bar was added. Inputs and all nine exported files remain unchanged. | Figures 1–3; [R5 review](figures/review.md). |
+| Figure roles, units, comparators, and intervals | Met. No pooled estimate or inferred error bar was added. Inputs and all nine exported files remain unchanged. | Figures 1–3; [R5 review](../figures/review.md). |
 | No unsupported broad claim | Met within the scoped wording. No method priority, causal failure explanation, cross-task result, mathematical scoring certification, or deployment advantage is claimed. | Sections 2, 3.5, 6, and 7. |
 | Separate methods and contribution decisions | Met. Both reviews support a coherent local report and retain the evidence gaps. | Linked specialist memos. |
 | Preservation and document checks | Met. Source/figure identities and exact captions pass; original result tables and scientific text are preserved in R6. Local links and document formatting are checked before the completion commit. | Section 6 below and revision response. |
@@ -89,7 +89,7 @@ scientific questions in the next section.
    external-system comparison remain untested.
 
 The closest prior-work overlap is documented in the
-[R4 source addendum](related-work-notes.md#r4-full-text-addendum--10-october-2026)
+[R4 source addendum](../related-work-notes.md#r4-full-text-addendum--10-october-2026)
 and the contribution memo. That targeted comparison supports a modest novelty
 assessment. It is not a systematic literature review or proof of priority.
 

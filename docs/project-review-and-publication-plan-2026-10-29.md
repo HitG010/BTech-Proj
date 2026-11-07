@@ -351,7 +351,7 @@ the [protocol](deferral-curves-protocol.md). It draws accuracy–cost curves wit
 a λ sweep, adds refit-inclusive intervals (question bootstrap and fold
 repartition), and tests a two-draft agreement baseline charged for both
 drafts. Step 11 is drafted for the author's decision in the
-[September appendix draft](../papers/thinking-selection/september-studies-appendix-draft.md).
+[September appendix draft](../papers/thinking-selection/history/september-studies-appendix-draft.md).
 
 Status 2026-11-02: steps 7, 8, and 10 are complete; see the
 [results](deferral-curves-results.md). The primary learner trails confidence at

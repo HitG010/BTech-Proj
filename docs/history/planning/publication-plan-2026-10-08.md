@@ -3,7 +3,7 @@
 Date: 2026-10-08. Status: proposed writing and evidence plan.
 No manuscript was submitted. No editor was contacted. No artifact was published.
 The [main research plan](novelty-plan-2026-10-08.md) sets the method experiment.
-The [literature assessment](novelty-literature-2026-10-08.md) records the sources checked.
+The [literature assessment](../../novelty-literature-2026-10-08.md) records the sources checked.
 
 ## 1. Recommended order
 

@@ -1,7 +1,7 @@
 # Phase 1, checkpoint 1: correct the development evidence
 
 Completed 2026-10-01 on `codex/research-data-efficiency`. This is the first
-implementation checkpoint of the [accepted roadmap](research-roadmap.md).
+implementation checkpoint of the [accepted roadmap](history/planning/research-roadmap.md).
 It repairs a reporting defect using existing development traces; it adds no
 new solver outcomes or independent confirmation.
 

@@ -1,15 +1,17 @@
+> **Archived copy.** This is the milestone checklist and dated execution log that lived at the repository root as `plan.md` until 7 November 2026. Relative links were updated to the new location.
+
 # Research repository implementation checklist
 
-**Active roadmap, 2026-10-03:** [data-efficient trace acquisition](docs/research-roadmap.md).
+**Active roadmap, 2026-10-03:** [data-efficient trace acquisition](planning/research-roadmap.md).
 The historical milestone decisions below remain an execution record. The new
 roadmap governs current scope, phase gates, and the $100 cloud allocation.
 Work continues on `codex/research-data-efficiency`; see the
-[Phase 1 evidence-repair record](docs/phase-1-evidence-repair.md).
-The [Phase 2 results](docs/phase-2-repeat-results.md) stop acquisition scaling
+[Phase 1 evidence-repair record](../phase-1-evidence-repair.md).
+The [Phase 2 results](../phase-2-repeat-results.md) stop acquisition scaling
 after four failed progression gates. The bounded parser, CPU capacity/calibration
 and representation/objective studies are now complete; both router promotion
-screens failed. [Results](docs/phase-2-router-feasibility-results.md).
-The [October contrastive-router review](docs/contrastive-router-review-2026-10-02.md)
+screens failed. [Results](../phase-2-router-feasibility-results.md).
+The [October contrastive-router review](../contrastive-router-review-2026-10-02.md)
 defines the earlier design. Released CLM and a fresh signal test remain
 conditional; next is a prospective broader-study design/power review.
 
@@ -72,7 +74,7 @@ device, precision, quantization, or inference engine. Report partial runs honest
 ## C.5 — Calibrate answer completion before training (active)
 
 Accepted revision, 2026-09-14; rationale and related work in
-[research next steps](docs/research-next-steps.md). Existing pilot stays immutable.
+[research next steps](planning/research-next-steps.md). Existing pilot stays immutable.
 
 - [x] Freeze 25 pilot questions by a seeded hash of question identity, without
       using responses or labels; preserve original per-job generation seeds.
@@ -191,7 +193,7 @@ Implementation and verification status will be recorded here as work completes.
   saved 51 formal audit reviews with no unresolved scorer defects. Added exact
   repeating-decimal parsing (`numeric-v3`), with no change in accuracy; 64 tests
   pass. Documented ambiguous upstream wording and the material answer-cap effect
-  in [pilot results](docs/pilot-results.md). Milestones A–C are complete;
+  in [pilot results](../pilot-results.md). Milestones A–C are complete;
   Milestones D–F remain outside this pass.
 - 2026-09-14: accepted C.5 and revised D–F; added calibration CLI and six-arm
   comparison reporting with unchanged numeric-v3 scoring. 69 tests pass.
@@ -203,7 +205,7 @@ Implementation and verification status will be recorded here as work completes.
 - Calibration completed: direct 72%, thinking 88% at both 512 and 1,024 tokens
   after the numeric-v4 heading fix. All token accounting and 200 cap-to-cap
   prefix comparisons verified; 161,729 new charged tokens, 1.823 local hours,
-  $0 cloud. See [calibration results](docs/calibration-results.md).
+  $0 cloud. See [calibration results](../calibration-results.md).
 - Added automatic confirmation reporting for the full pilot and its 25/75
   question partitions; froze `configs/pilot-calibrated.yaml` and launched
   `d00485799f1c8932bafa`. 76 tests pass. Human review remains pending;
@@ -217,7 +219,7 @@ Implementation and verification status will be recorded here as work completes.
   existing responses; zero new Qwen generations, GPU work, or cloud expense.
   Ridge has not shown a reliable gain over cost-matched random; the two-draft
   DART adaptation is promising but inconclusive. See
-  [routing learnability](docs/routing-learnability.md). No official train,
+  [routing learnability](../routing-learnability.md). No official train,
   validation, or test generations have been launched for this step.
 - Verification: 84 offline tests pass; Ruff and whitespace checks pass. Verified
   all source checksums and five disjoint evaluation folds, inspected the curve,
@@ -233,7 +235,7 @@ Implementation and verification status will be recorded here as work completes.
   and primary lambda=.05. Policies freeze before diagnostic generation; official
   test remains excluded. Generation started locally on MPS, training run
   `496228862bd511f17dd5`, with automatic subsequent stages, fitting and reporting.
-  See [study tracking](docs/stronger-router-study.md). Actual results are pending.
+  See [study tracking](../stronger-router-study.md). Actual results are pending.
 - Completion, 2026-09-18: all 500 responses succeeded; policies froze before
   diagnostic generation, verified against timestamps and source/model checksums.
   Total acquisition 431,026 tokens, 5.064 local hours, $0 cloud. At primary
@@ -254,7 +256,7 @@ Implementation and verification status will be recorded here as work completes.
   Full ReASC and DART SC-Budget, live latency, new seeds/tasks and Qwen3-4B remain
   later confirmation requirements. Generic confidence gating and optional
   information purchase are already prior work; novelty is conditional on a
-  demonstrated distinction. See [continuation study](docs/continuation-study.md).
+  demonstrated distinction. See [continuation study](../continuation-study.md).
 - Continuation implementation verified: 103 offline tests pass, including
   failure/resume, cost accounting, invalid agreement, future-response exclusion,
   frozen fitting and sealed-test rejection. Ruff and whitespace checks pass.
@@ -281,7 +283,7 @@ Implementation and verification status will be recorded here as work completes.
   official test remains sealed. The recommended next step is improving the
   method on development data before a costly confirmation. A fixed 3,100-question
   alternative, stopping/analysis rules and missing published comparisons are
-  documented in [confirmation design](docs/confirmation-design.md). This is a
+  documented in [confirmation design](../confirmation-design.md). This is a
   draft, not a launched or registered confirmatory study.
 - User selected freezing the current router for larger confirmation. Prepared
   `artifacts/confirmation/frozen-router-v1` on 2026-09-19: 3,100 fresh questions
@@ -305,7 +307,7 @@ Implementation and verification status will be recorded here as work completes.
   clear the baseline at the preselected lambda=.05. A secondary high-accuracy
   region is exploratory, not a revised primary endpoint. The 100-question diagnostic and official test
   stayed out of fitting and evaluation. All 116 offline tests and Ruff passed;
-  no GPU generation or cloud spend. See [router development results](docs/router-dev-results.md).
+  no GPU generation or cloud spend. See [router development results](../router-dev-results.md).
 - 2026-10-01: started the accepted data-efficiency roadmap on
   `codex/research-data-efficiency`, based on `research/router-studies` at
   `15a4d2d`. Checkpointed the pre-existing research handoff at `1b67fbc`.
@@ -316,7 +318,7 @@ Implementation and verification status will be recorded here as work completes.
   Ten preserved artifact hashes and the legacy generation digest are unchanged.
   All 118 offline tests, Ruff, and diff checks passed; no solver generation,
   official-test scoring, or cloud/API expenditure. See the
-  [Phase 1 evidence-repair record](docs/phase-1-evidence-repair.md).
+  [Phase 1 evidence-repair record](../phase-1-evidence-repair.md).
 - 2026-10-01: Phase 1 checkpoint 2 reconciled the parser as `numeric-v5` and
   generation as `qwen3-boxed-budget-v3`. Ported full EOS handling, separately
   recorded raw confidence, configurable closure, incremental accounting and
@@ -334,7 +336,7 @@ Implementation and verification status will be recorded here as work completes.
   inspection verified EOS `[151643, 151645]` and closure `[151668, 271]` without
   model weights. New bridge config is prepared; role manifests and real bridge
   generation remain next. Solver generations, gold/test access and cloud/API
-  spend: zero. See [checkpoint 2](docs/phase-1-protocol-reconciliation.md).
+  spend: zero. See [checkpoint 2](../phase-1-protocol-reconciliation.md).
 - 2026-10-01: Phase 1 checkpoint 3 freezes all 4,023 unused GSM8K training
   questions into disjoint bridge/repeat/acquisition/validation/confirmation/reserve
   roles (25/50/1200/200/2000/548). Source revision and train Arrow SHA match the
@@ -348,7 +350,7 @@ Implementation and verification status will be recorded here as work completes.
   All 212 offline tests, Ruff and whitespace checks pass. Fourteen protected
   artifacts and 21 legacy Python sources retain their hashes. The allocation is
   now persistent; real bridge preparation/collection follows. Cloud spend $0.
-  See [checkpoint 3](docs/phase-1-bridge.md).
+  See [checkpoint 3](../phase-1-bridge.md).
 - 2026-10-01: froze the actual paired bridge at source `bbcaac2` / legacy
   `6999eb5`, protocol payload `ed5f40e7…68066`, and started local collection.
   At 22:30:26 UTC, 49 legacy responses were complete with zero failures; outcomes
@@ -359,7 +361,7 @@ Implementation and verification status will be recorded here as work completes.
   The incomplete-endpoint audit guard and script lint checks pass. Frozen package
   source/configuration are unchanged. No later experiment or cloud job is launched;
   report/gate review remains pending in the live artifact status. See
-  [background operation](docs/phase-1-bridge.md).
+  [background operation](../phase-1-bridge.md).
 - 2026-10-01: the paired bridge completed its fixed 200-response endpoint and
   background verification at 23:52:04 UTC (05:22:04 IST), without a retry or
   automatic resume. Each arm charges 81,593 tokens; 163,186 total, including
@@ -375,7 +377,7 @@ Implementation and verification status will be recorded here as work completes.
   preflight issue, preserve the bridge scores, and make no equivalence, causal
   speed or novelty claim. Checkpoint 3 is complete; next is a separate frozen
   repeat-panel protocol. Official test stays sealed, old confirmation unstarted,
-  and cloud spend $0. See [completed bridge](docs/phase-1-bridge.md).
+  and cloud spend $0. See [completed bridge](../phase-1-bridge.md).
 - 2026-10-01: completed the requested intermediate-box parser preflight on
   `codex/research-data-efficiency`. V6 (`715e0f0`) was rejected after a gold-free
   1,100-response check found 44 prose regressions; no real v6 gold scoring.
@@ -391,7 +393,7 @@ Implementation and verification status will be recorded here as work completes.
   or cloud spend. This is a scoring repair on reused data, not novelty or a
   solver/router gain. Next: freeze a separate repeat-panel protocol pinning v7
   and its dependency digest, with the unchanged allocation and its own complete
-  endpoint/gold lock. See [parser policy/results](docs/parser-preflight.md).
+  endpoint/gold lock. See [parser policy/results](../parser-preflight.md).
 - 2026-10-01: prepared the separate Phase 2 repeat-panel protocol from `272403f`,
   protocol `8b01db2c…6f3c812`, on the same implementation branch. All 50 frozen
   repeat-role questions and 800 independent job IDs/seeds are pinned with v7,
@@ -412,7 +414,7 @@ Implementation and verification status will be recorded here as work completes.
   Status prepared, 0/800: generation unstarted, analysis locked, repeat reference
   answers and official test unopened, old confirmation unstarted, cloud spend $0.
   Next slice is local collection with a dedicated detached worker under this exact
-  protocol. See [Phase 2 design and preparation](docs/phase-2-repeat-panel.md).
+  protocol. See [Phase 2 design and preparation](../phase-2-repeat-panel.md).
 - 2026-10-01: started the user-authorized frozen Phase 2 local repeat collection
   on `codex/research-data-efficiency`. Committed the dedicated supervisor,
   independent endpoint verifier and nine operational tests at `3505a77`; the
@@ -433,7 +435,7 @@ Implementation and verification status will be recorded here as work completes.
   `repeat-panel-v1/`; do not edit frozen sources or launch duplicate collectors.
   Later acquisition/confirmation/Jev/RL and cloud jobs are not started; official
   test stays sealed and old confirmation unstarted. See
-  [Phase 2 collection and operation](docs/phase-2-repeat-panel.md).
+  [Phase 2 collection and operation](../phase-2-repeat-panel.md).
 - 2026-10-02: diagnosed and repaired the stopped repeat collection under the
   user's explicit instruction, keeping Docker running as requested. Initial and
   automatic-resume collectors each hit three consecutive timeouts, stopping at
@@ -456,7 +458,7 @@ Implementation and verification status will be recorded here as work completes.
   snapshot, within unchanged 1.4M/12-hour limits. Outcomes/reference answers
   remain locked until all 800 complete. Original confirmation unstarted,
   official test sealed, no later-phase/cloud launch. Use recovery-v1 status/log
-  for current state. See [runtime diagnosis and recovery](docs/phase-2-runtime-recovery.md).
+  for current state. See [runtime diagnosis and recovery](../phase-2-runtime-recovery.md).
 
 - 2026-10-02: completed Phase 2 at the full 800-response endpoint. Recovery
   supervisor recorded `complete_with_gate_failures` at 05:20:08 UTC (10:50:08 IST),
@@ -489,7 +491,7 @@ Implementation and verification status will be recorded here as work completes.
   This is no new candidate fit, solver generation, reference access or cloud
   spend. No novelty, deployment speed or independent confirmation is claimed.
   Jev/RL and all later generation remain unstarted; official test sealed, old
-  confirmation unstarted, human audit waiver unchanged. See [Phase 2 results](docs/phase-2-repeat-results.md).
+  confirmation unstarted, human audit waiver unchanged. See [Phase 2 results](../phase-2-repeat-results.md).
 - 2026-10-02: extended the checkpoint with gold-free syntax triage of all 27
   rejected repeat outputs (11 direct, 16 thinking). Five are incomplete; 16
   offer two different component quantities on one question. Five presentation
@@ -508,7 +510,7 @@ Implementation and verification status will be recorded here as work completes.
   head/training/embedding code, MiniLM model card, RouterDC, Cost-Spectrum
   Contrastive Routing and SEMIROUTER, alongside the completed repeat results.
   An independent Sol agent reviewed the local statistical/code boundaries.
-  Added [the contrastive-router review](docs/contrastive-router-review-2026-10-02.md)
+  Added [the contrastive-router review](../contrastive-router-review-2026-10-02.md)
   and revised the roadmap: bounded parser compatibility → confidence/capacity
   controls → matched question/draft representation and objective comparisons →
   optional frozen CLM probe with a matched 8B-backbone control → fresh locked
@@ -535,16 +537,16 @@ Implementation and verification status will be recorded here as work completes.
   exports. No new gold/references, solver generation, sealed access, cloud spend
   or Docker interruption. Next is a prospective design/power review of a broader
   signal study, with separate roles/protocol before any new generation.
-  See [results and provenance](docs/phase-2-router-feasibility-results.md).
+  See [results and provenance](../phase-2-router-feasibility-results.md).
 
 - 2026-10-03: user authorized continuing the research design and specified
   **local experiments only** for the released-CLM probe. Added a prospective
-  [broader signal design](docs/broader-signal-design.md) with a question-level
+  [broader signal design](../broader-signal-design.md) with a question-level
   power/budget sensitivity script and meaningful arithmetic tests. Proposed
   64-question/two-solver diagnostic remains unallocated/unstarted; response-only
   reservations are 786,944 tokens, including forced closure. At hypothetical
   SD=.16, +.01 needs 2,010 question groups for 80% normal-approximation power.
-  Added a separately frozen [synthetic local CLM preflight](docs/clm-local-preflight.md)
+  Added a separately frozen [synthetic local CLM preflight](../clm-local-preflight.md)
   using released heads plus pinned MLX 4-bit Qwen3-8B. Native Metal matrix check
   passed; dependencies are isolated from the frozen research environment.
   Public asset preparation is bounded to 5 GiB. Source/tests/protocol are
@@ -571,10 +573,10 @@ Implementation and verification status will be recorded here as work completes.
   reference/sealed access, cloud/API spending or Docker interruption. Next is
   one separately frozen cached CLM diagnostic with matched 8B supervised
   control and confidence; earlier negative grids stay closed. See
-  [results and next boundary](docs/local-clm-and-power-results.md).
+  [results and next boundary](../local-clm-and-power-results.md).
 - 2026-10-03: user authorized the next cached released-CLM comparison. Added
   `scripts/repeat_clm_probe.py`, synthetic leakage/endpoint/accounting tests and
-  [the frozen protocol](docs/phase-2-clm-probe-protocol.md). One fixed state/action
+  [the frozen protocol](../phase-2-clm-probe-protocol.md). One fixed state/action
   recipe encodes all 400 cached direct drafts and two action vectors; the worker
   sees no labels/thinking text. Actual frozen heads, bounded scalar calibration,
   a supervised PCA8/Ridge control on identical 8B embeddings, and historical
@@ -608,7 +610,7 @@ Implementation and verification status will be recorded here as work completes.
   spend or Docker interruption. Report `5c05f655…07f117`; do not restart.
   Next is a separately frozen broader opportunity-rate diagnostic (64-question/
   two-solver proposal remains unallocated), not a fresh superiority test for
-  these failed policies. See [results/deviation/provenance](docs/phase-2-clm-probe-results.md).
+  these failed policies. See [results/deviation/provenance](../phase-2-clm-probe-results.md).
 - 2026-10-03: user requested a deeper CLM architecture/novelty assessment and
   continued tests. Added a separately frozen descriptive cached-score audit
   (ranking vs confidence, independent-half association, fixed-policy cost
@@ -631,7 +633,7 @@ Implementation and verification status will be recorded here as work completes.
   checkpoint/plan; rank functions/endpoints/bootstrap remain unchanged. The
   64-question child preparation and read-only verification succeeded with
   collection locked; the parent allocation is unchanged.
-- 2026-10-03: completed the deeper [CLM research assessment](docs/clm-research-assessment-2026-10-03.md),
+- 2026-10-03: completed the deeper [CLM research assessment](../clm-research-assessment-2026-10-03.md),
   revised problem-statement wording and conditional adaptation/novelty decision.
   Frozen cached-score audit completes through additive `a266621`, with original
   `b2e4de8` source/plan preserved. Report `d5010392…1a26f7` finds positive-gain
@@ -927,7 +929,7 @@ Implementation and verification status will be recorded here as work completes.
   no training/export/Kaggle action or new data/generation yet.
 - 2026-10-08: user requested detailed novelty research and a plan on a new branch.
   Created `codex/confidence-acquisition-plan` from `ee88d64`. The
-  [focused plan](docs/novelty-plan-2026-10-08.md) studies targeted thinking-response
+  [focused plan](planning/novelty-plan-2026-10-08.md) studies targeted thinking-response
   acquisition for a fixed confidence threshold. It changes the research question;
   all failed historical gates and frozen studies remain unchanged. Added a
   21-item primary-source literature assessment, current evidence map, and
@@ -960,7 +962,7 @@ Implementation and verification status will be recorded here as work completes.
   references, sealed outcomes and completed studies remain unchanged; all
   experiment data were synthetic. Executor/reviewer exited; cloud/API spend0.
 - 2026-10-09 manuscript: drafted the complete empirical paper in
-  [papers/thinking-selection](papers/thinking-selection/README.md), covering
+  [papers/thinking-selection](../../papers/thinking-selection/README.md), covering
   completed real-solver studies. It includes five main tables, an operational
   accounting table, methods, limitations, source identities, and 17 verified
   primary-source bibliography entries. GPT-6.1-sol/xhigh agents independently
@@ -973,7 +975,7 @@ Implementation and verification status will be recorded here as work completes.
   keys were checked; all frozen experiment files remain unchanged.
 - 2026-10-10 critical review: completed separate GPT-6.1-sol/xhigh methods and
   contribution critiques plus the root
-  [scientific review](papers/thinking-selection/critical-review-2026-10-10.md).
+  [scientific review](../../papers/thinking-selection/history/critical-review-2026-10-10.md).
   The recommendation is revision with existing evidence, before new experiments.
   Central weaknesses are limited incremental insight, reused 50-question
   evidence, conditional intervals, and sparse follow-up interpretation.
@@ -985,7 +987,7 @@ Implementation and verification status will be recorded here as work completes.
   generation, statistical reanalysis, or tests occurred. Manuscript v0.1 and
   frozen studies remain unchanged. Author details and formatting are deferred.
 - 2026-10-10 revision planning: added the
-  [v0.2 revision plan](papers/thinking-selection/revision-plan-2026-10-10.md).
+  [v0.2 revision plan](../../papers/thinking-selection/revision-plan-2026-10-10.md).
   Six ordered passes specify the claim map, central narrative, interpretation
   repairs, scope/prior work, separately frozen figure export, and final methods/
   contribution review. The planned diagnostic box preserves failed primary
@@ -994,7 +996,7 @@ Implementation and verification status will be recorded here as work completes.
   record. No manuscript revision, raw/reference access, new analysis, export,
   fitting, generation, scoring, or tests occurred. R1 claim mapping is next.
 - 2026-10-10 R1 complete: created the
-  [revision claim-to-source map](papers/thinking-selection/revision-evidence-map.md)
+  [revision claim-to-source map](../../papers/thinking-selection/revision-evidence-map.md)
   with 19 research/synthesis claims, ten method records, seven literature-context
   records, four numerical registers, accounting, and separate sparse deductions.
   Each planned central claim has its source, comparator, units, role, and limit.
@@ -1006,12 +1008,12 @@ Implementation and verification status will be recorded here as work completes.
   statistical reanalysis, figure export, or tests. Manuscript remains v0.1;
   R2 central text revision is next; R2–R6 pending.
 - 2026-10-10 R2 complete: revised the
-  [v0.2 working manuscript](papers/thinking-selection/manuscript.md) abstract,
+  [v0.2 working manuscript](../../papers/thinking-selection/manuscript.md) abstract,
   Introduction, repeat Results, discussion and Conclusion around the mapped
   three-level claim. Added Box 1 with existing signed variance, both same-question
   transfer directions, acquisition-cost omissions and fixed-policy parser bounds.
   Primary failure remains explicit. Started the
-  [revision response](papers/thinking-selection/revision-response.md) with all
+  [revision response](../../papers/thinking-selection/history/revision-response.md) with all
   nine reviewer concerns and their remaining work. Separate GPT-6.1-sol/xhigh
   methods/argument reviews pass. Tables 1–5 and A1 are unchanged; local links and
   whitespace checks pass. No raw/cache/reference access, experiments, fitting,
@@ -1029,7 +1031,7 @@ Implementation and verification status will be recorded here as work completes.
   tests. R4 scope/prior-work and follow-up organization is next; R4–R6 pending.
 
 - R4 scope/prior-work revision complete, 2026-10-11: the
-  [manuscript](papers/thinking-selection/manuscript.md) leads with the closest
+  [manuscript](../../papers/thinking-selection/manuscript.md) leads with the closest
   empirical overlap and explicitly retains the absent faithful external-method
   comparison. The dated DART full-text addendum updates the literature notes,
   BibTeX and claim map. Appendix A.3 retains control settings/CLM timing;
@@ -1043,10 +1045,10 @@ Implementation and verification status will be recorded here as work completes.
   figure export. R5–R6 pending; author/submission details remain deferred.
 
 - R5 figure export complete, 2026-10-11: the separately frozen
-  [display plan](papers/thinking-selection/figure-export-plan.md), inputs and
+  [display plan](../../papers/thinking-selection/figure-export-plan.md), inputs and
   renderers committed at `655094d` before the one completed report-only export.
   Sources are pinned to R4 `d1287e6`; see the
-  [figure index](papers/thinking-selection/figures/README.md) for all nine
+  [figure index](../../papers/thinking-selection/figures/README.md) for all nine
   PDF/SVG/PNG outputs, source/output hashes and artifact review. Exact captions
   are embedded in the manuscript; original numerical tables/Box 1/sparse text
   are unchanged. Root PNG and independent PDFKit-rendered page inspection pass;
@@ -1058,8 +1060,8 @@ Implementation and verification status will be recorded here as work completes.
   claim follows from figure export.
 
 - R6 final review complete, 2026-10-11: use the
-  [final scientific review](papers/thinking-selection/revision-review.md) and
-  [source-linked response](papers/thinking-selection/revision-response.md).
+  [final scientific review](../../papers/thinking-selection/history/revision-review.md) and
+  [source-linked response](../../papers/thinking-selection/history/revision-response.md).
   Selected status: **Scoped empirical draft is coherent**. All R1–R6 passes
   are complete; reporting issues are addressed and remaining evidence gaps
   are explicit. Novelty remains modest; no algorithm confirmation or likely
@@ -1073,7 +1075,7 @@ Implementation and verification status will be recorded here as work completes.
   collection, reopening of closed searches, submission or public release follows.
 
 - Author scientific assessment written, 2026-10-12: the
-  [author review](papers/thinking-selection/author-scientific-review-2026-10-12.md)
+  [author review](../../papers/thinking-selection/history/author-scientific-review-2026-10-12.md)
   recommends retaining v0.2 as a scoped empirical report. It states the central
   claim, scientific strengths, remaining evidence gaps, and defensible responses
   to likely objections. No substantive manuscript correction was identified.
@@ -1085,7 +1087,7 @@ Implementation and verification status will be recorded here as work completes.
   details remain deferred; stronger novelty needs a separate design assessment.
 
 - Reviewer LaTeX package, 2026-10-27: converted manuscript v0.2 at `f2c5b6e`
-  into [editable LaTeX](papers/thinking-selection/latex/main.tex), a review PDF,
+  into [editable LaTeX](../../papers/thinking-selection/latex/main.tex), a review PDF,
   and a portable source ZIP. Added line numbers, BibTeX citations, and an
   appendix identifying 13 bundled project records. Scientific prose, numerical
   rows, equations, and figure captions are preserved. The bibliography and three
@@ -1095,11 +1097,11 @@ Implementation and verification status will be recorded here as work completes.
   identity and endorsement remain pending; no submission or upload occurred.
 
 - Illustrative paper revision complete, 2026-10-28: manuscript v0.3 and the
-  [new reviewer package](papers/thinking-selection/latex-v2/README.md) include
+  [new reviewer package](../../papers/thinking-selection/latex-v2/README.md) include
   four figures with readable print-size labels, an explicit decision/outcome
   illustration, question/draw split, utility contrasts, and aligned policy costs.
   The user-requested critic challenged prose, definitions, comparators, labels,
-  and pagination; the [response](papers/thinking-selection/legibility-response-2026-10-28.md)
+  and pagination; the [response](../../papers/thinking-selection/history/legibility-response-2026-10-28.md)
   records corrections and remaining optional density. The critic accepted the
   25-page layout; root checked the final pagination-only 24-page version.
   Humanizer 3.1.0 was installed and loaded. The two new display freezes are

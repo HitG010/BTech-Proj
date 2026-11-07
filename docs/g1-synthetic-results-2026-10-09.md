@@ -20,7 +20,7 @@ active acquisition methods fail, or that acquisition cannot help real solvers.
 No real solver data were used in this study.
 
 The preferred publication work now uses the completed empirical evidence.
-The [manuscript outline](empirical-paper-outline-2026-10-09.md) has a draft
+The [manuscript outline](history/planning/empirical-paper-outline-2026-10-09.md) has a draft
 abstract, research questions, claim table, figure plan, and primary-paper
 comparison. A focused review remains a separate project with its own search
 and screening requirements.

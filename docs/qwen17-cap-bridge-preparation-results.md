@@ -44,7 +44,7 @@ native AC preflight before generation. Do not restart the completed cap-plan
 preparation described above.
 
 The user has since resumed with AC available. The separately
-[prepared and audited runtime](qwen17-cap-bridge-runtime-launch.md) is now
+[prepared and audited runtime](history/launches/qwen17-cap-bridge-runtime-launch.md) is now
 collecting under its own fixed budget. The unstarted snapshot above is
 superseded by that launch record; this completed cap-plan preparation remains
 unchanged and must not run again.

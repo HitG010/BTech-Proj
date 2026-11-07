@@ -38,9 +38,9 @@ one interval crosses zero. It uses labels from the evaluated questions and
 omits the cost of acquiring those labels. The primary reproducibility criterion
 still fails. These qualifications belong in the main argument.
 
-Sources: [manuscript, Sections 3–4](manuscript.md),
-[repeat results](../../docs/phase-2-repeat-results.md), and
-[claim map](revision-evidence-map.md).
+Sources: [manuscript, Sections 3–4](../manuscript.md),
+[repeat results](../../../docs/phase-2-repeat-results.md), and
+[claim map](../revision-evidence-map.md).
 
 ## 2. The claim worth retaining
 
@@ -71,8 +71,8 @@ The supporting studies should retain their separate roles:
 | Selected cap intervention | The larger cap yields one rescue and lower point utility in the selected cohort. | Eleven selected groups cannot settle a general reasoning-budget question. |
 
 Source locations and exact endpoints are in
-[manuscript Tables 1–4, Box 1, and Table C1](manuscript.md) and the
-[evidence map](revision-evidence-map.md).
+[manuscript Tables 1–4, Box 1, and Table C1](../manuscript.md) and the
+[evidence map](../revision-evidence-map.md).
 
 ## 3. Scientific strengths
 
@@ -118,7 +118,7 @@ the reported labels. Human scoring was waived. The flagged-case bound narrows
 one explanation but cannot validate every accepted or rejected answer.
 
 **The contribution is incremental.** The existing
-[R4 literature assessment](related-work-notes.md#r4-full-text-addendum--10-october-2026)
+[R4 literature assessment](../related-work-notes.md#r4-full-text-addendum--10-october-2026)
 and [R6 contribution review](revision-review-contribution-2026-10-11.md) record
 substantial overlap with post-draft routing, repeated supervision, stochastic
 evaluation, and failure-risk versus payoff studies. This review adopts that

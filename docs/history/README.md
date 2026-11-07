@@ -1,12 +1,43 @@
 # History
 
-Records kept for provenance after the repository clean-up of 5 November 2026.
-Nothing here is current guidance; read the [research map](../README.md) first.
+Records kept for provenance after the repository clean-ups of 5 and 7 November
+2026. Nothing here is current guidance; read the [research map](../README.md)
+first.
 
 - [agents-log.md](agents-log.md): the dated agent handoff log from the old root
   `AGENTS.md` (3 October to 5 November 2026), verbatim apart from local paths.
+- [plan.md](plan.md): the milestone checklist and execution log formerly at the
+  repository root.
+- [root-readme-2026-11-05.md](root-readme-2026-11-05.md): the old root README,
+  with the full `rb` command walkthrough for every study.
+- [research-map-2026-11-05.md](research-map-2026-11-05.md): the old research
+  map, with dated status paragraphs from September to November.
 - [pilot-v2/](pilot-v2/README.md): the three September reports from the
   unmerged `research/pilot-v2` branch.
+- [planning/](#planning-and-launch-snapshots) and
+  [launches/](#planning-and-launch-snapshots): superseded plans and launch-time
+  status snapshots, listed below.
+- Paper review memos are in
+  [`papers/thinking-selection/history/`](../../papers/thinking-selection/history/README.md).
+
+## Planning and launch snapshots
+
+Moved from `docs/` on 7 November 2026. Some frozen, hash-checked records still
+link to the old `docs/<name>.md` paths; those links no longer resolve, and the
+files are here under the same names.
+
+| File | What it was |
+|---|---|
+| [planning/research-roadmap.md](planning/research-roadmap.md) | Phase roadmap and decision gates (October) |
+| [planning/research-next-steps.md](planning/research-next-steps.md) | September next-steps plan |
+| [planning/router-research-proposal.md](planning/router-research-proposal.md), [planning/router-improvement-research.md](planning/router-improvement-research.md) | Router literature table and improvement ideas (September) |
+| [planning/novelty-plan-2026-10-08.md](planning/novelty-plan-2026-10-08.md), [planning/research-evidence-map-2026-10-08.md](planning/research-evidence-map-2026-10-08.md), [planning/publication-plan-2026-10-08.md](planning/publication-plan-2026-10-08.md) | Threshold-acquisition plan, evidence map, and first publication plan |
+| [planning/empirical-paper-outline-2026-10-09.md](planning/empirical-paper-outline-2026-10-09.md) | Original outline of the manuscript |
+| [planning/qwen17-improvement-plan.md](planning/qwen17-improvement-plan.md) | 1.7B improvement plan (cap bridge before optional LoRA) |
+| [planning/kaggle-free-gpu-plan.md](planning/kaggle-free-gpu-plan.md), [planning/kaggle-free-gpu-readiness.ipynb](planning/kaggle-free-gpu-readiness.ipynb) | Free Kaggle GPU plan and readiness notebook (never uploaded or run) |
+| [launches/opportunity-panel-launch.md](launches/opportunity-panel-launch.md) | Two-solver first-launch diagnosis |
+| [launches/sparse-validation-runtime-launch.md](launches/sparse-validation-runtime-launch.md) | Fresh guard test launch snapshot |
+| [launches/qwen17-cap-bridge-runtime-launch.md](launches/qwen17-cap-bridge-runtime-launch.md), [launches/qwen17-cap-bridge-completion-launch.md](launches/qwen17-cap-bridge-completion-launch.md) | Cap-bridge launch snapshots |
 
 ## Archived branch tips
 

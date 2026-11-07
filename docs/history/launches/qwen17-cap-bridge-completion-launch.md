@@ -52,7 +52,7 @@ unclaimed. This remains an enriched development diagnostic.
 ## Terminal checkpoint
 
 The running snapshots above are superseded by the
-[complete results](qwen17-cap-bridge-results.md). Terminal status is `complete`
+[complete results](../../qwen17-cap-bridge-results.md). Terminal status is `complete`
 at 2026-10-07 17:20:17 UTC: all 30 new /36 combined responses, zero new
 failures/retries, exited collector/finalizer and free locks. Independent review
 `0172f489…fed89` passes; all prefixes and old control token streams match.

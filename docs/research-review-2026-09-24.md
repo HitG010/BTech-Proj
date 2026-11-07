@@ -4,7 +4,7 @@
 in section 2.A is corrected in a new v2 development artifact; v1 is preserved.
 All six other policies and the shared-versus-confidence comparison are unchanged.
 See the [Phase 1 evidence-repair record](phase-1-evidence-repair.md) and the
-[active research roadmap](research-roadmap.md). The review below records the
+[active research roadmap](history/planning/research-roadmap.md). The review below records the
 evidence and proposals as inspected on September 24.
 
 This review covers the current router-studies worktree, its saved development and diagnostic reports, and the sibling pilot-v2 protocol. Sol and Luna agents assisted with read-only code and evidence inspection. Primary literature and TypeSafe's official Jev documentation were checked on the review date. This is a review and proposed experimental program, not a new experiment or an exhaustive novelty clearance.
@@ -71,7 +71,7 @@ Moreover, the shared router shares first-correctness but fits separate rescue/ha
 
 **Repair:** compare one-sample and repeated-sample training labels, preserving an independent evaluation set. Also split repeated draws on the same questions into selection and evaluation halves to test whether apparent mode advantage reproduces; that check alone is not unseen-question generalization. Use a small predetermined learning curve, strong shrinkage, and question-level uncertainty. Report decision regret/utility and calibration of action outcomes, not only correctness AUROC. Avoid training a large neural policy on 11 consensus failures.
 
-Sources: [shared results](router-dev-results.md), [research proposal](router-research-proposal.md), [shared implementation](../src/reasoning_budget/router_dev.py).
+Sources: [shared results](router-dev-results.md), [research proposal](history/planning/router-research-proposal.md), [shared implementation](../src/reasoning_budget/router_dev.py).
 
 ### E. Reconcile protocol and scorer identities
 

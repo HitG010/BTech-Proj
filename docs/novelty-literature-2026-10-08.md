@@ -2,7 +2,7 @@
 
 Search date: 2026-10-08. Purpose: choose a testable contribution and a publication route.
 This is a targeted scoping review. It is not an exhaustive systematic review or proof of priority.
-The [main plan](novelty-plan-2026-10-08.md) contains the proposed experiment.
+The [main plan](history/planning/novelty-plan-2026-10-08.md) contains the proposed experiment.
 
 Primary paper pages, proceedings, full-text sections, author repositories, and official venue policies support this assessment.
 Search engines and secondary indexes were used for discovery only.
@@ -128,7 +128,7 @@ Proposed review question:
 Do not use “first survey” in the title or abstract.
 First apply the proposed coding scheme to the closest surveys and 15–20 primary studies.
 Proceed only if it produces information that their existing tables do not already provide.
-The [publication plan](publication-plan-2026-10-08.md) specifies the review procedure.
+The [publication plan](history/planning/publication-plan-2026-10-08.md) specifies the review procedure.
 
 ## 6. Publication-policy checks
 

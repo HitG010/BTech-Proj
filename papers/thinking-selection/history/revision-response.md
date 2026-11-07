@@ -4,14 +4,14 @@ Started: 10 October 2026. Completed: 11 October 2026. Manuscript: v0.2.
 Original manuscript: v0.1 at `1695a1f`; reviewed baseline at `79a6cdd`.
 Claim map: R1, `cac52c1`.
 
-This record tracks the [revision plan](revision-plan-2026-10-10.md).
+This record tracks the [revision plan](../revision-plan-2026-10-10.md).
 All six revision passes are complete. This record distinguishes reporting
 repairs from evidence limitations that remain unresolved.
 It is not a new study result or a statement of submission readiness.
 
 ## R1. Claim-to-source map — complete
 
-The [map](revision-evidence-map.md) assigns IDs to the scientific claims,
+The [map](../revision-evidence-map.md) assigns IDs to the scientific claims,
 reported values, methods, prior-work context, and sparse arithmetic deductions.
 Source/section links resolve. A separate methods review found no blocking
 number/comparator/qualifier mismatch. It corrected “asymmetric” transfer to
@@ -117,10 +117,10 @@ This pass does not decide publication novelty or replace the final R6 review.
 
 ## R5. Frozen report-to-figure export — complete
 
-The [display plan](figure-export-plan.md), inputs, and renderers froze at
+The [display plan](../figure-export-plan.md), inputs, and renderers froze at
 `655094d` before export, using source documents from `d1287e6`. The independent
 methods review passed the freeze. The single completed export creates three
-figures, each in PDF, SVG, and PNG. [Figure files and provenance](figures/README.md)
+figures, each in PDF, SVG, and PNG. [Figure files and provenance](../figures/README.md)
 include exact input precision, source locations, comparator/interval metadata,
 source/renderer/output hashes, and the final artifact review.
 
@@ -135,7 +135,7 @@ The figure captions are exact copies of the frozen input text. Root visual
 review inspected all PNGs and all PDF pages rendered independently through
 native PDFKit/Quartz. SVG text and all nine output hashes pass artifact checks.
 No correction or second export was required. See the
-[review record](figures/review.md) and [verification](figures/review-verification.json).
+[review record](../figures/review.md) and [verification](../figures/review-verification.json).
 
 This is a display export. It uses no raw project outcome, score cache, reference,
 sealed role, new fitting/scoring/generation, statistical reanalysis, or test run.
@@ -160,7 +160,7 @@ Concern numbers 1–9 refer to Section 4 of the
 [critical review](critical-review-2026-10-10.md). S1–S6 record the additional
 points in the specialist memos. **Addressed** means that the reporting issue is
 repaired. A disclosed evidence gap remains a gap. Source IDs resolve through
-the [claim-to-source map](revision-evidence-map.md) and its linked reports.
+the [claim-to-source map](../revision-evidence-map.md) and its linked reports.
 
 | Concern | Action | Final manuscript location | Evidence source | Final disposition and remaining limit |
 |---|---|---|---|---|

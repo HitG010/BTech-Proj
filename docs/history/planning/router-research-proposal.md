@@ -24,7 +24,7 @@ components establishes a contribution.
 
 ## What our evidence does and does not say
 
-The [current study](routing-learnability.md) has 100 questions, two responses per
+The [current study](../../routing-learnability.md) has 100 questions, two responses per
 mode, and 80 training questions in each outer fold. There are 387 input features.
 Nineteen of twenty fitted ridge targets selected the strongest regularization.
 Ridge has not demonstrated improvement over cost-matched random allocation.

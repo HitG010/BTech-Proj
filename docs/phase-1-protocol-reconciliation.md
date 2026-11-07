@@ -2,7 +2,7 @@
 
 Completed 2026-10-01 on `codex/research-data-efficiency`, after checkpoint
 `6999eb5`. This implements the next foundation step in the
-[accepted roadmap](research-roadmap.md). It prepares a consistent collection
+[accepted roadmap](history/planning/research-roadmap.md). It prepares a consistent collection
 pipeline; it does not add new solver outcomes or establish a novel router.
 
 ## What we are building first

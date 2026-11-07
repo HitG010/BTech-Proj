@@ -134,7 +134,7 @@ claim needs measured end-to-end advantage, including router overhead.
 
 These differences identify comparisons to investigate, not proof that our
 combination is new. The [September research review](research-review-2026-09-24.md)
-and [roadmap](research-roadmap.md) retain additional boundaries from thinking
+and [roadmap](history/planning/research-roadmap.md) retain additional boundaries from thinking
 selection, confidence stopping, active routing and cost-aware policy learning.
 For example, [DART](https://arxiv.org/abs/2606.23181) uses direct-draft agreement
 and adaptive thinking budgets; a later matched comparison must charge its extra

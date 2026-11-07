@@ -9,7 +9,7 @@ opportunities, limited same-question repeat structure, and unsuccessful learned
 selection on unseen questions.
 
 This review used the manuscript, literature notes, and tracked
-[repeat result record](../../docs/phase-2-repeat-results.md). It opened no raw
+[repeat result record](../../../docs/phase-2-repeat-results.md). It opened no raw
 project response, cached outcome file, reference answer, or model asset and ran
 no experiment or analysis. Primary papers were read on 2026-10-10. The
 assessment below distinguishes verified overlap from reviewer inference.

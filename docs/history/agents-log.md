@@ -6,7 +6,7 @@ of each study, freeze, launch, stop, and result, except that absolute paths on
 the author's machine are replaced with `~/Documents/BTechProj` and
 `~/Documents/BTechProj-pilot-v2`. Later bullets supersede earlier ones where
 they say so. For the current state, read the root `AGENTS.md` and the
-[research map](../README.md).
+[research map](../../README.md).
 
 ---
 
@@ -25,11 +25,11 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   backend and scorer differ from the historical router-studies branch.
   `numeric-v3` and `numeric-v4` have different historical meanings. The active
   branch now uses `numeric-v5` and `qwen3-boxed-budget-v3`; the
-  [protocol record](docs/phase-1-protocol-reconciliation.md) explains the merge.
+  [protocol record](../phase-1-protocol-reconciliation.md) explains the merge.
   The real 25-question generation bridge is complete; historical generation
   protocols are still not interchangeable.
-- Start with [the research map](docs/README.md) for study results, code layout,
-  artifact paths and reading order. [The root README](README.md) covers setup and
+- Start with [the research map](../README.md) for study results, code layout,
+  artifact paths and reading order. [The root README](../../README.md) covers setup and
   commands; [the plan](plan.md) is the milestone and execution log. Source is in
   `src/reasoning_budget/`, offline tests in `tests/`, configurations in
   `configs/`, and research notes in `docs/`.
@@ -47,12 +47,12 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   joint router; `status.json` says generation has not started. The user deferred
   its 125–142-hour local run to improve the router first. The official 500-test
   split is sealed. The human scoring audit was explicitly waived.
-- The active [research roadmap](docs/research-roadmap.md) targets data-efficient
+- The active [research roadmap](planning/research-roadmap.md) targets data-efficient
   acquisition, with protocol repair and supervision diagnosis before scaling.
   Jev/RL are conditional extensions. Do not treat generic RL, agreement, or
   cost-aware acquisition as an established novel contribution.
 - The cached-trace CPU test is complete; see
-  [router development results](docs/router-dev-results.md) and
+  [router development results](../router-dev-results.md) and
   the corrected `artifacts/router-dev/shared-base-v2/report.md` (v1 preserved).
   The standalone-thinking cost was corrected from 1,654.47 to 1,430.69 tokens;
   all six other policies and the legacy generator are unchanged. On 200 reused development
@@ -68,7 +68,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   50 repeat, one 1,200-question acquisition pool, 200 validation, 2,000 new sealed
   confirmation, 548 reserve. Preparation reads question-only source rows; loading
   validates live inventory/source hashes, source index, exclusions and pool roles.
-  The [paired bridge](docs/phase-1-bridge.md) is implemented with 100 responses per
+  The [paired bridge](../phase-1-bridge.md) is implemented with 100 responses per
   arm, common v5 scoring only after all 200 complete, and unchanged old code at
   `6999eb5`. Its pre-collection verification passed 212 offline tests. Collection
   from frozen `bbcaac2` is complete: 200/200 responses, zero failures/retries, all six engineering gates
@@ -83,7 +83,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   scoring limitation is resolved by the separate parser preflight below. The
   subsequent 50-question repeat study is now complete with failed progression
   gates; see its result record below. Later phases remain pending. Cloud expenditure is $0.
-- The [parser preflight](docs/parser-preflight.md) is complete. V6 was rejected
+- The [parser preflight](../parser-preflight.md) is complete. V6 was rejected
   for 44 gold-free prose regressions and is retained for provenance. Opt-in v7
   was frozen at `2607206`; its implementation digest is
   `c63d69c3c9cb89a0ee72915172bba569b3ec8329d5ef0be30291297fe7bb8964`.
@@ -99,7 +99,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   occurred in this preflight. Do not restart the bridge or edit frozen existing
   package files. Artifacts: `parser-v6-preflight-v1/` and `parser-v7-preflight-v1/`
   under `artifacts/research/data-efficiency-v1/`.
-- Phase 2 [repeat-panel protocol](docs/phase-2-repeat-panel.md) is frozen
+- Phase 2 [repeat-panel protocol](../phase-2-repeat-panel.md) is frozen
   from source `272403f`, protocol `8b01db2c…6f3c812`. It pins the unchanged
   allocation, 50 repeat questions, v7, all 800 independent jobs/seeds, 50×387
   question features and five 10-question folds. Preparation passed 363 tests
@@ -115,7 +115,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   All tuning used acquired training-half labels and question folds. The two
   four-draw halves supply independent-draw diagnostics; eight-draw labels have
   no independent same-question eight-draw replica.
-- Phase 2 [runtime recovery](docs/phase-2-runtime-recovery.md) is complete.
+- Phase 2 [runtime recovery](../phase-2-runtime-recovery.md) is complete.
   The original supervisor at `3505a77` stopped at 51/800 after six timeout
   attempts, exhausting its initial/one-resume journal (2/2). The policy/journal/
   status/log, all 51 completed responses, 57 attempts and two setup sessions are
@@ -139,7 +139,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   2,319 protected originals are unchanged. `background-verification.json` and
   `recovery-v1/completion-review-verification.json` record accounting, preservation
   and exact fresh-CPU reproduction of the frozen statistics from cached scores.
-- Phase 2 [results](docs/phase-2-repeat-results.md) **stop acquisition scaling**:
+- Phase 2 [results](../phase-2-repeat-results.md) **stop acquisition scaling**:
   four of five predeclared gates fail. Four-draw average combined-minus-training-
   selected-baseline utility is −0.016204 (90% CI −0.033276 to −0.000635);
   reproducibility's interval crosses zero and secondary full8 is −0.051630.
@@ -168,7 +168,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   endpoint/analysis protocol and fresh signal evidence before scaling. Jev/RL,
   acquisition, validation and confirmation generation remain unstarted; official
   test sealed, old confirmation unstarted, human audit waived and cloud spend $0.
-- The [October contrastive-router checkpoint](docs/contrastive-router-review-2026-10-02.md)
+- The [October contrastive-router checkpoint](../contrastive-router-review-2026-10-02.md)
   revises the pending roadmap without running new experiments: 2a bounded
   gold-free parser compatibility (retain v7 if the candidate fails), 2b CPU
   confidence/capacity controls, 2c matched question/draft representation and
@@ -182,11 +182,11 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   before execution. No CLM download/API/training, new generation, role changes
   or sealed-label access is authorized by the review itself. Acquisition scaling
   and Jev/RL remain stopped pending fresh signal evidence. Docker stays running.
-- Phases 2a–2c are now complete. The [parser compatibility preflight](docs/phase-2-parser-compatibility.md)
+- Phases 2a–2c are now complete. The [parser compatibility preflight](../phase-2-parser-compatibility.md)
   froze one balanced-bold final-declaration wrapper: 56 fixtures, 1,900 outputs,
   one newly extracted scalar, zero accepted-answer regressions; v7/primary labels
   unchanged. Its script/tests/results checkpoint is `b15e7de`. The
-  [bounded router experiments](docs/phase-2-router-feasibility-results.md) froze
+  [bounded router experiments](../phase-2-router-feasibility-results.md) froze
   code/protocols at `1886bd4` before real fits. CPU: 1,035 Ridge/75 PCA fits;
   training-selected average four-draw difference vs confidence −0.014287
   (90% CI −0.025680 to −0.004425). Compact MiniLM representation/objective pilot:
@@ -205,7 +205,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   Acquisition, CLM-8B, Jev/RL and fresh superiority testing remain unstarted;
   Docker running, cloud spend $0, original failed gates/roles unchanged.
 - Latest user preference is **local experiments only**; Docker must stay running.
-  The [local CLM/power checkpoint](docs/local-clm-and-power-results.md) follows
+  The [local CLM/power checkpoint](../local-clm-and-power-results.md) follows
   2a–2c and supersedes their CLM-unstarted statement for engineering only.
   Source/tests/protocol froze at `c06e2ff`; full 514 offline tests plus two
   new independent-review tests pass. Public assets (4,699,357,359 bytes) and
@@ -221,7 +221,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   repeatability and arithmetic, **not full-precision equivalence, task signal,
   calibration or co-resident solver/router latency**. RSS is separate from MLX
   allocation, not total unified-memory accounting. No router deployment claim.
-  The prospective [broader signal design](docs/broader-signal-design.md) and
+  The prospective [broader signal design](../broader-signal-design.md) and
   power report `3d5a798c…5191a7` are complete. SD=.16 sensitivity requires 2,010
   question groups for +.01 at 80% power; proposed 64-question/two-solver panel
   remains diagnostic/unallocated/unstarted, with 786,944 response-only token
@@ -237,7 +237,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   halves; not another MiniLM search. New generation still needs a separate
   reserve-child-role/endpoint/analysis protocol. Acquisition, Jev/RL, MATH and
   confirmation stay unstarted; cloud/API spend $0, official test sealed.
-- Phase 2d [cached released-CLM results](docs/phase-2-clm-probe-results.md) are
+- Phase 2d [cached released-CLM results](../phase-2-clm-probe-results.md) are
   complete, superseding the preceding task-quality-untested/next-probe boundary.
   Source/tests `5d40fa8`, launcher/protocol `ce1c7e6`, frozen plan
   `270718aa…22a88c`; report `5c05f655…07f117`. One local worker finished all
@@ -274,7 +274,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   (the proposed 64-question/two-solver panel is still unallocated/unstarted),
   not superiority confirmation of a failed policy. Acquisition, Jev/RL, MATH,
   confirmations remain stopped; official test stays sealed.
-- The [deep CLM assessment](docs/clm-research-assessment-2026-10-03.md) and
+- The [deep CLM assessment](../clm-research-assessment-2026-10-03.md) and
   descriptive cached-score audit are complete. Source/test/protocol `b2e4de8`,
   base plan `048687b3…350846`. The first new launcher hit a cached-summary
   field error before writing its report; preserve it unchanged and **do not
@@ -294,7 +294,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   contrastive routing nor repeated supervision alone is novel (RouterDC uses
   repeated solver samples). No renewed search/finetuning on the 50-question panel.
   Both audit analyses are finished; preserve sources/tests/protocols/plans/results.
-- The [opportunity preparation](docs/opportunity-panel-preparation.md) supersedes
+- The [opportunity preparation](../opportunity-panel-preparation.md) supersedes
   the preceding unallocated-64 statement: `reserve-children/opportunity64-v1/`
   now contains a separately frozen **question-only child of 64 parent-reserve
   rows**, split `opportunity64`, seed 20261007, fold counts 13/13/13/13/12.
@@ -317,7 +317,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   only; real use needs the new analysis protocol. This panel is diagnostic, not
   +.01 confirmation. Official test sealed, both confirmations/acquisition/Jev/RL
   unstarted, no worker running, Docker kept running, cloud/API spend $0.
-- The [local second-solver preflight](docs/opportunity-solver-preflight-results.md)
+- The [local second-solver preflight](../opportunity-solver-preflight-results.md)
   is complete and supersedes the preceding 0.6B-assets-unverified boundary.
   Frozen source/tests/protocol `1e1e4d1`, plan `59827f88…99c04`; nine pinned
   public files total 1,519,207,673 bytes and pass remote/local hashes. One bounded
@@ -334,14 +334,14 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   global ledger and full endpoint/scoring/analysis rules. The proposed 1M-token/
   12-hour global limits are not yet a frozen collection protocol. Docker stays
   running, cloud/API spend $0, acquisition/Jev/RL/confirmations remain stopped.
-- The [full two-solver diagnostic](docs/opportunity-panel-protocol.md) is frozen
+- The [full two-solver diagnostic](../opportunity-panel-protocol.md) is frozen
   from `a136f27` after 623 offline tests. Actual protocol `d4e511ad…c1e44bc`
   binds both local solvers, unchanged 64-child/folds, 512 unique jobs/seeds,
   786,944 response reservations, one 1M-token/12-hour shared budget and fixed
   analysis. Actual independent prelaunch audit verified 39 source/11 protected/
   two dataset/16 model-asset hashes and all job/seed identities. The first
   background launch stopped 0/512 at `needs_attention`, before references.
-  See [runtime diagnosis](docs/opportunity-panel-launch.md): macOS maintenance
+  See [runtime diagnosis](launches/opportunity-panel-launch.md): macOS maintenance
   sleep106+929 seconds explains 26.98 monotonic vs1,057.29 wall seconds. The
   old wall watchdog counted sleep; generator uses monotonic time. Preserve
   every frozen file and initial status/log/journal/reservation/receipt. The
@@ -354,7 +354,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   scoring or cloud access occurred. Official test/confirmations/acquisition/RL
   remain stopped; Docker running. More data needs a new prospective child/plan
   after the diagnostic; do not silently expand the frozen64 panel.
-- The additive [opportunity recovery](docs/opportunity-panel-runtime-recovery.md)
+- The additive [opportunity recovery](../opportunity-panel-runtime-recovery.md)
   froze at `efa72b2` after 636 offline tests and independent review. Plan
   `614f5ea7…7392be`, prelaunch review `69f66f1a…db961`; all 22 immutable study
   originals, three new pins, two mutable archives and 52 original file pins pass.
@@ -390,7 +390,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   spend; Docker kept running, official test sealed and other phases stopped.
 - User explicitly authorized resuming the60 missing jobs, paused before any
   new launch, then resumed. The separate
-  [completion protocol](docs/opportunity-panel-completion.md) is implemented and
+  [completion protocol](../opportunity-panel-completion.md) is implemented and
   reviewed: all643 offline tests (seven new) and Ruff pass; no launch blockers.
   Only original60 pending0.6B jobs, unchanged seeds/config/scorer/analysis; child
   owns one launch/setup/invocation, own4h wall/charged limit, combined original+
@@ -418,7 +418,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   refs and unchangedv7/folds/analysis; all sidecars/reports are in completion-v1.
   Keep Mac open/onAC and Docker running. No extra question allocation, reference
   access at launch, cloud/API spend or official-test access. Other phases stopped.
-- The [two-solver results](docs/opportunity-panel-results.md) are **complete**,
+- The [two-solver results](../opportunity-panel-results.md) are **complete**,
   superseding running snapshots. Completion terminal2026-10-05 18:14:48UTC:
   60/60new,512/512combined, zero new failures/retries, collector/finalizerexit0,
   no worker remaining and allfive checkedlocks free. Report `f3f0d33c…ac6fd`,
@@ -442,8 +442,8 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   Officialtestsealed, Dockerkept running, cloud/APIspend$0, earlierfailedgates
   unchanged. Ordinary CLI remainsv5; completedstudyusesseparatev7sidecar.
 - User authorized the next 0.6B design and bounded development test. The
-  [next experiment](docs/qwen06-next-experiment.md) and
-  [fixed CPU pilot](docs/qwen06-router-pilot-protocol.md) are implemented:
+  [next experiment](../qwen06-next-experiment.md) and
+  [fixed CPU pilot](../qwen06-router-pilot-protocol.md) are implemented:
   653offline tests (ten new), Ruff and independent review pass. Exactly20fixed
   Ridge fits,alpha10, three direct-only features (postwarperconfidence/loganswer
   length/goldfreev7rejection) and matchedconfidence-only; trainonedraw excluding
@@ -460,7 +460,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   adapt the pilotgrid fromheldout results; allfour gates mustpass before anew
   freshprotocol proposal, and that protocol mustfreeze refits/comparators/roles/
   endpoints before labels. Localonly,Dockerkept running,cloud/APIspend$0.
-- The [0.6B CPU pilot](docs/qwen06-router-pilot-results.md) is **complete**.
+- The [0.6B CPU pilot](../qwen06-router-pilot-results.md) is **complete**.
   Source/test/protocol `8413e9e`, plan `1d0f145a…460a0`, rows `1864fa8c…c3dfc`,
   report `ccdd2a2a…20ccf`, independent review `4316c492…4cb2f`. Exactly 20 Ridge
   fits; all 2,652 closed-study files preserved. Review verifies normal-equation
@@ -486,8 +486,8 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   investigation, and offered FREE Kaggle GPU training as an optional resource.
   This is an exception to local-only for separately frozen free training, not
   paid cloud/API authorization. New prep-only
-  [sparse validation](docs/qwen06-sparse-validation-protocol.md) and
-  [1.7B diagnosis](docs/qwen17-performance-diagnosis.md) pass670 offline tests
+  [sparse validation](../qwen06-sparse-validation-protocol.md) and
+  [1.7B diagnosis](../qwen17-performance-diagnosis.md) pass670 offline tests
   (17new), Ruff and independent review. Source/test/doc must freeze before one
   full-data scalar cutoff fit on128cached0.6B training rows; independentreview
   must precede any fresh228question-only child. Both policies share cutoff,
@@ -502,12 +502,12 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   orutility can be reported from these partial counterfactual observations.
   Collector is UNIMPLEMENTED/LOCKED; prep commands do not authorize generation.
   The1.7B audit is posthoc cached counts/fallbacks, no fitting/rescoring/refs/gen.
-  [Improvement plan](docs/qwen17-improvement-plan.md) prioritizes matchedcap
+  [Improvement plan](planning/qwen17-improvement-plan.md) prioritizes matchedcap
   extension before optionalLoRA; no model improvement is yet established.
-  [Kaggle plan](docs/kaggle-free-gpu-plan.md) and readinessnotebook inspectonly
+  [Kaggle plan](planning/kaggle-free-gpu-plan.md) and readinessnotebook inspectonly
   hardware/packages; no login/upload/install/remoteexecution/training occurred.
   Preserve oldroles/labels/sealedtest/studies and keep Docker running.
-- Sparse baseline [preparation](docs/sparse-validation-preparation-results.md)
+- Sparse baseline [preparation](../sparse-validation-preparation-results.md)
   is complete from source/test/protocol `9bc9ac7`, after670 tests and review.
   One scalar fit plan `81c70aee…fe98a`, policy `c761a265…2b177`, shared cutoff
   -.07951707680497253. Exact independent review checks all130 cutoffs;
@@ -524,7 +524,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   andLOCKED; no generation/scoring/ref access is authorized by prep. Next is a
   separately frozen runtime collector with activated endpoint/ledger/powerguard/
   preservation and eligible-only-reference logic, not ordinary rb run/score.
-- The [1.7B audit](docs/qwen17-diagnosis-results.md) is complete: plan
+- The [1.7B audit](../qwen17-diagnosis-results.md) is complete: plan
   `7c7c62b1…72592`, report `558a8486…05d79`, independentreview `c77eafcf…b27ac`,
   all2652closedstudy files preserved,128cells/sixpolicies/cap andparser bounds
   reproduced without fitting/gen/scoring/refs. Direct108/128=84.375%, thinking
@@ -543,8 +543,8 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   Paidcloud/API remainsunauthorized, defaultlocal,Docker running, no worker;
   officialtest/confirmation/acquisition/CLM/RL/MATH unchanged/unpromoted.
 - User authorized **validation first, then1.7B improvement**. New
-  [sparse runtime](docs/qwen06-sparse-runtime-protocol.md) and
-  [cap bridge preparation](docs/qwen17-cap-bridge-protocol.md) are implemented;
+  [sparse runtime](../qwen06-sparse-runtime-protocol.md) and
+  [cap bridge preparation](../qwen17-cap-bridge-protocol.md) are implemented;
   694offline tests, Ruff and independent review pass. Freeze the new files
   before runtime prepare/native launch. Runtime writes only sparse/runtime-v1,
   with228direct thenimmutable ALLeligiblethinking mask(max32),250ktokens/6h
@@ -582,7 +582,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   thenmanual36newpairedjobs18oldseeds/11DEVgroups, independentfrom0.6scientific
   gate. Its generationexecutor isUNIMPLEMENTED andneedsnewfreeze. No concurrent
   1.7Bmodel, GPUtraining, Kaggleupload, paidAPI orsealedlabel access occurs.
-- Fresh sparse [validation is complete](docs/sparse-validation-results.md),
+- Fresh sparse [validation is complete](../sparse-validation-results.md),
   superseding the running snapshot. Terminal 2026-10-06 19:16:18 UTC: 228 direct
   plus one eligible thinking response, 229 attempts, zero failures/retries, one
   setup, no unresolved reservations. Collector/finalizer exited zero; no worker
@@ -596,7 +596,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   evidence; no tuning/expansion/promotion. Preserve frozen code, roles, policy,
   jobs, responses, scores and journals; do not launch/prepare/score/finalize again
   or reopen references. All 2,319 historical protected originals preserved.
-- The ordered [1.7B cap preparation](docs/qwen17-cap-bridge-preparation-results.md)
+- The ordered [1.7B cap preparation](../qwen17-cap-bridge-preparation-results.md)
   is complete from `440f655`: plan `553c514d…12e2e`, independent review
   `647fd8e3…21835` passes ten source/three ordering pins, 36 unique matched jobs,
   18 inherited original seeds/11 old DEV groups, equal-question primary weighting
@@ -609,7 +609,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   research phases remain stopped. Failed guard efficacy does not block this
   separately authorized development cap diagnostic or establish novelty.
 - User explicitly requests starting 1.7B generation. The additive
-  [cap runtime](docs/qwen17-cap-bridge-runtime-protocol.md) implements the
+  [cap runtime](../qwen17-cap-bridge-runtime-protocol.md) implements the
   previous locked stage; write only `qwen17-cap-bridge-v1/runtime-v1/`.
   Freeze its new script/test/protocol before one-time runtime prepare; actual
   prepared-input independent review must precede native launch. Exactly 36
@@ -641,7 +641,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   launch. Preserve frozen new runtime files and all old sources/artifacts.
   Docker remains running; 256 reserve rows remain unclaimed, cloud spend $0.
 - The user **resumed** the deferred 1.7B generation with AC power available.
-  [Cap background collection](docs/qwen17-cap-bridge-runtime-launch.md) is now
+  [Cap background collection](launches/qwen17-cap-bridge-runtime-launch.md) is now
   running, superseding the unprepared/deferred snapshot. Frozen `49cf7fd`
   prepares runtime plan `41e9d161…da5ef`; actual prelaunch review `a4b9f5d2…07675`
   checks 17 source/nine prepared/environment/asset pins, all 36 jobs/18 paired
@@ -719,7 +719,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   questions or quietly extend old budget. Current status remains runtime-v1.
   Docker running, cloud/API$0, official test sealed, other phases stopped.
 - User authorized exact30-job completion. The separate
-  [completion protocol](docs/qwen17-cap-bridge-completion-protocol.md) freezes
+  [completion protocol](../qwen17-cap-bridge-completion-protocol.md) freezes
   source/tests at **dd4d733** after all **720 offline tests**, Ruff and review.
   Engineering decision `1378ea0d…de86e` records eight-hour own wall/charged and
   1,800s job limits (old config's serialized600 retained as identity),900s setup,
@@ -744,7 +744,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   the running checkpoint. Deadline2026-10-08 00:01:39UTC with earlier stops
   binding. Keep Mac open/onAC, Docker running; other phases/sealed roles stopped,
   reserve256 unchanged, cloud/API$0. No correctness/improvement result yet.
-- Cap [completion/results](docs/qwen17-cap-bridge-results.md) are **complete**,
+- Cap [completion/results](../qwen17-cap-bridge-results.md) are **complete**,
   superseding the running snapshots. Terminal2026-10-07 17:20:17UTC:30/30new,
   36/36combined, zero new failures/retries, collector/finalizerexit0, all owned
   processes absent and nine locks free. Report `11e61657…e1622`, scores
@@ -773,10 +773,10 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
 - Planning update, 2026-10-08: the active planning branch is
   `codex/confidence-acquisition-plan`, created from `ee88d64` on
   `codex/research-data-efficiency`. Read the additive
-  [focused plan](docs/novelty-plan-2026-10-08.md),
-  [literature assessment](docs/novelty-literature-2026-10-08.md),
-  [evidence map](docs/research-evidence-map-2026-10-08.md), and
-  [publication plan](docs/publication-plan-2026-10-08.md). The question is whether
+  [focused plan](planning/novelty-plan-2026-10-08.md),
+  [literature assessment](../novelty-literature-2026-10-08.md),
+  [evidence map](planning/research-evidence-map-2026-10-08.md), and
+  [publication plan](planning/publication-plan-2026-10-08.md). The question is whether
   targeted thinking samples reduce the cost of learning a fixed confidence
   threshold. This is a researched proposal, not a new result or execution
   protocol. G0 algorithm distinction and G1 synthetic work are pending. The
@@ -785,22 +785,22 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   scoring, training, upload, or publication was performed by this change.
   Official test remains sealed, reserve256 unchanged, cloud/API spend $0.
 - G0/G1 preparation, 2026-10-09: on `codex/confidence-acquisition-plan`, the
-  [prior-art review](docs/g0-prior-art-review-2026-10-09.md) closes the method
+  [prior-art review](../g0-prior-art-review-2026-10-09.md) closes the method
   priority claim as unsupported. Missing supplements and the L4 full paper
-  remain explicit retrieval limits. The [algorithm](docs/g0-threshold-algorithm-2026-10-09.md)
+  remain explicit retrieval limits. The [algorithm](../g0-threshold-algorithm-2026-10-09.md)
   is an empirical adaptation with a finite-pool random-audit correction.
-  The [G1 protocol](docs/g1-synthetic-protocol-2026-10-09.md) permits only eight
+  The [G1 protocol](../g1-synthetic-protocol-2026-10-09.md) permits only eight
   synthetic settings, 30 paired seeds, seven controls/two removals, three
   budgets, one 1,200-second invocation, and 512 MiB of artifacts. Source, tests,
   protocol and independent reviewer must freeze before prepare/run. The new
   output location is `artifacts/research/confidence-acquisition-g1-v1/`.
   Preserve start/finish/trace records; do not retry or widen a failed screen.
   G1 does not permit real-data allocation, generation, old scoring/refitting,
-  reference access or confirmation. The [empirical paper outline](docs/empirical-paper-outline-2026-10-09.md)
+  reference access or confirmation. The [empirical paper outline](planning/empirical-paper-outline-2026-10-09.md)
   reuses published project reports only. No historical study is reopened.
   Docker stays running, local execution only, official test sealed, reserve256
   unchanged, and cloud/API experiment spend $0.
-- G1 [synthetic results](docs/g1-synthetic-results-2026-10-09.md) are complete,
+- G1 [synthetic results](../g1-synthetic-results-2026-10-09.md) are complete,
   superseding the preceding preparation boundary. Source/protocol/reviewer
   froze at `0042134` after 68 focused tests (41 independent) and Ruff. Plan
   `7b0b8734…2074c`, one invocation `92a803e0…495a7`, terminal
@@ -821,9 +821,9 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   Official test sealed, confirmations and acquisition scaling unstarted,
   reserve256 unchanged, Docker not stopped, cloud/API experiment spend $0.
 - Empirical manuscript, 2026-10-09: the complete prose draft is
-  [papers/thinking-selection/manuscript.md](papers/thinking-selection/manuscript.md)
+  [papers/thinking-selection/manuscript.md](../../papers/thinking-selection/manuscript.md)
   on `codex/confidence-acquisition-plan`. Read its
-  [entry point](papers/thinking-selection/README.md), evidence ledger, and
+  [entry point](../../papers/thinking-selection/README.md), evidence ledger, and
   verified BibTeX before editing. It reports completed real-solver studies;
   G1 remains separate. Independent GPT-6.1-sol/xhigh methods and literature
   reviews found no remaining numerical/endpoint mismatch after corrections.
@@ -836,7 +836,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   and development reuse limits. Any future cached figure export or error audit
   needs its separately frozen additive plan. No experiment restart is implied.
 - Critical paper review, 2026-10-10: read
-  [the root review](papers/thinking-selection/critical-review-2026-10-10.md) and
+  [the root review](../../papers/thinking-selection/history/critical-review-2026-10-10.md) and
   its linked independent methods/contribution memos. Recommendation: revise with
   existing evidence before new collection; manuscript v0.1 is unchanged and
   author/submission details are deferred. The proposed narrative distinguishes
@@ -852,7 +852,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   accessed/run. No new allocation, fitting or generation follows from the review.
   Any figure export or broader follow-up still needs its separate frozen plan.
 - Revision plan, 2026-10-10: the user requested a plan, now recorded in
-  [revision-plan-2026-10-10.md](papers/thinking-selection/revision-plan-2026-10-10.md).
+  [revision-plan-2026-10-10.md](../../papers/thinking-selection/revision-plan-2026-10-10.md).
   R1–R6 are planned, not executed. Next is a tracked-report claim map, followed
   by v0.2 text revision. Add existing post-hoc variance/transfer and flagged-case
   bounds with the original failed gate; repair sparse bootstrap/refit language;
@@ -862,7 +862,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   access, refitting, rebootstrap, generation or tests are part of this plan.
   Manuscript v0.1 remains unchanged. Author/submission details remain deferred.
 - R1 claim mapping complete, 2026-10-10: use
-  [revision-evidence-map.md](papers/thinking-selection/revision-evidence-map.md)
+  [revision-evidence-map.md](../../papers/thinking-selection/revision-evidence-map.md)
   for v0.2 claims C00–C18, numerical registers N1–N4, methods M01–M10,
   literature context L01–L07, accounting and sparse deductions. Tracked sources
   support the recorded values; preserve role/comparator/unit/interval limits.
@@ -874,11 +874,11 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   unchanged. No raw outcomes/cache/references, experiments, statistical
   reanalysis, figure export, or tests were accessed/run for R1.
 - R2 central revision complete, 2026-10-10: the
-  [manuscript](papers/thinking-selection/manuscript.md) is now v0.2 working draft.
+  [manuscript](../../papers/thinking-selection/manuscript.md) is now v0.2 working draft.
   Abstract/Introduction/repeat Results/discussion/Conclusion share the scoped
   rescues–same-question structure–held-out selection argument. Box 1 adds
   existing post-hoc diagnostics and flagged-case bounds without reversing failed
-  primary criteria. Read [revision-response.md](papers/thinking-selection/revision-response.md)
+  primary criteria. Read [revision-response.md](../../papers/thinking-selection/history/revision-response.md)
   for completed changes and nine concern statuses. Separate GPT-6.1-sol/xhigh
   methods/argument reviews passed; original Tables 1–5/A1 are unchanged.
   No raw/cache/reference access, experiment, statistical analysis, figure export
@@ -886,8 +886,8 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   This supersedes the preceding v0.1-current snapshots. Author/submission
   details remain deferred; v0.1 remains recoverable at `1695a1f`.
 - R3 interpretation repairs complete, 2026-10-10: see the updated
-  [manuscript](papers/thinking-selection/manuscript.md) and
-  [revision response](papers/thinking-selection/revision-response.md).
+  [manuscript](../../papers/thinking-selection/manuscript.md) and
+  [revision response](../../papers/thinking-selection/history/revision-response.md).
   Methods/captions distinguish fixed-fit uncertainty, omitted training variation,
   overlapping folds and reused halves. Sparse text distinguishes the refitted
   policy, explains why empirical resampling cannot generate unseen rescues,
@@ -899,7 +899,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   R4–R6 pending, author/submission details deferred.
 
 - R4 scope/prior-work revision complete, 2026-10-11: the
-  [manuscript](papers/thinking-selection/manuscript.md) leads with the closest
+  [manuscript](../../papers/thinking-selection/manuscript.md) leads with the closest
   empirical overlap and explicitly retains the absent faithful external-method
   comparison. The dated DART full-text addendum updates the literature notes,
   BibTeX and claim map. Appendix A.3 retains control settings/CLM timing;
@@ -913,10 +913,10 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   figure export. R5–R6 pending; author/submission details remain deferred.
 
 - R5 figure export complete, 2026-10-11: the separately frozen
-  [display plan](papers/thinking-selection/figure-export-plan.md), inputs and
+  [display plan](../../papers/thinking-selection/figure-export-plan.md), inputs and
   renderers committed at `655094d` before the one completed report-only export.
   Sources are pinned to R4 `d1287e6`; see the
-  [figure index](papers/thinking-selection/figures/README.md) for all nine
+  [figure index](../../papers/thinking-selection/figures/README.md) for all nine
   PDF/SVG/PNG outputs, source/output hashes and artifact review. Exact captions
   are embedded in the manuscript; original numerical tables/Box 1/sparse text
   are unchanged. Root PNG and independent PDFKit-rendered page inspection pass;
@@ -928,8 +928,8 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   claim follows from figure export.
 
 - R6 final review complete, 2026-10-11: use the
-  [final scientific review](papers/thinking-selection/revision-review.md) and
-  [source-linked response](papers/thinking-selection/revision-response.md).
+  [final scientific review](../../papers/thinking-selection/history/revision-review.md) and
+  [source-linked response](../../papers/thinking-selection/history/revision-response.md).
   Selected status: **Scoped empirical draft is coherent**. All R1–R6 passes
   are complete; reporting issues are addressed and remaining evidence gaps
   are explicit. Novelty remains modest; no algorithm confirmation or likely
@@ -943,7 +943,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   collection, reopening of closed searches, submission or public release follows.
 
 - Author scientific assessment written, 2026-10-12: use the
-  [author review](papers/thinking-selection/author-scientific-review-2026-10-12.md).
+  [author review](../../papers/thinking-selection/history/author-scientific-review-2026-10-12.md).
   It recommends retaining v0.2 as a scoped empirical report, with the central
   claim, evidence limits, and likely objections explained. This is an AI-assisted
   assessment; human author endorsement remains pending. No substantive manuscript
@@ -954,7 +954,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   deferred; no new collection or reopened search follows from this review.
 
 - Reviewer LaTeX package, 2026-10-27: use
-  [latex/README.md](papers/thinking-selection/latex/README.md) for editable
+  [latex/README.md](../../papers/thinking-selection/latex/README.md) for editable
   `main.tex`, compiled `output/pdf/main.pdf`, and the portable source ZIP.
   The conversion preserves manuscript v0.2 scientific content and embeds
   unchanged approved figure PDFs. New Appendix D identifies 13 bundled tracked
@@ -966,8 +966,8 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   separate reviewed change; do not treat this format export as new evidence.
 
 - Illustrative reviewer revision, 2026-10-28: current manuscript is v0.3;
-  use [latex-v2/README.md](papers/thinking-selection/latex-v2/README.md) and
-  [legibility response](papers/thinking-selection/legibility-response-2026-10-28.md).
+  use [latex-v2/README.md](../../papers/thinking-selection/latex-v2/README.md) and
+  [legibility response](../../papers/thinking-selection/history/legibility-response-2026-10-28.md).
   Four figures use `figures-v2/output-r2/`; frozen specifications `41975ed` and
   `9bcde19` precede their exports. Preserve first-v2 outputs, corrected outputs,
   manifests, source snapshot, and receipts, as well as original R5 figures and
@@ -980,7 +980,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   test, submission, or public release. Author identity/endorsement still pending.
 
 - Project review and publication plan, 2026-10-29: read
-  [the review](docs/project-review-and-publication-plan-2026-10-29.md).
+  [the review](../project-review-and-publication-plan-2026-10-29.md).
   Current branch is the superset of all others except unmerged
   `research/pilot-v2` reports/configs/`analysis.py`. The manuscript is an
   empirical negative-results paper, not a survey. Main gaps: missing
@@ -991,7 +991,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   paper; optional powered vLLM/Kaggle confirmation for TMLR. Proposal only:
   no experiment, reference/sealed access, branch change or submission occurred.
 - Phase 1 cascade reframing, 2026-10-29: manuscript is now v0.4; read the
-  [reframing record](papers/thinking-selection/cascade-reframing-2026-10-29.md).
+  [reframing record](../../papers/thinking-selection/cascade-reframing-2026-10-29.md).
   New title, abstract, introduction, related work (cascades, adaptive thinking,
   routing evaluation), Section 3.1 cascade mapping, discussion, limitations and
   conclusion. Eight new BibTeX sources were verified at abstract level only:
@@ -1002,7 +1002,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   and appendices are byte-identical to v0.3; latex-v2 still reflects v0.3.
   No experiment, fitting, scoring, statistic, raw/cache/reference/sealed access.
 - Confidence–gain shape audit, 2026-10-29: read the
-  [protocol](docs/confidence-gain-shape-protocol.md). It checks whether lower
+  [protocol](../confidence-gain-shape-protocol.md). It checks whether lower
   direct confidence goes with higher deferral gain (bins, Spearman pooled/
   between/within, escalation curve) on the repeat panel and both two-solver
   solvers. Post-hoc, descriptive, reading rule fixed in the protocol. Script
@@ -1022,8 +1022,8 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   collection-versus-audit environment difference instead of requiring equality.
   See the protocol's runtime-environment deviation section. Still not executed.
 - Confidence–gain shape audit **complete**, 2026-10-30: read the
-  [results](docs/confidence-gain-shape-results.md) and the user-run
-  [report](docs/confidence-gain-shape-report.md). Readings: repeat 1.7B
+  [results](../confidence-gain-shape-results.md) and the user-run
+  [report](../confidence-gain-shape-report.md). Readings: repeat 1.7B
   inconclusive (pooled Spearman +.1553 [−.0021,+.2975]; only lowest-confidence
   bin has positive gain, 17/30 rescues; top bin holds 8/12 both-wrong), two-solver
   0.6B consistent (−.1931 [−.3572,−.0251], monotone bins, best in-sample
@@ -1044,7 +1044,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   all earlier tables, Box 1, figures, captions and equations are unchanged.
   latex-v2 still reflects v0.3.
 - Token-level deferral check prepared, 2026-10-30: read the
-  [protocol](docs/token-deferral-protocol.md). `scripts/audit_token_deferral.py`
+  [protocol](../token-deferral-protocol.md). `scripts/audit_token_deferral.py`
   has `prepare`, `extract` (label-blind teacher forcing of the 400 repeat
   direct drafts through the rebuilt collection backend, which must match the
   recorded backend metadata; fidelity gate on prompt/answer token counts,
@@ -1056,8 +1056,8 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   re-tokenization. Writes only `token-deferral-v1/`. Not yet run; do not
   restart completed steps.
 - Token-level deferral check **complete**, 2026-10-30: read the
-  [results](docs/token-deferral-results.md) and user-run
-  [report](docs/token-deferral-report.md). Fidelity passed (max |Δ raw mean|
+  [results](../token-deferral-results.md) and user-run
+  [report](../token-deferral-report.md). Fidelity passed (max |Δ raw mean|
   .001055); historical decisions reproduced, confidence 92.75%/628.47 = Table 3.
   All rules fail: primary learned error score −.037093 [−.061320,−.012740],
   minimum-token threshold −.010236 [−.027213,+.005476], token gain Ridge
@@ -1074,7 +1074,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   captions and equations are unchanged. Figure 3 predates the check (stated in
   text). latex-v2 still reflects v0.3.
 - Phase 2 deferral-curve audit prepared, 2026-11-01: read the
-  [protocol](docs/deferral-curves-protocol.md). `scripts/audit_deferral_curves.py`
+  [protocol](../deferral-curves-protocol.md). `scripts/audit_deferral_curves.py`
   covers review items 7, 8 and 10 on cached data: accuracy–cost curves with
   references, cost-matched random, oracle and a refitted λ sweep; refit-inclusive
   intervals (2,000 question resamples, copies keep their fold, grouped inner
@@ -1088,8 +1088,8 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   Item 11 is a draft only:
   `papers/thinking-selection/september-studies-appendix-draft.md`.
 - Phase 2 deferral-curve audit **complete**, 2026-11-02: read the
-  [results](docs/deferral-curves-results.md) and user-run
-  [report](docs/deferral-curves-report.md). All historical decisions reproduced.
+  [results](../deferral-curves-results.md) and user-run
+  [report](../deferral-curves-report.md). All historical decisions reproduced.
   Repeat λ=.05: confidence 92.75%/628.47, lift over cost-matched random +.0178,
   oracle share .176 (oracle 97.00%/342.02); combined −.0243 lift. Combined
   trails confidence at all ten λ (−.006 to −.054) and the selected baseline at
@@ -1125,7 +1125,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
   container to build it. Authors, full-text citation checks, venue, feedback
   and release decisions remain open (see `short/submission-checklist.md`).
 - Reproduce-from-cache script, 2026-11-03: `scripts/reproduce_paper.py`
-  ([guide](docs/reproduce-from-cache.md)). `export` (Mac only) loads the repeat
+  ([guide](../reproduce-from-cache.md)). `export` (Mac only) loads the repeat
   and two-solver studies via `audit_deferral_curves.repeat_inputs`/
   `two_solver_inputs`, reads recorded k4 decisions of the nine control-family
   Table 1 rows from the CPU, contrastive, CLM and token-deferral reports (each
@@ -1140,7 +1140,7 @@ Snapshot checked 2026-10-03. Verify `git status --short --branch` and
 - Paper reproduction **passed**, 2026-11-05: the user ran `reproduce_paper
   export` and the full `check` (refit included, four processes) on the Mac. All
   195 checks pass, none skipped; report saved as
-  [docs/reproduction-report.md](docs/reproduction-report.md). Cache SHA-256
+  [docs/reproduction-report.md](../reproduction-report.md). Cache SHA-256
   `3da91b57c98612141f2962cc657d6c9e3e26b4b0592d52006a7dcfce92e73757`, local at
   `artifacts/research/data-efficiency-v1/paper-cache-v1/paper-cache.json`; do not
   re-export over it. Not yet published (release decisions pending).
