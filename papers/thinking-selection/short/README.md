@@ -1,10 +1,11 @@
 # Short paper (workshop length)
 
 **Learned Deferral Did Not Beat Confidence in a Same-Model Thinking Cascade.**
-Draft, 2 November 2026. Phase 4, step 13 of the
+Draft, 2 November 2026; revised 7 November after two critic reviews
+([reviews](reviews/README.md)). Phase 4, step 13 of the
 [project review](../../../docs/project-review-and-publication-plan-2026-10-29.md).
 
-- PDF: [`output/main.pdf`](output/main.pdf), 8 pages: about 5.5 pages of main
+- PDF: [`output/main.pdf`](output/main.pdf), 9 pages: about 5.7 pages of main
   text, then references and three short appendices.
 - Source: [`main.tex`](main.tex) and [`references.bib`](references.bib).
   [`short-source.zip`](short-source.zip) is a self-contained bundle (source,
@@ -15,9 +16,13 @@ Draft, 2 November 2026. Phase 4, step 13 of the
 
 This is a rewrite, not an excerpt, of [manuscript v0.7](../manuscript.md), which
 remains the complete technical report and thesis chapter. Every number in the
-short paper comes from v0.7 or the tracked result records it cites; the only
-derived value is the agreement rule's lift over random (marked †, from
-[the results record](../../../docs/deferral-curves-results.md)). The short
+short paper comes from v0.7 or the tracked result records it cites. Derived by
+subtraction from those records: the agreement rule's lift over random (marked
+†, from [the results record](../../../docs/deferral-curves-results.md)), the
+three added Table 1 rows' differences against confidence (from the utilities
+in the [deferral-curve report](../../../docs/deferral-curves-report.md)), and
+the Qwen3-0.6B always-think gains +0.128 and +0.025 (from the
+[two-solver results](../../../docs/opportunity-panel-results.md)). The short
 paper moves the guard, cap, CLM, and control details to appendices or to the
 long report, and drops the September studies, Box 1, and the sparse-design
 bounds, which the long report keeps.

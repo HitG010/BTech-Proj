@@ -21,6 +21,9 @@ uploaded, submitted, or released.
 
 ## 2. Feedback (step 14)
 
+- [x] AI critic reviews (methods; framing and venue), 7 November 2026. Must-fix
+  items 1–7 applied; see [reviews](reviews/README.md). Should-fix items open.
+
 - [ ] Send the PDF to the supervisor and one or two peers. Ask specifically:
   is the main claim clear in one reading; is "missing gain, not demonstrated
   loss" convincing; is Figure 1 readable in print.
