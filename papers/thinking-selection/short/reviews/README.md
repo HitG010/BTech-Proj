@@ -54,4 +54,41 @@ The must-fix items, all text changes in `main.tex`:
 - Limitations: untested confidence measures, the thinking call never seeing the
   draft, and the GSM8K caveat, each tied to the new citations.
 
-The other should-fix items in both reports remain open.
+## Should-fix items applied on 9 November 2026
+
+- Table 1: escalation column, grouped rows, plain row names, integer tokens
+  (framing P1-2). Accuracy keeps two decimals because every value is a multiple
+  of 0.25 points; one decimal would round half the rows.
+- Effective sample: 11 questions carry the 30 rescues, 14 carry any rescue or
+  harm; the introduction frames the 40-question setting (methods 6, framing P1-1).
+- Oracle caveat in the abstract and Section 4 (methods 7); refit shrinkage and
+  the +0.01 margin in Section 3.3 (methods 5); the comparator's −0.028 as
+  evidence of selection noise (methods 9).
+- Fairness disclosures in Appendix A: CLM rules see no confidence or draft
+  statistics; compact neural rules see the last 256 draft tokens (111 of 400
+  truncated) with one seed; token quantiles are pre-warper (methods 8, 9).
+- Restored findings: 1.7B two-solver agreement +0.008 over confidence;
+  between-question variance (results do not show deferral is unlearnable);
+  mixed September agreement results (methods 10). Agreement's +1.40 lift in
+  Section 3.2 (methods 11). Section 3.2 retitled (methods 12).
+- Limitations: contamination, fewer than nine rescue questions per fold, one
+  prompt and decoding configuration, unequal compute across model sizes, no
+  multiplicity adjustment (methods 13).
+- Bibliography: FrugalGPT now TMLR 2024 (OpenReview), BEST-Route ICML 2025
+  (arXiv comment), Lewis-Lim et al. dated to first posting (2025), CLM model
+  card cited (framing P1-5). Thinkless has no stated venue and stays a preprint.
+- Appendix B removed and Appendix C shortened (framing P1-6); the
+  availability statement now names the cache SHA-256 and says which values the
+  195 checks cover.
+
+Not done, by decision:
+
+- Title scope ("…on GSM8K"), suggested by methods 12: the authors' call.
+- A learning curve over 1, 2, and 4 training draws (framing P1-1): the tracked
+  records do not report those conditions in a citable form; it would need a new
+  cached analysis under its own frozen protocol.
+- The Figure 1 caption keeps "post-hoc, from reused development panels" rather
+  than the shorter wording framing P1-3 suggests.
+- P2 polish items in both reports, except where they overlapped the above.
+- The long report still omits agreement's lift in its Section 4.5 sentence
+  (methods 11); it was left at v0.8.

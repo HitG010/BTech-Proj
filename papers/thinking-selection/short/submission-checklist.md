@@ -35,7 +35,11 @@ uploaded, submitted, or released.
   anonymity rules. The draft uses a plain article layout with no repository
   links in the text, so moving to a venue template is mechanical.
 - [ ] For double-blind review, keep the author block anonymous and do not link
-  the repository until after review.
+  the repository until after review. If the venue allows code at review time,
+  make an anonymized copy (for example on anonymous.4open.science) and add its
+  link to the paper's code and data availability paragraph.
+- [ ] Decide whether to scope the title, for example "…on GSM8K" (suggested by
+  the methods review).
 - [ ] arXiv: pdfLaTeX, the bundled `.bbl`, categories cs.CL (primary) and cs.LG.
   Do not submit the same results to two archival venues at once.
 
