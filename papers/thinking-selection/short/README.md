@@ -5,7 +5,7 @@ Draft, 2 November 2026; revised 7 November after two critic reviews
 ([reviews](reviews/README.md)). Phase 4, step 13 of the
 [project review](../../../docs/project-review-and-publication-plan-2026-10-29.md).
 
-- PDF: [`output/main.pdf`](output/main.pdf), 9 pages: about 5.7 pages of main
+- PDF: [`output/main.pdf`](output/main.pdf), 11 pages: about 6.5 pages of main
   text, then references and three short appendices.
 - Source: [`main.tex`](main.tex) and [`references.bib`](references.bib).
   [`short-source.zip`](short-source.zip) is a self-contained bundle (source,
@@ -28,8 +28,10 @@ paper moves the guard, cap, CLM, and control details to appendices or to the
 long report, and drops the September studies, Box 1, and the sparse-design
 bounds, which the long report keeps.
 
-[`references.bib`](references.bib) is generated from `../references.bib` with
-the internal retrieval notes removed. Edit the parent file and regenerate it.
+[`references.bib`](references.bib) is generated from `../references.bib` by
+[`make_references.py`](make_references.py), which removes the internal retrieval
+notes and shortens author lists longer than six names. Edit the parent file and
+rerun it.
 
 ## Figure
 

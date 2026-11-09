@@ -72,6 +72,8 @@ as GSM8K show limited benefit. Three related points:
   Gupta et al. predict "large right, small wrong". Both papers now state this. A
   closer test would be a new cached CPU analysis under its own frozen protocol. It
   would have only 30 positive states, so it would be weak, and it is not required.
-- **Related work.** Lewis-Lim et al. list learned when-to-think methods (Yue et al.
-  2025, Jiang et al. 2025, Chuang et al. 2025a) that belong in the should-fix
-  related-work list in the [framing review](short/reviews/critic-framing-2026-11-07.md).
+- **Related work.** Done 9 November 2026: Jiang et al. 2025 and Chuang et al.
+  (confidence tokens) are now cited, with the rest of the
+  [framing review's](short/reviews/critic-framing-2026-11-07.md) list; see
+  [reviews](short/reviews/README.md). Yue et al. 2025 is a survey, so the short
+  paper cites Sui et al. 2025 instead.

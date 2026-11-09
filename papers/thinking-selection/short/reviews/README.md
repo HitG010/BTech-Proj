@@ -38,4 +38,20 @@ The must-fix items, all text changes in `main.tex`:
    [record](../../full-text-check-2026-11-07.md). Section 4's cascade paragraph
    was rewritten and split, and the Lewis-Lim et al. description corrected.
 
-The should-fix items in both reports remain open.
+## Applied on 9 November 2026
+
+- Figure 1 revision 2 (framing P1-3): see [`figures/plan-r2.md`](../figures/plan-r2.md).
+- Related work (framing P1-4): 30 added sources in five paragraphs (learning to
+  defer and selective prediction, cascades and routing, adaptive thinking,
+  confidence and agreement, evaluation). Each was checked against its arXiv
+  record (title, authors, abstract) or, for Narasimhan et al. 2022, OpenAlex.
+  Venues appear only when the arXiv comment or OpenAlex states one; eight are
+  cited as preprints. Skipped from the critic's list: RouterBench, faster
+  cascades via speculative decoding, token-budget-aware reasoning, Nadeau and
+  Bengio 2003, and Dodge et al. 2019.
+- Bibliography (part of framing P1-5): Qwen3 and other long author lists
+  shortened in the short paper; SBERT and MiniLM now cited.
+- Limitations: untested confidence measures, the thinking call never seeing the
+  draft, and the GSM8K caveat, each tied to the new citations.
+
+The other should-fix items in both reports remain open.
