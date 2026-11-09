@@ -1,0 +1,404 @@
+{
+  "report": "docs/deferral-curves-report.md",
+  "report_sha256": "92863d455eeeb03092dc1974835768b1e732ec5af347ad25dc2f52ec396b8316",
+  "first_export_manifest_sha256": "b0772e36ab4145a53437a2c10b03f5fe2c016681382eb741c09c22f0b066796a",
+  "values_equal_first_export": true,
+  "renderer_sha256": "0dc5b3593da9cb00f98f284821163b6270c97f24cd039ed87914b943d2a11376",
+  "plan_sha256": "ea82f170e26166d23b0d6428e7b653e99507d9e3e4cf780f411b991042ba605d",
+  "values": {
+    "repeat_qwen3_1.7b": {
+      "points": {
+        "always_direct": {
+          "accuracy": 0.895,
+          "tokens": 221.14
+        },
+        "always_escalate": {
+          "accuracy": 0.945,
+          "tokens": 1610.97
+        },
+        "oracle": {
+          "accuracy": 0.97,
+          "tokens": 342.02
+        },
+        "accept": {
+          "accuracy": 0.895,
+          "tokens": 221.14
+        },
+        "escalate": {
+          "accuracy": 0.945,
+          "tokens": 1610.97
+        },
+        "confidence": {
+          "accuracy": 0.9275,
+          "tokens": 628.47
+        },
+        "question_only": {
+          "accuracy": 0.8875,
+          "tokens": 794.1
+        },
+        "solver_only": {
+          "accuracy": 0.8975,
+          "tokens": 621.67
+        },
+        "combined": {
+          "accuracy": 0.89,
+          "tokens": 757.13
+        },
+        "selected_baseline": {
+          "accuracy": 0.9025,
+          "tokens": 683.06
+        },
+        "training_selected_cpu_family (Table 3, reported)": {
+          "accuracy": 0.9075,
+          "tokens": 514.22
+        },
+        "training_selected_compact_neural_family (Table 3, reported)": {
+          "accuracy": 0.8925,
+          "tokens": 604.82
+        },
+        "released_clm_zero_shot (Table 3, reported)": {
+          "accuracy": 0.9475,
+          "tokens": 1550.53
+        },
+        "released_clm_calibrated (Table 3, reported)": {
+          "accuracy": 0.885,
+          "tokens": 443.71
+        },
+        "same_encoder_pca8_ridge (Table 3, reported)": {
+          "accuracy": 0.89,
+          "tokens": 330.81
+        },
+        "training_selected_clm_raw_family (Table 3, reported)": {
+          "accuracy": 0.8875,
+          "tokens": 406.34
+        },
+        "token_learned_error_score (Table 3, reported)": {
+          "accuracy": 0.8875,
+          "tokens": 570.33
+        },
+        "token_min_token_threshold (Table 3, reported)": {
+          "accuracy": 0.91,
+          "tokens": 483.2
+        },
+        "token_gain_ridge (Table 3, reported)": {
+          "accuracy": 0.9,
+          "tokens": 483.21
+        },
+        "two_draft_agreement (simulated)": {
+          "accuracy": 0.9225,
+          "tokens": 597.69
+        }
+      },
+      "sweep": [
+        {
+          "lambda": 0.0,
+          "confidence": {
+            "accuracy": 0.925,
+            "tokens": 1199.5
+          },
+          "combined": {
+            "accuracy": 0.8975,
+            "tokens": 1055.9
+          }
+        },
+        {
+          "lambda": 0.01,
+          "confidence": {
+            "accuracy": 0.92,
+            "tokens": 1060.1
+          },
+          "combined": {
+            "accuracy": 0.8875,
+            "tokens": 996.3
+          }
+        },
+        {
+          "lambda": 0.02,
+          "confidence": {
+            "accuracy": 0.9225,
+            "tokens": 783.7
+          },
+          "combined": {
+            "accuracy": 0.885,
+            "tokens": 928.3
+          }
+        },
+        {
+          "lambda": 0.03,
+          "confidence": {
+            "accuracy": 0.9225,
+            "tokens": 783.7
+          },
+          "combined": {
+            "accuracy": 0.8925,
+            "tokens": 865.9
+          }
+        },
+        {
+          "lambda": 0.05,
+          "confidence": {
+            "accuracy": 0.9275,
+            "tokens": 628.5
+          },
+          "combined": {
+            "accuracy": 0.89,
+            "tokens": 757.1
+          }
+        },
+        {
+          "lambda": 0.075,
+          "confidence": {
+            "accuracy": 0.9125,
+            "tokens": 347.3
+          },
+          "combined": {
+            "accuracy": 0.89,
+            "tokens": 667.1
+          }
+        },
+        {
+          "lambda": 0.1,
+          "confidence": {
+            "accuracy": 0.9125,
+            "tokens": 347.3
+          },
+          "combined": {
+            "accuracy": 0.8825,
+            "tokens": 588.8
+          }
+        },
+        {
+          "lambda": 0.15,
+          "confidence": {
+            "accuracy": 0.895,
+            "tokens": 266.0
+          },
+          "combined": {
+            "accuracy": 0.885,
+            "tokens": 435.1
+          }
+        },
+        {
+          "lambda": 0.2,
+          "confidence": {
+            "accuracy": 0.8925,
+            "tokens": 246.2
+          },
+          "combined": {
+            "accuracy": 0.8875,
+            "tokens": 368.2
+          }
+        },
+        {
+          "lambda": 0.3,
+          "confidence": {
+            "accuracy": 0.8925,
+            "tokens": 230.2
+          },
+          "combined": {
+            "accuracy": 0.8925,
+            "tokens": 251.5
+          }
+        }
+      ]
+    },
+    "two_solver_qwen3_0.6b": {
+      "points": {
+        "always_direct": {
+          "accuracy": 0.6172,
+          "tokens": 209.8
+        },
+        "always_escalate": {
+          "accuracy": 0.8047,
+          "tokens": 1409.52
+        },
+        "oracle": {
+          "accuracy": 0.8672,
+          "tokens": 546.63
+        },
+        "confidence": {
+          "accuracy": 0.8125,
+          "tokens": 1062.52
+        }
+      },
+      "sweep": [
+        {
+          "lambda": 0.0,
+          "confidence": {
+            "accuracy": 0.8125,
+            "tokens": 1062.5
+          }
+        },
+        {
+          "lambda": 0.01,
+          "confidence": {
+            "accuracy": 0.8125,
+            "tokens": 1062.5
+          }
+        },
+        {
+          "lambda": 0.02,
+          "confidence": {
+            "accuracy": 0.8125,
+            "tokens": 1062.5
+          }
+        },
+        {
+          "lambda": 0.03,
+          "confidence": {
+            "accuracy": 0.8125,
+            "tokens": 1062.5
+          }
+        },
+        {
+          "lambda": 0.05,
+          "confidence": {
+            "accuracy": 0.8125,
+            "tokens": 1062.5
+          }
+        },
+        {
+          "lambda": 0.075,
+          "confidence": {
+            "accuracy": 0.8125,
+            "tokens": 1062.5
+          }
+        },
+        {
+          "lambda": 0.1,
+          "confidence": {
+            "accuracy": 0.8125,
+            "tokens": 1031.0
+          }
+        },
+        {
+          "lambda": 0.15,
+          "confidence": {
+            "accuracy": 0.7812,
+            "tokens": 806.9
+          }
+        },
+        {
+          "lambda": 0.2,
+          "confidence": {
+            "accuracy": 0.7734000000000001,
+            "tokens": 720.2
+          }
+        },
+        {
+          "lambda": 0.3,
+          "confidence": {
+            "accuracy": 0.7031000000000001,
+            "tokens": 542.1
+          }
+        }
+      ]
+    },
+    "two_solver_qwen3_1.7b": {
+      "points": {
+        "always_direct": {
+          "accuracy": 0.8438,
+          "tokens": 228.01
+        },
+        "always_escalate": {
+          "accuracy": 0.875,
+          "tokens": 1586.79
+        },
+        "oracle": {
+          "accuracy": 0.8984000000000001,
+          "tokens": 291.06
+        },
+        "confidence": {
+          "accuracy": 0.8359000000000001,
+          "tokens": 682.56
+        }
+      },
+      "sweep": [
+        {
+          "lambda": 0.0,
+          "confidence": {
+            "accuracy": 0.8359000000000001,
+            "tokens": 788.9
+          }
+        },
+        {
+          "lambda": 0.01,
+          "confidence": {
+            "accuracy": 0.8359000000000001,
+            "tokens": 788.9
+          }
+        },
+        {
+          "lambda": 0.02,
+          "confidence": {
+            "accuracy": 0.8359000000000001,
+            "tokens": 788.9
+          }
+        },
+        {
+          "lambda": 0.03,
+          "confidence": {
+            "accuracy": 0.8281000000000001,
+            "tokens": 727.4
+          }
+        },
+        {
+          "lambda": 0.05,
+          "confidence": {
+            "accuracy": 0.8359000000000001,
+            "tokens": 682.6
+          }
+        },
+        {
+          "lambda": 0.075,
+          "confidence": {
+            "accuracy": 0.8281000000000001,
+            "tokens": 435.4
+          }
+        },
+        {
+          "lambda": 0.1,
+          "confidence": {
+            "accuracy": 0.8359000000000001,
+            "tokens": 344.2
+          }
+        },
+        {
+          "lambda": 0.15,
+          "confidence": {
+            "accuracy": 0.8438,
+            "tokens": 279.4
+          }
+        },
+        {
+          "lambda": 0.2,
+          "confidence": {
+            "accuracy": 0.8438,
+            "tokens": 279.4
+          }
+        },
+        {
+          "lambda": 0.3,
+          "confidence": {
+            "accuracy": 0.8438,
+            "tokens": 269.3
+          }
+        }
+      ]
+    }
+  },
+  "outputs": {
+    "pdf": {
+      "path": "papers/thinking-selection/short/figures/output-r2/pdf/figure-1-accuracy-cost-r2.pdf",
+      "sha256": "dc20222a51d2faefd01d5a96844c52d2e5a8de987d2f9b69479f1248e64332ce"
+    },
+    "svg": {
+      "path": "papers/thinking-selection/short/figures/output-r2/svg/figure-1-accuracy-cost-r2.svg",
+      "sha256": "68392be8dfcdc4d88c95d17d8cfbee54b33b3a7f527cbb8aef1bd757f7fd0544"
+    },
+    "png": {
+      "path": "papers/thinking-selection/short/figures/output-r2/png/figure-1-accuracy-cost-r2.png",
+      "sha256": "8b400bae76de155cf9253843fdd19ed54d2fb76636c4edc693a6756efc08f6fe"
+    }
+  }
+}

@@ -33,7 +33,14 @@ the internal retrieval notes removed. Edit the parent file and regenerate it.
 
 ## Figure
 
-Figure 1 was rendered once from the frozen
+The paper uses revision 2 of Figure 1
+([plan](figures/plan-r2.md), [renderer](figures/render_curves_r2.py), outputs in
+`figures/output-r2/`), frozen and exported on 9 November 2026. It changes only
+the presentation: tighter axes with the oracle marked off scale, direct labels,
+and current names. Its renderer refuses to draw unless every value equals the
+first export's manifest. The first export is kept unchanged.
+
+The first Figure 1 was rendered once from the frozen
 [display plan](figures/plan.md) and [renderer](figures/render_curves.py),
 committed before the export. The renderer parses only the tracked
 [deferral-curves report](../../../docs/deferral-curves-report.md), pinned by
